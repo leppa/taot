@@ -20,12 +20,26 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
 #include "qmlapplicationviewer.h"
+#include "translationinterface.h"
+#include "dictionarymodel.h"
+#include "reversetranslationsmodel.h"
+
+#include <QApplication>
+#include <QtDeclarative>
 
 int main(int argc, char *argv[])
 {
+    QApplication::setApplicationName("The Advanced Online Translator");
+    QApplication::setApplicationVersion("0.1.0");
+    QApplication::setOrganizationName("Oleksii Serdiuk");
+    QApplication::setOrganizationDomain("oleksii.name");
+
     QScopedPointer<QApplication> app(createApplication(argc, argv));
+
+    qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
+    qmlRegisterType<DictionaryModel>();
+    qmlRegisterType<ReverseTranslationsModel>();
 
     QmlApplicationViewer viewer;
     viewer.addImportPath(QLatin1String("modules")); // ADDIMPORTPATH

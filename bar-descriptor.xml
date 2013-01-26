@@ -21,6 +21,7 @@
     <env var="QT_PLUGIN_PATH" value="app/native/plugins:/usr/lib/qt4/plugins"/>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib/"/>
     <action system="true">run_native</action>
+    <permission>access_internet</permission>
 
     <asset entry="true" path="taot" type="Qnx/Elf">taot</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>

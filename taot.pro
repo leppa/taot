@@ -23,6 +23,7 @@
 ######################################################################
 
 TEMPLATE = app
+QT += network script
 
 # Please do not modify the following line.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -30,8 +31,18 @@ include(qmlapplicationviewer/qmlapplicationviewer.pri)
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
 
-# The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+HEADERS += \
+    src/translationinterface.h \
+    src/dictionarymodel.h \
+    src/reversetranslationsmodel.h
 
-OTHER_FILES += bar-descriptor.xml \
-    qml/main.qml
+# The .cpp file which was generated for your project. Feel free to hack it.
+SOURCES += \
+    src/main.cpp \
+    src/translationinterface.cpp \
+    src/dictionarymodel.cpp \
+    src/reversetranslationsmodel.cpp
+
+OTHER_FILES += \
+    bar-descriptor.xml \
+    qml/*
