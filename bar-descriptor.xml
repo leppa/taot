@@ -4,6 +4,7 @@
     <name>The Advanced Online Translator</name>
     <versionNumber>0.1.0</versionNumber>
     <description>The Advanced Online Translator uses available online translation services to provide translations. Currently it supports only Google Translate but more services are in the plans (i.e., Bing Translate, Yandex Translate, etc.).</description>
+    <icon><image>icon.png</image></icon>
 
     <author>Oleksii Serdiuk</author>
     <authorId>gYAAgOgaIb4973NLSyzhcqWpc9s</authorId>
@@ -24,6 +25,7 @@
     <permission>access_internet</permission>
 
     <asset entry="true" path="taot" type="Qnx/Elf">taot</asset>
+    <asset path="%SRC_DIR%/icon.png">icon.png</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>
     <asset path="%SRC_DIR%/3rdparty/connys-qt-components/imports">imports</asset>
 </qnx>
