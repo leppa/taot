@@ -1,19 +1,27 @@
 <?xml version='1.0' encoding='utf-8' standalone='no'?>
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
-    <id>com.example.taot</id>
-    <name>taot</name>
-    <versionNumber>1.0.0</versionNumber>
-    <description>DESCRIPTION</description>
+    <id>name.oleksii.bb10.taot</id>
+    <name>The Advanced Online Translator</name>
+    <versionNumber>0.1.0</versionNumber>
+    <description>The Advanced Online Translator uses available online translation services to provide translations. Currently it supports only Google Translate but more services are in the plans (i.e., Bing Translate, Yandex Translate, etc.).</description>
+
+    <author>Oleksii Serdiuk</author>
+    <authorId>gYAAgOgaIb4973NLSyzhcqWpc9s</authorId>
+    <publisher>Oleksii Serdiuk</publisher>
+    <copyright>(C) 2013 Oleksii Serdiuk</copyright>
+
     <initialWindow>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
         <autoOrients>true</autoOrients>
         <aspectRatio>landscape</aspectRatio>
     </initialWindow>
+
     <env var="QML_IMPORT_PATH" value="app/native/imports"/>
     <env var="QT_PLUGIN_PATH" value="app/native/plugins:/usr/lib/qt4/plugins"/>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib/"/>
     <action system="true">run_native</action>
+
     <asset entry="true" path="taot" type="Qnx/Elf">taot</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>
 </qnx>
