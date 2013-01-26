@@ -20,19 +20,12 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 1.1
+import com.nokia.symbian 1.1
+import com.nokia.extras 1.1
 
-Rectangle {
-    width: 360
-    height: 360
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
-    }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
-        }
-    }
+PageStackWindow {
+    showStatusBar: false
+    initialPage: MainPage {}
+
+    InfoBanner { id: banner }
 }

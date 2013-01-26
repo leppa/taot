@@ -13,8 +13,8 @@
     <initialWindow>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
-        <autoOrients>true</autoOrients>
-        <aspectRatio>landscape</aspectRatio>
+        <autoOrients>false</autoOrients>
+        <aspectRatio>portrait</aspectRatio>
     </initialWindow>
 
     <env var="QML_IMPORT_PATH" value="app/native/imports"/>
@@ -25,4 +25,5 @@
 
     <asset entry="true" path="taot" type="Qnx/Elf">taot</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>
+    <asset path="%SRC_DIR%/3rdparty/connys-qt-components/imports">imports</asset>
 </qnx>

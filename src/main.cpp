@@ -26,14 +26,23 @@
 #include "reversetranslationsmodel.h"
 
 #include <QApplication>
+#include <QTextCodec>
+#include <QGLWidget>
 #include <QtDeclarative>
 
 int main(int argc, char *argv[])
 {
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf8"));
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
+
     QApplication::setApplicationName("The Advanced Online Translator");
     QApplication::setApplicationVersion("0.1.0");
     QApplication::setOrganizationName("Oleksii Serdiuk");
     QApplication::setOrganizationDomain("oleksii.name");
+
+    // This is needed for clicks to work more reliably indside Flickable.
+    QApplication::setStartDragDistance(42);
 
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
@@ -41,11 +50,14 @@ int main(int argc, char *argv[])
     qmlRegisterType<DictionaryModel>();
     qmlRegisterType<ReverseTranslationsModel>();
 
+    QGLWidget *gl = new QGLWidget();
+
     QmlApplicationViewer viewer;
-    viewer.addImportPath(QLatin1String("modules")); // ADDIMPORTPATH
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto); // ORIENTATION
-    viewer.setMainQmlFile(QLatin1String("qml/main.qml")); // MAINQML
-    viewer.showExpanded();
+    viewer.setViewport(gl);
+    viewer.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
+    viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
+    viewer.showFullScreen();
 
     return app->exec();
 }

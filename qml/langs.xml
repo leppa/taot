@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LanguagePairs>
+<Pair source_id="auto" source_name="Detect language" target_id="en" target_name="English" text=""/>
+<Pair source_id="af" source_name="Afrikaans" target_id="en" target_name="English" text="Afrikaans to English"/>
+<Pair source_id="sq" source_name="Albanian" target_id="en" target_name="English" text="Albanian to English"/>
+<Pair source_id="ar" source_name="Arabic" target_id="en" target_name="English" text="Arabic to English"/>
+<Pair source_id="be" source_name="Belarusian" target_id="en" target_name="English" text="Belarusian to English"/>
+<Pair source_id="bg" source_name="Bulgarian" target_id="en" target_name="English" text="Bulgarian to English"/>
+<Pair source_id="ca" source_name="Catalan" target_id="en" target_name="English" text="Catalan to English"/>
+<Pair source_id="zh" source_name="Chinese" target_id="en" target_name="English" text="Chinese to English"/>
+<Pair source_id="zh-CN" source_name="Chinese (Simplified)" target_id="zh-TW" target_name="Chinese (Traditional)" text="Chinese (Simplified to Traditional)"/>
+<Pair source_id="zh-TW" source_name="Chinese (Traditional)" target_id="zh-CN" target_name="Chinese (Simplified)" text="Chinese (Traditional to Simplified)"/>
+<Pair source_id="hr" source_name="Croatian" target_id="en" target_name="English" text="Croatian to English"/>
+<Pair source_id="cs" source_name="Czech" target_id="en" target_name="English" text="Czech to English"/>
+<Pair source_id="da" source_name="Danish" target_id="en" target_name="English" text="Danish to English"/>
+<Pair source_id="nl" source_name="Dutch" target_id="en" target_name="English" text="Dutch to English"/>
+<Pair source_id="en" source_name="English" target_id="af" target_name="Afrikaans" text="English to Afrikaans"/>
+<Pair source_id="eo" source_name="Esperanto" target_id="en" target_name="English" text="Esperanto to English"/>
+<Pair source_id="et" source_name="Estonian" target_id="en" target_name="English" text="Estonian to English"/>
+<Pair source_id="tl" source_name="Filipino" target_id="en" target_name="English" text="Filipino to English"/>
+<Pair source_id="fi" source_name="Finnish" target_id="en" target_name="English" text="Finnish to English"/>
+<Pair source_id="fr" source_name="French" target_id="en" target_name="English" text="French to English"/>
+<Pair source_id="gl" source_name="Galician" target_id="en" target_name="English" text="Galician to English"/>
+<Pair source_id="de" source_name="German" target_id="en" target_name="English" text="German to English"/>
+<Pair source_id="el" source_name="Greek" target_id="en" target_name="English" text="Greek to English"/>
+<Pair source_id="ht" source_name="Haitian Creole" target_id="en" target_name="English" text="Haitian Creole to English"/>
+<Pair source_id="iw" source_name="Hebrew" target_id="en" target_name="English" text="Hebrew to English"/>
+<Pair source_id="hi" source_name="Hindi" target_id="en" target_name="English" text="Hindi to English"/>
+<Pair source_id="hu" source_name="Hungarian" target_id="en" target_name="English" text="Hungarian to English"/>
+<Pair source_id="is" source_name="Icelandic" target_id="en" target_name="English" text="Icelandic to English"/>
+<Pair source_id="id" source_name="Indonesian" target_id="en" target_name="English" text="Indonesian to English"/>
+<Pair source_id="ga" source_name="Irish" target_id="en" target_name="English" text="Irish to English"/>
+<Pair source_id="it" source_name="Italian" target_id="en" target_name="English" text="Italian to English"/>
+<Pair source_id="ja" source_name="Japanese" target_id="en" target_name="English" text="Japanese to English"/>
+<Pair source_id="ko" source_name="Korean" target_id="en" target_name="English" text="Korean to English"/>
+<Pair source_id="lv" source_name="Latvian" target_id="en" target_name="English" text="Latvian to English"/>
+<Pair source_id="lt" source_name="Lithuanian" target_id="en" target_name="English" text="Lithuanian to English"/>
+<Pair source_id="mk" source_name="Macedonian" target_id="en" target_name="English" text="Macedonian to English"/>
+<Pair source_id="ms" source_name="Malay" target_id="en" target_name="English" text="Malay to English"/>
+<Pair source_id="mt" source_name="Maltese" target_id="en" target_name="English" text="Maltese to English"/>
+<Pair source_id="no" source_name="Norwegian" target_id="en" target_name="English" text="Norwegian to English"/>
+<Pair source_id="fa" source_name="Persian" target_id="en" target_name="English" text="Persian to English"/>
+<Pair source_id="pl" source_name="Polish" target_id="en" target_name="English" text="Polish to English"/>
+<Pair source_id="pt" source_name="Portuguese" target_id="en" target_name="English" text="Portuguese to English"/>
+<Pair source_id="ro" source_name="Romanian" target_id="en" target_name="English" text="Romanian to English"/>
+<Pair source_id="ru" source_name="Russian" target_id="en" target_name="English" text="Russian to English"/>
+<Pair source_id="sr" source_name="Serbian" target_id="en" target_name="English" text="Serbian to English"/>
+<Pair source_id="sk" source_name="Slovak" target_id="en" target_name="English" text="Slovak to English"/>
+<Pair source_id="sl" source_name="Slovenian" target_id="en" target_name="English" text="Slovenian to English"/>
+<Pair source_id="es" source_name="Spanish" target_id="en" target_name="English" text="Spanish to English"/>
+<Pair source_id="sw" source_name="Swahili" target_id="en" target_name="English" text="Swahili to English"/>
+<Pair source_id="sv" source_name="Swedish" target_id="en" target_name="English" text="Swedish to English"/>
+<Pair source_id="th" source_name="Thai" target_id="en" target_name="English" text="Thai to English"/>
+<Pair source_id="tr" source_name="Turkish" target_id="en" target_name="English" text="Turkish to English"/>
+<Pair source_id="uk" source_name="Ukrainian" target_id="en" target_name="English" text="Ukrainian to English"/>
+<Pair source_id="vi" source_name="Vietnamese" target_id="en" target_name="English" text="Vietnamese to English"/>
+<Pair source_id="cy" source_name="Welsh" target_id="en" target_name="English" text="Welsh to English"/>
+<Pair source_id="yi" source_name="Yiddish" target_id="en" target_name="English" text="Yiddish to English"/>
+</LanguagePairs>

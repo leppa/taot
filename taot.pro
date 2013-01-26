@@ -23,13 +23,13 @@
 ######################################################################
 
 TEMPLATE = app
-QT += network script
+QT += network script opengl
 
 # Please do not modify the following line.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 
 # Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH =
+QML_IMPORT_PATH = 3rdparty/connys-qt-components/imports
 
 HEADERS += \
     src/translationinterface.h \
