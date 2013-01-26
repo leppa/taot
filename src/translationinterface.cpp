@@ -27,7 +27,7 @@
 #include <QDebug>
 
 TranslationInterface::TranslationInterface(QObject *parent)
-    : QObject(parent), m_service("FooService"), m_busy(false), m_dict(new DictionaryModel()), networkReply(NULL)
+    : QObject(parent), m_service("Google"), m_busy(false), m_dict(new DictionaryModel()), networkReply(NULL)
 {
     settings.beginGroup(m_service);
     m_srcLang = settings.value("SourceLanguage", "auto").toString();
@@ -76,10 +76,10 @@ void TranslationInterface::translate()
     qDebug() << __PRETTY_FUNCTION__;
     resetTranslation();
 
-    // TODO: Send request to real translation service here.
-    QUrl url("http://translate.example.com/");
-    url.addQueryItem("from", m_srcLang);
-    url.addQueryItem("to", m_trgtLang);
+    QUrl url("http://translate.google.com/translate_a/t?client=q");
+    url.addQueryItem("hl", "en");
+    url.addQueryItem("sl", m_srcLang);
+    url.addQueryItem("tl", m_trgtLang);
     url.addQueryItem("text", m_srcText);
     networkReply = nam.get(QNetworkRequest(url));
 }
@@ -150,7 +150,55 @@ void TranslationInterface::requestFinished(QNetworkReply *reply)
         return;
     }
 
-    // TODO: Parse response.
+    if (m_srcLang == "auto")
+        setDetectedLanguage(data.property("src").toString());
+    QString translation;
+    QScriptValueIterator ti(data.property("sentences"));
+    while (ti.hasNext()) {
+        ti.next();
+        translation.append(ti.value().property("trans").toString());
+    }
+    setTranslatedText(translation);
+
+    m_dict->clear();
+    if (data.property("dict").isArray()) {
+        QScriptValueIterator di(data.property("dict"));
+        while (di.hasNext()) {
+            di.next();
+            if (di.flags() & QScriptValue::SkipInEnumeration)
+                continue;
+            // Extracting translations
+            QScriptValueIterator ti(di.value().property("terms"));
+            QStringList trans;
+            while (ti.hasNext()) {
+                ti.next();
+                if (ti.flags() & QScriptValue::SkipInEnumeration)
+                    continue;
+                trans << ti.value().toString();
+            }
+
+            // Extracting parts of speech (with revers translations)
+            QScriptValueIterator ei(di.value().property("entry"));
+            DictionaryPos pos(di.value().property("pos").toString(), trans);
+            while (ei.hasNext()) {
+                ei.next();
+                if (ei.flags() & QScriptValue::SkipInEnumeration)
+                    continue;
+
+                // Extracting reverse translations
+                QScriptValueIterator rti(ei.value().property("reverse_translation"));
+                QStringList rtrans;
+                while (rti.hasNext()) {
+                    rti.next();
+                    if (rti.flags() & QScriptValue::SkipInEnumeration)
+                        continue;
+                    rtrans << rti.value().toString();
+                }
+                pos.reverseTranslations()->append(ei.value().property("word").toString(), rtrans);
+            }
+            m_dict->append(pos);
+        }
+    }
 }
 
 void TranslationInterface::resetTranslation()
