@@ -1,30 +1,27 @@
-<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>name.oleksii.bb10.taot</id>
     <name>The Advanced Online Translator</name>
-    <versionNumber>0.1.0</versionNumber>
+    <versionNumber>0.1.1</versionNumber>
     <description>The Advanced Online Translator uses available online translation services to provide translations. Currently it supports only Google Translate but more services are in the plans (i.e., Bing Translate, Yandex Translate, etc.).</description>
-    <icon><image>icon.png</image></icon>
-
+    <icon>
+        <image>icon.png</image>
+    </icon>
     <author>Oleksii Serdiuk</author>
     <authorId>gYAAgOgaIb4973NLSyzhcqWpc9s</authorId>
-    <publisher>Oleksii Serdiuk</publisher>
     <copyright>(C) 2013 Oleksii Serdiuk</copyright>
-
     <initialWindow>
+        <aspectRatio>portrait</aspectRatio>
+        <autoOrients>false</autoOrients>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
-        <autoOrients>false</autoOrients>
-        <aspectRatio>portrait</aspectRatio>
     </initialWindow>
-
-    <env var="QML_IMPORT_PATH" value="app/native/imports"/>
-    <env var="QT_PLUGIN_PATH" value="app/native/plugins:/usr/lib/qt4/plugins"/>
-    <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib/"/>
+    <env value="app/native/imports" var="QML_IMPORT_PATH"/>
+    <env value="app/native/plugins:/usr/lib/qt4/plugins" var="QT_PLUGIN_PATH"/>
+    <env value="app/native/lib:/usr/lib/qt4/lib/" var="LD_LIBRARY_PATH"/>
     <action system="true">run_native</action>
-    <permission>access_internet</permission>
-
-    <asset entry="true" path="taot" type="Qnx/Elf">taot</asset>
+    <action>access_internet</action>
+    <asset path="taot" type="Qnx/Elf" entry="true">taot</asset>
     <asset path="%SRC_DIR%/icon.png">icon.png</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>
     <asset path="%SRC_DIR%/3rdparty/connys-qt-components/imports">imports</asset>

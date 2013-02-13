@@ -76,6 +76,8 @@ void TranslationInterface::translate()
     qDebug() << __PRETTY_FUNCTION__;
     resetTranslation();
 
+    setBusy(true);
+
     QUrl url("http://translate.google.com/translate_a/t?client=q");
     url.addQueryItem("hl", "en");
     url.addQueryItem("sl", m_srcLang);

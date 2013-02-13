@@ -199,6 +199,7 @@ Page {
         clip: true
         model: translator.dictionary
         spacing: platformStyle.paddingSmall
+        interactive: count > 0
         cacheBuffer: 100 * platformStyle.paddingMedium
         anchors {
             top: col.bottom
