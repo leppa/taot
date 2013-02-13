@@ -130,18 +130,13 @@ Page {
             margins: platformStyle.paddingMedium
         }
 
-//        Row {
-//            width: parent.width
+        Row {
+            width: parent.width
 
             SelectionListItem {
-//                width: parent.width / 2
+                width: parent.width / 2
                 title: qsTr("From");
-                subTitle: {
-                    if (translator.detectedLanguage)
-                        return qsTr("%1 (%2)").arg(sourceLangs.getLangName(translator.sourceLanguage)).arg(sourceLangs.getLangName(translator.detectedLanguage));
-                    else
-                        return sourceLangs.getLangName(translator.sourceLanguage);
-                }
+                subTitle: sourceLangs.getLangName(translator.sourceLanguage);
 
                 onClicked: {
                     fromDialog.selectedIndex = sourceLangs.getLangIndex(translator.sourceLanguage);
@@ -149,7 +144,7 @@ Page {
                 }
             }
             SelectionListItem {
-//                width: parent.width / 2
+                width: parent.width / 2
                 title: qsTr("To")
                 subTitle: targetLangs.getLangName(translator.targetLanguage)
 
@@ -158,9 +153,9 @@ Page {
                     toDialog.open();
                 }
             }
-//        }
+        }
 
-        TextField {
+        TextArea {
             id: source
 
             width: parent.width
@@ -171,13 +166,27 @@ Page {
             Keys.onReturnPressed: translator.translate();
             Keys.onEnterPressed: translator.translate();
         }
-        TextField {
+        TextArea {
             id: trans
 
             width: parent.width
             text: translator.translatedText
 //            wrapMode: Text.WordWrap
             readOnly: true
+        }
+        Row {
+            width: parent.width
+            height: childrenRect.height
+            spacing: platformStyle.paddingSmall
+            visible: translator.detectedLanguage !== ""
+
+            Label {
+                font.weight: Font.Light
+                text: qsTr("Detected language:")
+            }
+            Label {
+                text: sourceLangs.getLangName(translator.detectedLanguage)
+            }
         }
     }
 
@@ -186,7 +195,11 @@ Page {
         height: width
         visible: translator.busy
         running: visible
-        anchors.centerIn: parent
+        anchors {
+            top: col.bottom
+            topMargin: platformStyle.paddingLarge
+            horizontalCenter: parent.horizontalCenter
+        }
     }
 
     ScrollDecorator {
