@@ -187,18 +187,82 @@ Page {
             readOnly: true
         }
         Row {
+            id: detectedLanguage
+
             width: parent.width
             height: childrenRect.height
             spacing: platformStyle.paddingSmall
-            visible: translator.detectedLanguage !== ""
+            state: "Empty"
+            clip: true
 
             Label {
                 font.weight: Font.Light
                 text: qsTr("Detected language:")
             }
             Label {
+                id: dl
                 text: sourceLangs.getLangName(translator.detectedLanguage)
             }
+
+            states: [
+                State {
+                    name: "Empty"
+                    when: translator.detectedLanguage === ""
+
+                    PropertyChanges {
+                        target: detectedLanguage
+                        height: 0
+                        opacity: 0
+                        scale: 0
+                    }
+                    PropertyChanges {
+                        target: dl
+                        text: ""
+                    }
+                }
+            ]
+
+            transitions: [
+                Transition {
+                    from: ""
+                    to: "Empty"
+
+                    ParallelAnimation {
+                        NumberAnimation {
+                            target: detectedLanguage
+                            property: "height"
+                            duration: 1300
+                            easing.type: Easing.OutBack
+                        }
+                        SequentialAnimation {
+                            PauseAnimation {
+                                duration: 1300
+                            }
+                            PropertyAction {
+                                targets: [detectedLanguage,dl]
+                                properties: "scale,opacity,text"
+                            }
+                        }
+                    }
+                },
+                Transition {
+                    from: "Empty"
+                    to: ""
+
+                    SequentialAnimation {
+                        PropertyAction {
+                            targets: [detectedLanguage,dl]
+                            properties: "height,text"
+                        }
+                        NumberAnimation {
+                            target: detectedLanguage
+                            properties: "scale,opacity"
+                            duration: 300
+                            easing.type: Easing.OutBack
+                        }
+                    }
+                }
+            ]
         }
     }
 
@@ -232,214 +296,10 @@ Page {
             left: parent.left
             leftMargin: platformStyle.paddingMedium
             bottom: parent.bottom
-//            bottomMargin: platformStyle.paddingMedium
             right: parent.right
-//            rightMargin: 0
         }
 
-        delegate: MouseArea {
-            width: ListView.view.width - platformStyle.paddingMedium
-            height: posDelegate.height + indicator.height / 2
-
-            onClicked: {
-                ListView.view.focus = true;
-                posDelegate.toggle();
-            }
-
-//            ListView.onAdd: NumberAnimation {
-//                target: posDelegate
-//                property: "opacity"
-//                from: 0
-//                to: 1
-//                duration: 150
-//                easing.type: Easing.Linear
-//            }
-//            ListView.onRemove: SequentialAnimation {
-//                PropertyAction { target: posDelegate; property: "ListView.delayRemove"; value: true }
-//                NumberAnimation {
-//                    target: posDelegate
-//                    property: "opacity"
-//                    from: 1
-//                    to: 0
-//                    duration: 100
-//                    easing.type: Easing.Linear
-//                }
-//                PropertyAction { target: posDelegate; property: "ListView.delayRemove"; value: false }
-//            }
-
-            Column {
-                id: posDelegate
-
-                property real maxWidth: 0
-
-                width: parent.width
-//                spacing: platformStyle.paddingSmall
-
-                function toggle()
-                {
-                    state = (state == "") ? "Expanded" : ""
-                }
-
-                Item {
-                    id: postrans
-
-                    width: parent.width
-                    height: pos.height + translations.height
-
-                    ListItemText {
-                        id: pos
-
-                        role: "SubTitle"
-                        text: model.pos
-                    }
-                    ListItemText {
-                        id: translations
-
-                        width: parent.width
-                        role: "Title"
-                        text: model.translations
-                        clip: true
-                        wrapMode: Text.WordWrap
-                        elide: Text.ElideNone
-                        anchors {
-                            top: pos.bottom
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
-                }
-
-                states: [
-                    State {
-                        name: "Expanded"
-                        PropertyChanges {
-                            target: reverse
-                            height: reverse.childrenRect.height
-                        }
-                        PropertyChanges {
-                            target: translations
-                            height: undefined
-                            wrapMode: Text.NoWrap
-                            elide: Text.ElideRight
-                        }
-                        PropertyChanges {
-                            target: line
-                            anchors.topMargin: indicator.height / 4 + 3
-                        }
-                        PropertyChanges {
-                            target: indicator
-                            rotation: 180
-                        }
-                    }
-                ]
-
-                transitions: [
-                    Transition {
-                        reversible: true
-
-                        ParallelAnimation {
-                            SequentialAnimation {
-                                NumberAnimation { targets: translations; property: "height"; duration: 400; easing.type: Easing.InOutQuad }
-                                PropertyAction { target: translations; properties: "wrapMode,elide" }
-                            }
-                            NumberAnimation { targets: [reverse,line,indicator]; properties: "height,anchors.topMargin"; duration: 400; easing.type: Easing.InOutQuad }
-                            SequentialAnimation {
-                                NumberAnimation { target: indicator; property: "height"; from: indicator.height; to: 0; duration: 200; easing.type: Easing.InQuad }
-                                PropertyAction { target: indicator; property: "rotation" }
-                                NumberAnimation { target: indicator; property: "height"; from: 0; to: indicator.height; duration: 200; easing.type: Easing.OutQuad }
-                            }
-                        }
-                    }
-                ]
-
-                Column {
-                    id: reverse
-
-                    height: 0
-                    clip: true
-                    anchors {
-                        left: parent.left
-                        leftMargin: platformStyle.paddingMedium
-                        right: parent.right
-                    }
-
-                    Repeater {
-                        model: reverseTranslations
-
-                        delegate: Item {
-                            width: parent.width
-                            height: Math.max(term.height, revTranslations.height)
-
-                            ListItemText {
-                                id: term
-
-                                width: posDelegate.maxWidth
-                                role: "Heading"
-                                text: model.term
-                                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                elide: Text.ElideNone
-                                anchors {
-                                    top: parent.top
-                                    topMargin: platformStyle.paddingSmall
-                                    left: parent.left
-                                }
-
-                                Component.onCompleted: {
-                                    if (posDelegate.maxWidth < implicitWidth) {
-                                        if (implicitWidth < posDelegate.width * 0.38)
-                                            posDelegate.maxWidth = implicitWidth;
-                                        else
-                                            posDelegate.maxWidth = posDelegate.width * 0.38;
-                                    }
-                                }
-                            }
-                            ListItemText {
-                                id: revTranslations
-
-                                role: "Title"
-                                text: model.translations
-                                wrapMode: Text.WordWrap
-                                elide: Text.ElideNone
-                                anchors {
-                                    left: term.right
-                                    leftMargin: platformStyle.paddingLarge
-                                    right: parent.right
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            Rectangle {
-                id: line
-
-                height: 2
-                anchors {
-                    top: posDelegate.bottom
-                    left: parent.left
-                    right: parent.right
-                }
-                border {
-                    width: 1
-                    color: platformStyle.colorNormalLight
-                }
-            }
-
-            Image {
-                id: indicator
-
-                source: Qt.resolvedUrl("icons/expand.png")
-                sourceSize {
-                    width: platformStyle.graphicSizeTiny
-                    height: platformStyle.graphicSizeTiny
-                }
-                anchors {
-                    top: posDelegate.bottom
-                    topMargin: -height / 4 - 1
-                    right: parent.right
-                }
-            }
-        }
+        delegate: DictionaryDelegate {}
     }
 
     tools: ToolBarLayout {

@@ -89,7 +89,7 @@ void DictionaryModel::append(const DictionaryPos &pos)
 
 void DictionaryModel::clear()
 {
-    emit beginResetModel();
+    emit beginRemoveRows(QModelIndex(), 0, m_dict.count() - 1);
     m_dict.clear();
-    emit endResetModel();
+    emit endRemoveRows();
 }
