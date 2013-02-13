@@ -30,6 +30,10 @@
 #include <QGLWidget>
 #include <QtDeclarative>
 
+#define QUOTE_X(x) #x
+#define QUOTE(x) QUOTE_X(x)
+#define VERSION_STR QUOTE(VERSION)
+
 int main(int argc, char *argv[])
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf8"));
@@ -37,7 +41,7 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 
     QApplication::setApplicationName("The Advanced Online Translator");
-    QApplication::setApplicationVersion("0.1.0");
+    QApplication::setApplicationVersion(VERSION_STR);
     QApplication::setOrganizationName("Oleksii Serdiuk");
     QApplication::setOrganizationDomain("oleksii.name");
 

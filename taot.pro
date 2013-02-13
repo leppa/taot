@@ -46,3 +46,10 @@ SOURCES += \
 OTHER_FILES += \
     bar-descriptor.xml \
     qml/*
+
+# Extracting version from bar-descriptor.xml file.
+BARFILE = $$cat(bar-descriptor.xml)
+VERSION = $$find(BARFILE, <versionNumber>.*</versionNumber>)
+VERSION = $$replace(VERSION, "<versionNumber>", "")
+VERSION = $$replace(VERSION, "</versionNumber>", "")
+DEFINES += VERSION=\"$$VERSION\"

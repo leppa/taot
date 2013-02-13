@@ -37,6 +37,8 @@ class TranslationInterface: public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString version READ version CONSTANT)
+
     // Translation related properties
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
     Q_PROPERTY(QString sourceLanguage READ sourceLanguage WRITE setSourceLanguage NOTIFY fromLanguageChanged)
@@ -48,6 +50,8 @@ class TranslationInterface: public QObject
 
 public:
     explicit TranslationInterface(QObject *parent = 0);
+
+    static QString version();
 
     static QStringList supportedServices();
     QString service() const;

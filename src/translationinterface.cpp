@@ -36,6 +36,11 @@ TranslationInterface::TranslationInterface(QObject *parent)
     connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(requestFinished(QNetworkReply*)));
 }
 
+QString TranslationInterface::version()
+{
+    return qApp->applicationVersion();
+}
+
 bool TranslationInterface::busy() const
 {
     return m_busy;

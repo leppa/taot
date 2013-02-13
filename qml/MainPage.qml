@@ -419,13 +419,59 @@ Page {
 
     tools: ToolBarLayout {
         ToolButton {
-            text: "Close"
+            iconSource: Qt.resolvedUrl("icons/close.svg")
             onClicked: Qt.quit();
         }
         ToolButton {
-            text: "Translate"
+            text: qsTr("Translate")
             onClicked: translator.translate();
         }
+        ToolButton {
+            iconSource: "toolbar-menu"
+            onClicked: mainMenu.open();
+        }
+    }
+
+    Menu {
+        id: mainMenu
+
+        MenuLayout {
+            MenuItem {
+                text: qsTr("About")
+                onClicked: aboutDialog.open();
+            }
+        }
+    }
+
+    QueryDialog {
+        id: aboutDialog
+
+        titleText: "<b>The Advanced Online Translator</b> v%1".arg(translator.version)
+        acceptButtonText: qsTr("Ok")
+        privateCloseIcon: true
+
+        message: "<p>Copyright &copy; 2013 <b>Oleksii Serdiuk</b> &lt;contacts[at]oleksii[dot]name&gt;</p>
+<p>&nbsp;</p>
+<p>The Advanced Online Translator uses available online translation
+services to provide translations. Currently it supports only Google
+Translate but more services are in the plans (i.e., Bing Translate,
+Yandex Translate, etc.).</p>
+
+<p>For Google Translate alternative and reverse translations are displayed
+for single words.</p>
+<p>&nbsp;</p>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
     }
 
     Translator {
