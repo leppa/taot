@@ -155,6 +155,16 @@ Page {
             }
         }
 
+        Timer {
+            id: timer
+            interval: 1500
+
+            onTriggered: {
+                if (source.text !== "")
+                    translator.translate();
+            }
+        }
+
         TextArea {
             id: source
 
@@ -163,8 +173,10 @@ Page {
             placeholderText: qsTr("Enter the source text...")
             focus: true
 
-            Keys.onReturnPressed: translator.translate();
-            Keys.onEnterPressed: translator.translate();
+//            Keys.onReturnPressed: translator.translate();
+//            Keys.onEnterPressed: translator.translate();
+
+            onTextChanged: timer.restart();
         }
         TextArea {
             id: trans
