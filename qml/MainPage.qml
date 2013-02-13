@@ -1,5 +1,5 @@
 /*
- *  The Advanced Online Translator.
+ *  The Advanced Online Translator
  *  Copyright (C) 2013  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
@@ -29,7 +29,6 @@ Page {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            console.debug("CLICKED!!!");
             focus = true;
         }
     }
@@ -183,7 +182,6 @@ Page {
 
             width: parent.width
             text: translator.translatedText
-//            wrapMode: Text.WordWrap
             readOnly: true
         }
         Row {
@@ -289,6 +287,8 @@ Page {
         model: translator.dictionary
         spacing: platformStyle.paddingSmall
         interactive: count > 0
+        // HACK: We need this to save the exapnded state of translation.
+        // TODO: Come up with more appropriate solution.
         cacheBuffer: 100 * platformStyle.paddingMedium
         anchors {
             top: col.bottom

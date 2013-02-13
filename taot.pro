@@ -1,6 +1,6 @@
 ######################################################################
 #
-#  The Advanced Online Translator.
+#  The Advanced Online Translator
 #  Copyright (C) 2013  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 #
 #  $Id: $Format:%h %ai %an$ $
