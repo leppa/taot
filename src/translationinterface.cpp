@@ -74,6 +74,11 @@ DictionaryModel *TranslationInterface::dictionary() const
 void TranslationInterface::translate()
 {
     qDebug() << __PRETTY_FUNCTION__;
+    if (m_srcText.isEmpty()) {
+        emit error(tr("Please, enter the source text"));
+        return;
+    }
+
     resetTranslation();
 
     setBusy(true);
