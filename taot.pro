@@ -23,7 +23,13 @@
 ######################################################################
 
 TEMPLATE = app
-QT += network script opengl
+QT += declarative network script
+blackberry:QT += opengl
+
+QMAKE_TARGET_COMPANY = Oleksii Serdiuk
+QMAKE_TARGET_PRODUCT = The Advanced Online Translator
+QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
+QMAKE_TARGET_COPYRIGHT = Copyright © 2013 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 
 # Please do not modify the following line.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -52,4 +58,48 @@ BARFILE = $$cat(bar-descriptor.xml)
 VERSION = $$find(BARFILE, <versionNumber>.*</versionNumber>)
 VERSION = $$replace(VERSION, "<versionNumber>", "")
 VERSION = $$replace(VERSION, "</versionNumber>", "")
-DEFINES += VERSION=\"$$VERSION\"
+symbian {
+    DEFINES += VERSION=$$VERSION
+} else {
+    DEFINES += VERSION=\"$$VERSION\"
+}
+
+symbian {
+    CONFIG += qt-components
+
+    DEPLOYMENT.display_name = $$QMAKE_TARGET_PRODUCT
+    ICON = taot.svg
+
+    # OVI Publish - 0x2003AEFC, Self-signed - 0xA001635A
+    ovi_publish {
+        TARGET.UID3 = 0x2003AEFC
+    } else {
+        TARGET.UID3 = 0xA001635A
+    }
+    TARGET.CAPABILITY += NetworkServices ReadUserData
+    TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
+
+    ui.sources = qml
+#    ui.path = qml
+    DEPLOYMENT += ui
+
+    vendor = \
+        "%{\"$$QMAKE_TARGET_COMPANY\"}" \
+        ":\"$$QMAKE_TARGET_COMPANY\""
+    default_deployment.pkg_prerules += vendor
+
+    # Next lines replace automatic addition of Qt Components dependency to .sis file
+    # with the manual one. For some reason, minimal required version is set to 1.0
+    # instead of 1.1 so we want to replace it with the correct dependency.
+    CONFIG += qt-components_build
+    qt-components = \
+        "; Default dependency to Qt Quick Components for Symbian library" \
+        "(0x200346DE), 1, 1, 0, {\"Qt Quick components for Symbian\"}"
+    default_deployment.pkg_prerules += qt-components
+
+    !isEmpty(QMLJSDEBUGGER_PATH) {
+        include($$QMLJSDEBUGGER_PATH/qmljsdebugger-lib.pri)
+    } else {
+        DEFINES -= QMLJSDEBUGGER
+    }
+}

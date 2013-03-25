@@ -27,8 +27,11 @@
 
 #include <QApplication>
 #include <QTextCodec>
-#include <QGLWidget>
 #include <QtDeclarative>
+
+#ifdef Q_OS_BLACKBERRY
+#   include <QGLWidget>
+#endif
 
 #define QUOTE_X(x) #x
 #define QUOTE(x) QUOTE_X(x)
@@ -54,13 +57,23 @@ int main(int argc, char *argv[])
     qmlRegisterType<DictionaryModel>();
     qmlRegisterType<ReverseTranslationsModel>();
 
+#ifdef Q_OS_BLACKBERRY
     QGLWidget *gl = new QGLWidget();
+#endif
 
     QmlApplicationViewer viewer;
+#ifdef Q_OS_BLACKBERRY
     viewer.setViewport(gl);
     viewer.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+#else
+    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+#endif
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
+#ifdef Q_OS_BLACKBERRY
     viewer.showFullScreen();
+#else
+    viewer.showExpanded();
+#endif
 
     return app->exec();
 }
