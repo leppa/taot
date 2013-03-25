@@ -1,1 +1,13 @@
-*.user
+/*.user
+/*.loc
+/*.rss
+/*.sis
+/.make.cache
+/ABLD.BAT
+/Makefile*
+/bld.inf
+/moc/
+/obj/
+/rcc/
+/taot_*
+/tmp/
