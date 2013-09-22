@@ -26,11 +26,10 @@ import com.nokia.symbian 1.1
 MouseArea {
     id: root
 
-    width: ListView.view.width - platformStyle.paddingMedium
+    width: ListView.view.width
     height: posDelegate.height + indicator.height / 2
 
     onClicked: {
-        ListView.view.focus = true;
         posDelegate.toggle();
     }
 

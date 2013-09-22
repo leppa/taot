@@ -27,6 +27,7 @@ import taot 1.0
 Page {
     // A hack for text item to loose focus when clicked outside of it
     MouseArea {
+        id: dummyFocus
         anchors.fill: parent
         onClicked: {
             focus = true;
@@ -119,148 +120,157 @@ Page {
         }
     }
 
-    Column {
-        id: col
-        spacing: platformStyle.paddingMedium
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-            margins: platformStyle.paddingMedium
-        }
+    Component {
+        id: header
 
-        Row {
-            width: parent.width
+        Column {
+            id: col
 
-            SelectionListItem {
-                width: parent.width / 2
-                title: qsTr("From");
-                subTitle: sourceLangs.getLangName(translator.sourceLanguage);
+            width: ListView.view.width
+            height: childrenRect.height + platformStyle.paddingMedium
+            spacing: platformStyle.paddingMedium
 
-                onClicked: {
-                    fromDialog.selectedIndex = sourceLangs.getLangIndex(translator.sourceLanguage);
-                    fromDialog.open();
-                }
-            }
-            SelectionListItem {
-                width: parent.width / 2
-                title: qsTr("To")
-                subTitle: targetLangs.getLangName(translator.targetLanguage)
+            Row {
+                width: parent.width
+                height: childrenRect.height
 
-                onClicked: {
-                    toDialog.selectedIndex = targetLangs.getLangIndex(translator.targetLanguage);
-                    toDialog.open();
-                }
-            }
-        }
+                SelectionListItem {
+                    width: parent.width / 2
+                    title: qsTr("From");
+                    subTitle: sourceLangs.getLangName(translator.sourceLanguage);
 
-        Timer {
-            id: timer
-            interval: 1500
-
-            onTriggered: {
-                if (source.text !== "")
-                    translator.translate();
-            }
-        }
-
-        TextArea {
-            id: source
-
-            width: parent.width
-//            text: "Welcome"
-            placeholderText: qsTr("Enter the source text...")
-            focus: true
-
-//            Keys.onReturnPressed: translator.translate();
-//            Keys.onEnterPressed: translator.translate();
-
-            onTextChanged: timer.restart();
-        }
-        TextArea {
-            id: trans
-
-            width: parent.width
-            text: translator.translatedText
-            readOnly: true
-        }
-        Row {
-            id: detectedLanguage
-
-            width: parent.width
-            height: childrenRect.height
-            spacing: platformStyle.paddingSmall
-            state: "Empty"
-            clip: true
-
-            Label {
-                font.weight: Font.Light
-                text: qsTr("Detected language:")
-            }
-            Label {
-                id: dl
-                text: sourceLangs.getLangName(translator.detectedLanguage)
-            }
-
-            states: [
-                State {
-                    name: "Empty"
-                    when: translator.detectedLanguage === ""
-
-                    PropertyChanges {
-                        target: detectedLanguage
-                        height: 0
-                        opacity: 0
-                        scale: 0
-                    }
-                    PropertyChanges {
-                        target: dl
-                        text: ""
+                    onClicked: {
+                        fromDialog.selectedIndex = sourceLangs.getLangIndex(translator.sourceLanguage);
+                        fromDialog.open();
                     }
                 }
-            ]
+                SelectionListItem {
+                    width: parent.width / 2
+                    title: qsTr("To")
+                    subTitle: targetLangs.getLangName(translator.targetLanguage)
 
-            transitions: [
-                Transition {
-                    from: ""
-                    to: "Empty"
+                    onClicked: {
+                        toDialog.selectedIndex = targetLangs.getLangIndex(translator.targetLanguage);
+                        toDialog.open();
+                    }
+                }
+            }
 
-                    ParallelAnimation {
-                        NumberAnimation {
+            Timer {
+                id: timer
+                interval: 1500
+
+                onTriggered: {
+                    if (source.text !== "")
+                        translator.translate();
+                }
+            }
+
+            TextArea {
+                id: source
+
+                width: parent.width
+//                text: "Welcome"
+                placeholderText: qsTr("Enter the source text...")
+                textFormat: TextEdit.PlainText
+
+//                Keys.onReturnPressed: translator.translate();
+//                Keys.onEnterPressed: translator.translate();
+
+                onTextChanged: {
+                    translator.sourceText = text;
+                    timer.restart();
+                }
+            }
+            TextArea {
+                id: trans
+
+                width: parent.width
+                text: translator.translatedText
+                readOnly: true
+            }
+            Row {
+                id: detectedLanguage
+
+                width: parent.width
+                height: childrenRect.height
+                spacing: platformStyle.paddingSmall
+                state: "Empty"
+                clip: true
+
+                Label {
+                    font.weight: Font.Light
+                    text: qsTr("Detected language:")
+                }
+                Label {
+                    id: dl
+                    text: sourceLangs.getLangName(translator.detectedLanguage)
+                }
+
+                states: [
+                    State {
+                        name: "Empty"
+                        when: translator.detectedLanguage === ""
+
+                        PropertyChanges {
                             target: detectedLanguage
-                            property: "height"
-                            duration: 1300
-                            easing.type: Easing.OutBack
+                            height: 0
+                            opacity: 0
+                            scale: 0
                         }
-                        SequentialAnimation {
-                            PauseAnimation {
+                        PropertyChanges {
+                            target: dl
+                            text: ""
+                        }
+                    }
+                ]
+
+                transitions: [
+                    Transition {
+                        from: ""
+                        to: "Empty"
+
+                        ParallelAnimation {
+                            NumberAnimation {
+                                target: detectedLanguage
+                                property: "height"
                                 duration: 1300
+                                easing.type: Easing.OutBack
                             }
+                            SequentialAnimation {
+                                PauseAnimation {
+                                    duration: 1300
+                                }
+                                PropertyAction {
+                                    targets: [detectedLanguage,dl]
+                                    properties: "scale,opacity,text"
+                                }
+                            }
+                        }
+                    },
+                    Transition {
+                        from: "Empty"
+                        to: ""
+
+                        SequentialAnimation {
                             PropertyAction {
                                 targets: [detectedLanguage,dl]
-                                properties: "scale,opacity,text"
+                                properties: "height,text"
+                            }
+                            NumberAnimation {
+                                target: detectedLanguage
+                                properties: "scale,opacity"
+                                duration: 300
+                                easing.type: Easing.OutBack
                             }
                         }
                     }
-                },
-                Transition {
-                    from: "Empty"
-                    to: ""
+                ]
+            }
 
-                    SequentialAnimation {
-                        PropertyAction {
-                            targets: [detectedLanguage,dl]
-                            properties: "height,text"
-                        }
-                        NumberAnimation {
-                            target: detectedLanguage
-                            properties: "scale,opacity"
-                            duration: 300
-                            easing.type: Easing.OutBack
-                        }
-                    }
-                }
-            ]
+            Component.onCompleted: {
+                listDictionary.headerItem = col;
+            }
         }
     }
 
@@ -269,11 +279,7 @@ Page {
         height: width
         visible: translator.busy
         running: visible
-        anchors {
-            top: col.bottom
-            topMargin: platformStyle.paddingLarge
-            horizontalCenter: parent.horizontalCenter
-        }
+        anchors.centerIn: parent
     }
 
     ScrollDecorator {
@@ -283,23 +289,25 @@ Page {
     ListView {
         id: listDictionary
 
+        property Item headerItem
+
         clip: true
         model: translator.dictionary
-        spacing: platformStyle.paddingSmall
-        interactive: count > 0
+        interactive: visibleArea.heightRatio < 1.0 || (headerItem.height > height - 2 * platformStyle.paddingMedium)
         // HACK: We need this to save the exapnded state of translation.
         // TODO: Come up with more appropriate solution.
-        cacheBuffer: 100 * platformStyle.paddingMedium
+        cacheBuffer: 65535
         anchors {
-            top: col.bottom
-            topMargin: platformStyle.paddingMedium
-            left: parent.left
-            leftMargin: platformStyle.paddingMedium
-            bottom: parent.bottom
-            right: parent.right
+            fill: parent
+            margins: platformStyle.paddingMedium
         }
 
-        delegate: DictionaryDelegate {}
+        header: header
+        delegate: DictionaryDelegate {
+            onClicked: {
+                dummyFocus.focus = true;
+            }
+        }
     }
 
     tools: ToolBarLayout {
@@ -362,7 +370,6 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
     Translator {
         id: translator
 
-        sourceText: source.text
 //        service: "Yandex"
 
         onError: {
