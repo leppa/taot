@@ -59,7 +59,6 @@ int main(int argc, char *argv[])
     QmlApplicationViewer viewer;
     viewer.setViewport(gl);
     viewer.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
     viewer.showFullScreen();
 
