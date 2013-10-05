@@ -170,6 +170,7 @@ Page {
                 id: source
 
                 width: parent.width
+                height: Math.min(implicitHeight, listDictionary.height * 0.4)
 //                text: "Welcome"
                 placeholderText: qsTr("Enter the source text...")
                 textFormat: TextEdit.PlainText
@@ -182,12 +183,44 @@ Page {
                     timer.restart();
                 }
             }
-            TextArea {
-                id: trans
 
-                width: parent.width
-                text: translator.translatedText
-                readOnly: true
+            BorderImage {
+                height: trans.height + 2 * platformStyle.borderSizeMedium
+                source: privateStyle.imagePath("qtg_fr_textfield_uneditable", false)
+                smooth: true
+                border {
+                    top: platformStyle.borderSizeMedium
+                    left: platformStyle.borderSizeMedium
+                    bottom: platformStyle.borderSizeMedium
+                    right: platformStyle.borderSizeMedium
+                }
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
+                Label {
+                    id: trans
+
+                    text: translator.translatedText
+                    wrapMode: TextEdit.Wrap
+                    color: platformStyle.colorNormalDark
+                    anchors {
+                        top: parent.top
+                        left: parent.left
+                        right: parent.right
+                        margins: platformStyle.borderSizeMedium
+                    }
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        dummyFocus.focus = true;
+                        if (translator.translatedText != "")
+                            pageStack.push(translationPage);
+                    }
+                }
             }
             Row {
                 id: detectedLanguage
@@ -308,6 +341,10 @@ Page {
                 dummyFocus.focus = true;
             }
         }
+
+        onMovementStarted: {
+            dummyFocus.focus = true;
+        }
     }
 
     tools: ToolBarLayout {
@@ -377,5 +414,10 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
             banner.text = errorString;
             banner.open();
         }
+    }
+
+    Component {
+        id: translationPage
+        TranslationTextAreaPage {}
     }
 }
