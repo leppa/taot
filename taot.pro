@@ -29,7 +29,7 @@ QT += network script opengl
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 
 # Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH = 3rdparty/connys-qt-components/imports
+QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports
 
 HEADERS += \
     src/translationinterface.h \

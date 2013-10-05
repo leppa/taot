@@ -12,7 +12,7 @@
     <copyright>(C) 2013 Oleksii Serdiuk</copyright>
     <initialWindow>
         <aspectRatio>portrait</aspectRatio>
-        <autoOrients>false</autoOrients>
+        <autoOrients>true</autoOrients>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
     </initialWindow>
@@ -24,5 +24,5 @@
     <asset path="taot" type="Qnx/Elf" entry="true">taot</asset>
     <asset path="%SRC_DIR%/icon.png">icon.png</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>
-    <asset path="%SRC_DIR%/3rdparty/connys-qt-components/imports">imports</asset>
+    <asset path="%SRC_DIR%/3rdparty/bb10-qt-components/imports">imports</asset>
 </qnx>
