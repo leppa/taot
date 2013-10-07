@@ -184,6 +184,33 @@ Page {
                 }
             }
 
+            Row {
+                width: parent.width
+                height: source.text != "" ? childrenRect.height : 0
+                spacing: platformStyle.paddingMedium
+                clip: true
+
+                Button {
+                    width: (parent.width - parent.spacing) / 2
+                    text: qsTr("Translate")
+                    enabled: !translator.busy
+                    onClicked: {
+                        dummyFocus.focus = true;
+                        translator.translate();
+                    }
+                }
+                Button {
+                    width: (parent.width - parent.spacing) / 2
+                    text: qsTr("Clear")
+                    onClicked: {
+                        source.text = "";
+                        source.forceActiveFocus();
+                    }
+                }
+
+                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
+            }
+
             BorderImage {
                 height: trans.height + 2 * platformStyle.borderSizeMedium
                 source: privateStyle.imagePath("qtg_fr_textfield_uneditable", false)
@@ -353,10 +380,6 @@ Page {
         ToolButton {
             iconSource: Qt.resolvedUrl("icons/close.svg")
             onClicked: Qt.quit();
-        }
-        ToolButton {
-            text: qsTr("Translate")
-            onClicked: translator.translate();
         }
         ToolButton {
             iconSource: "toolbar-menu"
