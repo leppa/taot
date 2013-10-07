@@ -222,6 +222,7 @@ Page {
                     }
                 }
             }
+
             Row {
                 id: detectedLanguage
 
@@ -310,6 +311,7 @@ Page {
     BusyIndicator {
         width: platformStyle.graphicSizeLarge
         height: width
+        z: 100
         visible: translator.busy
         running: visible
         anchors.centerIn: parent
