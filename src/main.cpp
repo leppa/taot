@@ -72,6 +72,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_BLACKBERRY
     viewer.showFullScreen();
 #else
+    viewer.rootObject()->setProperty("showStatusBar", true);
     viewer.showExpanded();
 #endif
 

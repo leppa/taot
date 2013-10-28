@@ -179,6 +179,9 @@ Page {
 //                Keys.onEnterPressed: translator.translate();
 
                 onTextChanged: {
+                    if (translator.sourceText == text)
+                        return;
+
                     translator.sourceText = text;
                     timer.restart();
                 }
@@ -212,7 +215,7 @@ Page {
             }
 
             BorderImage {
-                height: trans.height + 2 * platformStyle.borderSizeMedium
+                height: trans.implicitHeight + platformStyle.borderSizeMedium / 2 + 2 * platformStyle.paddingMedium
                 source: privateStyle.imagePath("qtg_fr_textfield_uneditable", false)
                 smooth: true
                 border {
@@ -234,9 +237,11 @@ Page {
                     color: platformStyle.colorNormalDark
                     anchors {
                         top: parent.top
+                        topMargin: platformStyle.borderSizeMedium / 4 + platformStyle.paddingMedium
                         left: parent.left
+                        leftMargin: platformStyle.borderSizeMedium / 2 + platformStyle.paddingSmall
                         right: parent.right
-                        margins: platformStyle.borderSizeMedium
+                        rightMargin: platformStyle.borderSizeMedium / 2 + platformStyle.paddingSmall
                     }
                 }
 
@@ -401,7 +406,7 @@ Page {
     QueryDialog {
         id: aboutDialog
 
-        titleText: "<b>The Advanced Online Translator</b> v%1".arg(translator.version)
+        titleText: "<b>The Advanced Online Translator</b><br />v%1".arg(translator.version)
         acceptButtonText: qsTr("Ok")
         privateCloseIcon: true
 
