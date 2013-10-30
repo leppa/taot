@@ -51,7 +51,10 @@ SOURCES += \
 
 OTHER_FILES += \
     bar-descriptor.xml \
-    qml/*
+    qml/langs.xml \
+    qml/symbian/*.qml \
+    qml/symbian/icons/* \
+    qtc_packaging/debian_harmattan/*
 
 # Extracting version from bar-descriptor.xml file.
 BARFILE = $$cat(bar-descriptor.xml)
@@ -79,8 +82,8 @@ symbian {
     TARGET.CAPABILITY += NetworkServices ReadUserData
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 
-    ui.sources = qml
-#    ui.path = qml
+    ui.sources = qml/langs.xml qml/symbian/* qml/symbian/icons
+    ui.path = qml
     DEPLOYMENT += ui
 
     vendor = \

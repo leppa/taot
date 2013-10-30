@@ -57,12 +57,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<DictionaryModel>();
     qmlRegisterType<ReverseTranslationsModel>();
 
+    QmlApplicationViewer viewer;
+
 #ifdef Q_OS_BLACKBERRY
     QGLWidget *gl = new QGLWidget();
-#endif
-
-    QmlApplicationViewer viewer;
-#ifdef Q_OS_BLACKBERRY
     viewer.setViewport(gl);
     viewer.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 #else
