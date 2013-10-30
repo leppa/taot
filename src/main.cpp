@@ -29,6 +29,8 @@
 #include <QTextCodec>
 #include <QtDeclarative>
 
+#include <qplatformdefs.h>
+
 #ifdef Q_OS_BLACKBERRY
 #   include <QGLWidget>
 #endif
@@ -66,7 +68,13 @@ int main(int argc, char *argv[])
 #else
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 #endif
+#ifdef MEEGO_EDITION_HARMATTAN
+    QDir dir(app->applicationDirPath());
+    dir.cdUp();
+    viewer.setMainQmlFile(dir.filePath(QLatin1String("qml/main.qml")));
+#else
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
+#endif
 #ifdef Q_OS_BLACKBERRY
     viewer.showFullScreen();
 #else

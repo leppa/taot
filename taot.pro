@@ -35,7 +35,7 @@ QMAKE_TARGET_COPYRIGHT = Copyright © 2013 Oleksii Serdiuk <contacts[at]oleksii[
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 
 # Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports
+blackberry:QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports
 
 HEADERS += \
     src/translationinterface.h \
@@ -52,6 +52,8 @@ SOURCES += \
 OTHER_FILES += \
     bar-descriptor.xml \
     qml/langs.xml \
+    qml/harmattan/*.qml \
+    qml/harmattan/icons/* \
     qml/symbian/*.qml \
     qml/symbian/icons/* \
     qtc_packaging/debian_harmattan/*
@@ -105,4 +107,19 @@ symbian {
     } else {
         DEFINES -= QMLJSDEBUGGER
     }
+}
+
+contains(MEEGO_EDITION,harmattan) {
+    CONFIG += qt-components qdeclarative-boostable
+    DEFINES += HARMATTAN_BOOSTER
+
+    target.path = /opt/$${TARGET}/bin
+    ui.files = qml/langs.xml qml/harmattan/*
+    ui.path = /opt/$${TARGET}/qml
+    icon.files = $${TARGET}80.png
+    icon.path = /usr/share/icons/hicolor/80x80/apps
+    desktopfile.files = qtc_packaging/$${TARGET}_harmattan.desktop
+    desktopfile.path = /usr/share/applications
+
+    INSTALLS += target ui icon desktopfile
 }
