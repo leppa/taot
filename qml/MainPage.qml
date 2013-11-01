@@ -93,7 +93,7 @@ Page {
         titleText: qsTr("Select the source language")
         selectedIndex: 0
         model: sourceLangs
-        delegate: MenuItem {
+        delegate: ListDelegate {
             text: model.name
             privateSelectionIndicator: selectedIndex == index
             onClicked: {
@@ -109,7 +109,7 @@ Page {
         titleText: qsTr("Select the target language")
         selectedIndex: 0
         model: targetLangs
-        delegate: MenuItem {
+        delegate: ListDelegate {
             text: model.name
             privateSelectionIndicator: selectedIndex == index
             onClicked: {
