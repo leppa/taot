@@ -32,5 +32,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+Build Status
+------------
+
+Buld status of the `master` branch:
+- [![Travis CI Build Status][tci]][Travis CI]
+- [![BuildHive Build Status][bh]][BuildHive]
+
+
+[Travis CI]: https://travis-ci.org/leppa/taot
+[BuildHive]: https://buildhive.cloudbees.com/job/leppa/job/taot/
+[tci]: https://travis-ci.org/leppa/taot.png?branch=master
+[bh]: https://buildhive.cloudbees.com/job/leppa/job/taot/badge/icon
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
