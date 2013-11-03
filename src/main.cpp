@@ -39,7 +39,7 @@
 #define QUOTE(x) QUOTE_X(x)
 #define VERSION_STR QUOTE(VERSION)
 
-int main(int argc, char *argv[])
+Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));

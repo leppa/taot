@@ -52,6 +52,7 @@ SOURCES += \
 OTHER_FILES += \
     bar-descriptor.xml \
     qml/langs.xml \
+    qml/harmattan/*.js \
     qml/harmattan/*.qml \
     qml/harmattan/icons/* \
     qml/symbian/*.qml \
