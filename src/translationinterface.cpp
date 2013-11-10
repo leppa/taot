@@ -34,6 +34,9 @@ TranslationInterface::TranslationInterface(QObject *parent)
     m_trgtLang = settings.value("TargetLanguage", "en").toString();
     settings.endGroup();
     connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(onRequestFinished(QNetworkReply*)));
+
+    connect(this, SIGNAL(sourceLanguageChanged()), SLOT(translate()));
+    connect(this, SIGNAL(targetLanguageChanged()), SLOT(translate()));
 }
 
 QString TranslationInterface::version()
