@@ -22,19 +22,27 @@
 
 #include "translationinterface.h"
 
-#include <QScriptEngine>
-#include <QScriptValueIterator>
+#include "translationservice.h"
+#include "languagelistmodel.h"
+#include "dictionarymodel.h"
+#include "services/googletranslate.h"
+
 #include <QDebug>
 
 TranslationInterface::TranslationInterface(QObject *parent)
-    : QObject(parent), m_service("Google"), m_busy(false), m_dict(new DictionaryModel()), networkReply(NULL)
+    : QObject(parent)
+    , m_service(NULL)
+    , m_busy(false)
+    , m_sourceLanguages(new LanguageListModel(this))
+    , m_targetLanguages(new LanguageListModel(this))
+    , m_sourceLanguage(NULL)
+    , m_targetLanguage(NULL)
+    , m_dict(new DictionaryModel(this))
+    , networkReply(NULL)
 {
-    settings.beginGroup(m_service);
-    m_srcLang = settings.value("SourceLanguage", "auto").toString();
-    m_trgtLang = settings.value("TargetLanguage", "en").toString();
-    settings.endGroup();
-    connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(onRequestFinished(QNetworkReply*)));
+    createService(settings.value("Service").toUInt());
 
+    connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(onRequestFinished(QNetworkReply*)));
     connect(this, SIGNAL(sourceLanguageChanged()), SLOT(translate()));
     connect(this, SIGNAL(targetLanguageChanged()), SLOT(translate()));
 }
@@ -49,14 +57,24 @@ bool TranslationInterface::busy() const
     return m_busy;
 }
 
-QString TranslationInterface::sourceLanguage() const
+LanguageListModel *TranslationInterface::sourceLanguages() const
 {
-    return m_srcLang;
+    return m_sourceLanguages;
 }
 
-QString TranslationInterface::targetLanguage() const
+LanguageListModel *TranslationInterface::targetLanguages() const
 {
-    return m_trgtLang;
+    return m_targetLanguages;
+}
+
+LanguageItem *TranslationInterface::sourceLanguage() const
+{
+    return m_sourceLanguage;
+}
+
+LanguageItem *TranslationInterface::targetLanguage() const
+{
+    return m_targetLanguage;
 }
 
 QString TranslationInterface::sourceText() const
@@ -64,9 +82,9 @@ QString TranslationInterface::sourceText() const
     return m_srcText;
 }
 
-QString TranslationInterface::detectedLanguage() const
+QString TranslationInterface::detectedLanguageName() const
 {
-    return m_detected;
+    return m_detectedLanguage.info.isValid() ? m_detectedLanguage.displayName : "";
 }
 
 QString TranslationInterface::translatedText() const
@@ -87,34 +105,43 @@ void TranslationInterface::translate()
     }
 
     resetTranslation();
-
     setBusy(true);
 
-    QUrl url("http://translate.google.com/translate_a/t?client=q");
-    url.addQueryItem("hl", "en");
-    url.addQueryItem("sl", m_srcLang);
-    url.addQueryItem("tl", m_trgtLang);
-    url.addQueryItem("text", m_srcText);
-    networkReply = nam.get(QNetworkRequest(url));
+    networkReply = nam.get(m_service->getTranslationRequest(m_sourceLanguage->language(),
+                                                            m_targetLanguage->language(),
+                                                            m_srcText));
 }
 
-void TranslationInterface::setSourceLanguage(const QString &from)
+void TranslationInterface::selectSourceLanguage(int index)
 {
-    if (m_srcLang == from)
+    const Language lang = m_sourceLanguages->get(index);
+    if (m_sourceLanguage && m_sourceLanguage->language() == lang)
         return;
+
     resetTranslation();
-    m_srcLang = from;
-    settings.setValue(m_service + "/SourceLanguage", m_srcLang);
+    delete m_sourceLanguage;
+    m_sourceLanguage = new LanguageItem(lang);
+    settings.beginGroup(m_service->uid() + "/SourceLanguage");
+    settings.setValue("Info", m_service->serializeLanguageInfo(lang.info));
+    settings.endGroup();
     emit sourceLanguageChanged();
+
+    if (m_service->targetLanguagesDependOnSourceLanguage())
+        m_targetLanguages->setLanguageList(m_service->targetLanguages(lang));
 }
 
-void TranslationInterface::setTargetLanguage(const QString &to)
+void TranslationInterface::selectTargetLanguage(int index)
 {
-    if (m_trgtLang == to)
+    const Language lang = m_targetLanguages->get(index);
+    if (m_targetLanguage && m_targetLanguage->language() == lang)
         return;
+
     resetTranslation();
-    m_trgtLang = to;
-    settings.setValue(m_service + "/TargetLanguage", m_trgtLang);
+    delete m_targetLanguage;
+    m_targetLanguage = new LanguageItem(lang);
+    settings.beginGroup(m_service->uid() + "/TargetLanguage");
+    settings.setValue("Info", m_service->serializeLanguageInfo(lang.info));
+    settings.endGroup();
     emit targetLanguageChanged();
 }
 
@@ -144,78 +171,64 @@ void TranslationInterface::onRequestFinished(QNetworkReply *reply)
         return;
     }
 
-    QString json;
-    json.reserve(reply->size());
-    json.append("(").append(QString::fromUtf8(reply->readAll())).append(")");
-
-    QScriptEngine engine;
-    if (!engine.canEvaluate(json)) {
-        emit error(tr("Couldn't parse response from the server because of an error: \"%1\"")
-                   .arg(tr("Can't evaluate JSON data")));
+    if (!m_service->parseReply(reply->readAll())) {
+        emit error(m_service->errorString());
+        reply->deleteLater();
         return;
     }
-    QScriptValue data = engine.evaluate(json);
-    if (engine.hasUncaughtException()) {
-        emit error(tr("Couldn't parse response from the server because of an error: \"%1\"")
-                   .arg(engine.uncaughtException().toString()));
-        return;
+    reply->deleteLater();
+
+    setTranslatedText(m_service->translation());
+    setDetectedLanguage(m_service->detectedLanguage());
+}
+
+void TranslationInterface::createService(uint id)
+{
+    delete m_sourceLanguage;
+    m_sourceLanguage = NULL;
+    delete m_targetLanguage;
+    m_targetLanguage = NULL;
+    delete m_service;
+
+    switch (id) {
+    default:
+        m_service = new GoogleTranslate(m_dict, this);
     }
 
-    if (m_srcLang == "auto")
-        setDetectedLanguage(data.property("src").toString());
-    QString translation;
-    QScriptValueIterator ti(data.property("sentences"));
-    while (ti.hasNext()) {
-        ti.next();
-        translation.append(ti.value().property("trans").toString());
+    const LanguagePair defaults = m_service->defaultLanguagePair();
+
+    m_sourceLanguages->setLanguageList(m_service->sourceLanguages());
+    settings.beginGroup(m_service->uid() + "/SourceLanguage");
+    if (settings.contains("Info")) {
+        const QVariant info = m_service->deserializeLanguageInfo(settings.value("Info").toString());
+        Language lang(info, m_service->getLanguageName(info));
+        if (m_service->sourceLanguages().contains(lang))
+            m_sourceLanguage = new LanguageItem(lang);
     }
-    setTranslatedText(translation);
+    settings.endGroup();
+    if (!m_sourceLanguage)
+        m_sourceLanguage = new LanguageItem(defaults.first);
 
-    m_dict->clear();
-    if (data.property("dict").isArray()) {
-        QScriptValueIterator di(data.property("dict"));
-        while (di.hasNext()) {
-            di.next();
-            if (di.flags() & QScriptValue::SkipInEnumeration)
-                continue;
-            // Extracting translations
-            QScriptValueIterator ti(di.value().property("terms"));
-            QStringList trans;
-            while (ti.hasNext()) {
-                ti.next();
-                if (ti.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-                trans << ti.value().toString();
-            }
-
-            // Extracting parts of speech (with revers translations)
-            QScriptValueIterator ei(di.value().property("entry"));
-            DictionaryPos pos(di.value().property("pos").toString(), trans);
-            while (ei.hasNext()) {
-                ei.next();
-                if (ei.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-
-                // Extracting reverse translations
-                QScriptValueIterator rti(ei.value().property("reverse_translation"));
-                QStringList rtrans;
-                while (rti.hasNext()) {
-                    rti.next();
-                    if (rti.flags() & QScriptValue::SkipInEnumeration)
-                        continue;
-                    rtrans << rti.value().toString();
-                }
-                pos.reverseTranslations()->append(ei.value().property("word").toString(), rtrans);
-            }
-            m_dict->append(pos);
-        }
+    m_targetLanguages->setLanguageList(m_service->targetLanguages(m_sourceLanguage->language()));
+    settings.beginGroup(m_service->uid() + "/TargetLanguage");
+    if (settings.contains("Info")) {
+        const QVariant info = m_service->deserializeLanguageInfo(settings.value("Info").toString());
+        Language lang(info, m_service->getLanguageName(info));
+        if (m_service->targetLanguages(m_sourceLanguage->language()).contains(lang))
+            m_targetLanguage = new LanguageItem(lang);
     }
+    settings.endGroup();
+    if (!m_targetLanguage)
+        m_targetLanguage = new LanguageItem(defaults.second);
+
+    emit sourceLanguageChanged();
+    emit targetLanguageChanged();
 }
 
 void TranslationInterface::resetTranslation()
 {
     setTranslatedText(QString());
-    setDetectedLanguage(QString());
+    setDetectedLanguage(Language());
     m_dict->clear();
     if (!networkReply)
         return;
@@ -231,11 +244,11 @@ void TranslationInterface::setBusy(bool busy)
     emit busyChanged();
 }
 
-void TranslationInterface::setDetectedLanguage(const QString &detectedLanguage)
+void TranslationInterface::setDetectedLanguage(const Language &detectedLanguage)
 {
-    if (m_detected == detectedLanguage)
+    if (m_detectedLanguage == detectedLanguage)
         return;
-    m_detected = detectedLanguage;
+    m_detectedLanguage = detectedLanguage;
     emit detectedLanguageChanged();
 }
 
@@ -245,4 +258,14 @@ void TranslationInterface::setTranslatedText(const QString &translatedText)
         return;
     m_translation = translatedText;
     emit translatedTextChanged();
+}
+
+TranslationInterface::~TranslationInterface()
+{
+    delete m_service;
+    delete m_sourceLanguages;
+    delete m_targetLanguages;
+    delete m_sourceLanguage;
+    delete m_targetLanguage;
+    delete m_dict;
 }

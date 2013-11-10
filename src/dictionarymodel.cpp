@@ -58,8 +58,11 @@ DictionaryModel::DictionaryModel(QObject *parent) :
     setRoleNames(roles);
 }
 
-int DictionaryModel::rowCount(const QModelIndex &) const
+int DictionaryModel::rowCount(const QModelIndex &parent) const
 {
+    if (parent.isValid())
+        return 0;
+
     return m_dict.count();
 }
 

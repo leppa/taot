@@ -31,8 +31,11 @@ ReverseTranslationsModel::ReverseTranslationsModel(QObject *parent)
     setRoleNames(roles);
 }
 
-int ReverseTranslationsModel::rowCount(const QModelIndex &) const
+int ReverseTranslationsModel::rowCount(const QModelIndex &parent) const
 {
+    if (parent.isValid())
+        return 0;
+
     return m_terms.count();
 }
 

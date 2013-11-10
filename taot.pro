@@ -40,14 +40,25 @@ blackberry:QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports
 HEADERS += \
     src/translationinterface.h \
     src/dictionarymodel.h \
-    src/reversetranslationsmodel.h
+    src/reversetranslationsmodel.h \
+    src/languagelistmodel.h \
+    src/translationservice.h \
+    src/services/jsontranslationservice.h \
+    src/services/googletranslate.h
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
     src/main.cpp \
     src/translationinterface.cpp \
     src/dictionarymodel.cpp \
-    src/reversetranslationsmodel.cpp
+    src/reversetranslationsmodel.cpp \
+    src/languagelistmodel.cpp \
+    src/translationservice.cpp \
+    src/services/jsontranslationservice.cpp \
+    src/services/googletranslate.cpp
+
+INCLUDEPATH += \
+    src
 
 OTHER_FILES += \
     bar-descriptor.xml \
@@ -85,7 +96,7 @@ symbian {
     TARGET.CAPABILITY += NetworkServices ReadUserData
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 
-    ui.sources = qml/langs.xml qml/symbian/* qml/symbian/icons
+    ui.sources = qml/langs.json qml/symbian/* qml/symbian/icons
     ui.path = qml
     DEPLOYMENT += ui
 
@@ -115,7 +126,7 @@ contains(MEEGO_EDITION,harmattan) {
     DEFINES += HARMATTAN_BOOSTER
 
     target.path = /opt/$${TARGET}/bin
-    ui.files = qml/langs.xml qml/harmattan/*
+    ui.files = qml/langs.json qml/harmattan/*
     ui.path = /opt/$${TARGET}/qml
     icon.files = $${TARGET}80.png
     icon.path = /usr/share/icons/hicolor/80x80/apps

@@ -35,77 +35,21 @@ Page {
         }
     }
 
-    XmlListModel {
-        id: sourceLangs
-
-        function getLangName(code)
-        {
-            for (var k = 0; k < count; k++)
-                if (get(k).code === code)
-                    return get(k).name;
-            return qsTr("Unknown")
-        }
-
-        function getLangIndex(code)
-        {
-            for (var k = 0; k < count; k++)
-                if (get(k).code === code)
-                    return k;
-            return -1
-        }
-
-        source: Qt.resolvedUrl("langs.xml")
-        query: "/LanguagePairs/Pair"
-        onQueryChanged: reload();
-
-        XmlRole { name: "name"; query: "@source_name/string()" }
-        XmlRole { name: "code"; query: "@source_id/string()" }
-    }
-
-    XmlListModel {
-        id: targetLangs
-
-        function getLangName(code)
-        {
-            for (var k = 0; k < count; k++)
-                if (get(k).code === code)
-                    return get(k).name;
-            return qsTr("Unknown")
-        }
-
-        function getLangIndex(code)
-        {
-            for (var k = 0; k < count; k++)
-                if (get(k).code === code)
-                    return k;
-            return -1
-        }
-
-        source: Qt.resolvedUrl("langs.xml")
-        query: "/LanguagePairs/Pair[not(@source_id='auto')]"
-        onQueryChanged: reload();
-
-        XmlRole { name: "name"; query: "@source_name/string()" }
-        XmlRole { name: "code"; query: "@source_id/string()" }
-    }
-
     SelectionDialog {
         id: fromDialog
         titleText: qsTr("Select the source language")
-        selectedIndex: 0
-        model: sourceLangs
+        model: translator.sourceLanguages
         onSelectedIndexChanged: {
-            translator.sourceLanguage = model.get(selectedIndex).code;
+            translator.selectSourceLanguage(selectedIndex);
         }
     }
 
     SelectionDialog {
         id: toDialog
         titleText: qsTr("Select the target language")
-        selectedIndex: 0
-        model: targetLangs
+        model: translator.targetLanguages
         onSelectedIndexChanged: {
-            translator.targetLanguage = model.get(selectedIndex).code;
+            translator.selectTargetLanguage(selectedIndex);
         }
     }
 
@@ -129,20 +73,26 @@ Page {
                 ListDelegate {
                     width: parent.width / 2
                     title: qsTr("From");
-                    subTitle: sourceLangs.getLangName(translator.sourceLanguage);
+                    subTitle: translator.sourceLanguage.displayName;
 
                     onClicked: {
-                        fromDialog.selectedIndex = sourceLangs.getLangIndex(translator.sourceLanguage);
+                        if (fromDialog.selectedIndex < 0) {
+                            fromDialog.selectedIndex = translator.sourceLanguages
+                                                       .indexOf(translator.sourceLanguage);
+                        }
                         fromDialog.open();
                     }
                 }
                 ListDelegate {
                     width: parent.width / 2
                     title: qsTr("To")
-                    subTitle: targetLangs.getLangName(translator.targetLanguage)
+                    subTitle: translator.targetLanguage.displayName;
 
                     onClicked: {
-                        toDialog.selectedIndex = targetLangs.getLangIndex(translator.targetLanguage);
+                        if (toDialog.selectedIndex < 0) {
+                            toDialog.selectedIndex = translator.targetLanguages
+                                                     .indexOf(translator.targetLanguage);
+                        }
                         toDialog.open();
                     }
                 }
@@ -253,13 +203,13 @@ Page {
                 }
                 Label {
                     id: dl
-                    text: sourceLangs.getLangName(translator.detectedLanguage)
+                    text: translator.detectedLanguageName
                 }
 
                 states: [
                     State {
                         name: "Empty"
-                        when: translator.detectedLanguage === ""
+                        when: translator.detectedLanguageName === ""
 
                         PropertyChanges {
                             target: detectedLanguage

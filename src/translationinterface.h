@@ -23,7 +23,7 @@
 #ifndef TRANSLATIONINTERFACE_H
 #define TRANSLATIONINTERFACE_H
 
-#include "dictionarymodel.h"
+#include "translationservice.h"
 
 #include <QObject>
 #include <QStringList>
@@ -31,8 +31,9 @@
 #include <QNetworkReply>
 #include <QSettings>
 
-class QScriptValue;
-
+class LanguageListModel;
+class LanguageItem;
+class DictionaryModel;
 class TranslationInterface: public QObject
 {
     Q_OBJECT
@@ -41,28 +42,31 @@ class TranslationInterface: public QObject
 
     // Translation related properties
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
-    Q_PROPERTY(QString sourceLanguage READ sourceLanguage WRITE setSourceLanguage NOTIFY sourceLanguageChanged)
-    Q_PROPERTY(QString targetLanguage READ targetLanguage WRITE setTargetLanguage NOTIFY targetLanguageChanged)
+    Q_PROPERTY(LanguageListModel *sourceLanguages READ sourceLanguages CONSTANT)
+    Q_PROPERTY(LanguageListModel *targetLanguages READ targetLanguages CONSTANT)
+    Q_PROPERTY(LanguageItem *sourceLanguage READ sourceLanguage NOTIFY sourceLanguageChanged)
+    Q_PROPERTY(LanguageItem *targetLanguage READ targetLanguage NOTIFY targetLanguageChanged)
     Q_PROPERTY(QString sourceText READ sourceText WRITE setSourceText NOTIFY sourceTextChanged)
-    Q_PROPERTY(QString detectedLanguage READ detectedLanguage NOTIFY detectedLanguageChanged)
+    Q_PROPERTY(QString detectedLanguageName READ detectedLanguageName NOTIFY detectedLanguageChanged)
     Q_PROPERTY(QString translatedText READ translatedText NOTIFY translatedTextChanged)
-    Q_PROPERTY(DictionaryModel *dictionary READ dictionary NOTIFY dictionaryChanged)
+    Q_PROPERTY(DictionaryModel *dictionary READ dictionary CONSTANT)
 
 public:
     explicit TranslationInterface(QObject *parent = 0);
 
     static QString version();
 
-    static QStringList supportedServices();
-    QString service() const;
-
     bool busy() const;
-    QString sourceLanguage() const;
-    QString targetLanguage() const;
+    LanguageListModel *sourceLanguages() const;
+    LanguageListModel *targetLanguages() const;
+    LanguageItem *sourceLanguage() const;
+    LanguageItem *targetLanguage() const;
     QString sourceText() const;
-    QString detectedLanguage() const;
+    QString detectedLanguageName() const;
     QString translatedText() const;
     DictionaryModel *dictionary() const;
+
+    ~TranslationInterface();
 
 signals:
     void error(const QString &errorString) const;
@@ -72,11 +76,10 @@ signals:
     void sourceTextChanged();
     void detectedLanguageChanged();
     void translatedTextChanged();
-    void dictionaryChanged();
 
 public slots:
-    void setSourceLanguage(const QString &sourceLanguage);
-    void setTargetLanguage(const QString &targetLanguage);
+    void selectSourceLanguage(int index);
+    void selectTargetLanguage(int index);
     void setSourceText(const QString &sourceText);
     void translate();
 
@@ -84,13 +87,15 @@ private slots:
     void onRequestFinished(QNetworkReply *reply);
 
 private:
-    QString m_service;
+    TranslationService *m_service;
 
     bool m_busy;
-    QString m_srcLang;
-    QString m_trgtLang;
+    LanguageListModel *m_sourceLanguages;
+    LanguageListModel *m_targetLanguages;
+    LanguageItem *m_sourceLanguage;
+    LanguageItem *m_targetLanguage;
+    Language m_detectedLanguage;
     QString m_srcText;
-    QString m_detected;
     QString m_translation;
     DictionaryModel *m_dict;
 
@@ -99,9 +104,10 @@ private:
 
     QSettings settings;
 
+    void createService(uint id);
     void resetTranslation();
     void setBusy(bool busy);
-    void setDetectedLanguage(const QString &detectedLanguage);
+    void setDetectedLanguage(const Language &detectedLanguageName);
     void setTranslatedText(const QString &translatedText);
 };
 
