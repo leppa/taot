@@ -41,8 +41,8 @@ class TranslationInterface: public QObject
 
     // Translation related properties
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
-    Q_PROPERTY(QString sourceLanguage READ sourceLanguage WRITE setSourceLanguage NOTIFY fromLanguageChanged)
-    Q_PROPERTY(QString targetLanguage READ targetLanguage WRITE setTargetLanguage NOTIFY toLanguageChanged)
+    Q_PROPERTY(QString sourceLanguage READ sourceLanguage WRITE setSourceLanguage NOTIFY sourceLanguageChanged)
+    Q_PROPERTY(QString targetLanguage READ targetLanguage WRITE setTargetLanguage NOTIFY targetLanguageChanged)
     Q_PROPERTY(QString sourceText READ sourceText WRITE setSourceText NOTIFY sourceTextChanged)
     Q_PROPERTY(QString detectedLanguage READ detectedLanguage NOTIFY detectedLanguageChanged)
     Q_PROPERTY(QString translatedText READ translatedText NOTIFY translatedTextChanged)
@@ -64,23 +64,24 @@ public:
     QString translatedText() const;
     DictionaryModel *dictionary() const;
 
-    Q_INVOKABLE void translate();
-
 signals:
     void error(const QString &errorString) const;
-    void busyChanged(bool busy);
-    void fromLanguageChanged(const QString &sourceLanguage);
-    void toLanguageChanged(const QString &targetLanguage);
-    void sourceTextChanged(const QString &sourceText);
-    void detectedLanguageChanged(const QString &detectedLanguage);
-    void translatedTextChanged(const QString &translatedText);
+    void busyChanged();
+    void sourceLanguageChanged();
+    void targetLanguageChanged();
+    void sourceTextChanged();
+    void detectedLanguageChanged();
+    void translatedTextChanged();
     void dictionaryChanged();
 
 public slots:
     void setSourceLanguage(const QString &sourceLanguage);
     void setTargetLanguage(const QString &targetLanguage);
     void setSourceText(const QString &sourceText);
-    void requestFinished(QNetworkReply *reply);
+    void translate();
+
+private slots:
+    void onRequestFinished(QNetworkReply *reply);
 
 private:
     QString m_service;

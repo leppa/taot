@@ -33,7 +33,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     m_srcLang = settings.value("SourceLanguage", "auto").toString();
     m_trgtLang = settings.value("TargetLanguage", "en").toString();
     settings.endGroup();
-    connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(requestFinished(QNetworkReply*)));
+    connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(onRequestFinished(QNetworkReply*)));
 }
 
 QString TranslationInterface::version()
@@ -78,7 +78,6 @@ DictionaryModel *TranslationInterface::dictionary() const
 
 void TranslationInterface::translate()
 {
-    qDebug() << __PRETTY_FUNCTION__;
     if (m_srcText.isEmpty()) {
         emit error(tr("Please, enter the source text"));
         return;
@@ -98,24 +97,22 @@ void TranslationInterface::translate()
 
 void TranslationInterface::setSourceLanguage(const QString &from)
 {
-    qDebug() << __PRETTY_FUNCTION__;
     if (m_srcLang == from)
         return;
     resetTranslation();
     m_srcLang = from;
     settings.setValue(m_service + "/SourceLanguage", m_srcLang);
-    emit fromLanguageChanged(m_srcLang);
+    emit sourceLanguageChanged();
 }
 
 void TranslationInterface::setTargetLanguage(const QString &to)
 {
-    qDebug() << __PRETTY_FUNCTION__;
     if (m_trgtLang == to)
         return;
     resetTranslation();
     m_trgtLang = to;
     settings.setValue(m_service + "/TargetLanguage", m_trgtLang);
-    emit toLanguageChanged(m_trgtLang);
+    emit targetLanguageChanged();
 }
 
 void TranslationInterface::setSourceText(const QString &sourceText)
@@ -124,12 +121,11 @@ void TranslationInterface::setSourceText(const QString &sourceText)
         return;
     resetTranslation();
     m_srcText = sourceText;
-    emit sourceTextChanged(m_srcText);
+    emit sourceTextChanged();
 }
 
-void TranslationInterface::requestFinished(QNetworkReply *reply)
+void TranslationInterface::onRequestFinished(QNetworkReply *reply)
 {
-    qDebug() << __PRETTY_FUNCTION__;
     Q_ASSERT(reply == networkReply);
     networkReply = NULL;
     setBusy(false);
@@ -139,7 +135,7 @@ void TranslationInterface::requestFinished(QNetworkReply *reply)
         reply->deleteLater();
         return;
     } else if (reply->error() != QNetworkReply::NoError) {
-        qDebug() << reply->errorString();
+        qWarning() << reply->errorString();
         emit error(reply->errorString());
         reply->deleteLater();
         return;
@@ -229,7 +225,7 @@ void TranslationInterface::setBusy(bool busy)
     if (m_busy == busy)
         return;
     m_busy = busy;
-    emit busyChanged(m_busy);
+    emit busyChanged();
 }
 
 void TranslationInterface::setDetectedLanguage(const QString &detectedLanguage)
@@ -237,7 +233,7 @@ void TranslationInterface::setDetectedLanguage(const QString &detectedLanguage)
     if (m_detected == detectedLanguage)
         return;
     m_detected = detectedLanguage;
-    emit detectedLanguageChanged(m_detected);
+    emit detectedLanguageChanged();
 }
 
 void TranslationInterface::setTranslatedText(const QString &translatedText)
@@ -245,5 +241,5 @@ void TranslationInterface::setTranslatedText(const QString &translatedText)
     if (m_translation == translatedText)
         return;
     m_translation = translatedText;
-    emit translatedTextChanged(m_translation);
+    emit translatedTextChanged();
 }
