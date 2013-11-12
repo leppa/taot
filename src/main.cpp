@@ -76,9 +76,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
 #endif
 #ifdef Q_OS_BLACKBERRY
+    viewer.rootObject()->setProperty("showStatusBar", false);
     viewer.showFullScreen();
 #else
-    viewer.rootObject()->setProperty("showStatusBar", true);
     viewer.showExpanded();
 #endif
 
