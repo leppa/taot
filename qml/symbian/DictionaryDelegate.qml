@@ -178,8 +178,7 @@ MouseArea {
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideNone
                         anchors {
-                            top: parent.top
-                            topMargin: platformStyle.paddingSmall
+                            baseline: revTranslations.baseline
                             left: parent.left
                         }
 
