@@ -1,6 +1,11 @@
 The Advanced Online Translator ChangeLog
 ========================================
 
+TAOT v0.1.4
+-----------
+- Nokia N9 port ([issue #4][]).
+- Re-run translation if source or target language was changed.
+
 TAOT v0.1.3
 -----------
 
@@ -38,6 +43,7 @@ Initial release.
 [issue #1]: https://github.com/leppa/taot/issues/1
 [issue #2]: https://github.com/leppa/taot/issues/2
 [issue #3]: https://github.com/leppa/taot/issues/3
+[issue #4]: https://github.com/leppa/taot/issues/4
 [issue #5]: https://github.com/leppa/taot/issues/5
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
