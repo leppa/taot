@@ -35,6 +35,21 @@ Page {
     }
 
     SelectionDialog {
+        id: servicesDialog
+        titleText: qsTr("Select the translation service")
+        model: translator.services
+        delegate: ListDelegate {
+            text: model.name
+            privateSelectionIndicator: selectedIndex === model.index
+            onClicked: {
+                selectedIndex = model.index;
+                translator.selectService(model.index);
+                servicesDialog.accept();
+            }
+        }
+    }
+
+    SelectionDialog {
         id: fromDialog
         titleText: qsTr("Select the source language")
         model: translator.sourceLanguages
@@ -313,6 +328,70 @@ Page {
         flickableItem: listDictionary
     }
 
+    Item {
+        id: titleBar
+
+        width: parent.width
+        height: platformStyle.graphicSizeMedium
+
+        Rectangle {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop {
+                    position: 0.00
+                    color: platformStyle.colorNormalLink
+                }
+                GradientStop {
+                    position: 1.0;
+                    color: Qt.darker(platformStyle.colorNormalLink)
+                }
+            }
+        }
+
+        Rectangle {
+            color: platformStyle.colorNormalLink
+            visible: mouseArea.pressed
+            anchors.fill: parent
+        }
+
+        MouseArea {
+            id: mouseArea
+            enabled: parent.enabled
+            anchors.fill: parent
+            onClicked: {
+                if (servicesDialog.selectedIndex < 0)
+                    servicesDialog.selectedIndex = translator.selectedService.index;
+                servicesDialog.open();
+            }
+        }
+
+        Label {
+            color: "white"
+            text: translator.selectedService.name
+            font.pixelSize: privateStyle.fontSizeLarge
+            anchors {
+                left: parent.left
+                leftMargin: platformStyle.paddingLarge
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
+        Image {
+            id: icon
+
+            source: "image://theme/qtg_graf_choice_list_indicator"
+            sourceSize {
+                width: platformStyle.graphicSizeSmall
+                height: platformStyle.graphicSizeSmall
+            }
+            anchors {
+                right: parent.right
+                rightMargin: 10
+                verticalCenter: parent.verticalCenter
+            }
+        }
+    }
+
     ListView {
         id: listDictionary
 
@@ -325,8 +404,12 @@ Page {
         // TODO: Come up with more appropriate solution.
         cacheBuffer: 65535
         anchors {
-            fill: parent
-            margins: platformStyle.paddingMedium
+            top: titleBar.bottom
+            left: parent.left
+            leftMargin: platformStyle.paddingSmall
+            bottom: parent.bottom
+            right: parent.right
+            rightMargin: platformStyle.paddingSmall
         }
 
         header: header

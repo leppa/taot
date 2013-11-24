@@ -43,6 +43,7 @@ HEADERS += \
     src/reversetranslationsmodel.h \
     src/languagelistmodel.h \
     src/translationservice.h \
+    src/translationservicesmodel.h \
     src/services/jsontranslationservice.h \
     src/services/googletranslate.h
 
@@ -54,6 +55,7 @@ SOURCES += \
     src/reversetranslationsmodel.cpp \
     src/languagelistmodel.cpp \
     src/translationservice.cpp \
+    src/translationservicesmodel.cpp \
     src/services/jsontranslationservice.cpp \
     src/services/googletranslate.cpp
 

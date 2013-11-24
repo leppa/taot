@@ -31,6 +31,8 @@
 #include <QNetworkReply>
 #include <QSettings>
 
+class TranslationServicesModel;
+class TranslationServiceItem;
 class LanguageListModel;
 class LanguageItem;
 class DictionaryModel;
@@ -39,6 +41,8 @@ class TranslationInterface: public QObject
     Q_OBJECT
 
     Q_PROPERTY(QString version READ version CONSTANT)
+    Q_PROPERTY(TranslationServicesModel *services READ supportedServices CONSTANT)
+    Q_PROPERTY(TranslationServiceItem *selectedService READ selectedService NOTIFY selectedServiceChanged)
 
     // Translation related properties
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
@@ -52,9 +56,15 @@ class TranslationInterface: public QObject
     Q_PROPERTY(DictionaryModel *dictionary READ dictionary CONSTANT)
 
 public:
+    enum SupportedServices {
+        GoogleTranslateService,
+    };
+
     explicit TranslationInterface(QObject *parent = 0);
 
     static QString version();
+    TranslationServicesModel *supportedServices() const;
+    TranslationServiceItem *selectedService() const;
 
     bool busy() const;
     LanguageListModel *sourceLanguages() const;
@@ -70,6 +80,7 @@ public:
 
 signals:
     void error(const QString &errorString) const;
+    void selectedServiceChanged();
     void busyChanged();
     void sourceLanguageChanged();
     void targetLanguageChanged();
@@ -78,6 +89,7 @@ signals:
     void translatedTextChanged();
 
 public slots:
+    void selectService(int index);
     void selectSourceLanguage(int index);
     void selectTargetLanguage(int index);
     void setSourceText(const QString &sourceText);
@@ -88,6 +100,8 @@ private slots:
 
 private:
     TranslationService *m_service;
+    TranslationServicesModel *m_services;
+    TranslationServiceItem *m_serviceItem;
 
     bool m_busy;
     LanguageListModel *m_sourceLanguages;

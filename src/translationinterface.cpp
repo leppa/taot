@@ -23,6 +23,7 @@
 #include "translationinterface.h"
 
 #include "translationservice.h"
+#include "translationservicesmodel.h"
 #include "languagelistmodel.h"
 #include "dictionarymodel.h"
 #include "services/googletranslate.h"
@@ -32,6 +33,7 @@
 TranslationInterface::TranslationInterface(QObject *parent)
     : QObject(parent)
     , m_service(NULL)
+    , m_serviceItem(NULL)
     , m_busy(false)
     , m_sourceLanguages(new LanguageListModel(this))
     , m_targetLanguages(new LanguageListModel(this))
@@ -40,7 +42,11 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_dict(new DictionaryModel(this))
     , networkReply(NULL)
 {
-    createService(settings.value("Service").toUInt());
+    QStringList list;
+    list.insert(GoogleTranslateService, GoogleTranslate::displayName());
+    m_services = new TranslationServicesModel(list, this);
+
+    createService(settings.value("SelectedService", 0).toUInt());
 
     connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(onRequestFinished(QNetworkReply*)));
     connect(this, SIGNAL(sourceLanguageChanged()), SLOT(translate()));
@@ -50,6 +56,16 @@ TranslationInterface::TranslationInterface(QObject *parent)
 QString TranslationInterface::version()
 {
     return qApp->applicationVersion();
+}
+
+TranslationServicesModel *TranslationInterface::supportedServices() const
+{
+    return m_services;
+}
+
+TranslationServiceItem *TranslationInterface::selectedService() const
+{
+    return m_serviceItem;
 }
 
 bool TranslationInterface::busy() const
@@ -110,6 +126,15 @@ void TranslationInterface::translate()
     networkReply = nam.get(m_service->getTranslationRequest(m_sourceLanguage->language(),
                                                             m_targetLanguage->language(),
                                                             m_srcText));
+}
+
+void TranslationInterface::selectService(int index)
+{
+    if (index == m_serviceItem->index() || index < 0 || index >= m_services->count())
+        return;
+
+    settings.setValue("SelectedService", index);
+    createService(index);
 }
 
 void TranslationInterface::selectSourceLanguage(int index)
@@ -189,11 +214,17 @@ void TranslationInterface::createService(uint id)
     delete m_targetLanguage;
     m_targetLanguage = NULL;
     delete m_service;
+    delete m_serviceItem;
 
     switch (id) {
+    case GoogleTranslateService:
     default:
         m_service = new GoogleTranslate(m_dict, this);
+        m_serviceItem = new TranslationServiceItem(GoogleTranslateService,
+                                                   GoogleTranslate::displayName(), this);
+        settings.setValue("SelectedService", GoogleTranslateService);
     }
+    emit selectedServiceChanged();
 
     const LanguagePair defaults = m_service->defaultLanguagePair();
 
@@ -263,6 +294,7 @@ void TranslationInterface::setTranslatedText(const QString &translatedText)
 TranslationInterface::~TranslationInterface()
 {
     delete m_service;
+    delete m_services;
     delete m_sourceLanguages;
     delete m_targetLanguages;
     delete m_sourceLanguage;

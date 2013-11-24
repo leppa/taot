@@ -20,16 +20,31 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import com.nokia.meego 1.1
-import com.nokia.extras 1.1
+#include "translationservicesmodel.h"
 
-PageStackWindow {
-    id: appWindow
+TranslationServiceItem::TranslationServiceItem(int id, const QString &name, QObject *parent)
+    : QObject(parent), m_id(id), m_name(name)
+{}
 
-    initialPage: MainPage {}
+int TranslationServiceItem::index() const
+{
+    return m_id;
+}
 
-    InfoBanner {
-        id: banner
-        y: 36 /* StatusBar height */ + 8
-    }
+QString TranslationServiceItem::name() const
+{
+    return m_name;
+}
+
+TranslationServicesModel::TranslationServicesModel(const QStringList &strings, QObject *parent)
+    : QStringListModel(strings, parent)
+{
+    QHash<int, QByteArray> roles;
+    roles.insert(Qt::DisplayRole, "name");
+    setRoleNames(roles);
+}
+
+int TranslationServicesModel::count() const
+{
+    return rowCount();
 }

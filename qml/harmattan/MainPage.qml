@@ -36,6 +36,15 @@ Page {
     }
 
     SelectionDialog {
+        id: servicesDialog
+        titleText: qsTr("Select the translation service")
+        model: translator.services
+        onSelectedIndexChanged: {
+            translator.selectService(selectedIndex);
+        }
+    }
+
+    SelectionDialog {
         id: fromDialog
         titleText: qsTr("Select the source language")
         model: translator.sourceLanguages
@@ -291,6 +300,72 @@ Page {
         Behavior on opacity { NumberAnimation { duration: 200 } }
     }
 
+    Item {
+        id: titleBar
+
+        height: appWindow.inPortrait ? UiConstants.HeaderDefaultHeightPortrait
+                                     : UiConstants.HeaderDefaultHeightLandscape
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop {
+                    position: 0.00
+                    color: theme.selectionColor
+                }
+                GradientStop {
+                    position: 1.0;
+                    color: Qt.darker(theme.selectionColor)
+                }
+            }
+        }
+
+        Rectangle {
+            color: theme.selectionColor
+            visible: mouseArea.pressed
+            anchors.fill: parent
+        }
+
+        MouseArea {
+            id: mouseArea
+            enabled: parent.enabled
+            anchors.fill: parent
+            onClicked: {
+                if (servicesDialog.selectedIndex < 0)
+                    servicesDialog.selectedIndex = translator.selectedService.index;
+                servicesDialog.open();
+            }
+        }
+
+        Label {
+            color: "white"
+            text: translator.selectedService.name
+            font: UiConstants.HeaderFont
+            anchors {
+                left: parent.left
+                leftMargin: UiConstants.DefaultMargin
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
+        Image {
+            id: icon
+
+            height: sourceSize.height
+            width: sourceSize.width
+            source: "image://theme/meegotouch-combobox-indicator-inverted"
+            anchors {
+                right: parent.right
+                rightMargin: UI.MARGIN_XLARGE
+                verticalCenter: parent.verticalCenter
+            }
+        }
+    }
+
     ListView {
         id: listDictionary
 
@@ -303,8 +378,12 @@ Page {
         // TODO: Come up with more appropriate solution.
         cacheBuffer: 65535
         anchors {
-            fill: parent
-            margins: 8 /*UI.PADDING_LARGE*/
+            top: titleBar.bottom
+            left: parent.left
+            leftMargin: 8 /*UI.PADDING_LARGE*/
+            bottom: parent.bottom
+            right: parent.right
+            rightMargin: 8 /*UI.PADDING_LARGE*/
         }
 
         header: header
