@@ -199,6 +199,7 @@ Page {
                     enabled: !translator.busy
                     onClicked: {
                         dummyFocus.focus = true;
+                        timer.stop();
                         translator.translate();
                     }
                 }
