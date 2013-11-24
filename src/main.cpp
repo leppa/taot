@@ -50,8 +50,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QApplication::setOrganizationName("Oleksii Serdiuk");
     QApplication::setOrganizationDomain("oleksii.name");
 
+#ifdef Q_OS_BLACKBERRY
     // This is needed for clicks to work more reliably indside Flickable.
     QApplication::setStartDragDistance(42);
+#endif
 
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
