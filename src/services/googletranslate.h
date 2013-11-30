@@ -44,9 +44,7 @@ public:
     LanguagePair defaultLanguagePair() const;
     QString getLanguageName(const QVariant &info) const;
 
-    QNetworkRequest getTranslationRequest(const Language &from,
-                                          const Language &to,
-                                          const QString &text) const;
+    bool translate(const Language &from, const Language &to, const QString &text);
     bool parseReply(const QByteArray &data);
 
     QString errorString();

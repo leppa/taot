@@ -95,9 +95,6 @@ public slots:
     void setSourceText(const QString &sourceText);
     void translate();
 
-private slots:
-    void onRequestFinished(QNetworkReply *reply);
-
 private:
     TranslationService *m_service;
     TranslationServicesModel *m_services;
@@ -113,9 +110,6 @@ private:
     QString m_translation;
     DictionaryModel *m_dict;
 
-    QNetworkAccessManager nam;
-    QNetworkReply *networkReply;
-
     QSettings settings;
 
     void createService(uint id);
@@ -123,6 +117,9 @@ private:
     void setBusy(bool busy);
     void setDetectedLanguage(const Language &detectedLanguageName);
     void setTranslatedText(const QString &translatedText);
+
+private slots:
+    void onTranslationFinished();
 };
 
 #endif // TRANSLATIONINTERFACE_H

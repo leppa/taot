@@ -25,7 +25,9 @@
 
 #include <QObject>
 #include <QString>
-#include <QNetworkRequest>
+#include <QVariant>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
 
 struct Language
 {
@@ -59,10 +61,9 @@ public:
     virtual QVariant deserializeLanguageInfo(const QString &info) const;
 
     virtual void clear();
-    virtual QNetworkRequest getTranslationRequest(const Language &from,
-                                                  const Language &to,
-                                                  const QString &text) const = 0;
-    virtual bool parseReply(const QByteArray &data) = 0;
+    virtual bool translate(const Language &from, const Language &to, const QString &text) = 0;
+    virtual void cancelTranslation();
+    virtual bool parseReply(const QByteArray &reply) = 0;
 
     virtual QString translation() const;
     virtual Language detectedLanguage() const;
@@ -71,10 +72,19 @@ public:
 
     virtual ~TranslationService();
 
+protected:
+    virtual bool checkReplyForErrors(QNetworkReply *reply);
+
+private slots:
+    void onNetworkReply(QNetworkReply *reply);
+
 signals:
-    void translationReady();
+    void translationFinished();
 
 protected:
+    QNetworkAccessManager m_nam;
+    QNetworkReply *m_reply;
+
     QString m_error;
     QString m_translation;
     Language m_detectedLanguage;

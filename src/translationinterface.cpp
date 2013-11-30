@@ -40,7 +40,6 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_sourceLanguage(NULL)
     , m_targetLanguage(NULL)
     , m_dict(new DictionaryModel(this))
-    , networkReply(NULL)
 {
     QStringList list;
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
@@ -48,7 +47,6 @@ TranslationInterface::TranslationInterface(QObject *parent)
 
     createService(settings.value("SelectedService", 0).toUInt());
 
-    connect(&nam, SIGNAL(finished(QNetworkReply*)), SLOT(onRequestFinished(QNetworkReply*)));
     connect(this, SIGNAL(sourceLanguageChanged()), SLOT(translate()));
     connect(this, SIGNAL(targetLanguageChanged()), SLOT(translate()));
 }
@@ -113,19 +111,15 @@ DictionaryModel *TranslationInterface::dictionary() const
     return m_dict;
 }
 
-void TranslationInterface::translate()
+TranslationInterface::~TranslationInterface()
 {
-    if (m_srcText.isEmpty()) {
-        emit error(tr("Please, enter the source text"));
-        return;
-    }
-
-    resetTranslation();
-    setBusy(true);
-
-    networkReply = nam.get(m_service->getTranslationRequest(m_sourceLanguage->language(),
-                                                            m_targetLanguage->language(),
-                                                            m_srcText));
+    delete m_service;
+    delete m_services;
+    delete m_sourceLanguages;
+    delete m_targetLanguages;
+    delete m_sourceLanguage;
+    delete m_targetLanguage;
+    delete m_dict;
 }
 
 void TranslationInterface::selectService(int index)
@@ -179,32 +173,23 @@ void TranslationInterface::setSourceText(const QString &sourceText)
     emit sourceTextChanged();
 }
 
-void TranslationInterface::onRequestFinished(QNetworkReply *reply)
+void TranslationInterface::translate()
 {
-    Q_ASSERT(reply == networkReply);
-    networkReply = NULL;
-    setBusy(false);
-
-    if (reply->error() == QNetworkReply::OperationCanceledError) {
-        // Operation was canceled by us, ignore this error.
-        reply->deleteLater();
-        return;
-    } else if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << reply->errorString();
-        emit error(reply->errorString());
-        reply->deleteLater();
+    if (m_srcText.isEmpty()) {
+        emit error(tr("Please, enter the source text"));
         return;
     }
 
-    if (!m_service->parseReply(reply->readAll())) {
+    resetTranslation();
+
+    if (!m_service->translate(m_sourceLanguage->language(),
+                              m_targetLanguage->language(),
+                              m_srcText)) {
         emit error(m_service->errorString());
-        reply->deleteLater();
         return;
     }
-    reply->deleteLater();
 
-    setTranslatedText(m_service->translation());
-    setDetectedLanguage(m_service->detectedLanguage());
+    setBusy(true);
 }
 
 void TranslationInterface::createService(uint id)
@@ -224,6 +209,7 @@ void TranslationInterface::createService(uint id)
                                                    GoogleTranslate::displayName(), this);
         settings.setValue("SelectedService", GoogleTranslateService);
     }
+    connect(m_service, SIGNAL(translationFinished()), SLOT(onTranslationFinished()));
     emit selectedServiceChanged();
 
     const LanguagePair defaults = m_service->defaultLanguagePair();
@@ -258,13 +244,11 @@ void TranslationInterface::createService(uint id)
 
 void TranslationInterface::resetTranslation()
 {
+    m_service->cancelTranslation();
+    m_service->clear();
     setTranslatedText(QString());
     setDetectedLanguage(Language());
     m_dict->clear();
-    if (!networkReply)
-        return;
-    if (networkReply->isRunning())
-        networkReply->abort();
 }
 
 void TranslationInterface::setBusy(bool busy)
@@ -291,13 +275,15 @@ void TranslationInterface::setTranslatedText(const QString &translatedText)
     emit translatedTextChanged();
 }
 
-TranslationInterface::~TranslationInterface()
+void TranslationInterface::onTranslationFinished()
 {
-    delete m_service;
-    delete m_services;
-    delete m_sourceLanguages;
-    delete m_targetLanguages;
-    delete m_sourceLanguage;
-    delete m_targetLanguage;
-    delete m_dict;
+    setBusy(false);
+
+    if (!m_service->errorString().isEmpty()) {
+        emit error(m_service->errorString());
+        return;
+    }
+
+    setTranslatedText(m_service->translation());
+    setDetectedLanguage(m_service->detectedLanguage());
 }

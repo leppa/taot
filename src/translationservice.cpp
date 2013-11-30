@@ -22,6 +22,10 @@
 
 #include "translationservice.h"
 
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QDebug>
+
 Language::Language()
     : displayName(TranslationService::tr("Unknown"))
 {}
@@ -36,8 +40,10 @@ bool Language::operator ==(const Language &other)
 }
 
 TranslationService::TranslationService(QObject *parent)
-    : QObject(parent), m_error(tr("No error"))
-{}
+    : QObject(parent), m_reply(NULL), m_error(tr("No error"))
+{
+    connect(&m_nam, SIGNAL(finished(QNetworkReply*)), SLOT(onNetworkReply(QNetworkReply*)));
+}
 
 QString TranslationService::serializeLanguageInfo(const QVariant &info) const
 {
@@ -51,8 +57,15 @@ QVariant TranslationService::deserializeLanguageInfo(const QString &info) const
 
 void TranslationService::clear()
 {
+    m_error.clear();
     m_translation.clear();
     m_detectedLanguage = Language();
+}
+
+void TranslationService::cancelTranslation()
+{
+    if (m_reply && m_reply->isRunning())
+        m_reply->abort();
 }
 
 QString TranslationService::translation() const
@@ -70,4 +83,46 @@ QString TranslationService::errorString() const
     return m_error;
 }
 
-TranslationService::~TranslationService() {}
+TranslationService::~TranslationService()
+{}
+
+bool TranslationService::checkReplyForErrors(QNetworkReply *reply)
+{
+    if (reply->error() == QNetworkReply::OperationCanceledError) {
+        // Operation was canceled by us, ignore this error.
+        reply->deleteLater();
+        return false;
+    }
+
+    if (reply->error() != QNetworkReply::NoError) {
+        qWarning() << reply->errorString();
+        m_error = reply->errorString();
+        reply->deleteLater();
+        return false;
+    }
+
+    return true;
+}
+
+void TranslationService::onNetworkReply(QNetworkReply *reply)
+{
+    if (reply != m_reply && reply->error() == QNetworkReply::OperationCanceledError) {
+        // The operation was canceled and a new request
+        // was already sent. Just ignore this case.
+        reply->deleteLater();
+        return;
+    }
+
+    Q_ASSERT(reply == m_reply);
+    m_reply = NULL;
+
+    if (!checkReplyForErrors(reply)) {
+        emit translationFinished();
+        return;
+    }
+
+    parseReply(reply->readAll());
+    reply->deleteLater();
+
+    emit translationFinished();
+}

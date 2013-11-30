@@ -125,17 +125,18 @@ QString GoogleTranslate::getLanguageName(const QVariant &info) const
     return m_langCodeToName.value(info.toString(), tr("Unknown (%1)").arg(info.toString()));
 }
 
-QNetworkRequest GoogleTranslate::getTranslationRequest(const Language &from,
-                                                       const Language &to,
-                                                       const QString &text) const
+bool GoogleTranslate::translate(const Language &from, const Language &to, const QString &text)
 {
-    QUrl url("http://translate.google.com/translate_a/t?client=q");
+    QUrl url("http://translate.google.com/translate_a/t");
+    url.addQueryItem("client", "q");
     url.addQueryItem("hl", "en");
     url.addQueryItem("sl", from.info.toString());
     url.addQueryItem("tl", to.info.toString());
     url.addQueryItem("text", text);
 
-    return QNetworkRequest(url);
+    m_reply = m_nam.get(QNetworkRequest(url));
+
+    return true;
 }
 
 bool GoogleTranslate::parseReply(const QByteArray &reply)
@@ -144,7 +145,7 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     json.reserve(reply.size());
     json.append("(").append(reply).append(")");
 
-    QScriptValue data = parseJson(json);
+    const QScriptValue data = parseJson(json);
     if (!data.isValid())
         return false;
 
