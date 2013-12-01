@@ -38,6 +38,8 @@
 #   include <QGLWidget>
 #endif
 
+#include "services/microsofttranslator.h"
+
 #define QUOTE_X(x) #x
 #define QUOTE(x) QUOTE_X(x)
 #define VERSION_STR QUOTE(VERSION)

@@ -58,6 +58,7 @@ class TranslationInterface: public QObject
 public:
     enum SupportedServices {
         GoogleTranslateService,
+        MicrosoftTranslatorService
     };
 
     explicit TranslationInterface(QObject *parent = 0);

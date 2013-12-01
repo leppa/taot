@@ -27,6 +27,7 @@
 #include "languagelistmodel.h"
 #include "dictionarymodel.h"
 #include "services/googletranslate.h"
+#include "services/microsofttranslator.h"
 
 #include <QDebug>
 
@@ -43,6 +44,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
 {
     QStringList list;
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
+    list.insert(MicrosoftTranslatorService, MicrosoftTranslator::displayName());
     m_services = new TranslationServicesModel(list, this);
 
     createService(settings.value("SelectedService", 0).toUInt());
@@ -202,6 +204,11 @@ void TranslationInterface::createService(uint id)
     delete m_serviceItem;
 
     switch (id) {
+    case MicrosoftTranslatorService:
+        m_service = new MicrosoftTranslator(this);
+        m_serviceItem = new TranslationServiceItem(MicrosoftTranslatorService,
+                                                   MicrosoftTranslator::displayName(), this);
+        break;
     case GoogleTranslateService:
     default:
         m_service = new GoogleTranslate(m_dict, this);

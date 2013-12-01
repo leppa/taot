@@ -44,8 +44,10 @@ HEADERS += \
     src/languagelistmodel.h \
     src/translationservice.h \
     src/translationservicesmodel.h \
+    src/services/apikeys.h \
     src/services/jsontranslationservice.h \
-    src/services/googletranslate.h
+    src/services/googletranslate.h \
+    src/services/microsofttranslator.h
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
@@ -57,14 +59,15 @@ SOURCES += \
     src/translationservice.cpp \
     src/translationservicesmodel.cpp \
     src/services/jsontranslationservice.cpp \
-    src/services/googletranslate.cpp
+    src/services/googletranslate.cpp \
+    src/services/microsofttranslator.cpp
 
 INCLUDEPATH += \
     src
 
 OTHER_FILES += \
     bar-descriptor.xml \
-    qml/langs.xml \
+    qml/langs.* \
     qml/harmattan/*.js \
     qml/harmattan/*.qml \
     qml/harmattan/icons/* \
@@ -98,7 +101,7 @@ symbian {
     TARGET.CAPABILITY += NetworkServices ReadUserData
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 
-    ui.sources = qml/langs.json qml/symbian/* qml/symbian/icons
+    ui.sources = qml/langs.* qml/symbian/* qml/symbian/icons
     ui.path = qml
     DEPLOYMENT += ui
 
@@ -128,7 +131,7 @@ contains(MEEGO_EDITION,harmattan) {
     DEFINES += HARMATTAN_BOOSTER
 
     target.path = /opt/$${TARGET}/bin
-    ui.files = qml/langs.json qml/harmattan/*
+    ui.files = qml/langs.* qml/harmattan/*
     ui.path = /opt/$${TARGET}/qml
     icon.files = $${TARGET}80.png
     icon.path = /usr/share/icons/hicolor/80x80/apps
