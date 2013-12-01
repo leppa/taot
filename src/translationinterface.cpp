@@ -51,8 +51,8 @@ TranslationInterface::TranslationInterface(QObject *parent)
 
     createService(settings.value("SelectedService", 0).toUInt());
 
-    connect(this, SIGNAL(sourceLanguageChanged()), SLOT(translate()));
-    connect(this, SIGNAL(targetLanguageChanged()), SLOT(translate()));
+    connect(this, SIGNAL(sourceLanguageChanged()), SLOT(retranslate()));
+    connect(this, SIGNAL(targetLanguageChanged()), SLOT(retranslate()));
 }
 
 QString TranslationInterface::version()
@@ -306,4 +306,12 @@ void TranslationInterface::onTranslationFinished()
 
     setTranslatedText(m_service->translation());
     setDetectedLanguage(m_service->detectedLanguage());
+}
+
+void TranslationInterface::retranslate()
+{
+    if (m_srcText.isEmpty())
+        return;
+
+    translate();
 }

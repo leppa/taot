@@ -122,6 +122,7 @@ private:
 
 private slots:
     void onTranslationFinished();
+    void retranslate();
 };
 
 #endif // TRANSLATIONINTERFACE_H
