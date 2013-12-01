@@ -117,16 +117,6 @@ Page {
                 }
             }
 
-            Timer {
-                id: timer
-                interval: 1500
-
-                onTriggered: {
-                    if (source.text !== "")
-                        translator.translate();
-                }
-            }
-
             TextArea {
                 id: source
 
@@ -144,7 +134,6 @@ Page {
                         return;
 
                     translator.sourceText = text;
-                    timer.restart();
                 }
             }
 
@@ -160,7 +149,6 @@ Page {
                     enabled: !translator.busy
                     onClicked: {
                         dummyFocus.focus = true;
-                        timer.stop();
                         translator.translate();
                     }
                 }
@@ -364,7 +352,7 @@ Page {
         Label {
             color: "white"
             text: translator.selectedService.name
-            font.pixelSize: privateStyle.fontSizeLarge
+            font.pixelSize: platformStyle.fontSizeLarge
             anchors {
                 left: parent.left
                 leftMargin: platformStyle.paddingLarge
