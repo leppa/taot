@@ -2,16 +2,19 @@
 
 #include "apikeys.h"
 
+#include <qplatformdefs.h>
 #include <QFile>
 #include <QCoreApplication>
 #include <QScriptValueIterator>
+
+#ifdef MEEGO_EDITION_HARMATTAN
+#   include <QDir>
+#endif
 
 QString MicrosoftTranslator::displayName()
 {
     return tr("Microsoft Translator");
 }
-
-#include <QDebug>
 
 MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     : JsonTranslationService(parent)
