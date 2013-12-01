@@ -22,12 +22,13 @@
 
 #include "googletranslate.h"
 
+#include <qplatformdefs.h>
 #include <QScriptEngine>
 #include <QScriptValue>
 #include <QScriptValueIterator>
 #include <QFile>
 #include <QXmlStreamReader>
-#include <qplatformdefs.h>
+
 #ifdef MEEGO_EDITION_HARMATTAN
 #   include <QDir>
 #endif

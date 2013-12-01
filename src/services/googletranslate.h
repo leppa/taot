@@ -47,12 +47,6 @@ public:
     bool translate(const Language &from, const Language &to, const QString &text);
     bool parseReply(const QByteArray &data);
 
-    QString errorString();
-
-signals:
-    void sourceLanguagesChanged();
-    void targetLanguagesChanged();
-
 private:
     DictionaryModel *m_dict;
     LanguageList m_sourceLanguages;
