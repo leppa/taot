@@ -28,6 +28,7 @@
 #include "dictionarymodel.h"
 #include "services/googletranslate.h"
 #include "services/microsofttranslator.h"
+#include "services/yandextranslate.h"
 
 #include <QDebug>
 
@@ -45,6 +46,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     QStringList list;
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
     list.insert(MicrosoftTranslatorService, MicrosoftTranslator::displayName());
+    list.insert(YandexTranslateService, YandexTranslate::displayName());
     m_services = new TranslationServicesModel(list, this);
 
     createService(settings.value("SelectedService", 0).toUInt());
@@ -147,8 +149,14 @@ void TranslationInterface::selectSourceLanguage(int index)
     settings.endGroup();
     emit sourceLanguageChanged();
 
-    if (m_service->targetLanguagesDependOnSourceLanguage())
+    if (m_service->targetLanguagesDependOnSourceLanguage()) {
         m_targetLanguages->setLanguageList(m_service->targetLanguages(lang));
+        if (!m_service->targetLanguages(lang).contains(m_targetLanguage->language())) {
+            const int i = m_service->targetLanguages(lang).indexOf(m_service->defaultLanguagePair()
+                                                                   .second);
+            selectTargetLanguage(i < 0 ? 0 : i);
+        }
+    }
 }
 
 void TranslationInterface::selectTargetLanguage(int index)
@@ -208,6 +216,11 @@ void TranslationInterface::createService(uint id)
         m_service = new MicrosoftTranslator(this);
         m_serviceItem = new TranslationServiceItem(MicrosoftTranslatorService,
                                                    MicrosoftTranslator::displayName(), this);
+        break;
+    case YandexTranslateService:
+        m_service = new YandexTranslate(this);
+        m_serviceItem = new TranslationServiceItem(YandexTranslateService,
+                                                   YandexTranslate::displayName(), this);
         break;
     case GoogleTranslateService:
     default:

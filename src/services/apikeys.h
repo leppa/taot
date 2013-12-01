@@ -27,5 +27,7 @@
 
 // Bing Translator
 #define BINGTRANSLATOR_API_KEY ""
+// Yandex.Translate
+#define YANDEXTRANSLATE_API_KEY ""
 
 #endif // APIKEYS_H

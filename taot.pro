@@ -47,7 +47,8 @@ HEADERS += \
     src/services/apikeys.h \
     src/services/jsontranslationservice.h \
     src/services/googletranslate.h \
-    src/services/microsofttranslator.h
+    src/services/microsofttranslator.h \
+    src/services/yandextranslate.h
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
@@ -60,7 +61,8 @@ SOURCES += \
     src/translationservicesmodel.cpp \
     src/services/jsontranslationservice.cpp \
     src/services/googletranslate.cpp \
-    src/services/microsofttranslator.cpp
+    src/services/microsofttranslator.cpp \
+    src/services/yandextranslate.cpp
 
 INCLUDEPATH += \
     src

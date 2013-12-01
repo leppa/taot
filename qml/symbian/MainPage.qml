@@ -99,10 +99,8 @@ Page {
                     subTitle: translator.sourceLanguage.displayName
 
                     onClicked: {
-                        if (fromDialog.selectedIndex < 0) {
-                            fromDialog.selectedIndex = translator.sourceLanguages
-                                                       .indexOf(translator.sourceLanguage);
-                        }
+                        fromDialog.selectedIndex = translator.sourceLanguages
+                                                   .indexOf(translator.sourceLanguage);
                         fromDialog.open();
                     }
                 }
@@ -112,10 +110,8 @@ Page {
                     subTitle: translator.targetLanguage.displayName
 
                     onClicked: {
-                        if (toDialog.selectedIndex < 0) {
-                            toDialog.selectedIndex = translator.targetLanguages
-                                                     .indexOf(translator.targetLanguage);
-                        }
+                        toDialog.selectedIndex = translator.targetLanguages
+                                                 .indexOf(translator.targetLanguage);
                         toDialog.open();
                     }
                 }
