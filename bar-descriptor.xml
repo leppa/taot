@@ -2,7 +2,7 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>name.oleksii.bb10.taot</id>
     <name>The Advanced Online Translator</name>
-    <versionNumber>0.1.4</versionNumber>
+    <versionNumber>0.2.0</versionNumber>
     <description>The Advanced Online Translator uses available online translation services to provide translations. Currently it supports only Google Translate but more services are in the plans (i.e., Bing Translate, Yandex Translate, etc.).</description>
     <icon>
         <image>icon.png</image>

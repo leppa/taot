@@ -1,6 +1,15 @@
 The Advanced Online Translator ChangeLog
 ========================================
 
+TAOT v0.2.0
+-----------
+- New translation services:
+  * Microsoft Translator (a.k.a. Bing Translator) ([issue #7][]).
+  * Yandex.Translate ([issue #8][]).
+- Inverted theme support ([issue #10][]).
+- Removed autotranslation on source text change.
+- Some bugfixes.
+
 TAOT v0.1.4
 -----------
 - Nokia N9 port ([issue #4][]).
@@ -45,5 +54,8 @@ Initial release.
 [issue #3]: https://github.com/leppa/taot/issues/3
 [issue #4]: https://github.com/leppa/taot/issues/4
 [issue #5]: https://github.com/leppa/taot/issues/5
+[issue #7]: https://github.com/leppa/taot/issues/7
+[issue #8]: https://github.com/leppa/taot/issues/8
+[issue #10]: https://github.com/leppa/taot/issues/10
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
