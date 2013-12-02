@@ -91,6 +91,9 @@ signals:
     void translatedTextChanged();
 
 public slots:
+    QVariant getSettingsValue(const QString &key) const;
+    void setSettingsValue(const QString &key, const QVariant &value);
+
     void selectService(int index);
     void selectSourceLanguage(int index);
     void selectTargetLanguage(int index);

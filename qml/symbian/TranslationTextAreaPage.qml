@@ -34,17 +34,20 @@ Page {
         text: translator.translatedText
         readOnly: true
         anchors.fill: parent
+        platformInverted: root.platformInverted
     }
 
     tools: ToolBarLayout {
         ToolButton {
             iconSource: "toolbar-back"
+            platformInverted: root.platformInverted
             onClicked: {
                 pageStack.pop();
             }
         }
         ToolButton {
             text: qsTr("Select all")
+            platformInverted: root.platformInverted
             onClicked: {
                 translation.selectAll();
             }
@@ -52,6 +55,7 @@ Page {
         ToolButton {
             text: qsTr("Copy to clipboard")
             enabled: translation.selectedText != ""
+            platformInverted: root.platformInverted
             onClicked: {
                 translation.copy();
             }

@@ -90,7 +90,7 @@ MouseArea {
                 id: pos
 
                 text: model.pos
-                color: UI.LIST_SUBTITLE_COLOR
+                color: theme.inverted ? UI.LIST_SUBTITLE_COLOR_INVERTED : UI.LIST_SUBTITLE_COLOR
                 font.pixelSize: UI.LIST_SUBTILE_SIZE
             }
             Label {
@@ -101,7 +101,7 @@ MouseArea {
                 clip: true
                 wrapMode: Text.WordWrap
                 elide: Text.ElideNone
-                color: UI.LIST_TITLE_COLOR
+                color: theme.inverted ? UI.LIST_TITLE_COLOR_INVERTED : UI.LIST_TITLE_COLOR
                 font.pixelSize: UI.LIST_TILE_SIZE
                 anchors {
                     top: pos.bottom
@@ -221,7 +221,8 @@ MouseArea {
         }
         border {
             width: 1
-            color: "#191919" /*UI.COLOR_FOREGROUND*/
+            color: theme.inverted ? "#ffffff" /*UI.COLOR_INVERTED_FOREGROUND*/
+                                  : "#191919" /*UI.COLOR_FOREGROUND*/
         }
     }
 

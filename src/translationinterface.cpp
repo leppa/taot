@@ -126,6 +126,16 @@ TranslationInterface::~TranslationInterface()
     delete m_dict;
 }
 
+QVariant TranslationInterface::getSettingsValue(const QString &key) const
+{
+    return settings.value(key);
+}
+
+void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
+{
+    settings.setValue(key, value);
+}
+
 void TranslationInterface::selectService(int index)
 {
     if (index == m_serviceItem->index() || index < 0 || index >= m_services->count())

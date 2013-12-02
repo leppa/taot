@@ -38,9 +38,11 @@ Page {
         id: servicesDialog
         titleText: qsTr("Select the translation service")
         model: translator.services
+        platformInverted: appWindow.platformInverted
         delegate: ListDelegate {
             text: model.name
             privateSelectionIndicator: selectedIndex === model.index
+            platformInverted: appWindow.platformInverted
             onClicked: {
                 selectedIndex = model.index;
                 translator.selectService(model.index);
@@ -53,9 +55,11 @@ Page {
         id: fromDialog
         titleText: qsTr("Select the source language")
         model: translator.sourceLanguages
+        platformInverted: appWindow.platformInverted
         delegate: ListDelegate {
             text: model.name
             privateSelectionIndicator: selectedIndex === model.index
+            platformInverted: appWindow.platformInverted
             onClicked: {
                 selectedIndex = model.index;
                 translator.selectSourceLanguage(model.index);
@@ -68,9 +72,11 @@ Page {
         id: toDialog
         titleText: qsTr("Select the target language")
         model: translator.targetLanguages
+        platformInverted: appWindow.platformInverted
         delegate: ListDelegate {
             text: model.name
             privateSelectionIndicator: selectedIndex === model.index
+            platformInverted: appWindow.platformInverted
             onClicked: {
                 selectedIndex = model.index;
                 translator.selectTargetLanguage(model.index);
@@ -97,6 +103,7 @@ Page {
                     width: parent.width / 2
                     title: qsTr("From");
                     subTitle: translator.sourceLanguage.displayName
+                    platformInverted: appWindow.platformInverted
 
                     onClicked: {
                         fromDialog.selectedIndex = translator.sourceLanguages
@@ -108,6 +115,7 @@ Page {
                     width: parent.width / 2
                     title: qsTr("To")
                     subTitle: translator.targetLanguage.displayName
+                    platformInverted: appWindow.platformInverted
 
                     onClicked: {
                         toDialog.selectedIndex = translator.targetLanguages
@@ -125,6 +133,7 @@ Page {
 //                text: "Welcome"
                 placeholderText: qsTr("Enter the source text...")
                 textFormat: TextEdit.PlainText
+                platformInverted: appWindow.platformInverted
 
 //                Keys.onReturnPressed: translator.translate();
 //                Keys.onEnterPressed: translator.translate();
@@ -147,6 +156,7 @@ Page {
                     width: (parent.width - parent.spacing) / 2
                     text: qsTr("Translate")
                     enabled: !translator.busy
+                    platformInverted: !appWindow.platformInverted
                     onClicked: {
                         dummyFocus.focus = true;
                         translator.translate();
@@ -155,6 +165,7 @@ Page {
                 Button {
                     width: (parent.width - parent.spacing) / 2
                     text: qsTr("Clear")
+                    platformInverted: !appWindow.platformInverted
                     onClicked: {
                         source.text = "";
                         source.forceActiveFocus();
@@ -165,8 +176,11 @@ Page {
             }
 
             BorderImage {
-                height: trans.implicitHeight + platformStyle.borderSizeMedium / 2 + 2 * platformStyle.paddingMedium
-                source: privateStyle.imagePath("qtg_fr_textfield_uneditable", false)
+                height: trans.implicitHeight
+                        + platformStyle.borderSizeMedium / 2
+                        + 2 * platformStyle.paddingMedium
+                source: privateStyle.imagePath("qtg_fr_textfield_uneditable",
+                                               appWindow.platformInverted)
                 smooth: true
                 border {
                     top: platformStyle.borderSizeMedium
@@ -185,6 +199,7 @@ Page {
                     text: translator.translatedText
                     wrapMode: TextEdit.Wrap
                     color: platformStyle.colorNormalDark
+                    platformInverted: appWindow.platformInverted
                     anchors {
                         top: parent.top
                         topMargin: platformStyle.borderSizeMedium / 4 + platformStyle.paddingMedium
@@ -217,10 +232,12 @@ Page {
                 Label {
                     font.weight: Font.Light
                     text: qsTr("Detected language:")
+                    platformInverted: appWindow.platformInverted
                 }
                 Label {
                     id: dl
                     text: translator.detectedLanguageName
+                    platformInverted: appWindow.platformInverted
                 }
 
                 states: [
@@ -302,6 +319,7 @@ Page {
             width: platformStyle.graphicSizeLarge
             height: width
             running: parent.visible
+            platformInverted: appWindow.platformInverted
             anchors.centerIn: parent
         }
 
@@ -353,6 +371,7 @@ Page {
             color: "white"
             text: translator.selectedService.name
             font.pixelSize: platformStyle.fontSizeLarge
+            platformInverted: appWindow.platformInverted
             anchors {
                 left: parent.left
                 leftMargin: platformStyle.paddingLarge
@@ -398,6 +417,7 @@ Page {
 
         header: header
         delegate: DictionaryDelegate {
+            platformInverted: appWindow.platformInverted
             onClicked: {
                 dummyFocus.focus = true;
             }
@@ -410,21 +430,35 @@ Page {
 
     tools: ToolBarLayout {
         ToolButton {
-            iconSource: Qt.resolvedUrl("icons/close.svg")
+            iconSource: Qt.resolvedUrl(platformInverted ? "icons/close_inverted.svg"
+                                                        : "icons/close.svg")
+            platformInverted: appWindow.platformInverted
             onClicked: Qt.quit();
         }
         ToolButton {
             iconSource: "toolbar-menu"
+            platformInverted: appWindow.platformInverted
             onClicked: mainMenu.open();
         }
     }
 
     Menu {
         id: mainMenu
+        platformInverted: appWindow.platformInverted
 
         MenuLayout {
             MenuItem {
+                text: qsTr("Toggle Inverted Theme")
+                platformInverted: appWindow.platformInverted
+                onClicked: {
+                    appWindow.platformInverted = !appWindow.platformInverted;
+                    translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
+                }
+            }
+
+            MenuItem {
                 text: qsTr("About")
+                platformInverted: appWindow.platformInverted
                 onClicked: aboutDialog.open();
             }
         }
@@ -436,6 +470,7 @@ Page {
         titleText: "<b>The Advanced Online Translator</b><br />v%1".arg(translator.version)
         acceptButtonText: qsTr("Ok")
         privateCloseIcon: true
+        platformInverted: appWindow.platformInverted
 
         message: "<p>Copyright &copy; 2013 <b>Oleksii Serdiuk</b> &lt;contacts[at]oleksii[dot]name&gt;</p>
 <p>&nbsp;</p>
@@ -475,6 +510,12 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
 
     Component {
         id: translationPage
-        TranslationTextAreaPage {}
+        TranslationTextAreaPage {
+            platformInverted: appWindow.platformInverted
+        }
+    }
+
+    Component.onCompleted: {
+        appWindow.platformInverted = translator.getSettingsValue("InvertedTheme");
     }
 }

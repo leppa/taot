@@ -24,6 +24,8 @@ import com.nokia.symbian 1.1
 import com.nokia.extras 1.1
 
 PageStackWindow {
+    id: appWindow
+
     initialPage: MainPage {}
 
     InfoBanner { id: banner }

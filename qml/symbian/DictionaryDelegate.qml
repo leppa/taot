@@ -26,6 +26,8 @@ import com.nokia.symbian 1.1
 MouseArea {
     id: root
 
+    property bool platformInverted: false
+
     width: ListView.view.width
     height: posDelegate.height + indicator.height / 2
 
@@ -90,6 +92,7 @@ MouseArea {
 
                 role: "SubTitle"
                 text: model.pos
+                platformInverted: root.platformInverted
             }
             ListItemText {
                 id: translations
@@ -100,6 +103,7 @@ MouseArea {
                 clip: true
                 wrapMode: Text.WordWrap
                 elide: Text.ElideNone
+                platformInverted: root.platformInverted
                 anchors {
                     top: pos.bottom
                     left: parent.left
@@ -177,6 +181,7 @@ MouseArea {
                         text: model.term
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideNone
+                        platformInverted: root.platformInverted
                         anchors {
                             baseline: revTranslations.baseline
                             left: parent.left
@@ -198,6 +203,7 @@ MouseArea {
                         text: model.translations
                         wrapMode: Text.WordWrap
                         elide: Text.ElideNone
+                        platformInverted: root.platformInverted
                         anchors {
                             left: term.right
                             leftMargin: platformStyle.paddingLarge
@@ -219,14 +225,15 @@ MouseArea {
         }
         border {
             width: 1
-            color: platformStyle.colorNormalLight
+            color: platformInverted ? platformStyle.colorNormalLightInverted
+                                    : platformStyle.colorNormalLight
         }
     }
 
     Image {
         id: indicator
 
-        source: Qt.resolvedUrl("icons/expand.png")
+        source: Qt.resolvedUrl(platformInverted ? "icons/expand_inverted.png" : "icons/expand.png")
         sourceSize {
             width: platformStyle.graphicSizeTiny
             height: platformStyle.graphicSizeTiny

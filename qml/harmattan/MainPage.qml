@@ -133,6 +133,9 @@ Page {
                     width: (parent.width - parent.spacing) / 2
                     text: qsTr("Translate")
                     enabled: !translator.busy
+                    platformStyle: ButtonStyle {
+                        inverted: !theme.inverted
+                    }
                     onClicked: {
                         dummyFocus.focus = true;
                         translator.translate();
@@ -142,6 +145,9 @@ Page {
                     width: (parent.width - parent.spacing) / 2
                     text: qsTr("Clear")
                     enabled: source.text != ""
+                    platformStyle: ButtonStyle {
+                        inverted: !theme.inverted
+                    }
                     onClicked: {
                         source.text = "";
                         source.forceActiveFocus();
@@ -414,6 +420,13 @@ Page {
 
         MenuLayout {
             MenuItem {
+                text: qsTr("Toggle Inverted Theme")
+                onClicked: {
+                    theme.inverted = !theme.inverted;
+                    translator.setSettingsValue("InvertedTheme", theme.inverted);
+                }
+            }
+            MenuItem {
                 text: qsTr("About")
                 onClicked: aboutDialog.open();
             }
@@ -463,5 +476,9 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
     Component {
         id: translationPage
         TranslationTextAreaPage {}
+    }
+
+    Component.onCompleted: {
+        theme.inverted = translator.getSettingsValue("InvertedTheme");
     }
 }
