@@ -4,17 +4,34 @@ The Advanced Online Translator
 Copyright (C) 2013 *[Oleksii Serdiuk](http://oleksii.name/)*.
 
 **The Advanced Online Translator** uses available online translation
-services to provide translations. Currently it supports only **Google
-Translate** but more services are in the plans (i.e., **Bing
-Translator**, **Yandex Translate**, etc.).
+services to provide translations.
 
-For **Google Translate** alternative and reverse translations are
-displayed for single words.
+Available translation services:
+
+ * **Google Translate** - supports translation, language detection,
+   dictionary and reverse translations for single words.
+ * **Microsoft Translator** (a.k.a. **Bing Translator**) - supports
+   translation only.
+ * **Yandex.Translate** - supports translation and language detection.
+
+More services are possible in future.
+
 
 What's New
 ----------
 
 You can check the [ChangeLog](ChangeLog.md) (updated only on releases).
+
+
+Download
+--------
+
+**The Advanced Online Translator** is available for **Nokia N9**,
+**Nokia Symbian** (Symbian^3) and **BlackBerry 10** smartphones:
+
+- [Nokia Store][nokia]
+- [BlackBerry World][bb10]
+
 
 License
 -------
@@ -32,6 +49,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
 Build Status
 ------------
 
@@ -40,6 +58,8 @@ Buld status of the `master` branch:
 - [![BuildHive Build Status][bh]][BuildHive]
 
 
+[nokia]: http://store.ovi.com/content/359493
+[bb10]: http://appworld.blackberry.com/webstore/content/21908039/
 [Travis CI]: https://travis-ci.org/leppa/taot
 [BuildHive]: https://buildhive.cloudbees.com/job/leppa/job/taot/
 [tci]: https://travis-ci.org/leppa/taot.png?branch=master
