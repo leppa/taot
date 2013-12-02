@@ -106,14 +106,12 @@ bool TranslationService::checkReplyForErrors(QNetworkReply *reply)
 
 void TranslationService::onNetworkReply(QNetworkReply *reply)
 {
-    if (reply != m_reply && reply->error() == QNetworkReply::OperationCanceledError) {
-        // The operation was canceled and a new request
-        // was already sent. Just ignore this case.
+    if (reply != m_reply) {
+        // Reply not for the latest request. Ignore it.
         reply->deleteLater();
         return;
     }
 
-    Q_ASSERT(reply == m_reply);
     m_reply = NULL;
 
     if (!checkReplyForErrors(reply)) {
