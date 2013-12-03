@@ -34,9 +34,14 @@ Language::Language(const QVariant info, const QString &name)
     : info(info), displayName(name)
 {}
 
-bool Language::operator ==(const Language &other)
+bool Language::operator ==(const Language &other) const
 {
     return info == other.info;
+}
+
+bool Language::operator <(const Language &other) const
+{
+    return displayName < other.displayName;
 }
 
 TranslationService::TranslationService(QObject *parent)

@@ -43,7 +43,6 @@ QString YandexTranslate::displayName()
 YandexTranslate::YandexTranslate(QObject *parent) :
     JsonTranslationService(parent)
 {
-    m_sourceLanguages << Language("", tr("Autodetect"));
     m_langCodeToName.insert("", tr("Autodetect"));
 
     QFile f;
@@ -89,6 +88,13 @@ YandexTranslate::YandexTranslate(QObject *parent) :
                                                           m_langCodeToName.value(pair.at(1)));
             }
         }
+    }
+
+    // Sort the languages alphabetically
+    qSort(m_sourceLanguages);
+    m_sourceLanguages.prepend(Language("", tr("Autodetect")));
+    foreach (QString key, m_targetLanguages.keys()) {
+        qSort(m_targetLanguages[key]);
     }
 
     if (m_sourceLanguages.contains(Language("", "")))

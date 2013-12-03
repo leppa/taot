@@ -37,7 +37,8 @@ struct Language
     Language();
     explicit Language(const QVariant info, const QString &name);
 
-    bool operator ==(const Language &other);
+    bool operator ==(const Language &other) const;
+    bool operator <(const Language &other) const;
 };
 typedef QPair<Language, Language> LanguagePair;
 typedef QList<Language> LanguageList;
