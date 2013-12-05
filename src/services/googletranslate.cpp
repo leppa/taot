@@ -126,6 +126,11 @@ QString GoogleTranslate::getLanguageName(const QVariant &info) const
     return m_langCodeToName.value(info.toString(), tr("Unknown (%1)").arg(info.toString()));
 }
 
+bool GoogleTranslate::canSwapLanguages(const Language first, const Language second) const
+{
+    return first.info.toString() != "auto" && second.info.toString() != "auto";
+}
+
 bool GoogleTranslate::translate(const Language &from, const Language &to, const QString &text)
 {
     QUrl url("http://translate.google.com/translate_a/t");

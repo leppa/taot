@@ -73,14 +73,17 @@ Page {
             spacing: UiConstants.ButtonSpacing
 
             Row {
-                height: childrenRect.height
+                height: fromSelector.height
+                spacing: 8 /*UI.PADDING_LARGE*/
                 anchors {
                     left: parent.left
                     right: parent.right
                 }
 
                 ListDelegate {
-                    width: parent.width / 2
+                    id: fromSelector
+
+                    width: (parent.width - swap.width - 2 * parent.spacing) / 2
                     title: qsTr("From");
                     subTitle: translator.sourceLanguage.displayName;
 
@@ -90,8 +93,22 @@ Page {
                         fromDialog.open();
                     }
                 }
+                Button {
+                    id: swap
+
+                    iconSource: theme.inverted
+                                ? "image://theme/icon-m-toolbar-refresh-white-selected"
+                                : "image://theme/icon-m-toolbar-refresh-dimmed-white"
+                    enabled: translator.canSwapLanguages
+                    visible: width != 0
+                    width: enabled ? height : 0
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        translator.swapLanguages();
+                    }
+                }
                 ListDelegate {
-                    width: parent.width / 2
+                    width: (parent.width - swap.width - 2 * parent.spacing) / 2
                     title: qsTr("To")
                     subTitle: translator.targetLanguage.displayName;
 

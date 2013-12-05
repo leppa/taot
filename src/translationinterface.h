@@ -50,6 +50,7 @@ class TranslationInterface: public QObject
     Q_PROPERTY(LanguageListModel *targetLanguages READ targetLanguages CONSTANT)
     Q_PROPERTY(LanguageItem *sourceLanguage READ sourceLanguage NOTIFY sourceLanguageChanged)
     Q_PROPERTY(LanguageItem *targetLanguage READ targetLanguage NOTIFY targetLanguageChanged)
+    Q_PROPERTY(bool canSwapLanguages READ canSwapLanguages NOTIFY canSwapLanguagesChanged)
     Q_PROPERTY(QString sourceText READ sourceText WRITE setSourceText NOTIFY sourceTextChanged)
     Q_PROPERTY(QString detectedLanguageName READ detectedLanguageName NOTIFY detectedLanguageChanged)
     Q_PROPERTY(QString translatedText READ translatedText NOTIFY translatedTextChanged)
@@ -73,6 +74,7 @@ public:
     LanguageListModel *targetLanguages() const;
     LanguageItem *sourceLanguage() const;
     LanguageItem *targetLanguage() const;
+    bool canSwapLanguages() const;
     QString sourceText() const;
     QString detectedLanguageName() const;
     QString translatedText() const;
@@ -86,6 +88,7 @@ signals:
     void busyChanged();
     void sourceLanguageChanged();
     void targetLanguageChanged();
+    void canSwapLanguagesChanged();
     void sourceTextChanged();
     void detectedLanguageChanged();
     void translatedTextChanged();
@@ -97,6 +100,7 @@ public slots:
     void selectService(int index);
     void selectSourceLanguage(int index);
     void selectTargetLanguage(int index);
+    void swapLanguages();
     void setSourceText(const QString &sourceText);
     void translate();
 

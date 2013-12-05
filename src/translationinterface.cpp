@@ -53,6 +53,8 @@ TranslationInterface::TranslationInterface(QObject *parent)
 
     connect(this, SIGNAL(sourceLanguageChanged()), SLOT(retranslate()));
     connect(this, SIGNAL(targetLanguageChanged()), SLOT(retranslate()));
+    connect(this, SIGNAL(sourceLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
+    connect(this, SIGNAL(targetLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
 }
 
 QString TranslationInterface::version()
@@ -93,6 +95,11 @@ LanguageItem *TranslationInterface::sourceLanguage() const
 LanguageItem *TranslationInterface::targetLanguage() const
 {
     return m_targetLanguage;
+}
+
+bool TranslationInterface::canSwapLanguages() const
+{
+    return m_service->canSwapLanguages(m_sourceLanguage->language(), m_targetLanguage->language());
 }
 
 QString TranslationInterface::sourceText() const
@@ -182,6 +189,14 @@ void TranslationInterface::selectTargetLanguage(int index)
     settings.setValue("Info", m_service->serializeLanguageInfo(lang.info));
     settings.endGroup();
     emit targetLanguageChanged();
+}
+
+void TranslationInterface::swapLanguages()
+{
+    resetTranslation();
+    const Language oldsrc = m_sourceLanguage->language();
+    selectSourceLanguage(m_sourceLanguages->indexOf(m_targetLanguage->language()));
+    selectTargetLanguage(m_targetLanguages->indexOf(oldsrc));
 }
 
 void TranslationInterface::setSourceText(const QString &sourceText)

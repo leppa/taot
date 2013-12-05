@@ -145,6 +145,15 @@ QString YandexTranslate::getLanguageName(const QVariant &info) const
     return m_langCodeToName.value(info.toString(), tr("Unknown (%1)").arg(info.toString()));
 }
 
+bool YandexTranslate::canSwapLanguages(const Language first, const Language second) const
+{
+    if (first.info.toString().isEmpty() || second.info.toString().isEmpty())
+        return false;
+
+    return m_sourceLanguages.contains(second)
+           && m_targetLanguages.value(second.info.toString()).contains(first);
+}
+
 bool YandexTranslate::translate(const Language &from, const Language &to, const QString &text)
 {
     QString lang;

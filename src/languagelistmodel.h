@@ -63,6 +63,8 @@ public:
     void setLanguageList(const LanguageList &list);
     Language get(int index) const;
 
+    int indexOf(const Language language) const;
+
 public slots:
     int indexOf(LanguageItem *language) const;
 

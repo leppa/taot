@@ -102,6 +102,11 @@ QString MicrosoftTranslator::getLanguageName(const QVariant &info) const
     return m_langCodeToName.value(info.toString(), tr("Unknown (%1)").arg(info.toString()));
 }
 
+bool MicrosoftTranslator::canSwapLanguages(const Language first, const Language second) const
+{
+    return !first.info.toString().isEmpty() && !second.info.toString().isEmpty();
+}
+
 bool MicrosoftTranslator::translate(const Language &from, const Language &to, const QString &text)
 {
     if (m_reply && m_reply->isRunning())

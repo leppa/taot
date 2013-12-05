@@ -98,7 +98,12 @@ Language LanguageListModel::get(int index) const
     return m_languages.at(index);
 }
 
+int LanguageListModel::indexOf(const Language language) const
+{
+    return m_languages.indexOf(language);
+}
+
 int LanguageListModel::indexOf(LanguageItem *language) const
 {
-    return m_languages.indexOf(language->language());
+    return indexOf(language->language());
 }

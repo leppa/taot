@@ -97,10 +97,13 @@ Page {
 
             Row {
                 width: parent.width
-                height: childrenRect.height
+                height: fromSelector.height
+                spacing: platformStyle.paddingSmall
 
                 SelectionListItem {
-                    width: parent.width / 2
+                    id: fromSelector
+
+                    width: (parent.width - swap.width - 2 * parent.spacing) / 2
                     title: qsTr("From");
                     subTitle: translator.sourceLanguage.displayName
                     platformInverted: appWindow.platformInverted
@@ -111,8 +114,30 @@ Page {
                         fromDialog.open();
                     }
                 }
+                Button {
+                    id: swap
+
+                    iconSource: Qt.resolvedUrl(appWindow.platformInverted
+                                               ? "icons/swap_inverted.png"
+                                               : "icons/swap.png")
+                    enabled: translator.canSwapLanguages
+                    visible: width != 0
+                    width: enabled ? implicitWidth : 0
+                    platformInverted: appWindow.platformInverted
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        translator.swapLanguages();
+                    }
+
+                    Behavior on width {
+                        NumberAnimation {
+                            duration: 200
+                            easing.type: Easing.InOutQuad
+                        }
+                    }
+                }
                 SelectionListItem {
-                    width: parent.width / 2
+                    width: (parent.width - swap.width - 2 * parent.spacing) / 2
                     title: qsTr("To")
                     subTitle: translator.targetLanguage.displayName
                     platformInverted: appWindow.platformInverted
