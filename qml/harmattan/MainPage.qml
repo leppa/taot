@@ -458,14 +458,21 @@ Page {
 
         message: "<p>Copyright &copy; 2013 <b>Oleksii Serdiuk</b> &lt;contacts[at]oleksii[dot]name&gt;</p>
 <p>&nbsp;</p>
-<p>The Advanced Online Translator uses available online translation
-services to provide translations. Currently it supports only Google
-Translate but more services are in the plans (i.e., Bing Translate,
-Yandex Translate, etc.).</p>
 
-<p>For Google Translate alternative and reverse translations are displayed
-for single words.</p>
+<p>The Advanced Online Translator uses available online translation
+services to provide translations.</p>
+
+<p>Available translation services:<ul>
+<li><b>Google Translate</b> - supports translation, language detection,
+dictionary and reverse translations for single words.</li>
+<li><b>Microsoft Translator</b> (a.k.a. <b>Bing Translator</b>) - supports
+translation only.</li>
+<li><b>Yandex.Translate</b> - supports translation and language detection.</li>
+</ul></p>
+
+<p>More services are possible in future.</p>
 <p>&nbsp;</p>
+
 <p>This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
