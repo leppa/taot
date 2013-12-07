@@ -23,16 +23,11 @@
 #include "yandextranslate.h"
 #include "apikeys.h"
 
-#include <qplatformdefs.h>
 #include <QFile>
 #include <QStringList>
 #include <QSslCertificate>
 #include <QCoreApplication>
 #include <QScriptValueIterator>
-
-#ifdef MEEGO_EDITION_HARMATTAN
-#   include <QDir>
-#endif
 
 QString YandexTranslate::displayName()
 {
@@ -56,15 +51,9 @@ YandexTranslate::YandexTranslate(QObject *parent) :
     cacerts.append(cert);
     m_sslConfiguration.setCaCertificates(cacerts);
 
-#ifdef Q_OS_BLACKBERRY
-    f.setFileName(QCoreApplication::applicationDirPath() + QLatin1String("/qml/langs.yandex.json"));
-#elif defined(MEEGO_EDITION_HARMATTAN)
-    QDir dir(QCoreApplication::applicationDirPath());
-    dir.cdUp();
-    f.setFileName(dir.filePath(QLatin1String("qml/langs.yandex.json")));
-#else
-    f.setFileName(QLatin1String("qml/langs.yandex.json"));
-#endif
+    // TODO: Download actual list from
+    // https://translate.yandex.net/api/v1.5/tr.json/getLangs
+    f.setFileName(QLatin1String("://langs/yandex.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
         QScriptValue data = parseJson(f.readAll());
         f.close();

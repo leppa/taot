@@ -2,4 +2,9 @@
     <qresource prefix="/cacertificates">
         <file>certum.ca.pem</file>
     </qresource>
+    <qresource prefix="/">
+        <file>langs/google.json</file>
+        <file>langs/ms.json</file>
+        <file>langs/yandex.json</file>
+    </qresource>
 </RCC>

@@ -23,9 +23,6 @@
     <action>access_internet</action>
     <asset path="taot" type="Qnx/Elf" entry="true">taot</asset>
     <asset path="%SRC_DIR%/icon.png">icon.png</asset>
-    <asset path="%SRC_DIR%/qml/langs.json">qml/langs.json</asset>
-    <asset path="%SRC_DIR%/qml/langs.ms.json">qml/langs.ms.json</asset>
-    <asset path="%SRC_DIR%/qml/langs.yandex.json">qml/langs.yandex.json</asset>
     <asset path="%SRC_DIR%/qml/symbian">qml</asset>
     <asset path="%SRC_DIR%/3rdparty/bb10-qt-components/imports">imports</asset>
 </qnx>

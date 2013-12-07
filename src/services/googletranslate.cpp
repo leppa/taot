@@ -22,16 +22,11 @@
 
 #include "googletranslate.h"
 
-#include <qplatformdefs.h>
 #include <QScriptEngine>
 #include <QScriptValue>
 #include <QScriptValueIterator>
 #include <QFile>
 #include <QXmlStreamReader>
-
-#ifdef MEEGO_EDITION_HARMATTAN
-#   include <QDir>
-#endif
 
 QString GoogleTranslate::displayName()
 {
@@ -44,16 +39,7 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
 {
     // TODO: Download actual list from
     // http://translate.googleapis.com/translate_a/l?client=q&hl=en
-    QFile f;
-#ifdef Q_OS_BLACKBERRY
-    f.setFileName(QCoreApplication::applicationDirPath() + QLatin1String("/qml/langs.json"));
-#elif defined(MEEGO_EDITION_HARMATTAN)
-    QDir dir(QCoreApplication::applicationDirPath());
-    dir.cdUp();
-    f.setFileName(dir.filePath(QLatin1String("qml/langs.json")));
-#else
-    f.setFileName(QLatin1String("qml/langs.json"));
-#endif
+    QFile f(QLatin1String("://langs/google.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
         QScriptValue data = parseJson(f.readAll());
         f.close();

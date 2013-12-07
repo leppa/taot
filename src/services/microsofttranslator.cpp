@@ -2,14 +2,9 @@
 
 #include "apikeys.h"
 
-#include <qplatformdefs.h>
 #include <QFile>
 #include <QCoreApplication>
 #include <QScriptValueIterator>
-
-#ifdef MEEGO_EDITION_HARMATTAN
-#   include <QDir>
-#endif
 
 QString MicrosoftTranslator::displayName()
 {
@@ -28,16 +23,7 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     // TODO: Download actual list from
     // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguagesForTranslate
     // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguageNames
-    QFile f;
-#ifdef Q_OS_BLACKBERRY
-    f.setFileName(QCoreApplication::applicationDirPath() + QLatin1String("/qml/langs.ms.json"));
-#elif defined(MEEGO_EDITION_HARMATTAN)
-    QDir dir(QCoreApplication::applicationDirPath());
-    dir.cdUp();
-    f.setFileName(dir.filePath(QLatin1String("qml/langs.ms.json")));
-#else
-    f.setFileName(QLatin1String("qml/langs.ms.json"));
-#endif
+    QFile f(QLatin1String("://langs/ms.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
         QScriptValue data = parseJson(f.readAll());
         f.close();
