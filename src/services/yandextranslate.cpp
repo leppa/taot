@@ -25,6 +25,8 @@
 
 #include <qplatformdefs.h>
 #include <QFile>
+#include <QStringList>
+#include <QSslCertificate>
 #include <QCoreApplication>
 #include <QScriptValueIterator>
 
@@ -37,15 +39,23 @@ QString YandexTranslate::displayName()
     return tr("Yandex.Translate");
 }
 
-#include <QDebug>
-#include <QStringList>
-
 YandexTranslate::YandexTranslate(QObject *parent) :
     JsonTranslationService(parent)
 {
     m_langCodeToName.insert("", tr("Autodetect"));
 
     QFile f;
+
+    f.setFileName("://cacertificates/certum.ca.pem");
+    f.open(QFile::ReadOnly);
+    QSslCertificate cert(f.readAll());
+    f.close();
+
+    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
+    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
+    cacerts.append(cert);
+    m_sslConfiguration.setCaCertificates(cacerts);
+
 #ifdef Q_OS_BLACKBERRY
     f.setFileName(QCoreApplication::applicationDirPath() + QLatin1String("/qml/langs.yandex.json"));
 #elif defined(MEEGO_EDITION_HARMATTAN)
@@ -167,7 +177,10 @@ bool YandexTranslate::translate(const Language &from, const Language &to, const 
     url.addQueryItem("options", "1");
     url.addQueryItem("text", text);
 
-    m_reply = m_nam.get(QNetworkRequest(url));
+    QNetworkRequest request(url);
+    request.setSslConfiguration(m_sslConfiguration);
+
+    m_reply = m_nam.get(request);
 
     return true;
 }

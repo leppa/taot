@@ -25,6 +25,8 @@
 
 #include "jsontranslationservice.h"
 
+#include <QSslConfiguration>
+
 class YandexTranslate: public JsonTranslationService
 {
     Q_OBJECT
@@ -48,6 +50,7 @@ public:
     bool parseReply(const QByteArray &reply);
 
 private:
+    QSslConfiguration m_sslConfiguration;
     LanguageList m_sourceLanguages;
     QHash<QString, LanguageList> m_targetLanguages;
     LanguagePair m_defaultLanguagePair;

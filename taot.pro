@@ -67,6 +67,9 @@ SOURCES += \
 INCLUDEPATH += \
     src
 
+RESOURCES += \
+    data/data.qrc
+
 OTHER_FILES += \
     bar-descriptor.xml \
     qml/langs.* \

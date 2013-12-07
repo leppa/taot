@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/cacertificates">
+        <file>certum.ca.pem</file>
+    </qresource>
+</RCC>
