@@ -47,6 +47,7 @@ public:
     bool canSwapLanguages(const Language first, const Language second) const;
 
     bool translate(const Language &from, const Language &to, const QString &text);
+    bool checkReplyForErrors(QNetworkReply *reply);
     bool parseReply(const QByteArray &reply);
 
 private:

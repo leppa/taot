@@ -185,6 +185,27 @@ bool YandexTranslate::translate(const Language &from, const Language &to, const 
     return true;
 }
 
+bool YandexTranslate::checkReplyForErrors(QNetworkReply *reply)
+{
+    switch (reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt()) {
+    case 401:
+    case 402:
+    case 403:
+    case 404:
+    case 413:
+    case 422:
+    case 501:
+        QString json;
+        json.reserve(reply->size());
+        json.append("(").append(reply->readAll()).append(")");
+        QScriptValue data = parseJson(json);
+        m_error = data.property("message").toString();
+        return false;
+    }
+
+    return JsonTranslationService::checkReplyForErrors(reply);
+}
+
 bool YandexTranslate::parseReply(const QByteArray &reply)
 {
     QString json;
