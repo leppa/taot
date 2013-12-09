@@ -443,6 +443,11 @@ Page {
                     translator.setSettingsValue("InvertedTheme", theme.inverted);
                 }
             }
+            // TODO: Remove this after 01.01.2014.
+            MenuItem {
+                text: qsTr("Important Information")
+                onClicked: pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"));
+            }
             MenuItem {
                 text: qsTr("About")
                 onClicked: aboutDialog.open();
@@ -485,6 +490,33 @@ GNU General Public License for more details.</p>
 
 <p>You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
+    }
+
+    // TODO: Remove this after 01.01.2014.
+    Rectangle {
+        color: "red"
+        height: 51 /*UI.BUTTON_HEIGHT*/
+        visible: translator.getSettingsValue("displayNokiaStoreNotice")
+        anchors {
+            left: parent.left
+            bottom: parent.bottom
+            right: parent.right
+        }
+
+        Label {
+            text: qsTr("IMPORTANT INFORMATION! PLEASE, READ!")
+            color: "white"
+            anchors.centerIn: parent
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"));
+                parent.visible = false;
+                translator.setSettingsValue("displayNokiaStoreNotice", false);
+            }
+        }
     }
 
     Translator {

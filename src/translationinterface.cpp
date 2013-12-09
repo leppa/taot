@@ -30,6 +30,7 @@
 #include "services/microsofttranslator.h"
 #include "services/yandextranslate.h"
 
+#include <qplatformdefs.h>
 #include <QDebug>
 
 TranslationInterface::TranslationInterface(QObject *parent)
@@ -55,6 +56,12 @@ TranslationInterface::TranslationInterface(QObject *parent)
     connect(this, SIGNAL(targetLanguageChanged()), SLOT(retranslate()));
     connect(this, SIGNAL(sourceLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
     connect(this, SIGNAL(targetLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
+
+    // TODO: Remove this after 01.01.2014.
+#if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
+    if (!settings.contains("displayNokiaStoreNotice"))
+        settings.setValue("displayNokiaStoreNotice", true);
+#endif
 }
 
 QString TranslationInterface::version()

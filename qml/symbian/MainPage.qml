@@ -480,7 +480,14 @@ Page {
                     translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
                 }
             }
-
+            // TODO: Remove this after 01.01.2014.
+            MenuItem {
+                text: qsTr("Important Information")
+                visible: showNokiaStoreNotice
+                platformInverted: appWindow.platformInverted
+                onClicked: pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"),
+                                          { "platformInverted": appWindow.platformInverted });
+            }
             MenuItem {
                 text: qsTr("About")
                 platformInverted: appWindow.platformInverted
@@ -528,10 +535,36 @@ GNU General Public License for more details.</p>
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
     }
 
+    // TODO: Remove this after 01.01.2014.
+    Rectangle {
+        color: "red"
+        height: privateStyle.buttonSize
+        visible: showNokiaStoreNotice && translator.getSettingsValue("displayNokiaStoreNotice")
+        anchors {
+            left: parent.left
+            bottom: parent.bottom
+            right: parent.right
+        }
+
+        Label {
+            text: qsTr("IMPORTANT INFORMATION! PLEASE, READ!")
+            color: "white"
+            anchors.centerIn: parent
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"),
+                               { "platformInverted": appWindow.platformInverted });
+                parent.visible = false;
+                translator.setSettingsValue("displayNokiaStoreNotice", false);
+            }
+        }
+    }
+
     Translator {
         id: translator
-
-//        service: "Yandex"
 
         onError: {
             console.debug(errorString);
