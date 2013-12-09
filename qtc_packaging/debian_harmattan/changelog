@@ -1,3 +1,12 @@
+taot (0.2.1) unstable; urgency=low
+  * Support for language swap.
+  * Yandex.Translate: Fixed SSL handshake error due to a missing CA
+    certificate.
+  * Yandex.Translate: Added error handling.
+  * Yandex.Translate: Sort languages by name.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Tue, 10 Dec 2013 00:43:16 +0100
+
 taot (0.2.0) unstable; urgency=low
   * New translation services:
     - Microsoft Translator (a.k.a. Bing Translator).

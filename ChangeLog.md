@@ -1,6 +1,14 @@
 The Advanced Online Translator ChangeLog
 ========================================
 
+TAOT v0.2.1
+-----------
+- Support for language swap.
+- Yandex.Translate: Fixed SSL handshake error due to a missing CA
+  certificate.
+- Yandex.Translate: Added error handling.
+- Yandex.Translate: Sort languages by name.
+
 TAOT v0.2.0
 -----------
 - New translation services:
