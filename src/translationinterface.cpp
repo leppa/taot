@@ -133,9 +133,10 @@ TranslationInterface::~TranslationInterface()
     delete m_dict;
 }
 
-QVariant TranslationInterface::getSettingsValue(const QString &key) const
+// HACK: We return a QString here, else JavaScript treats `false` as undefined value.
+QString TranslationInterface::getSettingsValue(const QString &key) const
 {
-    return settings.value(key);
+    return settings.value(key).toString();
 }
 
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
