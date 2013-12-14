@@ -548,7 +548,9 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
     // TODO: Remove this after 01.01.2014.
     Rectangle {
         color: "red"
-        height: privateStyle.buttonSize
+        height: Math.max(privateStyle.buttonSize,
+                         iil.implicitHeight
+                         + privateStyle.buttonSize - platformStyle.graphicSizeSmall)
         visible: showNokiaStoreNotice && translator.getSettingsValue("displayNokiaStoreNotice")
         anchors {
             left: parent.left
@@ -557,9 +559,13 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
         }
 
         Label {
+            id: iil
             text: qsTr("IMPORTANT INFORMATION! PLEASE, READ!")
             color: "white"
-            anchors.centerIn: parent
+            wrapMode: Text.Wrap
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.fill: parent
         }
 
         MouseArea {

@@ -507,7 +507,8 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
     // TODO: Remove this after 01.01.2014.
     Rectangle {
         color: "red"
-        height: 51 /*UI.BUTTON_HEIGHT*/
+        height: Math.max(51 /*UI.BUTTON_HEIGHT*/,
+                         iil.implicitHeight + 2 * 10 /*UI.BUTTON_LABEL_MARGIN*/)
         visible: translator.getSettingsValue("displayNokiaStoreNotice")
         anchors {
             left: parent.left
@@ -516,9 +517,13 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</p>"
         }
 
         Label {
+            id: iil
             text: qsTr("IMPORTANT INFORMATION! PLEASE, READ!")
             color: "white"
-            anchors.centerIn: parent
+            wrapMode: Text.Wrap
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.fill: parent
         }
 
         MouseArea {

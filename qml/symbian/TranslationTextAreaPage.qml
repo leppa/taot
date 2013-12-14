@@ -53,7 +53,7 @@ Page {
             }
         }
         ToolButton {
-            text: qsTr("Copy to clipboard")
+            text: qsTr("Copy")
             enabled: translation.selectedText != ""
             platformInverted: root.platformInverted
             onClicked: {

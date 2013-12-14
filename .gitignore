@@ -6,6 +6,7 @@
 /ABLD.BAT
 /Makefile*
 /bld.inf
+/l10n/*.qm
 /moc/
 /obj/
 /rcc/

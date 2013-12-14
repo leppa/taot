@@ -62,6 +62,16 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
+    const QString lc = QLocale().name();
+    // Load Qt's translation
+    QTranslator qtTr;
+    if (qtTr.load("qt_" + lc, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        app->installTranslator(&qtTr);
+    // Load TAOT's translation
+    QTranslator tr;
+    if (tr.load("taot_" + lc, ":/l10n"))
+        app->installTranslator(&tr);
+
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
     qmlRegisterType<TranslationServiceItem>();
     qmlRegisterType<TranslationServicesModel>();
