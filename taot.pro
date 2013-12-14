@@ -75,6 +75,9 @@ RESOURCES += \
     data/data.qrc \
     l10n/l10n.qrc
 
+TRANSLATIONS += \
+    l10n/taot_uk.ts \
+
 translate_hack {
     SOURCES += \
         qml/harmattan/*.qml \
