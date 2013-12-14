@@ -6,15 +6,16 @@ Copyright (C) 2013 *[Oleksii Serdiuk](http://oleksii.name/)*.
 **The Advanced Online Translator** uses available online translation
 services to provide translations.
 
-Available translation services:
+Currently supported services:
 
  * **Google Translate** - supports translation, language detection,
    dictionary and reverse translations for single words.
  * **Microsoft Translator** (a.k.a. **Bing Translator**) - supports
    translation only.
  * **Yandex.Translate** - supports translation and language detection.
+ * **Yandex.Dictionaries** - only dictionary is supported.
 
-More services are possible in future.
+More services might be added in future.
 
 
 What's New

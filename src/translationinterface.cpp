@@ -29,6 +29,7 @@
 #include "services/googletranslate.h"
 #include "services/microsofttranslator.h"
 #include "services/yandextranslate.h"
+#include "services/yandexdictionaries.h"
 
 #include <qplatformdefs.h>
 #include <QDebug>
@@ -48,6 +49,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
     list.insert(MicrosoftTranslatorService, MicrosoftTranslator::displayName());
     list.insert(YandexTranslateService, YandexTranslate::displayName());
+    list.insert(YandexDictionariesService, YandexDictionaries::displayName());
     m_services = new TranslationServicesModel(list, this);
 
     createService(settings.value("SelectedService", 0).toUInt());
@@ -254,6 +256,11 @@ void TranslationInterface::createService(uint id)
         m_service = new YandexTranslate(this);
         m_serviceItem = new TranslationServiceItem(YandexTranslateService,
                                                    YandexTranslate::displayName(), this);
+        break;
+    case YandexDictionariesService:
+        m_service = new YandexDictionaries(m_dict, this);
+        m_serviceItem = new TranslationServiceItem(YandexDictionariesService,
+                                                   YandexDictionaries::displayName(), this);
         break;
     case GoogleTranslateService:
     default:

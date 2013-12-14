@@ -23,10 +23,6 @@
 #include "yandextranslate.h"
 #include "apikeys.h"
 
-#include <QFile>
-#include <QStringList>
-#include <QSslCertificate>
-#include <QCoreApplication>
 #include <QScriptValueIterator>
 
 QString YandexTranslate::displayName()
@@ -35,78 +31,11 @@ QString YandexTranslate::displayName()
 }
 
 YandexTranslate::YandexTranslate(QObject *parent) :
-    JsonTranslationService(parent)
+    YandexTranslationService(parent)
 {
-    m_langCodeToName.insert("", tr("Autodetect"));
-
-    QFile f;
-
-    f.setFileName("://cacertificates/certum.ca.pem");
-    f.open(QFile::ReadOnly);
-    QSslCertificate cert(f.readAll());
-    f.close();
-
-    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
-    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
-    cacerts.append(cert);
-    m_sslConfiguration.setCaCertificates(cacerts);
-
     // TODO: Download actual list from
     // https://translate.yandex.net/api/v1.5/tr.json/getLangs
-    f.setFileName(QLatin1String("://langs/yandex.json"));
-    if (f.open(QFile::Text | QFile::ReadOnly)) {
-        QScriptValue data = parseJson(f.readAll());
-        f.close();
-        if (!data.isError()) {
-            QScriptValueIterator langs(data.property("langs"));
-            while (langs.hasNext()) {
-                langs.next();
-                const QString code = langs.name();
-                const QString name = langs.value().toString();
-
-                m_langCodeToName.insert(code, name);
-            }
-
-            QScriptValueIterator dirs(data.property("dirs"));
-            QSet<QString> duplicates;
-            while (dirs.hasNext()) {
-                dirs.next();
-                if (dirs.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-
-                const QStringList pair = dirs.value().toString().split("-");
-
-                if (!duplicates.contains(pair.at(0))) {
-                    const QString code = pair.at(0);
-                    const QString name = m_langCodeToName.value(pair.at(0));
-                    m_sourceLanguages << Language(code, name);
-                    m_targetLanguages[""] << Language(code, name);
-                    duplicates.insert(pair.at(0));
-                }
-                m_targetLanguages[pair.at(0)] << Language(pair.at(1),
-                                                          m_langCodeToName.value(pair.at(1)));
-            }
-        }
-    }
-
-    // Sort the languages alphabetically
-    qSort(m_sourceLanguages);
-    m_sourceLanguages.prepend(Language("", tr("Autodetect")));
-    foreach (QString key, m_targetLanguages.keys()) {
-        qSort(m_targetLanguages[key]);
-    }
-
-    if (m_sourceLanguages.contains(Language("", "")))
-        m_defaultLanguagePair.first = Language("", m_langCodeToName.value(""));
-    else
-        m_defaultLanguagePair.first = m_sourceLanguages.first();
-
-    if (m_targetLanguages.value(m_defaultLanguagePair.first.info
-                                .toString()).contains(Language("en", "")))
-        m_defaultLanguagePair.second = Language("en", m_langCodeToName.value("en"));
-    else
-        m_defaultLanguagePair.second = m_targetLanguages.value(m_defaultLanguagePair.first.info
-                                                               .toString()).first();
+    loadLanguages(QLatin1String("://langs/yandex.translate.json"));
 }
 
 QString YandexTranslate::uid() const
@@ -114,43 +43,14 @@ QString YandexTranslate::uid() const
     return "YandexTranslate";
 }
 
-bool YandexTranslate::targetLanguagesDependOnSourceLanguage() const
-{
-    return true;
-}
-
 bool YandexTranslate::supportsDictionary() const
 {
     return false;
 }
 
-LanguageList YandexTranslate::sourceLanguages() const
-{
-    return m_sourceLanguages;
-}
-
-LanguageList YandexTranslate::targetLanguages(const Language &sourceLanguage) const
-{
-    return m_targetLanguages.value(sourceLanguage.info.toString());
-}
-
 LanguagePair YandexTranslate::defaultLanguagePair() const
 {
-    return LanguagePair(Language("", "Autodetect"), Language("en", "English"));
-}
-
-QString YandexTranslate::getLanguageName(const QVariant &info) const
-{
-    return m_langCodeToName.value(info.toString(), tr("Unknown (%1)").arg(info.toString()));
-}
-
-bool YandexTranslate::canSwapLanguages(const Language first, const Language second) const
-{
-    if (first.info.toString().isEmpty() || second.info.toString().isEmpty())
-        return false;
-
-    return m_sourceLanguages.contains(second)
-           && m_targetLanguages.value(second.info.toString()).contains(first);
+    return LanguagePair(Language("", getLanguageName("")), Language("en", getLanguageName("en")));
 }
 
 bool YandexTranslate::translate(const Language &from, const Language &to, const QString &text)
@@ -174,27 +74,6 @@ bool YandexTranslate::translate(const Language &from, const Language &to, const 
     return true;
 }
 
-bool YandexTranslate::checkReplyForErrors(QNetworkReply *reply)
-{
-    switch (reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt()) {
-    case 401:
-    case 402:
-    case 403:
-    case 404:
-    case 413:
-    case 422:
-    case 501:
-        QString json;
-        json.reserve(reply->size());
-        json.append("(").append(reply->readAll()).append(")");
-        QScriptValue data = parseJson(json);
-        m_error = data.property("message").toString();
-        return false;
-    }
-
-    return JsonTranslationService::checkReplyForErrors(reply);
-}
-
 bool YandexTranslate::parseReply(const QByteArray &reply)
 {
     QString json;
@@ -204,11 +83,6 @@ bool YandexTranslate::parseReply(const QByteArray &reply)
     QScriptValue data = parseJson(json);
     if (!data.isValid())
         return false;
-
-    if (data.property("code").toInt32() != 200) {
-        m_error = data.property("message").toString();
-        return false;
-    }
 
     if (data.property("detected").isObject()) {
         const QString detected = data.property("detected").property("lang").toString();

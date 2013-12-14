@@ -5,6 +5,7 @@
     <qresource prefix="/">
         <file>langs/google.json</file>
         <file>langs/ms.json</file>
-        <file>langs/yandex.json</file>
+        <file>langs/yandex.dictionaries.json</file>
+        <file>langs/yandex.translate.json</file>
     </qresource>
 </RCC>

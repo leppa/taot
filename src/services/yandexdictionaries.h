@@ -20,16 +20,33 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef APIKEYS_H
-#define APIKEYS_H
+#ifndef YANDEXDICTIONARIES_H
+#define YANDEXDICTIONARIES_H
 
-// Specify your API keys and application IDs in this file
+#include "yandextranslationservice.h"
 
-// Bing Translator
-#define BINGTRANSLATOR_API_KEY ""
-// Yandex.Translate
-#define YANDEXTRANSLATE_API_KEY ""
-// Yandex.Dictionary
-#define YANDEXDICTIONARIES_API_KEY ""
+#include <QSslConfiguration>
 
-#endif // APIKEYS_H
+class DictionaryModel;
+class YandexDictionaries: public YandexTranslationService
+{
+    Q_OBJECT
+
+public:
+    static QString displayName();
+
+    explicit YandexDictionaries(DictionaryModel *dict, QObject *parent = 0);
+
+    QString uid() const;
+    bool supportsDictionary() const;
+
+    LanguagePair defaultLanguagePair() const;
+
+    bool translate(const Language &from, const Language &to, const QString &text);
+    bool parseReply(const QByteArray &reply);
+
+private:
+    DictionaryModel *m_dict;
+};
+
+#endif // YANDEXDICTIONARIES_H

@@ -38,9 +38,14 @@ QString DictionaryPos::pos() const
     return m_pos;
 }
 
-QString DictionaryPos::translations() const
+QString DictionaryPos::translations(const QString separator) const
 {
-    return m_translations.join(tr(", ", "Separator for joining string lists (don't forget space after comma)."));
+    return m_translations.join(separator);
+}
+
+QStringList &DictionaryPos::translations()
+{
+    return m_translations;
 }
 
 ReverseTranslationsModel *DictionaryPos::reverseTranslations() const
@@ -75,7 +80,8 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
     case PosRole:
         return m_dict.at(index.row()).pos();
     case TranslationsRole:
-        return m_dict.at(index.row()).translations();
+        return m_dict.at(index.row()).translations(tr(", ", "Separator for joining string lists"
+                                                            " (don't forget space after comma)."));
     case ReverseTranslationsRole:
         return QVariant::fromValue(m_dict.at(index.row()).reverseTranslations());
     }

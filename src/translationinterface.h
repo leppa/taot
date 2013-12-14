@@ -60,7 +60,8 @@ public:
     enum SupportedServices {
         GoogleTranslateService,
         MicrosoftTranslatorService,
-        YandexTranslateService
+        YandexTranslateService,
+        YandexDictionariesService
     };
 
     explicit TranslationInterface(QObject *parent = 0);

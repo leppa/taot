@@ -48,7 +48,9 @@ HEADERS += \
     src/services/jsontranslationservice.h \
     src/services/googletranslate.h \
     src/services/microsofttranslator.h \
-    src/services/yandextranslate.h
+    src/services/yandextranslationservice.h \
+    src/services/yandextranslate.h \
+    src/services/yandexdictionaries.h
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
@@ -62,7 +64,9 @@ SOURCES += \
     src/services/jsontranslationservice.cpp \
     src/services/googletranslate.cpp \
     src/services/microsofttranslator.cpp \
-    src/services/yandextranslate.cpp
+    src/services/yandextranslationservice.cpp \
+    src/services/yandextranslate.cpp \
+    src/services/yandexdictionaries.cpp
 
 INCLUDEPATH += \
     src
@@ -72,7 +76,8 @@ RESOURCES += \
 
 OTHER_FILES += \
     bar-descriptor.xml \
-    data/langs.* \
+    data/*.pem \
+    data/langs/*.json \
     qml/harmattan/*.js \
     qml/harmattan/*.qml \
     qml/harmattan/icons/* \

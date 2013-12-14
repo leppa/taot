@@ -36,10 +36,11 @@ class DictionaryPos
     Q_DECLARE_TR_FUNCTIONS(DictionaryPos)
 
 public:
-    DictionaryPos(const QString &pos, const QStringList &translations);
+    DictionaryPos(const QString &pos, const QStringList &translations = QStringList());
 
     QString pos() const;
-    QString translations() const;
+    QString translations(const QString separator) const;
+    QStringList &translations();
     ReverseTranslationsModel *reverseTranslations() const;
 
 private:

@@ -510,12 +510,13 @@ Page {
 <p>The Advanced Online Translator uses available online translation
 services to provide translations.</p>
 
-<p>Available translation services:<ul>
+<p>Currently supported services:<ul>
 <li><b>Google Translate</b> - supports translation, language detection,
 dictionary and reverse translations for single words.</li>
 <li><b>Microsoft Translator</b> (a.k.a. <b>Bing Translator</b>) - supports
 translation only.</li>
 <li><b>Yandex.Translate</b> - supports translation and language detection.</li>
+<li><b>Yandex.Dictionaries</b> - only dictionary is supported.</li>
 </ul></p>
 
 <p>More services are possible in future.</p>

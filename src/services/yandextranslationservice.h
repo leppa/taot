@@ -20,29 +20,36 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef YANDEXTRANSLATE_H
-#define YANDEXTRANSLATE_H
+#ifndef YANDEXTRANSLATIONSERVICE_H
+#define YANDEXTRANSLATIONSERVICE_H
 
-#include "yandextranslationservice.h"
+#include "jsontranslationservice.h"
 
 #include <QSslConfiguration>
 
-class YandexTranslate: public YandexTranslationService
+class YandexTranslationService : public JsonTranslationService
 {
     Q_OBJECT
 
 public:
-    static QString displayName();
+    explicit YandexTranslationService(QObject *parent = 0);
 
-    explicit YandexTranslate(QObject *parent = 0);
+    bool targetLanguagesDependOnSourceLanguage() const;
+    LanguageList sourceLanguages() const;
+    LanguageList targetLanguages(const Language &sourceLanguage) const;
+    QString getLanguageName(const QVariant &info) const;
+    bool canSwapLanguages(const Language first, const Language second) const;
 
-    QString uid() const;
-    bool supportsDictionary() const;
+    bool checkReplyForErrors(QNetworkReply *reply);
 
-    LanguagePair defaultLanguagePair() const;
+protected:
+    void loadLanguages(const QString &file, bool withAutodetect = true);
 
-    bool translate(const Language &from, const Language &to, const QString &text);
-    bool parseReply(const QByteArray &reply);
+    QSslConfiguration m_sslConfiguration;
+    LanguageList m_sourceLanguages;
+    QHash<QString, LanguageList> m_targetLanguages;
+    LanguagePair m_defaultLanguagePair;
+    QHash<QString, QString> m_langCodeToName;
 };
 
-#endif // YANDEXTRANSLATE_H
+#endif // YANDEXTRANSLATIONSERVICE_H
