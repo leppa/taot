@@ -76,7 +76,8 @@ RESOURCES += \
     l10n/l10n.qrc
 
 TRANSLATIONS += \
-    l10n/taot_uk.ts \
+    l10n/taot_ru.ts \
+    l10n/taot_uk.ts
 
 translate_hack {
     SOURCES += \
