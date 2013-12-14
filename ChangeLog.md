@@ -1,6 +1,12 @@
 The Advanced Online Translator ChangeLog
 ========================================
 
+TAOT v0.3.0
+-----------
+- Added Yandex.Dictionaries translation service ([issue #12][]).
+- Localization: added Ukrainian and Russian translations
+  ([issue #11][]).
+
 TAOT v0.2.1
 -----------
 - Support for language swap.
@@ -65,5 +71,7 @@ Initial release.
 [issue #7]: https://github.com/leppa/taot/issues/7
 [issue #8]: https://github.com/leppa/taot/issues/8
 [issue #10]: https://github.com/leppa/taot/issues/10
+[issue #11]: https://github.com/leppa/taot/issues/11
+[issue #12]: https://github.com/leppa/taot/issues/12
 
 <!-- $Id: $Format:%h %ai %an$ $ -->

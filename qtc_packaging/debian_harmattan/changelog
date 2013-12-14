@@ -1,3 +1,9 @@
+taot (0.3.0) unstable; urgency=low
+  * Added Yandex.Dictionaries translation service.
+  * Localization: added Ukrainian and Russian translations.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Sun, 15 Dec 2013 00:40:43 +0100
+
 taot (0.2.1) unstable; urgency=low
   * Support for language swap.
   * Yandex.Translate: Fixed SSL handshake error due to a missing CA
