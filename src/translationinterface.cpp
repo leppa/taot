@@ -81,6 +81,11 @@ TranslationServiceItem *TranslationInterface::selectedService() const
     return m_serviceItem;
 }
 
+bool TranslationInterface::supportsTranslation() const
+{
+    return m_service->supportsTranslation();
+}
+
 bool TranslationInterface::busy() const
 {
     return m_busy;

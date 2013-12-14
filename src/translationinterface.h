@@ -43,6 +43,7 @@ class TranslationInterface: public QObject
     Q_PROPERTY(QString version READ version CONSTANT)
     Q_PROPERTY(TranslationServicesModel *services READ supportedServices CONSTANT)
     Q_PROPERTY(TranslationServiceItem *selectedService READ selectedService NOTIFY selectedServiceChanged)
+    Q_PROPERTY(bool supportsTranslation READ supportsTranslation NOTIFY selectedServiceChanged)
 
     // Translation related properties
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
@@ -69,6 +70,7 @@ public:
     static QString version();
     TranslationServicesModel *supportedServices() const;
     TranslationServiceItem *selectedService() const;
+    bool supportsTranslation() const;
 
     bool busy() const;
     LanguageListModel *sourceLanguages() const;

@@ -37,6 +37,7 @@ public:
 
     QString uid() const;
     bool targetLanguagesDependOnSourceLanguage() const;
+    bool supportsTranslation() const;
     bool supportsDictionary() const;
 
     LanguageList sourceLanguages() const;

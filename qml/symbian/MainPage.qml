@@ -201,12 +201,14 @@ Page {
             }
 
             BorderImage {
-                height: trans.implicitHeight
-                        + platformStyle.borderSizeMedium / 2
-                        + 2 * platformStyle.paddingMedium
+                height: translator.supportsTranslation ? trans.implicitHeight
+                                                         + platformStyle.borderSizeMedium / 2
+                                                         + 2 * platformStyle.paddingMedium
+                                                       : 0
                 source: privateStyle.imagePath("qtg_fr_textfield_uneditable",
                                                appWindow.platformInverted)
                 smooth: true
+                clip: true
                 border {
                     top: platformStyle.borderSizeMedium
                     left: platformStyle.borderSizeMedium
@@ -241,6 +243,13 @@ Page {
                         dummyFocus.focus = true;
                         if (translator.translatedText != "")
                             pageStack.push(translationPage);
+                    }
+                }
+
+                Behavior on height {
+                    NumberAnimation {
+                        duration: 200
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }

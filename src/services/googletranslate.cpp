@@ -87,6 +87,11 @@ bool GoogleTranslate::targetLanguagesDependOnSourceLanguage() const
     return false;
 }
 
+bool GoogleTranslate::supportsTranslation() const
+{
+    return true;
+}
+
 bool GoogleTranslate::supportsDictionary() const
 {
     return true;

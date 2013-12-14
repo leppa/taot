@@ -38,6 +38,7 @@ public:
     explicit YandexDictionaries(DictionaryModel *dict, QObject *parent = 0);
 
     QString uid() const;
+    bool supportsTranslation() const;
     bool supportsDictionary() const;
 
     LanguagePair defaultLanguagePair() const;

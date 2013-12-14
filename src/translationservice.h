@@ -52,6 +52,7 @@ public:
 
     virtual QString uid() const = 0;
     virtual bool targetLanguagesDependOnSourceLanguage() const = 0;
+    virtual bool supportsTranslation() const = 0;
     virtual bool supportsDictionary() const = 0;
 
     virtual LanguageList sourceLanguages() const = 0;

@@ -175,9 +175,13 @@ Page {
             }
 
             BorderImage {
-                height: trans.implicitHeight + (52 /*UI.FIELD_DEFAULT_HEIGHT*/ - trans.font.pixelSize)
+                height: translator.supportsTranslation ? trans.implicitHeight
+                                                         + (52 /*UI.FIELD_DEFAULT_HEIGHT*/
+                                                            - trans.font.pixelSize)
+                                                       : 0
                 source: source.style.backgroundDisabled
                 smooth: true
+                clip: true
                 border {
                     top: source.style.backgroundCornerMargin
                     left: source.style.backgroundCornerMargin
@@ -212,6 +216,13 @@ Page {
                         dummyFocus.focus = true;
                         if (translator.translatedText != "")
                             pageStack.push(translationPage);
+                    }
+                }
+
+                Behavior on height {
+                    NumberAnimation {
+                        duration: 200
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }

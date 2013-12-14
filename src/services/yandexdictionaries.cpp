@@ -45,6 +45,11 @@ QString YandexDictionaries::uid() const
     return "YandexDictionaries";
 }
 
+bool YandexDictionaries::supportsTranslation() const
+{
+    return false;
+}
+
 bool YandexDictionaries::supportsDictionary() const
 {
     return true;

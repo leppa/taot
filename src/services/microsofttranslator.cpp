@@ -63,6 +63,11 @@ bool MicrosoftTranslator::targetLanguagesDependOnSourceLanguage() const
     return false;
 }
 
+bool MicrosoftTranslator::supportsTranslation() const
+{
+    return true;
+}
+
 bool MicrosoftTranslator::supportsDictionary() const
 {
     return false;
