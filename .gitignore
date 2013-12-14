@@ -1,4 +1,4 @@
-/*.user
+/*.user*
 /*.loc
 /*.rss
 /*.sis
@@ -6,9 +6,11 @@
 /ABLD.BAT
 /Makefile*
 /bld.inf
+/debian/
 /l10n/*.qm
 /moc/
 /obj/
 /rcc/
+/taot
 /taot_*
 /tmp/
