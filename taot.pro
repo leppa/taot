@@ -23,7 +23,12 @@
 ######################################################################
 
 TEMPLATE = app
-QT += declarative network script
+lessThan(QT_MAJOR_VERSION, 5) {
+    QT += declarative network script
+} else {
+    QT += quick network script
+}
+
 blackberry:QT += opengl
 
 QMAKE_TARGET_COMPANY = Oleksii Serdiuk
@@ -31,8 +36,9 @@ QMAKE_TARGET_PRODUCT = The Advanced Online Translator
 QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
 QMAKE_TARGET_COPYRIGHT = Copyright © 2013 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 
-# Please do not modify the following line.
-include(qmlapplicationviewer/qmlapplicationviewer.pri)
+lessThan(QT_MAJOR_VERSION, 5) {
+    include(qmlapplicationviewer/qmlapplicationviewer.pri)
+}
 
 # Additional import path used to resolve QML modules in Creator's code model
 blackberry:QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports

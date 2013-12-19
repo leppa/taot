@@ -27,6 +27,9 @@
 #include <QScriptValueIterator>
 #include <QFile>
 #include <QXmlStreamReader>
+#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+#   include <QUrlQuery>
+#endif
 
 QString GoogleTranslate::displayName()
 {
@@ -124,14 +127,23 @@ bool GoogleTranslate::canSwapLanguages(const Language first, const Language seco
 
 bool GoogleTranslate::translate(const Language &from, const Language &to, const QString &text)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QUrl query("http://translate.google.com/translate_a/t");
+#else
     QUrl url("http://translate.google.com/translate_a/t");
-    url.addQueryItem("client", "q");
-    url.addQueryItem("hl", "en");
-    url.addQueryItem("sl", from.info.toString());
-    url.addQueryItem("tl", to.info.toString());
-    url.addQueryItem("text", text);
-
+    QUrlQuery query;
+#endif
+    query.addQueryItem("client", "q");
+    query.addQueryItem("hl", "en");
+    query.addQueryItem("sl", from.info.toString());
+    query.addQueryItem("tl", to.info.toString());
+    query.addQueryItem("text", text);
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    m_reply = m_nam.get(QNetworkRequest(query));
+#else
+    url.setQuery(query);
     m_reply = m_nam.get(QNetworkRequest(url));
+#endif
 
     return true;
 }

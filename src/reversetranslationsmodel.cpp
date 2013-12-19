@@ -25,11 +25,18 @@
 ReverseTranslationsModel::ReverseTranslationsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    setRoleNames(roleNames());
+#endif
+}
+
+QHash<int, QByteArray> ReverseTranslationsModel::roleNames() const
+{
     QHash<int, QByteArray> roles;
     roles[TermRole] = "term";
     roles[SynonymsRole] = "synonyms";
     roles[TranslationsRole] = "translations";
-    setRoleNames(roles);
+    return roles;
 }
 
 int ReverseTranslationsModel::rowCount(const QModelIndex &parent) const

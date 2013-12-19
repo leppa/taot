@@ -39,9 +39,16 @@ QString TranslationServiceItem::name() const
 TranslationServicesModel::TranslationServicesModel(const QStringList &strings, QObject *parent)
     : QStringListModel(strings, parent)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    setRoleNames(roleNames());
+#endif
+}
+
+QHash<int, QByteArray> TranslationServicesModel::roleNames() const
+{
     QHash<int, QByteArray> roles;
     roles.insert(Qt::DisplayRole, "name");
-    setRoleNames(roles);
+    return roles;
 }
 
 int TranslationServicesModel::count() const

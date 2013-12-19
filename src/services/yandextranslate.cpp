@@ -24,6 +24,9 @@
 #include "apikeys.h"
 
 #include <QScriptValueIterator>
+#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+#   include <QUrlQuery>
+#endif
 
 QString YandexTranslate::displayName()
 {
@@ -65,13 +68,23 @@ bool YandexTranslate::translate(const Language &from, const Language &to, const 
         lang.append(from.info.toString()).append("-");
     lang.append(to.info.toString());
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QUrl query("https://translate.yandex.net/api/v1.5/tr.json/translate");
+#else
     QUrl url("https://translate.yandex.net/api/v1.5/tr.json/translate");
-    url.addQueryItem("key", YANDEXTRANSLATE_API_KEY);
-    url.addQueryItem("lang", lang);
-    url.addQueryItem("options", "1");
-    url.addQueryItem("text", text);
+    QUrlQuery query;
+#endif
+    query.addQueryItem("key", YANDEXTRANSLATE_API_KEY);
+    query.addQueryItem("lang", lang);
+    query.addQueryItem("options", "1");
+    query.addQueryItem("text", text);
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QNetworkRequest request(query);
+#else
+    url.setQuery(query);
     QNetworkRequest request(url);
+#endif
     request.setSslConfiguration(m_sslConfiguration);
 
     m_reply = m_nam.get(request);

@@ -25,6 +25,9 @@
 #include "apikeys.h"
 
 #include <QScriptValueIterator>
+#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+#   include <QUrlQuery>
+#endif
 
 QString YandexDictionaries::displayName()
 {
@@ -67,13 +70,23 @@ bool YandexDictionaries::translate(const Language &from, const Language &to, con
     lang.reserve(5);
     lang.append(from.info.toString()).append("-").append(to.info.toString());
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QUrl query("https://dictionary.yandex.net/api/v1/dicservice.json/lookup");
+#else
     QUrl url("https://dictionary.yandex.net/api/v1/dicservice.json/lookup");
-    url.addQueryItem("ui", "en");
-    url.addQueryItem("key", YANDEXDICTIONARIES_API_KEY);
-    url.addQueryItem("lang", lang);
-    url.addQueryItem("text", text.trimmed());
+    QUrlQuery query;
+#endif
+    query.addQueryItem("ui", "en");
+    query.addQueryItem("key", YANDEXDICTIONARIES_API_KEY);
+    query.addQueryItem("lang", lang);
+    query.addQueryItem("text", text.trimmed());
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QNetworkRequest request(query);
+#else
+    url.setQuery(query);
     QNetworkRequest request(url);
+#endif
     request.setSslConfiguration(m_sslConfiguration);
 
     m_reply = m_nam.get(request);

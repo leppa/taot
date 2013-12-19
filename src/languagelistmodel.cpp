@@ -44,10 +44,17 @@ QVariant LanguageItem::info() const
 LanguageListModel::LanguageListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    setRoleNames(roleNames());
+#endif
+}
+
+QHash<int, QByteArray> LanguageListModel::roleNames() const
+{
     QHash<int, QByteArray> roles;
     roles.insert(Qt::DisplayRole, "name");
     roles.insert(InfoRole, "info");
-    setRoleNames(roles);
+    return roles;
 }
 
 int LanguageListModel::count() const

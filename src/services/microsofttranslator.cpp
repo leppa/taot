@@ -5,6 +5,9 @@
 #include <QFile>
 #include <QCoreApplication>
 #include <QScriptValueIterator>
+#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+#   include <QUrlQuery>
+#endif
 
 QString MicrosoftTranslator::displayName()
 {
@@ -110,13 +113,23 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
         return true;
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QUrl query("http://api.microsofttranslator.com/V2/Ajax.svc/Translate");
+#else
     QUrl url("http://api.microsofttranslator.com/V2/Ajax.svc/Translate");
-    url.addQueryItem("text", text);
-    url.addQueryItem("from", from.info.toString());
-    url.addQueryItem("to", to.info.toString());
+    QUrlQuery query;
+#endif
+    query.addQueryItem("text", text);
+    query.addQueryItem("from", from.info.toString());
+    query.addQueryItem("to", to.info.toString());
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QNetworkRequest request(query);
+#else
+    url.setQuery(query);
     QNetworkRequest request(url);
-    request.setRawHeader("Authorization", m_token.toAscii());
+#endif
+    request.setRawHeader("Authorization", m_token.toLatin1());
 
     m_reply = m_nam.get(request);
 
@@ -177,14 +190,22 @@ bool MicrosoftTranslator::checkReplyForErrors(QNetworkReply *reply)
 
 void MicrosoftTranslator::requestToken()
 {
-    QUrl url;
-    url.addQueryItem("grant_type", "client_credentials");
-    url.addQueryItem("client_id", "TheAdvancedOnlineTranslator");
-    url.addQueryItem("client_secret", BINGTRANSLATOR_API_KEY);
-    url.addQueryItem("scope", "http://api.microsofttranslator.com");
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QUrl query;
+#else
+    QUrlQuery query;
+#endif
+    query.addQueryItem("grant_type", "client_credentials");
+    query.addQueryItem("client_id", "TheAdvancedOnlineTranslator");
+    query.addQueryItem("client_secret", BINGTRANSLATOR_API_KEY);
+    query.addQueryItem("scope", "http://api.microsofttranslator.com");
 
     QNetworkRequest request(QUrl("https://datamarket.accesscontrol.windows.net/v2/OAuth2-13"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
 
-    m_reply = m_nam.post(request, url.encodedQuery());
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    m_reply = m_nam.post(request, query.encodedQuery());
+#else
+    m_reply = m_nam.post(request, query.query(QUrl::FullyEncoded).toUtf8());
+#endif
 }

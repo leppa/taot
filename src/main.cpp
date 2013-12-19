@@ -20,7 +20,11 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "qmlapplicationviewer.h"
+#include <QtGlobal>
+
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include "qmlapplicationviewer.h"
+#endif
 #include "translationinterface.h"
 #include "translationservice.h"
 #include "translationservicesmodel.h"
@@ -28,9 +32,17 @@
 #include "dictionarymodel.h"
 #include "reversetranslationsmodel.h"
 
-#include <QApplication>
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include <QApplication>
+#else
+#   include <QGuiApplication>
+#endif
 #include <QTextCodec>
-#include <QtDeclarative>
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include <QtDeclarative>
+#else
+#   include <QtQuick>
+#endif
 
 #include <qplatformdefs.h>
 
@@ -45,20 +57,26 @@
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf8"));
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
     QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
+#endif
 
-    QApplication::setApplicationName("The Advanced Online Translator");
-    QApplication::setApplicationVersion(VERSION_STR);
-    QApplication::setOrganizationName("Oleksii Serdiuk");
-    QApplication::setOrganizationDomain("oleksii.name");
+    QCoreApplication::setApplicationName("The Advanced Online Translator");
+    QCoreApplication::setApplicationVersion(VERSION_STR);
+    QCoreApplication::setOrganizationName("Oleksii Serdiuk");
+    QCoreApplication::setOrganizationDomain("oleksii.name");
 
 #ifdef Q_OS_BLACKBERRY
     // This is needed for clicks to work more reliably indside Flickable.
     QApplication::setStartDragDistance(42);
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QScopedPointer<QApplication> app(createApplication(argc, argv));
+#else
+    QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
+#endif
 
     const QString lc = QLocale().name();
     // Load Qt's translation
@@ -78,13 +96,17 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<DictionaryModel>();
     qmlRegisterType<ReverseTranslationsModel>();
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QmlApplicationViewer viewer;
+#else
+    QQuickView viewer;
+#endif
 
 #ifdef Q_OS_BLACKBERRY
     QGLWidget *gl = new QGLWidget();
     viewer.setViewport(gl);
     viewer.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-#else
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 #endif
 
@@ -99,14 +121,19 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QDir dir(app->applicationDirPath());
     dir.cdUp();
     viewer.setMainQmlFile(dir.filePath(QLatin1String("qml/main.qml")));
-#else
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
+#else
+    QObject::connect(viewer.engine(), SIGNAL(quit()), app.data(), SLOT(quit()));
+    viewer.setSource(QUrl(QLatin1String("qml/main.qml")));
 #endif
 #ifdef Q_OS_BLACKBERRY
     viewer.rootObject()->setProperty("showStatusBar", false);
     viewer.showFullScreen();
-#else
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.showExpanded();
+#else
+    viewer.show();
 #endif
 
     return app->exec();

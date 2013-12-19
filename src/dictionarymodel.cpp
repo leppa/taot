@@ -56,11 +56,18 @@ ReverseTranslationsModel *DictionaryPos::reverseTranslations() const
 DictionaryModel::DictionaryModel(QObject *parent) :
     QAbstractListModel(parent)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    setRoleNames(roleNames());
+#endif
+}
+
+QHash<int, QByteArray> DictionaryModel::roleNames() const
+{
     QHash<int, QByteArray> roles;
     roles[PosRole] = "pos";
     roles[TranslationsRole] = "translations";
     roles[ReverseTranslationsRole] = "reverseTranslations";
-    setRoleNames(roles);
+    return roles;
 }
 
 int DictionaryModel::rowCount(const QModelIndex &parent) const
