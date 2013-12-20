@@ -120,8 +120,18 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
             if (mean.isEmpty())
                 mean.append("---");
 
+            QScriptValueIterator si(pi.value().property("syn"));
+            QStringList syn;
+            while (si.hasNext()) {
+                si.next();
+                if (si.flags() & QScriptValue::SkipInEnumeration)
+                    continue;
+
+                syn << si.value().property("text").toString();
+            }
+
             pos.reverseTranslations()->append(pi.value().property("text").toString(),
-                                              QStringList(),
+                                              syn,
                                               mean);
             poses.insert(posname, pos);
         }
