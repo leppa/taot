@@ -27,6 +27,7 @@ ReverseTranslationsModel::ReverseTranslationsModel(QObject *parent)
 {
     QHash<int, QByteArray> roles;
     roles[TermRole] = "term";
+    roles[SynonymsRole] = "synonyms";
     roles[TranslationsRole] = "translations";
     setRoleNames(roles);
 }
@@ -47,16 +48,24 @@ QVariant ReverseTranslationsModel::data(const QModelIndex &index, int role) cons
     switch (role) {
     case TermRole:
         return m_terms.at(index.row()).first;
+    case SynonymsRole:
+        return m_terms.at(index.row()).second.first.join(
+                    tr(", ", "Separator for joining string lists (don't forget space after comma).")
+                    );
     case TranslationsRole:
-        return m_terms.at(index.row()).second.join(tr(", ", "Separator for joining string lists (don't forget space after comma)."));
+        return m_terms.at(index.row()).second.second.join(
+                    tr(", ", "Separator for joining string lists (don't forget space after comma).")
+                    );
     }
 
     return QVariant();
 }
 
-void ReverseTranslationsModel::append(const QString &term, const QStringList &translations)
+void ReverseTranslationsModel::append(const QString &term,
+                                      const QStringList &synonyms,
+                                      const QStringList &translations)
 {
     beginInsertRows(QModelIndex(), m_terms.count(), m_terms.count());
-    m_terms.append(qMakePair(term, translations));
+    m_terms.append(qMakePair(term, qMakePair(synonyms, translations)));
     endInsertRows();
 }

@@ -117,11 +117,11 @@ MouseArea {
                 name: "Expanded"
                 PropertyChanges {
                     target: reverse
-                    height: reverse.childrenRect.height
+                    height: undefined
                 }
                 PropertyChanges {
                     target: translations
-                    height: undefined
+                    height: translations.implicitHeight
                     wrapMode: Text.NoWrap
                     elide: Text.ElideRight
                 }
@@ -171,14 +171,16 @@ MouseArea {
 
                 delegate: Item {
                     width: parent.width
-                    height: Math.max(term.height, revTranslations.height)
+                    height: Math.max(term.y + term.height, revTranslations.height)
 
                     ListItemText {
                         id: term
 
                         width: posDelegate.maxWidth
                         role: "Heading"
-                        text: model.term
+                        text: model.term + (model.synonyms.length > 0
+                                            ? "\n(" + model.synonyms + ")"
+                                            : "")
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideNone
                         platformInverted: root.platformInverted

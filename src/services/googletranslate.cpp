@@ -190,7 +190,9 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
                         continue;
                     rtrans << rti.value().toString();
                 }
-                pos.reverseTranslations()->append(ei.value().property("word").toString(), rtrans);
+                pos.reverseTranslations()->append(ei.value().property("word").toString(),
+                                                  QStringList(),
+                                                  rtrans);
             }
             m_dict->append(pos);
         }

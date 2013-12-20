@@ -34,6 +34,7 @@ class ReverseTranslationsModel: public QAbstractListModel
 public:
     enum ReverseTranslationRoles {
         TermRole = Qt::UserRole + 1,
+        SynonymsRole,
         TranslationsRole
     };
 
@@ -42,10 +43,10 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    void append(const QString &term, const QStringList &translations);
+    void append(const QString &term, const QStringList &synonyms, const QStringList &translations);
 
 private:
-    QList<QPair<QString, QStringList> > m_terms;
+    QList<QPair<QString, QPair<QStringList, QStringList> > > m_terms;
 };
 
 Q_DECLARE_METATYPE(ReverseTranslationsModel *)
