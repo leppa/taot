@@ -53,6 +53,7 @@ private:
 class DictionaryModel: public QAbstractListModel
 {
     Q_OBJECT
+
 public:
     enum DictionaryRoles {
         PosRole = Qt::UserRole + 1,

@@ -11,12 +11,22 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Online Translator with some advanced features
  The Advanced Online Translator uses available online translation
- services to provide translations. Currently it supports only Google
- Translate but more services are in the plans (i.e., Bing Translate,
- Yandex Translate, etc.).
+ services to provide translations.
  .
- For Google Translate alternative and reverse translations are
- displayed for single words.
+ Currently supported services:
+ .
+ * Google Translate - supports translation, language detection,
+ dictionary and reverse translations for single words.
+ .
+ * Microsoft Translator (a.k.a. Bing Translator) - supports translation
+ only.
+ .
+ * Yandex.Translate - supports translation and language detection.
+ .
+ * Yandex.Dictionaries - only dictionary with reverse translations is
+ supported.
+ .
+ More services might be added in future.
 XSBC-Maemo-Display-Name: The Advanced Online Translator
 XB-Maemo-Flags: visible
 XB-MeeGo-Desktop-Entry-Filename: taot_harmattan

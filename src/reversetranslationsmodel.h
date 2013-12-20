@@ -30,6 +30,7 @@
 class ReverseTranslationsModel: public QAbstractListModel
 {
     Q_OBJECT
+
 public:
     enum ReverseTranslationRoles {
         TermRole = Qt::UserRole + 1,

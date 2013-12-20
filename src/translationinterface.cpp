@@ -32,7 +32,6 @@
 #include "services/yandexdictionaries.h"
 
 #include <qplatformdefs.h>
-#include <QDebug>
 
 TranslationInterface::TranslationInterface(QObject *parent)
     : QObject(parent)
