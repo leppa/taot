@@ -48,6 +48,8 @@
 
 #ifdef Q_OS_BLACKBERRY
 #   include <QGLWidget>
+#elif defined(Q_OS_SAILFISH)
+#   include <sailfishapp.h>
 #endif
 
 #define QUOTE_X(x) #x
@@ -74,6 +76,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QScopedPointer<QApplication> app(createApplication(argc, argv));
+#elif defined(Q_OS_SAILFISH)
+    QGuiApplication *app = SailfishApp::application(argc, argv);
 #else
     QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
 #endif
@@ -98,6 +102,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QmlApplicationViewer viewer;
+#elif defined(Q_OS_SAILFISH)
+    QQuickView *viewer = SailfishApp::createView();
 #else
     QQuickView viewer;
 #endif
@@ -113,7 +119,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     // TODO: Remove this after 01.01.2014.
 #if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
     viewer.rootContext()->setContextProperty("showNokiaStoreNotice", "true");
-#else
+#elif !defined(Q_OS_SAILFISH)
     viewer.rootContext()->setContextProperty("showNokiaStoreNotice", "false");
 #endif
 
@@ -123,6 +129,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.setMainQmlFile(dir.filePath(QLatin1String("qml/main.qml")));
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
+#elif defined(Q_OS_SAILFISH)
+    QObject::connect(viewer->engine(), SIGNAL(quit()), app, SLOT(quit()));
+    viewer->setSource(SailfishApp::pathTo("qml/main.qml"));
 #else
     QObject::connect(viewer.engine(), SIGNAL(quit()), app.data(), SLOT(quit()));
     viewer.setSource(QUrl(QLatin1String("qml/main.qml")));
@@ -132,6 +141,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.showFullScreen();
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.showExpanded();
+#elif defined(Q_OS_SAILFISH)
+    viewer->show();
 #else
     viewer.show();
 #endif

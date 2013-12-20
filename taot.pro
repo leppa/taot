@@ -40,6 +40,10 @@ lessThan(QT_MAJOR_VERSION, 5) {
     include(qmlapplicationviewer/qmlapplicationviewer.pri)
 }
 
+sailfish {
+    DEFINES += Q_OS_SAILFISH
+}
+
 # Additional import path used to resolve QML modules in Creator's code model
 blackberry:QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports
 
@@ -88,6 +92,7 @@ TRANSLATIONS += \
 translate_hack {
     SOURCES += \
         qml/harmattan/*.qml \
+        qml/sailfish/*.qml \
         qml/symbian/*.qml
 }
 
@@ -99,6 +104,9 @@ OTHER_FILES += \
     qml/harmattan/*.js \
     qml/harmattan/*.qml \
     qml/harmattan/icons/* \
+    qml/sailfish/*.js \
+    qml/sailfish/*.qml \
+    qml/sailfish/icons/* \
     qml/symbian/*.qml \
     qml/symbian/icons/* \
     qtc_packaging/debian_harmattan/*
@@ -167,6 +175,27 @@ contains(MEEGO_EDITION,harmattan) {
     desktopfile.path = /usr/share/applications
 
     INSTALLS += target ui icon desktopfile
+}
+
+# Sailfish
+sailfish {
+    TARGET = harbour-taot
+
+    target.path = /usr/bin
+    ui.files = qml/about.js qml/sailfish/*
+    ui.path = /usr/share/$${TARGET}/qml
+    icon.files = $${TARGET}.png
+    icon.path = /usr/share/icons/hicolor/86x86/apps
+    desktopfile.files = rpm/$${TARGET}.desktop
+    desktopfile.path = /usr/share/applications
+
+    INSTALLS += target ui icon desktopfile
+
+    CONFIG += link_pkgconfig
+    PKGCONFIG += sailfishapp
+    INCLUDEPATH += /usr/include/sailfishapp
+
+    OTHER_FILES += $$files(rpm/*)
 }
 
 # We need to generate translations before building.

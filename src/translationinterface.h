@@ -107,6 +107,10 @@ public slots:
     void setSourceText(const QString &sourceText);
     void translate();
 
+#ifdef Q_OS_SAILFISH
+    QString urlDecode(const QString &url) const;
+#endif
+
 private:
     TranslationService *m_service;
     TranslationServicesModel *m_services;

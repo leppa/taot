@@ -33,6 +33,10 @@
 
 #include <qplatformdefs.h>
 
+#ifdef Q_OS_SAILFISH
+#   include <QTextDocument>
+#endif
+
 TranslationInterface::TranslationInterface(QObject *parent)
     : QObject(parent)
     , m_service(NULL)
@@ -240,6 +244,16 @@ void TranslationInterface::translate()
 
     setBusy(true);
 }
+
+#ifdef Q_OS_SAILFISH
+// HACK: Sailfish doesn't seem to understand HTML encoded URLs.
+QString TranslationInterface::urlDecode(const QString &url) const
+{
+    QTextDocument doc;
+    doc.setHtml(url);
+    return doc.toPlainText();
+}
+#endif
 
 void TranslationInterface::createService(uint id)
 {
