@@ -89,6 +89,7 @@ OTHER_FILES += \
     bar-descriptor.xml \
     data/*.pem \
     data/langs/*.json \
+    qml/about.js \
     qml/harmattan/*.js \
     qml/harmattan/*.qml \
     qml/harmattan/icons/* \
@@ -122,7 +123,7 @@ symbian {
     TARGET.CAPABILITY += NetworkServices ReadUserData
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 
-    ui.sources = qml/symbian/* qml/symbian/icons
+    ui.sources = qml/about.js qml/symbian/* qml/symbian/icons
     ui.path = qml
     DEPLOYMENT += ui
 
@@ -152,7 +153,7 @@ contains(MEEGO_EDITION,harmattan) {
     DEFINES += HARMATTAN_BOOSTER
 
     target.path = /opt/$${TARGET}/bin
-    ui.files = qml/harmattan/*
+    ui.files = qml/about.js qml/harmattan/*
     ui.path = /opt/$${TARGET}/qml
     icon.files = $${TARGET}80.png
     icon.path = /usr/share/icons/hicolor/80x80/apps
