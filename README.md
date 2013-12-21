@@ -59,11 +59,19 @@ Buld status of the `master` branch:
 - [![BuildHive Build Status][bh]][BuildHive]
 
 
+Donate
+------
+
+Donations are always welcome. If you'd like to make a donation, please,
+refer to [Donate][] page for more information.
+
+
 [nokia]: http://store.ovi.com/content/359493
 [bb10]: http://appworld.blackberry.com/webstore/content/21908039/
 [Travis CI]: https://travis-ci.org/leppa/taot
 [BuildHive]: https://buildhive.cloudbees.com/job/leppa/job/taot/
 [tci]: https://travis-ci.org/leppa/taot.png?branch=master
 [bh]: https://buildhive.cloudbees.com/job/leppa/job/taot/badge/icon
+[Donate]: https://github.com/leppa/taot/wiki/Donate
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
