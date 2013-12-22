@@ -37,7 +37,7 @@ Page {
 
     SelectionDialog {
         id: servicesDialog
-        titleText: qsTr("Select the translation service")
+        titleText: qsTr("Translation Service")
         model: translator.services
         onSelectedIndexChanged: {
             translator.selectService(selectedIndex);
@@ -46,7 +46,7 @@ Page {
 
     SelectionDialog {
         id: fromDialog
-        titleText: qsTr("Select the source language")
+        titleText: qsTr("Source Language")
         model: translator.sourceLanguages
         onSelectedIndexChanged: {
             translator.selectSourceLanguage(selectedIndex);
@@ -55,7 +55,7 @@ Page {
 
     SelectionDialog {
         id: toDialog
-        titleText: qsTr("Select the target language")
+        titleText: qsTr("Target Language")
         model: translator.targetLanguages
         onSelectedIndexChanged: {
             translator.selectTargetLanguage(selectedIndex);

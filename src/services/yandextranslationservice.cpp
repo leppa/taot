@@ -59,7 +59,8 @@ LanguageList YandexTranslationService::targetLanguages(const Language &sourceLan
 
 QString YandexTranslationService::getLanguageName(const QVariant &info) const
 {
-    return m_langCodeToName.value(info.toString(), tr("Unknown (%1)").arg(info.toString()));
+    return m_langCodeToName.value(info.toString(),
+                                  tr("Unknown (%1)", "Unknown language").arg(info.toString()));
 }
 
 bool YandexTranslationService::canSwapLanguages(const Language first, const Language second) const
