@@ -23,8 +23,8 @@ Description: Online Translator with some advanced features
  .
  * Yandex.Translate - supports translation and language detection.
  .
- * Yandex.Dictionaries - only dictionary with reverse translations is
- supported.
+ * Yandex.Dictionaries - supports dictionary with synonyms and reverse
+ translations.
  .
  More services might be added in future.
 XSBC-Maemo-Display-Name: The Advanced Online Translator

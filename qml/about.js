@@ -33,9 +33,11 @@ var aboutText =
 "<li><b>Google Translate</b> - supports translation, language detection, dictionary and reverse translations for single words.</li> " +
 "<li><b>Microsoft Translator</b> (a.k.a. <b>Bing Translator</b>) - supports translation only.</li> " +
 "<li><b>Yandex.Translate</b> - supports translation and language detection.</li> " +
-"<li><b>Yandex.Dictionaries</b> - only dictionary is supported.</li> " +
+"<li><b>Yandex.Dictionaries</b> - supports dictionary with synonyms and reverse translations.</li> " +
 "</ul> " +
 "<p>More services are possible in future.</p> " +
+"<p>&nbsp;</p> " +
+"<p><a href=\"https://github.com/leppa/taot/wiki/Donate\">Donate</a></p> " +
 "<p>&nbsp;</p> " +
 "<p>This program is free software; you can redistribute it and/or " +
 "modify it under the terms of the GNU General Public License " +

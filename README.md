@@ -13,7 +13,8 @@ Currently supported services:
  * **Microsoft Translator** (a.k.a. **Bing Translator**) - supports
    translation only.
  * **Yandex.Translate** - supports translation and language detection.
- * **Yandex.Dictionaries** - only dictionary is supported.
+ * **Yandex.Dictionaries** - supports dictionary with synonyms and
+   reverse translations.
 
 More services might be added in future.
 
