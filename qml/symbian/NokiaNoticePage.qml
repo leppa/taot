@@ -28,14 +28,14 @@ Page {
 
     property bool platformInverted: false
 
-    ScrollDecorator {
-        flickableItem: contents
+    Header {
+        id: header
+        text: qsTr("Important Information")
     }
 
     Flickable {
-        id: contents
+        id: scrollArea
 
-        contentWidth: width
         contentHeight: label.height + 2 * platformStyle.paddingMedium
         anchors {
             top: header.bottom
@@ -77,35 +77,8 @@ from the year 2014.</p>
         }
     }
 
-    Rectangle {
-        id: header
-
-        height: platformStyle.graphicSizeMedium
-        gradient: Gradient {
-            GradientStop {
-                position: 0.00
-                color: platformStyle.colorNormalLink
-            }
-            GradientStop {
-                position: 1.0
-                color: Qt.darker(platformStyle.colorNormalLink)
-            }
-        }
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        Label {
-            text: qsTr("Important Information")
-            color: "white"
-            font.pixelSize: platformStyle.fontSizeLarge
-            anchors {
-                verticalCenter: parent.verticalCenter
-                left: parent.left
-                leftMargin: platformStyle.paddingMedium
-            }
-        }
+    ScrollDecorator {
+        flickableItem: scrollArea
     }
 
     tools: ToolBarLayout {

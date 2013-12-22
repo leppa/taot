@@ -26,14 +26,14 @@ import com.nokia.meego 1.1
 Page {
     id: root
 
-    ScrollDecorator {
-        flickableItem: contents
+    Header {
+        id: header
+        text: qsTr("Important Information")
     }
 
     Flickable {
-        id: contents
+        id: scrollArea
 
-        contentWidth: width
         contentHeight: label.height + 2 * 8 /*UI.PADDING_LARGE*/
         anchors {
             top: header.bottom
@@ -74,36 +74,8 @@ from the year 2014.</p>
         }
     }
 
-    Rectangle {
-        id: header
-
-        height: appWindow.inPortrait ? UiConstants.HeaderDefaultHeightPortrait
-                                     : UiConstants.HeaderDefaultHeightLandscape
-        gradient: Gradient {
-            GradientStop {
-                position: 0.00
-                color: theme.selectionColor
-            }
-            GradientStop {
-                position: 1.0
-                color: Qt.darker(theme.selectionColor)
-            }
-        }
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        Label {
-            text: qsTr("Important Information")
-            color: "white"
-            font: UiConstants.HeaderFont
-            anchors {
-                verticalCenter: parent.verticalCenter
-                left: parent.left
-                leftMargin: UiConstants.DefaultMargin
-            }
-        }
+    ScrollDecorator {
+        flickableItem: scrollArea
     }
 
     tools: ToolBarLayout {
