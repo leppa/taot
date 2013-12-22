@@ -197,7 +197,7 @@ void MicrosoftTranslator::requestToken()
     QUrlQuery query;
 #endif
     query.addQueryItem("grant_type", "client_credentials");
-    query.addQueryItem("client_id", "TheAdvancedOnlineTranslator");
+    query.addQueryItem("client_id", BINGTRANSLATOR_CLIENT_ID);
     query.addQueryItem("client_secret", BINGTRANSLATOR_API_KEY);
     query.addQueryItem("scope", "http://api.microsofttranslator.com");
 
