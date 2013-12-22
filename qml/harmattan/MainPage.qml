@@ -24,7 +24,6 @@ import QtQuick 1.1
 import com.nokia.meego 1.1
 import taot 1.0
 import "constants.js" as UI
-import "about.js" as About
 
 Page {
     // A hack for text item to loose focus when clicked outside of it
@@ -462,17 +461,9 @@ Page {
             }
             MenuItem {
                 text: qsTr("About")
-                onClicked: aboutDialog.open();
+                onClicked: pageStack.push(aboutPageComponent);
             }
         }
-    }
-
-    QueryDialog {
-        id: aboutDialog
-
-        titleText: "<b>The Advanced Online Translator</b><br />v%1".arg(translator.version)
-        acceptButtonText: qsTr("Ok")
-        message: About.aboutText
     }
 
     // TODO: Remove this after 01.01.2014.
@@ -520,6 +511,11 @@ Page {
     Component {
         id: translationPage
         TranslationTextAreaPage {}
+    }
+
+    Component {
+        id: aboutPageComponent
+        AboutPage {}
     }
 
     Component.onCompleted: {

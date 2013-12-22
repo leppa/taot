@@ -23,7 +23,6 @@
 import QtQuick 1.1
 import com.nokia.symbian 1.1
 import taot 1.0
-import "about.js" as About
 
 Page {
     // A hack for text item to loose focus when clicked outside of it
@@ -501,19 +500,9 @@ Page {
             MenuItem {
                 text: qsTr("About")
                 platformInverted: appWindow.platformInverted
-                onClicked: aboutDialog.open();
+                onClicked: pageStack.push(aboutPageComponent);
             }
         }
-    }
-
-    QueryDialog {
-        id: aboutDialog
-
-        titleText: "<b>The Advanced Online Translator</b><br />v%1".arg(translator.version)
-        acceptButtonText: qsTr("Ok")
-        privateCloseIcon: true
-        platformInverted: appWindow.platformInverted
-        message: About.aboutText
     }
 
     // TODO: Remove this after 01.01.2014.
@@ -563,6 +552,14 @@ Page {
     Component {
         id: translationPage
         TranslationTextAreaPage {
+            platformInverted: appWindow.platformInverted
+        }
+    }
+
+    Component {
+        id: aboutPageComponent
+
+        AboutPage {
             platformInverted: appWindow.platformInverted
         }
     }
