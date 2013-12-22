@@ -71,7 +71,7 @@ bool YandexDictionaries::translate(const Language &from, const Language &to, con
     url.addQueryItem("ui", "en");
     url.addQueryItem("key", YANDEXDICTIONARIES_API_KEY);
     url.addQueryItem("lang", lang);
-    url.addQueryItem("text", text);
+    url.addQueryItem("text", text.trimmed());
 
     QNetworkRequest request(url);
     request.setSslConfiguration(m_sslConfiguration);
