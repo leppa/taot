@@ -1,4 +1,4 @@
-({
+{
     "dirs": [
         "ru-ru",
         "ru-en",
@@ -70,4 +70,4 @@
         "tr": "Turkish",
         "uk": "Ukrainian"
     }
-})
+}

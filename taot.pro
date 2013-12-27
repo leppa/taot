@@ -26,7 +26,7 @@ TEMPLATE = app
 lessThan(QT_MAJOR_VERSION, 5) {
     QT += declarative network script
 } else {
-    QT += quick network script
+    QT += quick network
 }
 
 blackberry:QT += opengl

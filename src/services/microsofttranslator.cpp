@@ -139,18 +139,15 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
 
 bool MicrosoftTranslator::parseReply(const QByteArray &reply)
 {
-    QString json;
-    json.reserve(reply.size());
-    json.append("(").append(reply).append(")");
-
-    const QVariant data = parseJson(json);
-    if (!data.isValid())
-        return false;
-
-    if (data.type() == QVariant::String || data.type() == QVariant::StringList) {
-        m_translation = data.toString();
+    if (reply.startsWith("\xef\xbb\xbf\"") && reply.endsWith('"')) {
+        m_translation = QString::fromUtf8(reply);
+        m_translation.remove(0, 1).chop(1);
         return true;
     }
+
+    const QVariant data = parseJson(reply);
+    if (!data.isValid())
+        return false;
 
     if (data.type() == QVariant::Map) {
         if (data.toMap().value("access_token").type() == QVariant::String) {

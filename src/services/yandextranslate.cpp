@@ -94,11 +94,7 @@ bool YandexTranslate::translate(const Language &from, const Language &to, const 
 
 bool YandexTranslate::parseReply(const QByteArray &reply)
 {
-    QString json;
-    json.reserve(reply.size());
-    json.append("(").append(reply).append(")");
-
-    const QVariant data = parseJson(json);
+    const QVariant data = parseJson(reply);
     if (!data.isValid())
         return false;
 

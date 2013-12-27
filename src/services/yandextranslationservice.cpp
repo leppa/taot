@@ -81,10 +81,7 @@ bool YandexTranslationService::checkReplyForErrors(QNetworkReply *reply)
     case 413:
     case 422:
     case 501:
-        QString json;
-        json.reserve(reply->size());
-        json.append("(").append(reply->readAll()).append(")");
-        QVariant data = parseJson(json);
+        QVariant data = parseJson(reply->readAll());
         m_error = data.toMap().value("message").toString();
         return false;
     }

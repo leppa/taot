@@ -35,7 +35,7 @@ public:
     explicit JsonTranslationService(QObject *parent = 0);
 
 protected:
-    QVariant parseJson(const QString &json);
+    QVariant parseJson(const QByteArray &json);
 };
 
 #endif // JSONTRANSLATIONSERVICE_H

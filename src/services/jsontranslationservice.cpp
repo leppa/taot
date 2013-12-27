@@ -22,26 +22,34 @@
 
 #include "jsontranslationservice.h"
 
-#include <QScriptEngine>
-#include <QScriptValue>
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include <QScriptEngine>
+#   include <QScriptValue>
+#else
+#   include <QJsonDocument>
+#endif
+
+#include <QDebug>
 
 JsonTranslationService::JsonTranslationService(QObject *parent)
     : TranslationService(parent)
 {}
 
-QVariant JsonTranslationService::parseJson(const QString &json)
+QVariant JsonTranslationService::parseJson(const QByteArray &json)
 {
-    static QScriptEngine engine;
-    if (!engine.canEvaluate(json))
-        return QVariant();
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QString js;
+    js.reserve(json.size() + 2);
+    js.append("(").append(QString::fromUtf8(json)).append(")");
 
-    if (!engine.canEvaluate(json)) {
+    static QScriptEngine engine;
+    if (!engine.canEvaluate(js)) {
         m_error = tr("Couldn't parse response from the server because of an error: \"%1\"")
                   .arg(tr("Can't evaluate JSON data"));
         return QVariant();
     }
 
-    QScriptValue data = engine.evaluate(json);
+    QScriptValue data = engine.evaluate(js);
     if (engine.hasUncaughtException()) {
         m_error = tr("Couldn't parse response from the server because of an error: \"%1\"")
                   .arg(engine.uncaughtException().toString());
@@ -49,4 +57,16 @@ QVariant JsonTranslationService::parseJson(const QString &json)
     }
 
     return data.toVariant();
+#else
+    QJsonParseError err;
+    QJsonDocument doc = QJsonDocument::fromJson(json, &err);
+
+    if (err.error != QJsonParseError::NoError) {
+        m_error = tr("Couldn't parse response from the server because of an error: \"%1\"")
+                  .arg(err.errorString());
+        return QVariant();
+    }
+
+    return doc.toVariant();
+#endif
 }
