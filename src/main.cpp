@@ -92,7 +92,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     if (tr.load("taot_" + lc, ":/l10n"))
         app->installTranslator(&tr);
 
+#ifdef Q_OS_SAILFISH
+    qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
+#else
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
+#endif
     qmlRegisterType<TranslationServiceItem>();
     qmlRegisterType<TranslationServicesModel>();
     qmlRegisterType<LanguageItem>();

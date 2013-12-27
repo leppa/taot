@@ -105,9 +105,10 @@ MouseArea {
                         text: model.term + (model.synonyms.length > 0
                                             ? "\n(" + model.synonyms + ")"
                                             : "")
+                        horizontalAlignment: Text.AlignRight
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideNone
-                        font.pixelSize: Theme.fontSizeSmall
+                        font.pixelSize: (Theme.fontSizeTiny + Theme.fontSizeSmall) / 2
                         anchors {
                             baseline: revTranslations.baseline
                             left: parent.left
