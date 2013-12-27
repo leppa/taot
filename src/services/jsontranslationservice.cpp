@@ -22,27 +22,31 @@
 
 #include "jsontranslationservice.h"
 
+#include <QScriptEngine>
+#include <QScriptValue>
+
 JsonTranslationService::JsonTranslationService(QObject *parent)
     : TranslationService(parent)
 {}
 
-QScriptValue JsonTranslationService::parseJson(const QString &json)
+QVariant JsonTranslationService::parseJson(const QString &json)
 {
+    static QScriptEngine engine;
     if (!engine.canEvaluate(json))
-        return QScriptValue(false);
+        return QVariant();
 
     if (!engine.canEvaluate(json)) {
         m_error = tr("Couldn't parse response from the server because of an error: \"%1\"")
                   .arg(tr("Can't evaluate JSON data"));
-        return QScriptValue();
+        return QVariant();
     }
 
     QScriptValue data = engine.evaluate(json);
     if (engine.hasUncaughtException()) {
         m_error = tr("Couldn't parse response from the server because of an error: \"%1\"")
                   .arg(engine.uncaughtException().toString());
-        return QScriptValue();
+        return QVariant();
     }
 
-    return data;
+    return data.toVariant();
 }

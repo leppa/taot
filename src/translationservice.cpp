@@ -41,7 +41,14 @@ bool Language::operator ==(const Language &other) const
 
 bool Language::operator <(const Language &other) const
 {
-    return displayName < other.displayName;
+    // Autodetect's info is usually an invalid QVariant, empty
+    // string or "auto". Always put it on top of the list.
+    if (!info.isValid() || info == "" || info == "auto")
+        return true;
+    else if (!other.info.isValid() || other.info == "" || other.info == "auto")
+        return false;
+    else
+        return displayName < other.displayName;
 }
 
 TranslationService::TranslationService(QObject *parent)

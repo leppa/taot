@@ -4,7 +4,6 @@
 
 #include <QFile>
 #include <QCoreApplication>
-#include <QScriptValueIterator>
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
 #   include <QUrlQuery>
 #endif
@@ -28,13 +27,13 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguageNames
     QFile f(QLatin1String("://langs/ms.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
-        QScriptValue data = parseJson(f.readAll());
+        const QVariant data = parseJson(f.readAll());
         f.close();
-        if (!data.isError()) {
-            QScriptValueIterator sl(data);
+        if (data.isValid()) {
+            QVariantMapIterator sl(data.toMap());
             while (sl.hasNext()) {
                 sl.next();
-                const QString code = sl.name();
+                const QString code = sl.key();
                 const QString name = sl.value().toString();
                 Language lang(code, name);
                 m_targetLanguages << lang;
@@ -43,6 +42,7 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
         }
     }
 
+    qSort(m_targetLanguages);
     m_sourceLanguages << m_targetLanguages;
 
     if (m_langCodeToName.contains(""))
@@ -143,27 +143,28 @@ bool MicrosoftTranslator::parseReply(const QByteArray &reply)
     json.reserve(reply.size());
     json.append("(").append(reply).append(")");
 
-    const QScriptValue data = parseJson(json);
+    const QVariant data = parseJson(json);
     if (!data.isValid())
         return false;
 
-    if (data.isString() || data.isArray()) {
+    if (data.type() == QVariant::String || data.type() == QVariant::StringList) {
         m_translation = data.toString();
         return true;
     }
 
-    if (data.isObject()) {
-        if (data.property("access_token").isString()) {
-            m_token = "Bearer " + data.property("access_token").toString();
+    if (data.type() == QVariant::Map) {
+        if (data.toMap().value("access_token").type() == QVariant::String) {
+            m_token = "Bearer " + data.toMap().value("access_token").toString();
             // Clear token 30 secs before the timeout. Just to be sure :-)
-            m_tokenTimeout.setInterval(1000 * (data.property("expires_in").toInt32() - 30));
+            m_tokenTimeout.setInterval(1000 * (data.toMap().value("expires_in").toInt() - 30));
             m_tokenTimeout.start();
             return translate(m_translationPair.first, m_translationPair.second, m_sourceText);
         }
 
-        if (data.property("error_description").isString()) {
-            m_error = tr("Server returned an error: \"%1\"").arg(data.property("error_description")
-                                                             .toString());
+        if (data.toMap().value("error_description").type() == QVariant::String) {
+            m_error = tr("Server returned an error: \"%1\"").arg(data.toMap()
+                                                                 .value("error_description")
+                                                                 .toString());
         } else {
             m_error = tr("Unexpected response from the server");
         }

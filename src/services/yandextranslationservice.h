@@ -27,7 +27,7 @@
 
 #include <QSslConfiguration>
 
-class YandexTranslationService : public JsonTranslationService
+class YandexTranslationService: public JsonTranslationService
 {
     Q_OBJECT
 

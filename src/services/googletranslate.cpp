@@ -22,11 +22,7 @@
 
 #include "googletranslate.h"
 
-#include <QScriptEngine>
-#include <QScriptValue>
-#include <QScriptValueIterator>
 #include <QFile>
-#include <QXmlStreamReader>
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
 #   include <QUrlQuery>
 #endif
@@ -44,23 +40,23 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
     // http://translate.googleapis.com/translate_a/l?client=q&hl=en
     QFile f(QLatin1String("://langs/google.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
-        QScriptValue data = parseJson(f.readAll());
+        QVariant data = parseJson(f.readAll());
         f.close();
-        if (!data.isError()) {
-            QScriptValueIterator sl(data.property("sl"));
+        if (data.isValid()) {
+            QVariantMapIterator sl(data.toMap().value("sl").toMap());
             while (sl.hasNext()) {
                 sl.next();
-                const QString code = sl.name();
+                const QString code = sl.key();
                 const QString name = sl.value().toString();
                 Language lang(code, name);
                 m_sourceLanguages << lang;
                 m_langCodeToName.insert(code, name);
             }
 
-            QScriptValueIterator tl(data.property("tl"));
+            QVariantMapIterator tl(data.toMap().value("tl").toMap());
             while (tl.hasNext()) {
                 tl.next();
-                const QString code = tl.name();
+                const QString code = tl.key();
                 const QString name = tl.value().toString();
                 Language lang(code, name);
                 m_targetLanguages << lang;
@@ -68,6 +64,9 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
             }
         }
     }
+
+    qSort(m_sourceLanguages);
+    qSort(m_targetLanguages);
 
     if (m_langCodeToName.contains("auto"))
         m_defaultLanguagePair.first = Language("auto", m_langCodeToName.value("auto"));
@@ -155,55 +154,29 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     json.reserve(reply.size());
     json.append("(").append(reply).append(")");
 
-    const QScriptValue data = parseJson(json);
+    const QVariant data = parseJson(json);
     if (!data.isValid())
         return false;
 
-    const QString detected = data.property("src").toString();
+    const QString detected = data.toMap().value("src").toString();
     m_detectedLanguage = Language(detected, getLanguageName(detected));
 
     m_translation.clear();
-    QScriptValueIterator ti(data.property("sentences"));
-    while (ti.hasNext()) {
-        ti.next();
-        m_translation.append(ti.value().property("trans").toString());
+    foreach (const QVariant &ti, data.toMap().value("sentences").toList()) {
+        m_translation.append(ti.toMap().value("trans").toString());
     }
 
     m_dict->clear();
-    if (data.property("dict").isArray()) {
-        QScriptValueIterator di(data.property("dict"));
-        while (di.hasNext()) {
-            di.next();
-            if (di.flags() & QScriptValue::SkipInEnumeration)
-                continue;
+    if (data.toMap().value("dict").type() == QVariant::List) {
+        foreach (const QVariant &di, data.toMap().value("dict").toList()) {
             // Extracting translations
-            QScriptValueIterator ti(di.value().property("terms"));
-            QStringList trans;
-            while (ti.hasNext()) {
-                ti.next();
-                if (ti.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-                trans << ti.value().toString();
-            }
+            QStringList trans = di.toMap().value("terms").toStringList();
 
             // Extracting parts of speech (with reverse translations)
-            QScriptValueIterator ei(di.value().property("entry"));
-            DictionaryPos pos(di.value().property("pos").toString(), trans);
-            while (ei.hasNext()) {
-                ei.next();
-                if (ei.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-
-                // Extracting reverse translations
-                QScriptValueIterator rti(ei.value().property("reverse_translation"));
-                QStringList rtrans;
-                while (rti.hasNext()) {
-                    rti.next();
-                    if (rti.flags() & QScriptValue::SkipInEnumeration)
-                        continue;
-                    rtrans << rti.value().toString();
-                }
-                pos.reverseTranslations()->append(ei.value().property("word").toString(),
+            DictionaryPos pos(di.toMap().value("pos").toString(), trans);
+            foreach (const QVariant &ei, di.toMap().value("entry").toList()) {
+                QStringList rtrans = ei.toMap().value("reverse_translation").toStringList();
+                pos.reverseTranslations()->append(ei.toMap().value("word").toString(),
                                                   QStringList(),
                                                   rtrans);
             }

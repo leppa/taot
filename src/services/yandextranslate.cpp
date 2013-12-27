@@ -23,7 +23,7 @@
 #include "yandextranslate.h"
 #include "apikeys.h"
 
-#include <QScriptValueIterator>
+#include <QStringList>
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
 #   include <QUrlQuery>
 #endif
@@ -98,23 +98,16 @@ bool YandexTranslate::parseReply(const QByteArray &reply)
     json.reserve(reply.size());
     json.append("(").append(reply).append(")");
 
-    QScriptValue data = parseJson(json);
+    const QVariant data = parseJson(json);
     if (!data.isValid())
         return false;
 
-    if (data.property("detected").isObject()) {
-        const QString detected = data.property("detected").property("lang").toString();
+    if (data.toMap().value("detected").type() == QVariant::Map) {
+        const QString detected = data.toMap().value("detected").toMap().value("lang").toString();
         m_detectedLanguage = Language(detected, getLanguageName(detected));
     }
 
-    m_translation.clear();
-    QScriptValueIterator ti(data.property("text"));
-    while (ti.hasNext()) {
-        ti.next();
-        if (ti.flags() & QScriptValue::SkipInEnumeration)
-            continue;
-        m_translation.append(ti.value().toString());
-    }
+    m_translation = data.toMap().value("text").toStringList().join("");
 
     return true;
 }

@@ -24,7 +24,6 @@
 #include "dictionarymodel.h"
 #include "apikeys.h"
 
-#include <QScriptValueIterator>
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
 #   include <QUrlQuery>
 #endif
@@ -100,50 +99,30 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
     json.reserve(reply.size());
     json.append("(").append(reply).append(")");
 
-    QScriptValue data = parseJson(json);
+    const QVariant data = parseJson(json);
     if (!data.isValid())
         return false;
 
-    QScriptValueIterator di(data.property("def"));
     QHash<QString, DictionaryPos> poses;
-    while (di.hasNext()) {
-        di.next();
-        if (di.flags() & QScriptValue::SkipInEnumeration)
-            continue;
-
-        QScriptValueIterator pi(di.value().property("tr"));
-        while (pi.hasNext()) {
-            pi.next();
-            if (pi.flags() & QScriptValue::SkipInEnumeration)
-                continue;
-
-            const QString posname = pi.value().property("pos").toString();
+    foreach (const QVariant &di, data.toMap().value("def").toList()) {
+        foreach (const QVariant &pi, di.toMap().value("tr").toList()) {
+            const QString posname = pi.toMap().value("pos").toString();
             DictionaryPos pos = poses.value(posname, DictionaryPos(posname));
-            pos.translations().append(pi.value().property("text").toString());
+            pos.translations().append(pi.toMap().value("text").toString());
 
-            QScriptValueIterator mi(pi.value().property("mean"));
             QStringList mean;
-            while (mi.hasNext()) {
-                mi.next();
-                if (mi.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-
-                mean << mi.value().property("text").toString();
+            foreach (const QVariant &mi, pi.toMap().value("mean").toList()) {
+                mean << mi.toMap().value("text").toString();
             }
             if (mean.isEmpty())
-                mean.append("---");
+                mean << QLatin1String("---");
 
-            QScriptValueIterator si(pi.value().property("syn"));
             QStringList syn;
-            while (si.hasNext()) {
-                si.next();
-                if (si.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-
-                syn << si.value().property("text").toString();
+            foreach (const QVariant &si, pi.toMap().value("syn").toList()) {
+                syn << si.toMap().value("text").toString();
             }
 
-            pos.reverseTranslations()->append(pi.value().property("text").toString(),
+            pos.reverseTranslations()->append(pi.toMap().value("text").toString(),
                                               syn,
                                               mean);
             poses.insert(posname, pos);
@@ -151,7 +130,7 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
     }
 
     if (poses.isEmpty()) {
-        m_error = tr("The service returned an empty result");
+        m_error = tr("%1 service returned an empty result").arg(displayName());
         return false;
     }
 

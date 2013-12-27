@@ -24,7 +24,6 @@
 
 #include <QFile>
 #include <QStringList>
-#include <QScriptValueIterator>
 
 YandexTranslationService::YandexTranslationService(QObject *parent)
     : JsonTranslationService(parent)
@@ -85,8 +84,8 @@ bool YandexTranslationService::checkReplyForErrors(QNetworkReply *reply)
         QString json;
         json.reserve(reply->size());
         json.append("(").append(reply->readAll()).append(")");
-        QScriptValue data = parseJson(json);
-        m_error = data.property("message").toString();
+        QVariant data = parseJson(json);
+        m_error = data.toMap().value("message").toString();
         return false;
     }
 
@@ -95,31 +94,28 @@ bool YandexTranslationService::checkReplyForErrors(QNetworkReply *reply)
 
 void YandexTranslationService::loadLanguages(const QString &file, bool withAutodetect)
 {
-    if (withAutodetect)
+    if (withAutodetect) {
+        m_sourceLanguages << Language("", tr("Autodetect"));
         m_langCodeToName.insert("", tr("Autodetect"));
+    }
 
     QFile f(file);
     if (f.open(QFile::Text | QFile::ReadOnly)) {
-        QScriptValue data = parseJson(f.readAll());
+        const QVariant data = parseJson(f.readAll());
         f.close();
-        if (!data.isError()) {
-            QScriptValueIterator langs(data.property("langs"));
+        if (data.isValid()) {
+            QVariantMapIterator langs(data.toMap().value("langs").toMap());
             while (langs.hasNext()) {
                 langs.next();
-                const QString code = langs.name();
+                const QString code = langs.key();
                 const QString name = langs.value().toString();
 
                 m_langCodeToName.insert(code, name);
             }
 
-            QScriptValueIterator dirs(data.property("dirs"));
             QSet<QString> duplicates;
-            while (dirs.hasNext()) {
-                dirs.next();
-                if (dirs.flags() & QScriptValue::SkipInEnumeration)
-                    continue;
-
-                const QStringList pair = dirs.value().toString().split("-");
+            foreach (const QString &dirs, data.toMap().value("dirs").toStringList()) {
+                const QStringList pair = dirs.split("-");
 
                 if (!duplicates.contains(pair.at(0))) {
                     const QString code = pair.at(0);
@@ -136,9 +132,7 @@ void YandexTranslationService::loadLanguages(const QString &file, bool withAutod
 
     // Sort the languages alphabetically
     qSort(m_sourceLanguages);
-    if (withAutodetect)
-        m_sourceLanguages.prepend(Language("", tr("Autodetect")));
-    foreach (QString key, m_targetLanguages.keys()) {
+    foreach (const QString &key, m_targetLanguages.keys()) {
         qSort(m_targetLanguages[key]);
     }
 

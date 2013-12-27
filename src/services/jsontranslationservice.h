@@ -25,8 +25,7 @@
 
 #include "translationservice.h"
 
-#include <QScriptEngine>
-#include <QScriptValue>
+typedef QMapIterator<QString, QVariant> QVariantMapIterator;
 
 class JsonTranslationService: public TranslationService
 {
@@ -36,10 +35,7 @@ public:
     explicit JsonTranslationService(QObject *parent = 0);
 
 protected:
-    QScriptValue parseJson(const QString &json);
-
-private:
-    QScriptEngine engine;
+    QVariant parseJson(const QString &json);
 };
 
 #endif // JSONTRANSLATIONSERVICE_H
