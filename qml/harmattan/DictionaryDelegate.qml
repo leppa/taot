@@ -179,6 +179,7 @@ MouseArea {
                         text: model.term + (model.synonyms.length > 0
                                             ? "\n(" + model.synonyms + ")"
                                             : "")
+                        horizontalAlignment: Text.AlignRight
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideNone
                         font.pixelSize: UI.LIST_SUBTILE_SIZE

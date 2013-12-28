@@ -144,7 +144,6 @@ Page {
                 width: parent.width
                 height: childrenRect.height
                 spacing: UiConstants.ButtonSpacing
-                clip: true
 
                 Button {
                     width: (parent.width - parent.spacing) / 2
