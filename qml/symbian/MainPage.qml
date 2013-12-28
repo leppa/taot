@@ -173,9 +173,8 @@ Page {
 
             Row {
                 width: parent.width
-                height: source.text != "" ? childrenRect.height : 0
+                height: childrenRect.height
                 spacing: platformStyle.paddingMedium
-                clip: true
 
                 Button {
                     width: (parent.width - parent.spacing) / 2
@@ -190,6 +189,7 @@ Page {
                 Button {
                     width: (parent.width - parent.spacing) / 2
                     text: qsTr("Clear")
+                    enabled: source.text != ""
                     platformInverted: !appWindow.platformInverted
                     onClicked: {
                         source.text = "";
