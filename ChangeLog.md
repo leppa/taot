@@ -1,6 +1,14 @@
 The Advanced Online Translator ChangeLog
 ========================================
 
+TAOT v0.3.1
+-----------
+- Sailfish OS port ([issue #6][]).
+- Yandex.Dictionaries: added display of synonyms.
+- About dialog was converted to a page. Links were added to the text.
+- Symbian, BlackBerry 10: Translate and Clear buttons are no longer
+  hidden when source text is empty.
+
 TAOT v0.3.0
 -----------
 - Added Yandex.Dictionaries translation service ([issue #12][]).
@@ -68,6 +76,7 @@ Initial release.
 [issue #3]: https://github.com/leppa/taot/issues/3
 [issue #4]: https://github.com/leppa/taot/issues/4
 [issue #5]: https://github.com/leppa/taot/issues/5
+[issue #6]: https://github.com/leppa/taot/issues/6
 [issue #7]: https://github.com/leppa/taot/issues/7
 [issue #8]: https://github.com/leppa/taot/issues/8
 [issue #10]: https://github.com/leppa/taot/issues/10

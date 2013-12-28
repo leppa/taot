@@ -1,3 +1,12 @@
+taot (0.3.1) unstable; urgency=low
+  * Yandex.Dictionaries: added display of synonyms.
+  * About dialog was converted to a page. Links were added to the text.
+  * Updated API keys.
+  * Symbian, BlackBerry 10: Translate and Clear buttons are no longer hidden
+    when source text is empty.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Sat, 28 Dec 2013 01:47:45 +0100
+
 taot (0.3.0) unstable; urgency=low
   * Added Yandex.Dictionaries translation service.
   * Localization: added Ukrainian and Russian translations.
