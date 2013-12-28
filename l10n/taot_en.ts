@@ -27,12 +27,12 @@
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="36"/>
+        <location filename="../src/services/googletranslate.cpp" line="32"/>
         <source>Google Translate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="121"/>
+        <location filename="../src/services/googletranslate.cpp" line="120"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation type="unfinished"></translation>
@@ -41,13 +41,14 @@
 <context>
     <name>JsonTranslationService</name>
     <message>
-        <location filename="../src/services/jsontranslationservice.cpp" line="35"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="42"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/services/jsontranslationservice.cpp" line="36"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="48"/>
         <source>Can&apos;t evaluate JSON data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -147,13 +148,13 @@
 <context>
     <name>MicrosoftTranslator</name>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="14"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="13"/>
         <source>Microsoft Translator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/services/microsofttranslator.cpp" line="22"/>
         <location filename="../src/services/microsofttranslator.cpp" line="23"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="24"/>
         <source>Autodetect</source>
         <translation type="unfinished"></translation>
     </message>
@@ -164,13 +165,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="165"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="162"/>
         <source>Server returned an error: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="168"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="174"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="166"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="172"/>
         <source>Unexpected response from the server</source>
         <translation type="unfinished"></translation>
     </message>
@@ -211,7 +212,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/translationservice.cpp" line="48"/>
+        <location filename="../src/translationservice.cpp" line="55"/>
         <source>No error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -234,13 +235,13 @@
 <context>
     <name>YandexDictionaries</name>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="34"/>
+        <location filename="../src/services/yandexdictionaries.cpp" line="33"/>
         <source>Yandex.Dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="154"/>
-        <source>The service returned an empty result</source>
+        <location filename="../src/services/yandexdictionaries.cpp" line="129"/>
+        <source>%1 service returned an empty result</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -255,14 +256,14 @@
 <context>
     <name>YandexTranslationService</name>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="63"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="62"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="99"/>
-        <location filename="../src/services/yandextranslationservice.cpp" line="140"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="97"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="98"/>
         <source>Autodetect</source>
         <translation type="unfinished"></translation>
     </message>

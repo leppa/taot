@@ -12,7 +12,7 @@
     <message>
         <location filename="../qml/sailfish/AboutPage.qml" line="46"/>
         <source>About</source>
-        <translation>Про</translation>
+        <translation>Про програму</translation>
     </message>
 </context>
 <context>
@@ -21,18 +21,18 @@
         <location filename="../src/dictionarymodel.cpp" line="90"/>
         <source>, </source>
         <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
-        <translation type="unfinished"></translation>
+        <translation>, </translation>
     </message>
 </context>
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="36"/>
+        <location filename="../src/services/googletranslate.cpp" line="32"/>
         <source>Google Translate</source>
         <translation>Перекладач Google</translation>
     </message>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="121"/>
+        <location filename="../src/services/googletranslate.cpp" line="120"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation>Невідома (%1)</translation>
@@ -41,15 +41,16 @@
 <context>
     <name>JsonTranslationService</name>
     <message>
-        <location filename="../src/services/jsontranslationservice.cpp" line="35"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="42"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо розібрати відповідь від сервера у зв&apos;язку з помилкою: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/services/jsontranslationservice.cpp" line="36"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="48"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо розібрати JSON-дані</translation>
     </message>
 </context>
 <context>
@@ -59,14 +60,14 @@
         <location filename="../qml/sailfish/MainPage.qml" line="64"/>
         <location filename="../qml/symbian/MainPage.qml" line="107"/>
         <source>From</source>
-        <translation>Оригінал</translation>
+        <translation>З</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="112"/>
         <location filename="../qml/sailfish/MainPage.qml" line="92"/>
         <location filename="../qml/symbian/MainPage.qml" line="141"/>
         <source>To</source>
-        <translation>Переклад</translation>
+        <translation>На</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="129"/>
@@ -100,7 +101,7 @@
         <location filename="../qml/harmattan/MainPage.qml" line="451"/>
         <location filename="../qml/symbian/MainPage.qml" line="485"/>
         <source>Toggle Inverted Theme</source>
-        <translation>Перемкнути інвертовану тему</translation>
+        <translation>Інвертувати схему кольорів</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="459"/>
@@ -113,7 +114,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="36"/>
         <location filename="../qml/symbian/MainPage.qml" line="501"/>
         <source>About</source>
-        <translation>Про</translation>
+        <translation>Про програму</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="483"/>
@@ -147,13 +148,13 @@
 <context>
     <name>MicrosoftTranslator</name>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="14"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="13"/>
         <source>Microsoft Translator</source>
-        <translation>Microsoft Перекладач</translation>
+        <translation>Microsoft Translator</translation>
     </message>
     <message>
+        <location filename="../src/services/microsofttranslator.cpp" line="22"/>
         <location filename="../src/services/microsofttranslator.cpp" line="23"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="24"/>
         <source>Autodetect</source>
         <translation>Автовизначення</translation>
     </message>
@@ -164,13 +165,13 @@
         <translation>Невідома (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="165"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="162"/>
         <source>Server returned an error: &quot;%1&quot;</source>
         <translation>Сервер повернув помилку: %1</translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="168"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="174"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="166"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="172"/>
         <source>Unexpected response from the server</source>
         <translation>Неочікувана відповідь сервера</translation>
     </message>
@@ -181,7 +182,7 @@
         <location filename="../qml/harmattan/NokiaNoticePage.qml" line="31"/>
         <location filename="../qml/symbian/NokiaNoticePage.qml" line="33"/>
         <source>Important Information</source>
-        <translation>Важлива Інформація</translation>
+        <translation>Важлива інформація</translation>
     </message>
 </context>
 <context>
@@ -191,7 +192,7 @@
         <location filename="../src/reversetranslationsmodel.cpp" line="64"/>
         <source>, </source>
         <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
-        <translation type="unfinished"></translation>
+        <translation>, </translation>
     </message>
 </context>
 <context>
@@ -211,7 +212,7 @@
         <translation>Невідома</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.cpp" line="48"/>
+        <location filename="../src/translationservice.cpp" line="55"/>
         <source>No error</source>
         <translation>Без помилок</translation>
     </message>
@@ -234,14 +235,14 @@
 <context>
     <name>YandexDictionaries</name>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="34"/>
+        <location filename="../src/services/yandexdictionaries.cpp" line="33"/>
         <source>Yandex.Dictionaries</source>
         <translation>Яндекс.Словники</translation>
     </message>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="154"/>
-        <source>The service returned an empty result</source>
-        <translation>Сервіс перекладу повернув порожній результат</translation>
+        <location filename="../src/services/yandexdictionaries.cpp" line="129"/>
+        <source>%1 service returned an empty result</source>
+        <translation>Сервіс перекладу %1 повернув порожній результат</translation>
     </message>
 </context>
 <context>
@@ -255,14 +256,14 @@
 <context>
     <name>YandexTranslationService</name>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="63"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="62"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation>Невідома (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="99"/>
-        <location filename="../src/services/yandextranslationservice.cpp" line="140"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="97"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="98"/>
         <source>Autodetect</source>
         <translation>Автовизначення</translation>
     </message>

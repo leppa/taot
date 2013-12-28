@@ -12,7 +12,7 @@
     <message>
         <location filename="../qml/sailfish/AboutPage.qml" line="46"/>
         <source>About</source>
-        <translation>Про</translation>
+        <translation>О программе</translation>
     </message>
 </context>
 <context>
@@ -21,18 +21,18 @@
         <location filename="../src/dictionarymodel.cpp" line="90"/>
         <source>, </source>
         <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
-        <translation type="unfinished"></translation>
+        <translation>, </translation>
     </message>
 </context>
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="36"/>
+        <location filename="../src/services/googletranslate.cpp" line="32"/>
         <source>Google Translate</source>
         <translation>Переводчик Google</translation>
     </message>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="121"/>
+        <location filename="../src/services/googletranslate.cpp" line="120"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation>Неизвестный (%1)</translation>
@@ -41,15 +41,16 @@
 <context>
     <name>JsonTranslationService</name>
     <message>
-        <location filename="../src/services/jsontranslationservice.cpp" line="35"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="42"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно разобрать ответ от сервера из-за ошибки: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/services/jsontranslationservice.cpp" line="36"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="48"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно разобрать JSON-данные</translation>
     </message>
 </context>
 <context>
@@ -59,14 +60,14 @@
         <location filename="../qml/sailfish/MainPage.qml" line="64"/>
         <location filename="../qml/symbian/MainPage.qml" line="107"/>
         <source>From</source>
-        <translation>Оригинал</translation>
+        <translation>С</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="112"/>
         <location filename="../qml/sailfish/MainPage.qml" line="92"/>
         <location filename="../qml/symbian/MainPage.qml" line="141"/>
         <source>To</source>
-        <translation>Перевод</translation>
+        <translation>На</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="129"/>
@@ -100,26 +101,26 @@
         <location filename="../qml/harmattan/MainPage.qml" line="451"/>
         <location filename="../qml/symbian/MainPage.qml" line="485"/>
         <source>Toggle Inverted Theme</source>
-        <translation>Переключить инверитрованную тему</translation>
+        <translation>Инвертировать цветовую схему</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="459"/>
         <location filename="../qml/symbian/MainPage.qml" line="494"/>
         <source>Important Information</source>
-        <translation>Важная информация</translation>
+        <translation>Важные сведения</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="463"/>
         <location filename="../qml/sailfish/MainPage.qml" line="36"/>
         <location filename="../qml/symbian/MainPage.qml" line="501"/>
         <source>About</source>
-        <translation>Про</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="483"/>
         <location filename="../qml/symbian/MainPage.qml" line="523"/>
         <source>IMPORTANT INFORMATION! PLEASE, READ!</source>
-        <translation>ВАЖНАЯ ИНФОРМАЦИЯ! ПОЖАЛУЙСТА, ПРОЧТИТЕ!</translation>
+        <translation>ВАЖНЫЕ СВЕДЕНИЯ! ПОЖАЛУЙСТА, ПРОЧТИТЕ!</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="40"/>
@@ -147,13 +148,13 @@
 <context>
     <name>MicrosoftTranslator</name>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="14"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="13"/>
         <source>Microsoft Translator</source>
-        <translation>Microsoft Переводчик</translation>
+        <translation>Microsoft Translator</translation>
     </message>
     <message>
+        <location filename="../src/services/microsofttranslator.cpp" line="22"/>
         <location filename="../src/services/microsofttranslator.cpp" line="23"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="24"/>
         <source>Autodetect</source>
         <translation>Автоопределение</translation>
     </message>
@@ -164,13 +165,13 @@
         <translation>Неизвестный (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="165"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="162"/>
         <source>Server returned an error: &quot;%1&quot;</source>
         <translation>Сервер вернул ошибку: %1</translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="168"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="174"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="166"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="172"/>
         <source>Unexpected response from the server</source>
         <translation>Неожиданный ответ от сервера</translation>
     </message>
@@ -181,7 +182,7 @@
         <location filename="../qml/harmattan/NokiaNoticePage.qml" line="31"/>
         <location filename="../qml/symbian/NokiaNoticePage.qml" line="33"/>
         <source>Important Information</source>
-        <translation>Важная Информация</translation>
+        <translation>Важные сведения</translation>
     </message>
 </context>
 <context>
@@ -191,7 +192,7 @@
         <location filename="../src/reversetranslationsmodel.cpp" line="64"/>
         <source>, </source>
         <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
-        <translation type="unfinished"></translation>
+        <translation>, </translation>
     </message>
 </context>
 <context>
@@ -211,7 +212,7 @@
         <translation>Неизвестный</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.cpp" line="48"/>
+        <location filename="../src/translationservice.cpp" line="55"/>
         <source>No error</source>
         <translation>Без ошибок</translation>
     </message>
@@ -234,14 +235,14 @@
 <context>
     <name>YandexDictionaries</name>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="34"/>
+        <location filename="../src/services/yandexdictionaries.cpp" line="33"/>
         <source>Yandex.Dictionaries</source>
         <translation>Яндекс.Словари</translation>
     </message>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="154"/>
-        <source>The service returned an empty result</source>
-        <translation>Сервис перевода вернул пустой результат</translation>
+        <location filename="../src/services/yandexdictionaries.cpp" line="129"/>
+        <source>%1 service returned an empty result</source>
+        <translation>Сервис перевода %1 вернул пустой результат</translation>
     </message>
 </context>
 <context>
@@ -255,14 +256,14 @@
 <context>
     <name>YandexTranslationService</name>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="63"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="62"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation>Неизвестный (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="99"/>
-        <location filename="../src/services/yandextranslationservice.cpp" line="140"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="97"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="98"/>
         <source>Autodetect</source>
         <translation>Автоопределение</translation>
     </message>
