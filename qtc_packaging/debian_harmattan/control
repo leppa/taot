@@ -28,6 +28,7 @@ Description: Online Translator with some advanced features
  .
  More services might be added in future.
 XSBC-Maemo-Display-Name: The Advanced Online Translator
+XSBC-Maemo-Display-Name-zh: 翻译大师OL
 XB-Maemo-Flags: visible
 XB-MeeGo-Desktop-Entry-Filename: taot_harmattan
 XB-MeeGo-Desktop-Entry:
