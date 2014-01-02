@@ -88,7 +88,8 @@ RESOURCES += \
 TRANSLATIONS += \
     l10n/taot_en.ts \
     l10n/taot_ru.ts \
-    l10n/taot_uk.ts
+    l10n/taot_uk.ts \
+    l10n/taot_zh_CN.ts
 
 translate_hack {
     SOURCES += \
