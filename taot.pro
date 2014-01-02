@@ -1,7 +1,7 @@
 ######################################################################
 #
 #  The Advanced Online Translator
-#  Copyright (C) 2013  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+#  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 #
 #  $Id: $Format:%h %ai %an$ $
 #
@@ -34,7 +34,7 @@ blackberry:QT += opengl
 QMAKE_TARGET_COMPANY = Oleksii Serdiuk
 QMAKE_TARGET_PRODUCT = The Advanced Online Translator
 QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
-QMAKE_TARGET_COPYRIGHT = Copyright © 2013 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2014 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 
 lessThan(QT_MAJOR_VERSION, 5) {
     include(qmlapplicationviewer/qmlapplicationviewer.pri)
