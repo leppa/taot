@@ -185,6 +185,13 @@ Page {
                         dummyFocus.focus = true;
                         translator.translate();
                     }
+
+                    BusyIndicator {
+                        visible: translator.busy
+                        running: visible
+                        platformInverted: appWindow.platformInverted
+                        anchors.centerIn: parent
+                    }
                 }
                 Button {
                     width: (parent.width - parent.spacing) / 2
@@ -339,25 +346,6 @@ Page {
                 listDictionary.headerItem = col;
             }
         }
-    }
-
-    Rectangle {
-        z: 100
-        color: platformInverted ? platformStyle.colorBackgroundInverted
-                                : platformStyle.colorBackground
-        opacity: translator.busy ? 0.5 : 0.0
-        visible: opacity != 0
-        anchors.fill: parent
-
-        BusyIndicator {
-            width: platformStyle.graphicSizeLarge
-            height: width
-            running: parent.visible
-            platformInverted: appWindow.platformInverted
-            anchors.centerIn: parent
-        }
-
-        Behavior on opacity { NumberAnimation { duration: 200 } }
     }
 
     ScrollDecorator {

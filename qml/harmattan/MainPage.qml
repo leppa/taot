@@ -156,6 +156,12 @@ Page {
                         dummyFocus.focus = true;
                         translator.translate();
                     }
+
+                    BusyIndicator {
+                        visible: translator.busy
+                        running: visible
+                        anchors.centerIn: parent
+                    }
                 }
                 Button {
                     width: (parent.width - parent.spacing) / 2
@@ -309,24 +315,6 @@ Page {
                 listDictionary.headerItem = col;
             }
         }
-    }
-
-    Rectangle {
-        z: 100
-        color: theme.inverted ? "#000000" /*UI.COLOR_INVERTED_BACKGROUND*/
-                              : "#E0E1E2" /*UI.COLOR_BACKGROUND*/
-        opacity: translator.busy ? 0.5 : 0.0
-        visible: opacity != 0
-        anchors.fill: parent
-
-        BusyIndicator {
-            width: 48 /*UI.SIZE_ICON_LARGE*/
-            height: width
-            running: parent.visible
-            anchors.centerIn: parent
-        }
-
-        Behavior on opacity { NumberAnimation { duration: 200 } }
     }
 
     Item {

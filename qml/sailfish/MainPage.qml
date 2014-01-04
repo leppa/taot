@@ -133,6 +133,13 @@ Page {
                     enabled: !translator.busy
 
                     onClicked: translator.translate();
+
+                    BusyIndicator {
+                        size: BusyIndicatorSize.Small
+                        visible: translator.busy
+                        running: visible
+                        anchors.centerIn: parent
+                    }
                 }
                 Button {
                     width: (parent.width - parent.spacing) / 2
@@ -257,12 +264,6 @@ Page {
                 }
             }
         }
-    }
-
-    BusyIndicator {
-        size: BusyIndicatorSize.Large
-        running: translator.busy
-        anchors.centerIn: parent
     }
 
     Component {
