@@ -489,52 +489,10 @@ Page {
                     translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
                 }
             }
-            // TODO: Remove this after 01.01.2014.
-            MenuItem {
-                text: qsTr("Important Information")
-                visible: showNokiaStoreNotice
-                platformInverted: appWindow.platformInverted
-                onClicked: pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"),
-                                          { "platformInverted": appWindow.platformInverted });
-            }
             MenuItem {
                 text: qsTr("About")
                 platformInverted: appWindow.platformInverted
                 onClicked: pageStack.push(aboutPageComponent);
-            }
-        }
-    }
-
-    // TODO: Remove this after 01.01.2014.
-    Rectangle {
-        color: "red"
-        height: Math.max(privateStyle.buttonSize,
-                         iil.implicitHeight
-                         + privateStyle.buttonSize - platformStyle.graphicSizeSmall)
-        visible: showNokiaStoreNotice && translator.getSettingsValue("displayNokiaStoreNotice")
-        anchors {
-            left: parent.left
-            bottom: parent.bottom
-            right: parent.right
-        }
-
-        Label {
-            id: iil
-            text: qsTr("IMPORTANT INFORMATION! PLEASE, READ!")
-            color: "white"
-            wrapMode: Text.Wrap
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            anchors.fill: parent
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"),
-                               { "platformInverted": appWindow.platformInverted });
-                parent.visible = false;
-                translator.setSettingsValue("displayNokiaStoreNotice", false);
             }
         }
     }

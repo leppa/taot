@@ -120,13 +120,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 #endif
 
-    // TODO: Remove this after 01.01.2014.
-#if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
-    viewer.rootContext()->setContextProperty("showNokiaStoreNotice", "true");
-#elif !defined(Q_OS_SAILFISH)
-    viewer.rootContext()->setContextProperty("showNokiaStoreNotice", "false");
-#endif
-
 #ifdef MEEGO_EDITION_HARMATTAN
     QDir dir(app->applicationDirPath());
     dir.cdUp();

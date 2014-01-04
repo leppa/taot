@@ -453,46 +453,9 @@ Page {
                     translator.setSettingsValue("InvertedTheme", theme.inverted);
                 }
             }
-            // TODO: Remove this after 01.01.2014.
-            MenuItem {
-                text: qsTr("Important Information")
-                onClicked: pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"));
-            }
             MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(aboutPageComponent);
-            }
-        }
-    }
-
-    // TODO: Remove this after 01.01.2014.
-    Rectangle {
-        color: "red"
-        height: Math.max(51 /*UI.BUTTON_HEIGHT*/,
-                         iil.implicitHeight + 2 * 10 /*UI.BUTTON_LABEL_MARGIN*/)
-        visible: translator.getSettingsValue("displayNokiaStoreNotice")
-        anchors {
-            left: parent.left
-            bottom: parent.bottom
-            right: parent.right
-        }
-
-        Label {
-            id: iil
-            text: qsTr("IMPORTANT INFORMATION! PLEASE, READ!")
-            color: "white"
-            wrapMode: Text.Wrap
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            anchors.fill: parent
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                pageStack.push(Qt.resolvedUrl("NokiaNoticePage.qml"));
-                parent.visible = false;
-                translator.setSettingsValue("displayNokiaStoreNotice", false);
             }
         }
     }
