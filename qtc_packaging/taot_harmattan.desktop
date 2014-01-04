@@ -3,7 +3,7 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Name=The Advanced Online Translator
+Name=TAO Translator
 Exec=/usr/bin/invoker --type=d -s /opt/taot/bin/taot
 Icon=/usr/share/icons/hicolor/80x80/apps/taot80.png
 X-Window-Icon=

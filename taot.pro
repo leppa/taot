@@ -127,7 +127,7 @@ symbian {
 symbian {
     CONFIG += qt-components
 
-    DEPLOYMENT.display_name = $$QMAKE_TARGET_PRODUCT
+    DEPLOYMENT.display_name = TAO Translator
     ICON = taot.svg
 
     # OVI Publish - 0x2003AEFC, Self-signed - 0xA001635A

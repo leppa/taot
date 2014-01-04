@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Name=The Advanced Online Translator
+Name=TAO Translator
 Icon=harbour-taot
 Exec=harbour-taot
 
