@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[taot.en]
+file_filter = l10n/taot_<lang>.ts
+source_file = l10n/taot_en.ts
+source_lang = en
+type = QT
+
