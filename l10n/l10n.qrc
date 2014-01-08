@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/l10n">
         <file>taot_ru.qm</file>
+        <file>taot_tr.qm</file>
         <file>taot_uk.qm</file>
         <file>taot_zh_CN.qm</file>
     </qresource>
