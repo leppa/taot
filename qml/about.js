@@ -26,6 +26,10 @@
 var aboutText =
 "<p><a href=\"https://github.com/leppa/taot\">https://github.com/leppa/taot</a></p> " +
 "<p>Copyright &copy; 2013-2014 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=The%20Advanced%20Online%20Translator\">Oleksii Serdiuk</a></p> " +
+"<p>This or previous versions of <i>The Advanced Online Translator</i> contain contributions by: " +
+"<b>gwmgdemj</b> (Chinese Translation), " +
+"<b>Mehmet Ç. (fnldstntn)</b> (Turkish Translation), " +
+"<b>teunwinters</b> (Dutch Translation).</p>" +
 "<p>&nbsp;</p> " +
 "<p>The Advanced Online Translator uses available online translation services to provide translations.</p> " +
 "<p>Currently supported services:</p> " +
