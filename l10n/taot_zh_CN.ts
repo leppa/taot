@@ -2,17 +2,45 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>AboutPage</name>
+    <message>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <source>Version: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation>版本: &lt;b&gt;%1&lt;/b&gt;</translation>
+    </message>
+</context>
+<context>
     <name>DictionaryModel</name>
     <message>
         <source>, </source>
+        <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
         <translation>, </translation>
     </message>
 </context>
 <context>
-    <name>ReverseTranslationsModel</name>
+    <name>GoogleTranslate</name>
     <message>
-        <source>, </source>
-        <translation>, </translation>
+        <source>Google Translate</source>
+        <translation>Google翻译</translation>
+    </message>
+    <message>
+        <source>Unknown (%1)</source>
+        <comment>Unknown language</comment>
+        <translation type="unfinished">未知语言 (%1)</translation>
+    </message>
+</context>
+<context>
+    <name>JsonTranslationService</name>
+    <message>
+        <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
+        <translation>服务器响应错误: &quot;%1&quot;,无法解析</translation>
+    </message>
+    <message>
+        <source>Can&apos;t evaluate JSON data</source>
+        <translation>无法计算JSON数据</translation>
     </message>
 </context>
 <context>
@@ -42,10 +70,6 @@
         <translation>翻译</translation>
     </message>
     <message>
-        <source>Important Information</source>
-        <translation>重要提示</translation>
-    </message>
-    <message>
         <source>Translation Service</source>
         <translation>翻译服务</translation>
     </message>
@@ -58,49 +82,12 @@
         <translation>源语言</translation>
     </message>
     <message>
-        <source>IMPORTANT INFORMATION! PLEASE, READ!</source>
-        <translation>重要提示,请一定阅读!</translation>
-    </message>
-    <message>
         <source>Toggle Inverted Theme</source>
         <translation>切换主题风格</translation>
     </message>
     <message>
         <source>Enter the source text...</source>
         <translation>请输入源文...</translation>
-    </message>
-</context>
-<context>
-    <name>TranslationTextAreaPage</name>
-    <message>
-        <source>Copy</source>
-        <translation>复制</translation>
-    </message>
-    <message>
-        <source>Select all</source>
-        <translation>全选</translation>
-    </message>
-</context>
-<context>
-    <name>AboutPage</name>
-    <message>
-        <source>About</source>
-        <translation>关于</translation>
-    </message>
-    <message>
-        <source>Version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>版本: &lt;b&gt;%1&lt;/b&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>TranslationService</name>
-    <message>
-        <source>No error</source>
-        <translation>错误</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>未知语言</translation>
     </message>
 </context>
 <context>
@@ -118,34 +105,51 @@
         <translation>Microsoft翻译</translation>
     </message>
     <message>
-        <source>Unknown (%1)</source>
-        <translation>未知语言 (%1)</translation>
-    </message>
-    <message>
         <source>Server returned an error: &quot;%1&quot;</source>
         <translation>服务器返回错误: &quot;%1&quot;</translation>
     </message>
-</context>
-<context>
-    <name>YandexTranslationService</name>
-    <message>
-        <source>Autodetect</source>
-        <translation>自动检测</translation>
-    </message>
     <message>
         <source>Unknown (%1)</source>
-        <translation>未知语言 (%1)</translation>
+        <comment>Unknown language</comment>
+        <translation type="unfinished">未知语言 (%1)</translation>
     </message>
 </context>
 <context>
-    <name>JsonTranslationService</name>
+    <name>ReverseTranslationsModel</name>
     <message>
-        <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation>服务器响应错误: &quot;%1&quot;,无法解析</translation>
+        <source>, </source>
+        <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
+        <translation>, </translation>
+    </message>
+</context>
+<context>
+    <name>TranslationInterface</name>
+    <message>
+        <source>Please, enter the source text</source>
+        <translation>请输入源文</translation>
+    </message>
+</context>
+<context>
+    <name>TranslationService</name>
+    <message>
+        <source>No error</source>
+        <translation>错误</translation>
     </message>
     <message>
-        <source>Can&apos;t evaluate JSON data</source>
-        <translation>无法计算JSON数据</translation>
+        <source>Unknown</source>
+        <comment>Unknown language</comment>
+        <translation type="unfinished">未知语言</translation>
+    </message>
+</context>
+<context>
+    <name>TranslationTextAreaPage</name>
+    <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>Select all</source>
+        <translation>全选</translation>
     </message>
 </context>
 <context>
@@ -160,35 +164,22 @@
     </message>
 </context>
 <context>
-    <name>GoogleTranslate</name>
-    <message>
-        <source>Unknown (%1)</source>
-        <translation>未知语言 (%1)</translation>
-    </message>
-    <message>
-        <source>Google Translate</source>
-        <translation>Google翻译</translation>
-    </message>
-</context>
-<context>
-    <name>NokiaNoticePage</name>
-    <message>
-        <source>Important Information</source>
-        <translation>重要提示</translation>
-    </message>
-</context>
-<context>
-    <name>TranslationInterface</name>
-    <message>
-        <source>Please, enter the source text</source>
-        <translation>请输入源文</translation>
-    </message>
-</context>
-<context>
     <name>YandexTranslate</name>
     <message>
         <source>Yandex.Translate</source>
         <translation>Yandex.翻译</translation>
+    </message>
+</context>
+<context>
+    <name>YandexTranslationService</name>
+    <message>
+        <source>Autodetect</source>
+        <translation>自动检测</translation>
+    </message>
+    <message>
+        <source>Unknown (%1)</source>
+        <comment>Unknown language</comment>
+        <translation type="unfinished">未知语言 (%1)</translation>
     </message>
 </context>
 </TS>

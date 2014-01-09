@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="nl_NL">
 <context>
     <name>AboutPage</name>
     <message>
@@ -18,7 +20,7 @@
     <message>
         <location filename="../src/dictionarymodel.cpp" line="90"/>
         <source>, </source>
-        <comment>Separator for joining string lists (don't forget space after comma).</comment>
+        <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
         <translation>, </translation>
     </message>
 </context>
@@ -72,72 +74,60 @@
         <location filename="../qml/sailfish/MainPage.qml" line="110"/>
         <location filename="../qml/symbian/MainPage.qml" line="159"/>
         <source>Enter the source text...</source>
-        <translation>Geef bron text</translation>
+        <translation type="unfinished">Geef bron text...</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="151"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="150"/>
         <location filename="../qml/sailfish/MainPage.qml" line="132"/>
-        <location filename="../qml/symbian/MainPage.qml" line="182"/>
+        <location filename="../qml/symbian/MainPage.qml" line="181"/>
         <source>Translate</source>
         <translation>Vertaal</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="163"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="139"/>
-        <location filename="../qml/symbian/MainPage.qml" line="192"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="168"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="146"/>
+        <location filename="../qml/symbian/MainPage.qml" line="198"/>
         <source>Clear</source>
         <translation>Maak leeg</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="241"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="179"/>
-        <location filename="../qml/symbian/MainPage.qml" line="268"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="246"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="186"/>
+        <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
-        <translation>Detecteer taal</translation>
+        <translation type="unfinished">Detecteer taal:</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="451"/>
-        <location filename="../qml/symbian/MainPage.qml" line="485"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="438"/>
+        <location filename="../qml/symbian/MainPage.qml" line="473"/>
         <source>Toggle Inverted Theme</source>
         <translation>Wissel Omgekeerd Thema</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="459"/>
-        <location filename="../qml/symbian/MainPage.qml" line="494"/>
-        <source>Important Information</source>
-        <translation>Belangrijke Informatie</translation>
-    </message>
-    <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="463"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="445"/>
         <location filename="../qml/sailfish/MainPage.qml" line="36"/>
-        <location filename="../qml/symbian/MainPage.qml" line="501"/>
+        <location filename="../qml/symbian/MainPage.qml" line="481"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="483"/>
-        <location filename="../qml/symbian/MainPage.qml" line="523"/>
-        <source>IMPORTANT INFORMATION! PLEASE, READ!</source>
-        <translation>BELANGRIJKE INFORMATIE! LEZEN AUB</translation>
-    </message>
-    <message>
         <location filename="../qml/harmattan/MainPage.qml" line="40"/>
         <location filename="../qml/sailfish/MainPage.qml" line="41"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="272"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="273"/>
         <location filename="../qml/symbian/MainPage.qml" line="39"/>
         <source>Translation Service</source>
         <translation>Vertaal Service</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="49"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="286"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="287"/>
         <location filename="../qml/symbian/MainPage.qml" line="56"/>
         <source>Source Language</source>
         <translation>Bron Taal</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="299"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="300"/>
         <location filename="../qml/symbian/MainPage.qml" line="73"/>
         <source>Target Language</source>
         <translation>Doel Taal</translation>
@@ -175,21 +165,12 @@
     </message>
 </context>
 <context>
-    <name>NokiaNoticePage</name>
-    <message>
-        <location filename="../qml/harmattan/NokiaNoticePage.qml" line="31"/>
-        <location filename="../qml/symbian/NokiaNoticePage.qml" line="33"/>
-        <source>Important Information</source>
-        <translation>Belangrijke Informatie</translation>
-    </message>
-</context>
-<context>
     <name>ReverseTranslationsModel</name>
     <message>
         <location filename="../src/reversetranslationsmodel.cpp" line="60"/>
         <location filename="../src/reversetranslationsmodel.cpp" line="64"/>
         <source>, </source>
-        <comment>Separator for joining string lists (don't forget space after comma).</comment>
+        <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
         <translation>, </translation>
     </message>
 </context>
@@ -260,8 +241,8 @@
         <translation>Onbekend (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="97"/>
-        <location filename="../src/services/yandextranslationservice.cpp" line="98"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="95"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="96"/>
         <source>Autodetect</source>
         <translation>Auto detecteer</translation>
     </message>

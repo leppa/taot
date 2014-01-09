@@ -77,69 +77,57 @@
         <translation>Введіть вихідний текст...</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="151"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="150"/>
         <location filename="../qml/sailfish/MainPage.qml" line="132"/>
-        <location filename="../qml/symbian/MainPage.qml" line="182"/>
+        <location filename="../qml/symbian/MainPage.qml" line="181"/>
         <source>Translate</source>
         <translation>Перекласти</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="163"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="139"/>
-        <location filename="../qml/symbian/MainPage.qml" line="192"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="168"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="146"/>
+        <location filename="../qml/symbian/MainPage.qml" line="198"/>
         <source>Clear</source>
         <translation>Очистити</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="241"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="179"/>
-        <location filename="../qml/symbian/MainPage.qml" line="268"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="246"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="186"/>
+        <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
         <translation>Визначена мова:</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="451"/>
-        <location filename="../qml/symbian/MainPage.qml" line="485"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="438"/>
+        <location filename="../qml/symbian/MainPage.qml" line="473"/>
         <source>Toggle Inverted Theme</source>
         <translation>Інвертувати схему кольорів</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="459"/>
-        <location filename="../qml/symbian/MainPage.qml" line="494"/>
-        <source>Important Information</source>
-        <translation>Важлива інформація</translation>
-    </message>
-    <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="463"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="445"/>
         <location filename="../qml/sailfish/MainPage.qml" line="36"/>
-        <location filename="../qml/symbian/MainPage.qml" line="501"/>
+        <location filename="../qml/symbian/MainPage.qml" line="481"/>
         <source>About</source>
         <translation>Про програму</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="483"/>
-        <location filename="../qml/symbian/MainPage.qml" line="523"/>
-        <source>IMPORTANT INFORMATION! PLEASE, READ!</source>
-        <translation>ВАЖЛИВА ІНФОРМАЦІЯ! БУДЬ ЛАСКА, ПРОЧИТАЙТЕ!</translation>
-    </message>
-    <message>
         <location filename="../qml/harmattan/MainPage.qml" line="40"/>
         <location filename="../qml/sailfish/MainPage.qml" line="41"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="272"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="273"/>
         <location filename="../qml/symbian/MainPage.qml" line="39"/>
         <source>Translation Service</source>
         <translation>Сервіс перекладу</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="49"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="286"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="287"/>
         <location filename="../qml/symbian/MainPage.qml" line="56"/>
         <source>Source Language</source>
         <translation>Мова оригіналу</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="299"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="300"/>
         <location filename="../qml/symbian/MainPage.qml" line="73"/>
         <source>Target Language</source>
         <translation>Мова перекладу</translation>
@@ -174,15 +162,6 @@
         <location filename="../src/services/microsofttranslator.cpp" line="172"/>
         <source>Unexpected response from the server</source>
         <translation>Неочікувана відповідь сервера</translation>
-    </message>
-</context>
-<context>
-    <name>NokiaNoticePage</name>
-    <message>
-        <location filename="../qml/harmattan/NokiaNoticePage.qml" line="31"/>
-        <location filename="../qml/symbian/NokiaNoticePage.qml" line="33"/>
-        <source>Important Information</source>
-        <translation>Важлива інформація</translation>
     </message>
 </context>
 <context>
@@ -262,8 +241,8 @@
         <translation>Невідома (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="97"/>
-        <location filename="../src/services/yandextranslationservice.cpp" line="98"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="95"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="96"/>
         <source>Autodetect</source>
         <translation>Автовизначення</translation>
     </message>
