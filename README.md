@@ -1,7 +1,7 @@
 The Advanced Online Translator
 ==============================
 
-Copyright (C) 2013 *[Oleksii Serdiuk](http://oleksii.name/)*.
+Copyright (C) 2013-2014 *[Oleksii Serdiuk](http://oleksii.name/)*.
 
 **The Advanced Online Translator** uses available online translation
 services to provide translations.
@@ -28,11 +28,13 @@ You can check the [ChangeLog](ChangeLog.md) (updated only on releases).
 Download
 --------
 
-**The Advanced Online Translator** is available for **Nokia N9**,
-**Nokia Symbian** (Symbian^3) and **BlackBerry 10** smartphones:
+**The Advanced Online Translator** is available for **BlackBerry 10**,
+**Nokia N9**, **Nokia Symbian** (Symbian^3) and **Sailfish OS**:
 
-- [Nokia Store][nokia]
-- [BlackBerry World][bb10]
+- **BlackBerry 10**: [BlackBerry World][bb10].
+- **Nokia N9**: [OpenRepos.net][openrepos], [Nokia Store][nokia].
+- **Nokia Symbian**: [Nokia Store][nokia].
+- **Sailfish OS**: search for `taot` in the Store.
 
 
 License
@@ -67,6 +69,7 @@ Donations are always welcome. If you'd like to make a donation, please,
 refer to [Donate][] page for more information.
 
 
+[openrepos]: https://openrepos.net/content/leppa/advanced-online-translator
 [nokia]: http://store.ovi.com/content/359493
 [bb10]: http://appworld.blackberry.com/webstore/content/21908039/
 [Travis CI]: https://travis-ci.org/leppa/taot
