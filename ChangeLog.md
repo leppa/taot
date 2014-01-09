@@ -17,11 +17,11 @@ TAOT v0.3.0
 
 TAOT v0.2.1
 -----------
-- Support for language swap.
+- Support for language swap ([issue #13][]).
 - Yandex.Translate: Fixed SSL handshake error due to a missing CA
   certificate.
 - Yandex.Translate: Added error handling.
-- Yandex.Translate: Sort languages by name.
+- Yandex.Translate: Sort languages by name ([issue #14][]).
 
 TAOT v0.2.0
 -----------
@@ -82,5 +82,7 @@ Initial release.
 [issue #10]: https://github.com/leppa/taot/issues/10
 [issue #11]: https://github.com/leppa/taot/issues/11
 [issue #12]: https://github.com/leppa/taot/issues/12
+[issue #13]: https://github.com/leppa/taot/issues/13
+[issue #14]: https://github.com/leppa/taot/issues/13
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
