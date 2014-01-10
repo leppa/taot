@@ -27,6 +27,10 @@ import "about.js" as About
 Page {
     id: root
 
+    allowedOrientations: Orientation.Portrait
+                         | Orientation.Landscape
+                         | Orientation.LandscapeInverted
+
     SilicaFlickable {
         id: scrollArea
 

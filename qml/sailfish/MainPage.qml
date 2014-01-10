@@ -27,6 +27,10 @@ import harbour.taot 1.0
 Page {
     id: page
 
+    allowedOrientations: Orientation.Portrait
+                         | Orientation.Landscape
+                         | Orientation.LandscapeInverted
+
     SilicaFlickable {
         contentHeight: column.height + Theme.paddingMedium
         anchors.fill: parent

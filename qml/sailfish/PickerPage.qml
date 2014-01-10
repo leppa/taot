@@ -32,6 +32,10 @@ Page {
 
     signal selected(int index)
 
+    allowedOrientations: Orientation.Portrait
+                         | Orientation.Landscape
+                         | Orientation.LandscapeInverted
+
     SilicaListView {
         id: listView
         anchors.fill: parent
