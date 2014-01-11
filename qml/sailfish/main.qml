@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.taot 1.0
 
 ApplicationWindow {
     initialPage: Component {
@@ -32,10 +33,14 @@ ApplicationWindow {
         id: banner
     }
 
-    cover: CoverBackground {
-        CoverPlaceholder {
-            text: "The Advanced Online Translator"
-            icon.source: Qt.resolvedUrl("icons/icon.png")
+    Translator {
+        id: translator
+
+        onError: {
+            console.debug(errorString);
+            banner.show(errorString);
         }
     }
+
+    cover: AppCover {}
 }

@@ -22,7 +22,6 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.taot 1.0
 
 Page {
     id: page
@@ -314,14 +313,5 @@ Page {
         id: aboutPageComponent
 
         AboutPage {}
-    }
-
-    Translator {
-        id: translator
-
-        onError: {
-            console.debug(errorString);
-            banner.show(errorString);
-        }
     }
 }
