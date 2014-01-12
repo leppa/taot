@@ -8,12 +8,12 @@ services to provide translations.
 
 Currently supported services:
 
- * **Google Translate** - supports translation, language detection,
+ - **Google Translate** - supports translation, language detection,
    dictionary and reverse translations for single words.
- * **Microsoft Translator** (a.k.a. **Bing Translator**) - supports
+ - **Microsoft Translator** (a.k.a. **Bing Translator**) - supports
    translation only.
- * **Yandex.Translate** - supports translation and language detection.
- * **Yandex.Dictionaries** - supports dictionary with synonyms and
+ - **Yandex.Translate** - supports translation and language detection.
+ - **Yandex.Dictionaries** - supports dictionary with synonyms and
    reverse translations.
 
 More services might be added in future.
@@ -31,10 +31,10 @@ Download
 **The Advanced Online Translator** is available for **BlackBerry 10**,
 **Nokia N9**, **Nokia Symbian** (Symbian^3) and **Sailfish OS**:
 
-- **BlackBerry 10**: [BlackBerry World][bb10].
-- **Nokia N9**: [OpenRepos.net][openrepos], [Nokia Store][nokia].
-- **Nokia Symbian**: [Nokia Store][nokia].
-- **Sailfish OS**: search for `taot` in the Store.
+ - **BlackBerry 10**: [BlackBerry World][bb10].
+ - **Nokia N9**: [OpenRepos.net][openrepos], [Nokia Store][nokia].
+ - **Nokia Symbian**: [Nokia Store][nokia].
+ - **Sailfish OS**: search for `taot` in the Store.
 
 
 License
