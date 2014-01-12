@@ -132,12 +132,7 @@ symbian {
     DEPLOYMENT.display_name = TAO Translator
     ICON = taot.svg
 
-    # OVI Publish - 0x2003AEFC, Self-signed - 0xA001635A
-    ovi_publish {
-        TARGET.UID3 = 0x2003AEFC
-    } else {
-        TARGET.UID3 = 0xA001635A
-    }
+    TARGET.UID3 = 0xA001635A
     TARGET.CAPABILITY += NetworkServices ReadUserData
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 
