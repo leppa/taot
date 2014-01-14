@@ -13,6 +13,17 @@
     </message>
 </context>
 <context>
+    <name>AppCover</name>
+    <message>
+        <source>From: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DictionaryModel</name>
     <message>
         <source>, </source>

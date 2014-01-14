@@ -10,9 +10,22 @@
         <translation>Версия: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/sailfish/AboutPage.qml" line="46"/>
+        <location filename="../qml/sailfish/AboutPage.qml" line="50"/>
         <source>About</source>
         <translation>О программе</translation>
+    </message>
+</context>
+<context>
+    <name>AppCover</name>
+    <message>
+        <location filename="../qml/sailfish/AppCover.qml" line="33"/>
+        <source>From: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation>С: &lt;b&gt;%1&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../qml/sailfish/AppCover.qml" line="34"/>
+        <source>To: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation>На: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -57,42 +70,42 @@
     <name>MainPage</name>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="87"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="64"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="67"/>
         <location filename="../qml/symbian/MainPage.qml" line="107"/>
         <source>From</source>
         <translation>С</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="112"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="92"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="95"/>
         <location filename="../qml/symbian/MainPage.qml" line="141"/>
         <source>To</source>
         <translation>На</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="129"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="110"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="113"/>
         <location filename="../qml/symbian/MainPage.qml" line="159"/>
         <source>Enter the source text...</source>
         <translation>Введите исходный текст...</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="150"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="132"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="135"/>
         <location filename="../qml/symbian/MainPage.qml" line="181"/>
         <source>Translate</source>
         <translation>Перевести</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="168"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="146"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="149"/>
         <location filename="../qml/symbian/MainPage.qml" line="198"/>
         <source>Clear</source>
         <translation>Очистить</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="246"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="186"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="189"/>
         <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
         <translation>Определенный язык:</translation>
@@ -105,29 +118,29 @@
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="445"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="36"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="39"/>
         <location filename="../qml/symbian/MainPage.qml" line="481"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="40"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="41"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="273"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="44"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="276"/>
         <location filename="../qml/symbian/MainPage.qml" line="39"/>
         <source>Translation Service</source>
         <translation>Сервис перевода</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="49"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="287"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="290"/>
         <location filename="../qml/symbian/MainPage.qml" line="56"/>
         <source>Source Language</source>
         <translation>Язык оригинала</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="300"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="303"/>
         <location filename="../qml/symbian/MainPage.qml" line="73"/>
         <source>Target Language</source>
         <translation>Язык перевода</translation>
