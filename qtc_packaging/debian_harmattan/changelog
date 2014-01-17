@@ -1,3 +1,12 @@
+taot (0.3.2) unstable; urgency=low
+  * Moved busy indicator on top of Translate button.
+  * Shortened icon label to TAO Translator.
+  * Updated copyright years.
+  * Localization: Chinese, Dutch and Turkish translations.
+  * Removed notice about Nokia Store freeze.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Fri, 17 Jan 2014 21:08:34 +0100
+
 taot (0.3.1) unstable; urgency=low
   * Yandex.Dictionaries: added display of synonyms.
   * About dialog was converted to a page. Links were added to the text.

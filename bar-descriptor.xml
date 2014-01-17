@@ -2,7 +2,7 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>name.oleksii.bb10.taot</id>
     <name>TAO Translator</name>
-    <versionNumber>0.3.1</versionNumber>
+    <versionNumber>0.3.2</versionNumber>
     <description>The Advanced Online Translator uses available online translation services to provide translations.</description>
     <icon>
         <image>icon.png</image>

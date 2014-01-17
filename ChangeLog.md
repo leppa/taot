@@ -1,6 +1,16 @@
 The Advanced Online Translator ChangeLog
 ========================================
 
+TAOT v0.3.2
+-----------
+- Moved busy indicator on top of Translate button.
+- Shortened icon label to TAO Translator.
+- Updated copyright years.
+- Localization: Chinese, Dutch and Turkish translations.
+- Sailfish OS: enabled landscape and inverted landscape orientations.
+- Sailfish OS: added display of source and translated text to the cover.
+- Nokia N9, Symbian: Removed notice about Nokia Store freeze.
+
 TAOT v0.3.1
 -----------
 - Sailfish OS port ([issue #6][]).
