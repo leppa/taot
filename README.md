@@ -32,8 +32,10 @@ Download
 **Nokia N9**, **Nokia Symbian** (Symbian^3) and **Sailfish OS**:
 
  - **BlackBerry 10**: [BlackBerry World][bb10].
- - **Nokia N9**: [OpenRepos.net][openrepos], [Nokia Store][nokia].
- - **Nokia Symbian**: [Nokia Store][nokia].
+ - **Nokia N9**: [OpenRepos.net][openrepos], [Nokia Store][nokia]
+   *(OUTDATED VERSION)*.
+ - **Nokia Symbian**: [Opera Mobile Store][opera], [Nokia Store][nokia]
+   *(OUTDATED VERSION)*.
  - **Sailfish OS**: search for `taot` in the Store.
 
 
@@ -70,6 +72,7 @@ refer to [Donate][] page for more information.
 
 
 [openrepos]: https://openrepos.net/content/leppa/advanced-online-translator
+[opera]: http://symbian.apps.opera.com/the_advanced_online_translator.html
 [nokia]: http://store.ovi.com/content/359493
 [bb10]: http://appworld.blackberry.com/webstore/content/21908039/
 [Travis CI]: https://travis-ci.org/leppa/taot
