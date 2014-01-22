@@ -126,7 +126,7 @@ private:
     QString m_translation;
     DictionaryModel *m_dict;
 
-    QSettings settings;
+    QSettings *m_settings;
 
     void createService(uint id);
     void resetTranslation();

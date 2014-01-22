@@ -47,6 +47,11 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_sourceLanguage(NULL)
     , m_targetLanguage(NULL)
     , m_dict(new DictionaryModel(this))
+#ifdef Q_OS_SAILFISH
+    , m_settings(new QSettings("harbour-taot", "taot", this))
+#else
+    , m_settings(new QSettings(this))
+#endif
 {
     QStringList list;
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
@@ -55,7 +60,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     list.insert(YandexDictionariesService, YandexDictionaries::displayName());
     m_services = new TranslationServicesModel(list, this);
 
-    createService(settings.value("SelectedService", 0).toUInt());
+    createService(m_settings->value("SelectedService", 0).toUInt());
 
     connect(this, SIGNAL(sourceLanguageChanged()), SLOT(retranslate()));
     connect(this, SIGNAL(targetLanguageChanged()), SLOT(retranslate()));
@@ -64,8 +69,8 @@ TranslationInterface::TranslationInterface(QObject *parent)
 
     // TODO: Remove after few versions
 #if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
-    if (settings.contains("displayNokiaStoreNotice"))
-        settings.remove("displayNokiaStoreNotice");
+    if (m_settings->contains("displayNokiaStoreNotice"))
+        m_settings->remove("displayNokiaStoreNotice");
 #endif
 }
 
@@ -148,17 +153,18 @@ TranslationInterface::~TranslationInterface()
     delete m_sourceLanguage;
     delete m_targetLanguage;
     delete m_dict;
+    delete m_settings;
 }
 
 // HACK: We return a QString here, else JavaScript treats `false` as undefined value.
 QString TranslationInterface::getSettingsValue(const QString &key) const
 {
-    return settings.value(key).toString();
+    return m_settings->value(key).toString();
 }
 
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
 {
-    settings.setValue(key, value);
+    m_settings->setValue(key, value);
 }
 
 void TranslationInterface::selectService(int index)
@@ -166,7 +172,7 @@ void TranslationInterface::selectService(int index)
     if (index == m_serviceItem->index() || index < 0 || index >= m_services->count())
         return;
 
-    settings.setValue("SelectedService", index);
+    m_settings->setValue("SelectedService", index);
     createService(index);
 }
 
@@ -179,9 +185,9 @@ void TranslationInterface::selectSourceLanguage(int index)
     resetTranslation();
     delete m_sourceLanguage;
     m_sourceLanguage = new LanguageItem(lang);
-    settings.beginGroup(m_service->uid() + "/SourceLanguage");
-    settings.setValue("Info", m_service->serializeLanguageInfo(lang.info));
-    settings.endGroup();
+    m_settings->beginGroup(m_service->uid() + "/SourceLanguage");
+    m_settings->setValue("Info", m_service->serializeLanguageInfo(lang.info));
+    m_settings->endGroup();
     emit sourceLanguageChanged();
 
     if (m_service->targetLanguagesDependOnSourceLanguage()) {
@@ -203,9 +209,9 @@ void TranslationInterface::selectTargetLanguage(int index)
     resetTranslation();
     delete m_targetLanguage;
     m_targetLanguage = new LanguageItem(lang);
-    settings.beginGroup(m_service->uid() + "/TargetLanguage");
-    settings.setValue("Info", m_service->serializeLanguageInfo(lang.info));
-    settings.endGroup();
+    m_settings->beginGroup(m_service->uid() + "/TargetLanguage");
+    m_settings->setValue("Info", m_service->serializeLanguageInfo(lang.info));
+    m_settings->endGroup();
     emit targetLanguageChanged();
 }
 
@@ -285,7 +291,7 @@ void TranslationInterface::createService(uint id)
         m_service = new GoogleTranslate(m_dict, this);
         m_serviceItem = new TranslationServiceItem(GoogleTranslateService,
                                                    GoogleTranslate::displayName(), this);
-        settings.setValue("SelectedService", GoogleTranslateService);
+        m_settings->setValue("SelectedService", GoogleTranslateService);
     }
     connect(m_service, SIGNAL(translationFinished()), SLOT(onTranslationFinished()));
     emit selectedServiceChanged();
@@ -293,26 +299,26 @@ void TranslationInterface::createService(uint id)
     const LanguagePair defaults = m_service->defaultLanguagePair();
 
     m_sourceLanguages->setLanguageList(m_service->sourceLanguages());
-    settings.beginGroup(m_service->uid() + "/SourceLanguage");
-    if (settings.contains("Info")) {
-        const QVariant info = m_service->deserializeLanguageInfo(settings.value("Info").toString());
+    m_settings->beginGroup(m_service->uid() + "/SourceLanguage");
+    if (m_settings->contains("Info")) {
+        const QVariant info = m_service->deserializeLanguageInfo(m_settings->value("Info").toString());
         Language lang(info, m_service->getLanguageName(info));
         if (m_service->sourceLanguages().contains(lang))
             m_sourceLanguage = new LanguageItem(lang);
     }
-    settings.endGroup();
+    m_settings->endGroup();
     if (!m_sourceLanguage)
         m_sourceLanguage = new LanguageItem(defaults.first);
 
     m_targetLanguages->setLanguageList(m_service->targetLanguages(m_sourceLanguage->language()));
-    settings.beginGroup(m_service->uid() + "/TargetLanguage");
-    if (settings.contains("Info")) {
-        const QVariant info = m_service->deserializeLanguageInfo(settings.value("Info").toString());
+    m_settings->beginGroup(m_service->uid() + "/TargetLanguage");
+    if (m_settings->contains("Info")) {
+        const QVariant info = m_service->deserializeLanguageInfo(m_settings->value("Info").toString());
         Language lang(info, m_service->getLanguageName(info));
         if (m_service->targetLanguages(m_sourceLanguage->language()).contains(lang))
             m_targetLanguage = new LanguageItem(lang);
     }
-    settings.endGroup();
+    m_settings->endGroup();
     if (!m_targetLanguage)
         m_targetLanguage = new LanguageItem(defaults.second);
 
