@@ -1,6 +1,10 @@
 The Advanced Online Translator ChangeLog
 ========================================
 
+TAOT v0.3.2.1
+-------------
+- Sailfish OS: fixed settings file path to comply with Harbour rules.
+
 TAOT v0.3.2
 -----------
 - Moved busy indicator on top of Translate button.
