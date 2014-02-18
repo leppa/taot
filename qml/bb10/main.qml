@@ -21,14 +21,33 @@
  */
 
 import bb.cascades 1.0
+import bb.system 1.0
+import taot 1.0
 
 NavigationPane {
     id: navigationPane
 
     MainPage {}
 
+    attachedObjects: [
+        SystemToast {
+            id: toast
+        }
+    ]
+
     onPopTransitionEnded: {
         // Destroy the popped Page once the back transition has ended.
         page.destroy();
+    }
+
+    function onError(errorString)
+    {
+        console.debug(errorString);
+        toast.body = errorString;
+        toast.show();
+    }
+
+    onCreationCompleted: {
+        translator.error.connect(onError);
     }
 }

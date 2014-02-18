@@ -132,7 +132,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
 #ifdef Q_OS_BLACKBERRY
-    QmlDocument *qml = QmlDocument::create(QLatin1String("asset:///main.qml")).parent(app.data());
+    QmlDocument *qml = QmlDocument::create(QLatin1String("asset:///main.qml"))
+            .property("translator", new TranslationInterface(app.data())).parent(app.data());
 #elif defined(MEEGO_EDITION_HARMATTAN)
     QDir dir(app->applicationDirPath());
     dir.cdUp();
