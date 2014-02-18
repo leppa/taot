@@ -21,7 +21,12 @@
  */
 
 #include "yandexdictionaries.h"
-#include "dictionarymodel.h"
+#ifdef Q_OS_BLACKBERRY
+#   include "bb10/dictionarymodel.h"
+#   include "bb10/reversetranslationsmodel.h"
+#else
+#   include "dictionarymodel.h"
+#endif
 #include "apikeys.h"
 
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
@@ -132,7 +137,7 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
 
     m_translation.clear();
     m_dict->clear();
-    foreach (const DictionaryPos &pos, poses) {
+    foreach (DictionaryPos pos, poses) {
         m_dict->append(pos);
     }
 

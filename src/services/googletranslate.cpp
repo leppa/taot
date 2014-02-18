@@ -21,6 +21,12 @@
  */
 
 #include "googletranslate.h"
+#ifdef Q_OS_BLACKBERRY
+#   include "bb10/dictionarymodel.h"
+#   include "bb10/reversetranslationsmodel.h"
+#else
+#   include "dictionarymodel.h"
+#endif
 
 #include <QFile>
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)

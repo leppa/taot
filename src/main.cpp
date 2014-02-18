@@ -29,12 +29,15 @@
 #include "translationservice.h"
 #include "translationservicesmodel.h"
 #include "languagelistmodel.h"
-#include "dictionarymodel.h"
-#include "reversetranslationsmodel.h"
 #ifdef Q_OS_BLACKBERRY
+#   include "bb10/dictionarymodel.h"
+#   include "bb10/reversetranslationsmodel.h"
 #   include "bb10/languagechangelistener.h"
 #   include "bb10/clipboard.h"
 #   include "bb10/repeater.h"
+#else
+#   include "dictionarymodel.h"
+#   include "reversetranslationsmodel.h"
 #endif
 
 #ifdef Q_OS_BLACKBERRY

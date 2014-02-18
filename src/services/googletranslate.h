@@ -24,8 +24,8 @@
 #define GOOGLETRANSLATE_H
 
 #include "jsontranslationservice.h"
-#include "dictionarymodel.h"
 
+class DictionaryModel;
 class GoogleTranslate: public JsonTranslationService
 {
     Q_OBJECT

@@ -22,8 +22,8 @@
 
 #include "languagelistmodel.h"
 
-LanguageItem::LanguageItem(const Language &language, QObject *parent)
-    : QObject(parent), m_language(language)
+LanguageItem::LanguageItem(const Language &language, int index, QObject *parent)
+    : QObject(parent), m_language(language), m_index(index)
 {}
 
 Language LanguageItem::language() const
@@ -39,6 +39,20 @@ QString LanguageItem::displayName() const
 QVariant LanguageItem::info() const
 {
     return m_language.info;
+}
+
+int LanguageItem::index() const
+{
+    return m_index;
+}
+
+void LanguageItem::setIndex(int index)
+{
+    if (index == m_index)
+        return;
+
+    m_index = index;
+    emit indexChanged();
 }
 
 LanguageListModel::LanguageListModel(QObject *parent)
@@ -113,4 +127,9 @@ int LanguageListModel::indexOf(const Language language) const
 int LanguageListModel::indexOf(LanguageItem *language) const
 {
     return indexOf(language->language());
+}
+
+QString LanguageListModel::displayNameOf(int index) const
+{
+    return data(createIndex(index, 0), Qt::DisplayRole).toString();
 }

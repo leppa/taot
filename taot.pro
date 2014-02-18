@@ -49,8 +49,6 @@ blackberry:QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports
 
 HEADERS += \
     src/translationinterface.h \
-    src/dictionarymodel.h \
-    src/reversetranslationsmodel.h \
     src/languagelistmodel.h \
     src/translationservice.h \
     src/translationservicesmodel.h \
@@ -66,8 +64,6 @@ HEADERS += \
 SOURCES += \
     src/main.cpp \
     src/translationinterface.cpp \
-    src/dictionarymodel.cpp \
-    src/reversetranslationsmodel.cpp \
     src/languagelistmodel.cpp \
     src/translationservice.cpp \
     src/translationservicesmodel.cpp \
@@ -80,16 +76,28 @@ SOURCES += \
 
 blackberry {
     HEADERS += \
+        src/bb10/dictionarymodel.h \
+        src/bb10/reversetranslationsmodel.h \
         src/bb10/languagechangelistener.h \
         src/bb10/clipboard.h \
         src/bb10/repeater.h
 
     SOURCES += \
+        src/bb10/dictionarymodel.cpp \
+        src/bb10/reversetranslationsmodel.cpp \
         src/bb10/languagechangelistener.cpp \
         src/bb10/clipboard.cpp \
         src/bb10/repeater.cpp
 
     LIBS += -lbbsystem
+} else {
+    HEADERS += \
+        src/dictionarymodel.h \
+        src/reversetranslationsmodel.h
+
+    SOURCES += \
+        src/dictionarymodel.cpp \
+        src/reversetranslationsmodel.cpp
 }
 
 INCLUDEPATH += \

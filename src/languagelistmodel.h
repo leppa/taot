@@ -32,16 +32,23 @@ class LanguageItem : public QObject
     Q_OBJECT
     Q_PROPERTY(QString displayName READ displayName CONSTANT)
     Q_PROPERTY(QVariant info READ info CONSTANT)
+    Q_PROPERTY(int index READ index NOTIFY indexChanged)
 
 public:
-    LanguageItem(const Language &language, QObject *parent = 0);
+    LanguageItem(const Language &language, int index, QObject *parent = 0);
 
     Language language() const;
     QString displayName() const;
     QVariant info() const;
+    int index() const;
+    void setIndex(int index);
+
+signals:
+    void indexChanged();
 
 private:
     const Language m_language;
+    int m_index;
 };
 
 class LanguageListModel: public QAbstractListModel
@@ -69,6 +76,7 @@ public:
 
 public slots:
     int indexOf(LanguageItem *language) const;
+    QString displayNameOf(int index) const;
 
 signals:
     int countChanged();

@@ -55,3 +55,8 @@ int TranslationServicesModel::count() const
 {
     return rowCount();
 }
+
+QString TranslationServicesModel::get(int index) const
+{
+    return data(createIndex(index, 0), Qt::DisplayRole).toString();
+}

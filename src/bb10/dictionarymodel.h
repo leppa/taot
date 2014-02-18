@@ -20,44 +20,40 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TRANSLATIONSERVICESMODEL_H
-#define TRANSLATIONSERVICESMODEL_H
+#ifndef DICTIONARYMODEL_H
+#define DICTIONARYMODEL_H
 
-#include <QStringListModel>
+#include <bb/cascades/QListDataModel>
 
-class TranslationServiceItem: public QObject
+class ReverseTranslations;
+class DictionaryPos
 {
-    Q_OBJECT
-    Q_PROPERTY(int index READ index CONSTANT)
-    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_DECLARE_TR_FUNCTIONS(DictionaryPos)
 
 public:
-    TranslationServiceItem(int index, const QString &name, QObject *parent = 0);
+    DictionaryPos(const QString &pos, const QStringList &translations = QStringList());
 
-    int index() const;
-    QString name() const;
+    QString pos() const;
+    QString translations(const QString separator) const;
+    QStringList &translations();
+    ReverseTranslations *reverseTranslations();
 
 private:
-    int m_id;
-    QString m_name;
+    QString m_pos;
+    QStringList m_translations;
+    ReverseTranslations *m_reverse;
+    QSharedPointer<ReverseTranslations> ptr;
 };
 
-// A wrapper around QStringListModel to make it more QML friendly.
-class TranslationServicesModel: public QStringListModel
+class DictionaryModel: public bb::cascades::QMapListDataModel
 {
     Q_OBJECT
-    Q_PROPERTY(int count READ count CONSTANT)
 
 public:
-    explicit TranslationServicesModel(const QStringList &strings, QObject *parent = 0);
-    QHash<int, QByteArray> roleNames() const;
-    int count() const;
+    explicit DictionaryModel(QObject *parent = 0);
 
-public slots:
-    QString get(int index) const;
+    void append(DictionaryPos &pos);
 };
+Q_DECLARE_METATYPE(DictionaryModel *)
 
-Q_DECLARE_METATYPE(TranslationServiceItem *)
-Q_DECLARE_METATYPE(TranslationServicesModel *)
-
-#endif // TRANSLATIONSERVICESMODEL_H
+#endif // DICTIONARYMODEL_H
