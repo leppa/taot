@@ -22,7 +22,7 @@
 
 #include <QtGlobal>
 
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#if !defined(Q_OS_BLACKBERRY) && QT_VERSION < QT_VERSION_CHECK(5,0,0)
 #   include "qmlapplicationviewer.h"
 #endif
 #include "translationinterface.h"
@@ -32,23 +32,23 @@
 #include "dictionarymodel.h"
 #include "reversetranslationsmodel.h"
 
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#ifdef Q_OS_BLACKBERRY
+#   include <bb/cascades/Application>
+#   include <bb/cascades/QmlDocument>
+#   include <bb/cascades/AbstractPane>
+using namespace bb::cascades;
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
 #   include <QApplication>
-#else
-#   include <QGuiApplication>
-#endif
-#include <QTextCodec>
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
 #   include <QtDeclarative>
 #else
+#   include <QGuiApplication>
 #   include <QtQuick>
 #endif
+#include <QTextCodec>
 
 #include <qplatformdefs.h>
 
-#ifdef Q_OS_BLACKBERRY
-#   include <QGLWidget>
-#elif defined(Q_OS_SAILFISH)
+#ifdef Q_OS_SAILFISH
 #   include <sailfishapp.h>
 #endif
 
@@ -72,12 +72,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #ifdef Q_OS_BLACKBERRY
     // This is needed for clicks to work more reliably indside Flickable.
     QApplication::setStartDragDistance(42);
-#endif
 
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QScopedPointer<QApplication> app(createApplication(argc, argv));
+    QScopedPointer<Application> app(new Application(argc, argv));
 #elif defined(Q_OS_SAILFISH)
     QGuiApplication *app = SailfishApp::application(argc, argv);
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QScopedPointer<QApplication> app(createApplication(argc, argv));
 #else
     QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
 #endif
@@ -104,38 +104,34 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<DictionaryModel>();
     qmlRegisterType<ReverseTranslationsModel>();
 
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QmlApplicationViewer viewer;
+#ifdef Q_OS_BLACKBERRY
 #elif defined(Q_OS_SAILFISH)
     QQuickView *viewer = SailfishApp::createView();
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QmlApplicationViewer viewer;
+    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 #else
     QQuickView viewer;
 #endif
 
 #ifdef Q_OS_BLACKBERRY
-    QGLWidget *gl = new QGLWidget();
-    viewer.setViewport(gl);
-    viewer.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-#endif
-
-#ifdef MEEGO_EDITION_HARMATTAN
+    QmlDocument *qml = QmlDocument::create(QLatin1String("asset:///main.qml")).parent(app.data());
+#elif defined(MEEGO_EDITION_HARMATTAN)
     QDir dir(app->applicationDirPath());
     dir.cdUp();
     viewer.setMainQmlFile(dir.filePath(QLatin1String("qml/main.qml")));
-#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
 #elif defined(Q_OS_SAILFISH)
     QObject::connect(viewer->engine(), SIGNAL(quit()), app, SLOT(quit()));
     viewer->setSource(SailfishApp::pathTo("qml/main.qml"));
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
 #else
     QObject::connect(viewer.engine(), SIGNAL(quit()), app.data(), SLOT(quit()));
     viewer.setSource(QUrl(QLatin1String("qml/main.qml")));
 #endif
+
 #ifdef Q_OS_BLACKBERRY
-    viewer.rootObject()->setProperty("showStatusBar", false);
-    viewer.showFullScreen();
+    app->setScene(qml->createRootObject<AbstractPane>());
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.showExpanded();
 #elif defined(Q_OS_SAILFISH)

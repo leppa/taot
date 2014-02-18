@@ -29,14 +29,14 @@ lessThan(QT_MAJOR_VERSION, 5) {
     QT += quick network
 }
 
-blackberry:QT += opengl
+blackberry:CONFIG += cascades
 
 QMAKE_TARGET_COMPANY = Oleksii Serdiuk
 QMAKE_TARGET_PRODUCT = The Advanced Online Translator
 QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
 QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2014 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 
-lessThan(QT_MAJOR_VERSION, 5) {
+lessThan(QT_MAJOR_VERSION, 5):!blackberry {
     include(qmlapplicationviewer/qmlapplicationviewer.pri)
 }
 
@@ -95,6 +95,7 @@ TRANSLATIONS += \
 
 translate_hack {
     SOURCES += \
+        qml/bb10/*.qml \
         qml/harmattan/*.qml \
         qml/sailfish/*.qml \
         qml/symbian/*.qml
@@ -105,6 +106,7 @@ OTHER_FILES += \
     data/*.pem \
     data/langs/*.json \
     qml/about.js \
+    qml/bb10/*.qml \
     qml/harmattan/*.js \
     qml/harmattan/*.qml \
     qml/harmattan/icons/* \
