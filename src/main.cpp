@@ -44,6 +44,8 @@
 #   include <bb/cascades/Application>
 #   include <bb/cascades/QmlDocument>
 #   include <bb/cascades/AbstractPane>
+#   include <bb/cascades/Container>
+#   include <bb/cascades/SceneCover>
 #   include <bb/system/SystemToast>
 using namespace bb::cascades;
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
@@ -132,8 +134,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
 #ifdef Q_OS_BLACKBERRY
+    TranslationInterface *translator = new TranslationInterface(app.data());
     QmlDocument *qml = QmlDocument::create(QLatin1String("asset:///main.qml"))
-            .property("translator", new TranslationInterface(app.data())).parent(app.data());
+            .property("translator", translator).parent(app.data());
 #elif defined(MEEGO_EDITION_HARMATTAN)
     QDir dir(app->applicationDirPath());
     dir.cdUp();
@@ -150,6 +153,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #ifdef Q_OS_BLACKBERRY
     app->setScene(qml->createRootObject<AbstractPane>());
+
+    qml = QmlDocument::create("asset:///AppCover.qml").property("translator",
+                                                                translator).parent(app.data());
+    SceneCover *cover = new SceneCover(app.data());
+    cover->setContent(qml->createRootObject<Container>());
+    app->setCover(cover);
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.showExpanded();
 #elif defined(Q_OS_SAILFISH)
