@@ -31,11 +31,17 @@
 #include "languagelistmodel.h"
 #include "dictionarymodel.h"
 #include "reversetranslationsmodel.h"
+#ifdef Q_OS_BLACKBERRY
+#   include "bb10/languagechangelistener.h"
+#   include "bb10/clipboard.h"
+#   include "bb10/repeater.h"
+#endif
 
 #ifdef Q_OS_BLACKBERRY
 #   include <bb/cascades/Application>
 #   include <bb/cascades/QmlDocument>
 #   include <bb/cascades/AbstractPane>
+#   include <bb/system/SystemToast>
 using namespace bb::cascades;
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
 #   include <QApplication>
@@ -82,6 +88,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
 #endif
 
+#ifdef Q_OS_BLACKBERRY
+    LanguageChangeListener *listener = new LanguageChangeListener(app.data());
+    Q_UNUSED(listener);
+#else
     const QString lc = QLocale().name();
     // Load Qt's translation
     QTranslator qtTr;
@@ -91,6 +101,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QTranslator tr;
     if (tr.load("taot_" + lc, ":/l10n"))
         app->installTranslator(&tr);
+#endif
 
 #ifdef Q_OS_SAILFISH
     qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
@@ -105,6 +116,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<ReverseTranslationsModel>();
 
 #ifdef Q_OS_BLACKBERRY
+    qmlRegisterType<bb::system::SystemToast>("bb.system", 1, 0, "SystemToast");
+    qmlRegisterType<Clipboard>("taot", 1, 0, "Clipboard");
+    qmlRegisterType<Repeater>("taot", 1, 0, "Repeater");
 #elif defined(Q_OS_SAILFISH)
     QQuickView *viewer = SailfishApp::createView();
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)

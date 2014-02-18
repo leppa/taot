@@ -78,6 +78,20 @@ SOURCES += \
     src/services/yandextranslate.cpp \
     src/services/yandexdictionaries.cpp
 
+blackberry {
+    HEADERS += \
+        src/bb10/languagechangelistener.h \
+        src/bb10/clipboard.h \
+        src/bb10/repeater.h
+
+    SOURCES += \
+        src/bb10/languagechangelistener.cpp \
+        src/bb10/clipboard.cpp \
+        src/bb10/repeater.cpp
+
+    LIBS += -lbbsystem
+}
+
 INCLUDEPATH += \
     src
 
