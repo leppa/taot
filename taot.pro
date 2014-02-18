@@ -44,9 +44,6 @@ sailfish {
     DEFINES += Q_OS_SAILFISH
 }
 
-# Additional import path used to resolve QML modules in Creator's code model
-blackberry:QML_IMPORT_PATH = 3rdparty/bb10-qt-components/imports
-
 HEADERS += \
     src/translationinterface.h \
     src/languagelistmodel.h \
