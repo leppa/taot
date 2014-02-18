@@ -29,7 +29,24 @@ NavigationPane {
 
     MainPage {}
 
+    Menu.definition: MenuDefinition {
+        actions: [
+            ActionItem {
+                title: qsTr("About") + Retranslate.onLocaleOrLanguageChanged
+                imageSource: "asset:///icons/ic_info.png"
+
+                onTriggered: {
+                    navigationPane.push(aboutPageDefinition.createObject());
+                }
+            }
+        ]
+    }
+
     attachedObjects: [
+        ComponentDefinition {
+            id: aboutPageDefinition
+            AboutPage {}
+        },
         SystemToast {
             id: toast
         }
