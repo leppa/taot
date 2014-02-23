@@ -1,11 +1,11 @@
 ######################################################################
 #
-#  The Advanced Online Translator
+#  TAO Translator
 #  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 #
 #  $Id: $Format:%h %ai %an$ $
 #
-#  This file is part of The Advanced Online Translator.
+#  This file is part of TAO Translator.
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ lessThan(QT_MAJOR_VERSION, 5) {
 blackberry:CONFIG += cascades
 
 QMAKE_TARGET_COMPANY = Oleksii Serdiuk
-QMAKE_TARGET_PRODUCT = The Advanced Online Translator
+QMAKE_TARGET_PRODUCT = TAO Translator
 QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
 QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2014 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 

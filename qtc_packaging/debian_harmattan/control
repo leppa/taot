@@ -10,7 +10,7 @@ Package: taot
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Online Translator with some advanced features
- The Advanced Online Translator uses available online translation
+ TAO Translator uses available online translation
  services to provide translations.
  .
  Currently supported services:
@@ -27,7 +27,7 @@ Description: Online Translator with some advanced features
  translations.
  .
  More services might be added in future.
-XSBC-Maemo-Display-Name: The Advanced Online Translator
+XSBC-Maemo-Display-Name: TAO Translator
 XSBC-Maemo-Display-Name-zh: 翻译大师OL
 XB-Maemo-Flags: visible
 XB-MeeGo-Desktop-Entry-Filename: taot_harmattan

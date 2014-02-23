@@ -1,5 +1,5 @@
-The Advanced Online Translator ChangeLog
-========================================
+TAO Translator ChangeLog
+========================
 
 TAOT v0.3.2.1
 -------------

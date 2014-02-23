@@ -1,10 +1,10 @@
 /*
- *  The Advanced Online Translator
+ *  TAO Translator
  *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
- *  This file is part of The Advanced Online Translator.
+ *  This file is part of TAO Translator.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -76,7 +76,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 #endif
 
-    QCoreApplication::setApplicationName("The Advanced Online Translator");
+    QCoreApplication::setApplicationName("TAO Translator");
     QCoreApplication::setApplicationVersion(VERSION_STR);
     QCoreApplication::setOrganizationName("Oleksii Serdiuk");
     QCoreApplication::setOrganizationDomain("oleksii.name");

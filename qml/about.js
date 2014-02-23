@@ -1,10 +1,10 @@
 /*
- *  The Advanced Online Translator
+ *  TAO Translator
  *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
- *  This file is part of The Advanced Online Translator.
+ *  This file is part of TAO Translator.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,12 +26,12 @@
 var aboutText =
 "<p><a href=\"https://github.com/leppa/taot\">https://github.com/leppa/taot</a></p> " +
 "<p>Copyright &copy; 2013-2014 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=The%20Advanced%20Online%20Translator\">Oleksii Serdiuk</a></p> " +
-"<p>This or previous versions of <i>The Advanced Online Translator</i> contain contributions by: " +
+"<p>This or previous versions of <i>TAO Translator</i> contain contributions by: " +
 "<b>gwmgdemj</b> (Chinese Translation), " +
 "<b>Mehmet Ç. (fnldstntn)</b> (Turkish Translation), " +
 "<b>teunwinters</b> (Dutch Translation).</p>" +
 "<p>&nbsp;</p> " +
-"<p>The Advanced Online Translator uses available online translation services to provide translations.</p> " +
+"<p>TAO Translator uses available online translation services to provide translations.</p> " +
 "<p>Currently supported services:</p> " +
 "<ul> " +
 "<li><b>Google Translate</b> - supports translation, language detection, dictionary and reverse translations for single words.</li> " +

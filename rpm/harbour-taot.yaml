@@ -7,7 +7,7 @@ License: 'GPLv2'
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |-
-  The Advanced Online Translator uses available online translation services to provide translations.
+  TAO Translator uses available online translation services to provide translations.
 
   Currently supported services:
    * Google Translate - supports translation, language detection, dictionary and reverse translations for single words.

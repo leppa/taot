@@ -1,10 +1,10 @@
-The Advanced Online Translator
-==============================
+TAO Translator
+==============
 
 Copyright (C) 2013-2014 *[Oleksii Serdiuk](http://oleksii.name/)*.
 
-**The Advanced Online Translator** uses available online translation
-services to provide translations.
+**TAO Translator** uses available online translation services to provide
+translations.
 
 Currently supported services:
 
@@ -28,8 +28,8 @@ You can check the [ChangeLog](ChangeLog.md) (updated only on releases).
 Download
 --------
 
-**The Advanced Online Translator** is available for **BlackBerry 10**,
-**Nokia N9**, **Nokia Symbian** (Symbian^3) and **Sailfish OS**:
+**TAO Translator** is available for **BlackBerry 10**, **Nokia N9**,
+**Nokia Symbian** (Symbian^3) and **Sailfish OS**:
 
  - **BlackBerry 10**: [BlackBerry World][bb10].
  - **Nokia N9**: [OpenRepos.net][openrepos], [Nokia Store][nokia]
