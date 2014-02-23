@@ -39,7 +39,7 @@ Page {
             rightPadding: padding
 
             Label {
-                text: "Version: <b>%1</b>".arg(translator.version)
+                text: qsTr("Version: <b>%1</b>").arg(translator.version)
                 textStyle.base: SystemDefaults.TextStyles.PrimaryText
                 textFormat: TextFormat.Html
             }

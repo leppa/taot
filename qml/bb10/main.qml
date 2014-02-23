@@ -39,17 +39,10 @@ NavigationPane {
 
                 onTriggered: {
                     Application.menuEnabled = false;
-                    navigationPane.popTransitionEnded
-                                  .connect(menuDefinition.reactivateApplicationMenu);
                     navigationPane.push(aboutPageDefinition.createObject());
                 }
             }
         ]
-
-        function reactivateApplicationMenu() {
-            Application.menuEnabled = true;
-            navigationPane.popTransitionEnded.disconnect(menuDefinition.reactivateApplicationMenu);
-        }
     }
 
     attachedObjects: [
@@ -65,6 +58,7 @@ NavigationPane {
     onPopTransitionEnded: {
         // Destroy the popped Page once the back transition has ended.
         page.destroy();
+        Application.menuEnabled = true;
     }
 
     function onError(errorString)
