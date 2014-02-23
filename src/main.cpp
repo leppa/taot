@@ -39,6 +39,7 @@
 #   include "dictionarymodel.h"
 #   include "reversetranslationsmodel.h"
 #endif
+#include "updater.h"
 
 #ifdef Q_OS_BLACKBERRY
 #   include <bb/cascades/Application>
@@ -119,6 +120,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<LanguageListModel>();
     qmlRegisterType<DictionaryModel>();
     qmlRegisterType<ReverseTranslationsModel>();
+    qmlRegisterType<Updater>("taot", 1, 0, "Updater");
+    qmlRegisterType<Release>();
 
 #ifdef Q_OS_BLACKBERRY
     qmlRegisterType<bb::system::SystemToast>("bb.system", 1, 0, "SystemToast");
