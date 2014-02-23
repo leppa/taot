@@ -30,16 +30,26 @@ NavigationPane {
     MainPage {}
 
     Menu.definition: MenuDefinition {
+        id: menuDefinition
+
         actions: [
             ActionItem {
                 title: qsTr("About") + Retranslate.onLocaleOrLanguageChanged
                 imageSource: "asset:///icons/ic_info.png"
 
                 onTriggered: {
+                    Application.menuEnabled = false;
+                    navigationPane.popTransitionEnded
+                                  .connect(menuDefinition.reactivateApplicationMenu);
                     navigationPane.push(aboutPageDefinition.createObject());
                 }
             }
         ]
+
+        function reactivateApplicationMenu() {
+            Application.menuEnabled = true;
+            navigationPane.popTransitionEnded.disconnect(menuDefinition.reactivateApplicationMenu);
+        }
     }
 
     attachedObjects: [
