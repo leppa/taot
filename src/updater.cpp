@@ -82,6 +82,20 @@ bool Updater::busy() const
     return m_busy;
 }
 
+QString Updater::variant() const
+{
+    return m_variant;
+}
+
+void Updater::setVariant(const QString &variant)
+{
+    if (m_variant == variant)
+        return;
+
+    m_variant = variant;
+    emit variantChanged();
+}
+
 QString Updater::currentVersion() const
 {
     return m_currentVersion;
@@ -159,7 +173,8 @@ void Updater::onNetworkReply(QNetworkReply *reply)
     QVariantMap release = releases.at(0).toMap();
     while (release.value("prerelease").toBool()
            || release.value("draft").toBool()
-           || release.value("tag_name").toString().contains("-")) {
+           || (release.value("tag_name").toString().contains("-")
+               && !release.value("tag_name").toString().endsWith("-" + m_variant))) {
         release = releases.at(++k).toMap();
     }
 

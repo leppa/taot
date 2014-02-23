@@ -57,6 +57,7 @@ class Updater: public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
+    Q_PROPERTY(QString variant READ variant WRITE setVariant NOTIFY variantChanged)
     Q_PROPERTY(QString currentVersion READ currentVersion
                                       WRITE setCurrentVersion
                                       NOTIFY currentVersionChanged)
@@ -68,14 +69,20 @@ public:
     explicit Updater(QObject *parent = 0);
 
     bool busy() const;
+
+    QString variant() const;
+    void setVariant(const QString &variant);
+
     QString currentVersion() const;
     void setCurrentVersion(const QString &currentVersion);
+
     Release *latestRelease() const;
     bool latestReleaseValid() const;
     bool updateAvailable() const;
 
 signals:
     void busyChanged();
+    void variantChanged();
     void currentVersionChanged();
     void latestReleaseChanged();
     void latestReleaseValidChanged();
@@ -90,6 +97,7 @@ private slots:
 
 private:
     bool m_busy;
+    QString m_variant;
     QString m_currentVersion;
     Release *m_latestRelease;
     bool m_latestReleaseValid;
