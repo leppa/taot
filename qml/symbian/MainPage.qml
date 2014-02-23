@@ -478,6 +478,13 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Check for Update")
+                platformInverted: appWindow.platformInverted
+                onClicked: {
+                    pageStack.push(updateCheckerPageComponent);
+                }
+            }
+            MenuItem {
                 text: qsTr("About")
                 platformInverted: appWindow.platformInverted
                 onClicked: pageStack.push(aboutPageComponent);
@@ -506,6 +513,13 @@ Page {
         id: aboutPageComponent
 
         AboutPage {
+            platformInverted: appWindow.platformInverted
+        }
+    }
+
+    Component {
+        id: updateCheckerPageComponent
+        UpdateCheckerPage {
             platformInverted: appWindow.platformInverted
         }
     }

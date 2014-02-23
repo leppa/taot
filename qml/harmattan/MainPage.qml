@@ -442,6 +442,12 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Check for Update")
+                onClicked: {
+                    pageStack.push(updateCheckerPageComponent);
+                }
+            }
+            MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(aboutPageComponent);
             }
@@ -466,6 +472,11 @@ Page {
     Component {
         id: aboutPageComponent
         AboutPage {}
+    }
+
+    Component {
+        id: updateCheckerPageComponent
+        UpdateCheckerPage {}
     }
 
     Component.onCompleted: {

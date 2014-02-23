@@ -27,8 +27,6 @@ import "about.js" as About
 Page {
     id: root
 
-    property bool platformInverted: false
-
     Header {
         id: header
         text: "The Advanced Online Translator"
