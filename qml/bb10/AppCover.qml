@@ -20,7 +20,7 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import bb.cascades 1.2
+import bb.cascades 1.0
 
 Container {
     topPadding: 5
