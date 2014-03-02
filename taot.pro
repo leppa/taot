@@ -107,7 +107,10 @@ RESOURCES += \
     l10n/l10n.qrc
 
 TRANSLATIONS += \
+    l10n/taot_de.ts \
     l10n/taot_en.ts \
+    l10n/taot_fi.ts \
+    l10n/taot_it.ts \
     l10n/taot_nl_NL.ts \
     l10n/taot_ru.ts \
     l10n/taot_tr.ts \
