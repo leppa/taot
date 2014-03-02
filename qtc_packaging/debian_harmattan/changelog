@@ -1,3 +1,11 @@
+taot (1.0.0) unstable; urgency=low
+  * Renamed application into TAO Translator.
+  * New application icon.
+  * New UI localizations: German and Italian.
+  * Added update checker functionality.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Sun, 02 Mar 2014 22:53:55 +0100
+
 taot (0.3.2) unstable; urgency=low
   * Moved busy indicator on top of Translate button.
   * Shortened icon label to TAO Translator.

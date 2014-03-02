@@ -1,6 +1,14 @@
 TAO Translator ChangeLog
 ========================
 
+TAOT v1.0.0
+-----------
+- Renamed application into TAO Translator.
+- New application icon.
+- New UI localizations: German and Italian.
+- BlackBerry 10: completely rewritten UI in Cascades.
+- Nokia N9, Symbian: Added update checker functionality.
+
 TAOT v0.3.2.1
 -------------
 - Sailfish OS: fixed settings file path to comply with Harbour rules.
