@@ -109,7 +109,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="113"/>
         <location filename="../qml/symbian/MainPage.qml" line="159"/>
         <source>Enter the source text...</source>
-        <translation type="unfinished">Geef bron text...</translation>
+        <translation>Geef bron text</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="113"/>
@@ -133,17 +133,17 @@
         <location filename="../qml/sailfish/MainPage.qml" line="189"/>
         <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
-        <translation type="unfinished">Detecteer taal:</translation>
+        <translation>Detecteer taal</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="178"/>
         <source>Select all</source>
-        <translation type="unfinished">Selecteer alles</translation>
+        <translation>Selecteer alles</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="190"/>
         <source>Copy</source>
-        <translation type="unfinished">Kopieer</translation>
+        <translation>Kopieer</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="198"/>
@@ -334,12 +334,12 @@
         <location filename="../src/updater.cpp" line="255"/>
         <location filename="../src/updater.cpp" line="266"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation type="unfinished">Kan de reactie van de server niet ontleden vanwege een fout: &quot;%1&quot;</translation>
+        <translation>Kan de reactie van de server niet ontleden vanwege een fout: &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="249"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation type="unfinished">Kan JSON gegevens niet ontleden</translation>
+        <translation>Kan JSON gegevens niet ontleden</translation>
     </message>
 </context>
 <context>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../qml/bb10/main.qml" line="37"/>
         <source>About</source>
-        <translation type="unfinished">Over</translation>
+        <translation>Over</translation>
     </message>
 </context>
 </TS>

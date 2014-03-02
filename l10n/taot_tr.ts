@@ -93,7 +93,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="67"/>
         <location filename="../qml/symbian/MainPage.qml" line="107"/>
         <source>From</source>
-        <translation>Kaynak</translation>
+        <translation>Kaynak dil</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="88"/>
@@ -101,7 +101,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="95"/>
         <location filename="../qml/symbian/MainPage.qml" line="141"/>
         <source>To</source>
-        <translation>To</translation>
+        <translation>Çevrilecek dil</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="98"/>
@@ -138,22 +138,22 @@
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="178"/>
         <source>Select all</source>
-        <translation type="unfinished">Tümünü seç</translation>
+        <translation>Tümünü seç</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="190"/>
         <source>Copy</source>
-        <translation type="unfinished">Kopyala</translation>
+        <translation>Kopyala</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="198"/>
         <source>Translation was successfully copied to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Çeviri başarılı bir şekilde panoya kopyalandı</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="200"/>
         <source>Couldn&apos;t copy translation to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Çeviri panoya kopyalanamadı</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="438"/>
@@ -165,7 +165,7 @@
         <location filename="../qml/harmattan/MainPage.qml" line="445"/>
         <location filename="../qml/symbian/MainPage.qml" line="481"/>
         <source>Check for Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Güncellemeleri denetle</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="451"/>
@@ -283,43 +283,43 @@
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="30"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="34"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Güncelle</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="57"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="61"/>
         <source>Current version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sahip olduğunuz sürüm: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="61"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="66"/>
         <source>Checking for update...</source>
-        <translation type="unfinished"></translation>
+        <translation>Güncellemeler denetleniyor...</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
         <source>No update available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Güncelleme yok.</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="83"/>
         <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Güncelleme var: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="89"/>
         <source>Changes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Değişiklikler:</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="93"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="131"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>İndir</translation>
     </message>
 </context>
 <context>
@@ -327,19 +327,19 @@
     <message>
         <location filename="../src/updater.cpp" line="187"/>
         <source>Couldn&apos;t parse release version</source>
-        <translation type="unfinished"></translation>
+        <translation>Couldn&apos;t parse release version</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="248"/>
         <location filename="../src/updater.cpp" line="255"/>
         <location filename="../src/updater.cpp" line="266"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation type="unfinished">Bir hata nedeniyle sunucudan yanıt alınamadı: &quot;%1&quot;</translation>
+        <translation>Bir hata nedeniyle sunucudan yanıt alınamadı: &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="249"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation type="unfinished">JSON verisi değerlendirilemedi</translation>
+        <translation>JSON verisi değerlendirilemedi</translation>
     </message>
 </context>
 <context>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../qml/bb10/main.qml" line="37"/>
         <source>About</source>
-        <translation type="unfinished">Hakkında</translation>
+        <translation>Hakkında</translation>
     </message>
 </context>
 </TS>
