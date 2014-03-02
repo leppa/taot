@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru" sourcelanguage="en">
+<TS version="2.0" language="ru">
 <context>
     <name>--------</name>
     <message>
         <location filename="../src/main.cpp" line="179"/>
         <source>AUTHORS</source>
         <comment>A list of translation authors</comment>
-        <translation type="unfinished"></translation>
+        <translation>Алексей Сердюк</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="180"/>
         <source>LANGUAGE_NAME</source>
         <comment>Native language name (e.g., Deutsch for German)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Русский</translation>
     </message>
 </context>
 <context>
@@ -138,22 +138,22 @@
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="178"/>
         <source>Select all</source>
-        <translation type="unfinished">Выделить всё</translation>
+        <translation>Выделить всё</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="190"/>
         <source>Copy</source>
-        <translation type="unfinished">Копировать</translation>
+        <translation>Копировать</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="198"/>
         <source>Translation was successfully copied to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод был успешно скопирован в буфер обмена</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="200"/>
         <source>Couldn&apos;t copy translation to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось скопировать перевод в буфер обмена</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="438"/>
@@ -165,7 +165,7 @@
         <location filename="../qml/harmattan/MainPage.qml" line="445"/>
         <location filename="../qml/symbian/MainPage.qml" line="481"/>
         <source>Check for Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверить обновления</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="451"/>
@@ -283,43 +283,43 @@
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="30"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="34"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновления</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="57"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="61"/>
         <source>Current version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Текущая версия: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="61"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="66"/>
         <source>Checking for update...</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка обновлений...</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
         <source>No update available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновлений нет.</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="83"/>
         <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Доступно обновление: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="89"/>
         <source>Changes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменения:</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="93"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="131"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузить</translation>
     </message>
 </context>
 <context>
@@ -327,19 +327,19 @@
     <message>
         <location filename="../src/updater.cpp" line="187"/>
         <source>Couldn&apos;t parse release version</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось разобрать версию релиза</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="248"/>
         <location filename="../src/updater.cpp" line="255"/>
         <location filename="../src/updater.cpp" line="266"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation type="unfinished">Невозможно разобрать ответ от сервера из-за ошибки: &quot;%1&quot;</translation>
+        <translation>Невозможно разобрать ответ от сервера из-за ошибки: &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="249"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation type="unfinished">Невозможно разобрать JSON-данные</translation>
+        <translation>Невозможно разобрать JSON-данные</translation>
     </message>
 </context>
 <context>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../qml/bb10/main.qml" line="37"/>
         <source>About</source>
-        <translation type="unfinished">О программе</translation>
+        <translation>О программе</translation>
     </message>
 </context>
 </TS>
