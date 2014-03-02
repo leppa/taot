@@ -2,9 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="nl_NL">
 <context>
+    <name>--------</name>
+    <message>
+        <location filename="../src/main.cpp" line="179"/>
+        <source>AUTHORS</source>
+        <comment>A list of translation authors</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="180"/>
+        <source>LANGUAGE_NAME</source>
+        <comment>Native language name (e.g., Deutsch for German)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/harmattan/AboutPage.qml" line="61"/>
+        <location filename="../qml/bb10/AboutPage.qml" line="42"/>
+        <location filename="../qml/harmattan/AboutPage.qml" line="59"/>
         <location filename="../qml/symbian/AboutPage.qml" line="61"/>
         <source>Version: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>Versie: &lt;b&gt;%1&lt;/b&gt;</translation>
@@ -18,11 +34,13 @@
 <context>
     <name>AppCover</name>
     <message>
+        <location filename="../qml/bb10/AppCover.qml" line="33"/>
         <location filename="../qml/sailfish/AppCover.qml" line="33"/>
         <source>From: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/bb10/AppCover.qml" line="59"/>
         <location filename="../qml/sailfish/AppCover.qml" line="34"/>
         <source>To: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
@@ -31,6 +49,7 @@
 <context>
     <name>DictionaryModel</name>
     <message>
+        <location filename="../src/bb10/dictionarymodel.cpp" line="70"/>
         <location filename="../src/dictionarymodel.cpp" line="90"/>
         <source>, </source>
         <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
@@ -40,12 +59,12 @@
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="32"/>
+        <location filename="../src/services/googletranslate.cpp" line="38"/>
         <source>Google Translate</source>
         <translation>Google Translate</translation>
     </message>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="120"/>
+        <location filename="../src/services/googletranslate.cpp" line="126"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation>Onbekend (%1)</translation>
@@ -69,6 +88,7 @@
 <context>
     <name>MainPage</name>
     <message>
+        <location filename="../qml/bb10/MainPage.qml" line="71"/>
         <location filename="../qml/harmattan/MainPage.qml" line="87"/>
         <location filename="../qml/sailfish/MainPage.qml" line="67"/>
         <location filename="../qml/symbian/MainPage.qml" line="107"/>
@@ -76,6 +96,7 @@
         <translation>Van</translation>
     </message>
     <message>
+        <location filename="../qml/bb10/MainPage.qml" line="88"/>
         <location filename="../qml/harmattan/MainPage.qml" line="112"/>
         <location filename="../qml/sailfish/MainPage.qml" line="95"/>
         <location filename="../qml/symbian/MainPage.qml" line="141"/>
@@ -83,6 +104,7 @@
         <translation>Naar</translation>
     </message>
     <message>
+        <location filename="../qml/bb10/MainPage.qml" line="98"/>
         <location filename="../qml/harmattan/MainPage.qml" line="129"/>
         <location filename="../qml/sailfish/MainPage.qml" line="113"/>
         <location filename="../qml/symbian/MainPage.qml" line="159"/>
@@ -90,6 +112,7 @@
         <translation type="unfinished">Geef bron text...</translation>
     </message>
     <message>
+        <location filename="../qml/bb10/MainPage.qml" line="113"/>
         <location filename="../qml/harmattan/MainPage.qml" line="150"/>
         <location filename="../qml/sailfish/MainPage.qml" line="135"/>
         <location filename="../qml/symbian/MainPage.qml" line="181"/>
@@ -97,6 +120,7 @@
         <translation>Vertaal</translation>
     </message>
     <message>
+        <location filename="../qml/bb10/MainPage.qml" line="133"/>
         <location filename="../qml/harmattan/MainPage.qml" line="168"/>
         <location filename="../qml/sailfish/MainPage.qml" line="149"/>
         <location filename="../qml/symbian/MainPage.qml" line="198"/>
@@ -104,11 +128,32 @@
         <translation>Maak leeg</translation>
     </message>
     <message>
+        <location filename="../qml/bb10/MainPage.qml" line="159"/>
         <location filename="../qml/harmattan/MainPage.qml" line="246"/>
         <location filename="../qml/sailfish/MainPage.qml" line="189"/>
         <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
         <translation type="unfinished">Detecteer taal:</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/MainPage.qml" line="178"/>
+        <source>Select all</source>
+        <translation type="unfinished">Selecteer alles</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/MainPage.qml" line="190"/>
+        <source>Copy</source>
+        <translation type="unfinished">Kopieer</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/MainPage.qml" line="198"/>
+        <source>Translation was successfully copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/MainPage.qml" line="200"/>
+        <source>Couldn&apos;t copy translation to clipboard</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="438"/>
@@ -118,8 +163,14 @@
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="445"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="39"/>
         <location filename="../qml/symbian/MainPage.qml" line="481"/>
+        <source>Check for Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="451"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="39"/>
+        <location filename="../qml/symbian/MainPage.qml" line="488"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
@@ -180,6 +231,8 @@
 <context>
     <name>ReverseTranslationsModel</name>
     <message>
+        <location filename="../src/bb10/reversetranslationsmodel.cpp" line="32"/>
+        <location filename="../src/bb10/reversetranslationsmodel.cpp" line="35"/>
         <location filename="../src/reversetranslationsmodel.cpp" line="60"/>
         <location filename="../src/reversetranslationsmodel.cpp" line="64"/>
         <source>, </source>
@@ -190,7 +243,7 @@
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="232"/>
+        <location filename="../src/translationinterface.cpp" line="245"/>
         <source>Please, enter the source text</source>
         <translation>Voer de bron text in</translation>
     </message>
@@ -225,14 +278,79 @@
     </message>
 </context>
 <context>
+    <name>UpdateCheckerPage</name>
+    <message>
+        <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="30"/>
+        <location filename="../qml/symbian/UpdateCheckerPage.qml" line="34"/>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="57"/>
+        <location filename="../qml/symbian/UpdateCheckerPage.qml" line="61"/>
+        <source>Current version: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="61"/>
+        <location filename="../qml/symbian/UpdateCheckerPage.qml" line="66"/>
+        <source>Checking for update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
+        <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
+        <source>No update available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
+        <location filename="../qml/symbian/UpdateCheckerPage.qml" line="83"/>
+        <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
+        <location filename="../qml/symbian/UpdateCheckerPage.qml" line="89"/>
+        <source>Changes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="93"/>
+        <location filename="../qml/symbian/UpdateCheckerPage.qml" line="131"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Updater</name>
+    <message>
+        <location filename="../src/updater.cpp" line="187"/>
+        <source>Couldn&apos;t parse release version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="248"/>
+        <location filename="../src/updater.cpp" line="255"/>
+        <location filename="../src/updater.cpp" line="266"/>
+        <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
+        <translation type="unfinished">Kan de reactie van de server niet ontleden vanwege een fout: &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="249"/>
+        <source>Can&apos;t evaluate JSON data</source>
+        <translation type="unfinished">Kan JSON gegevens niet ontleden</translation>
+    </message>
+</context>
+<context>
     <name>YandexDictionaries</name>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="33"/>
+        <location filename="../src/services/yandexdictionaries.cpp" line="38"/>
         <source>Yandex.Dictionaries</source>
         <translation>Yandex.Dictionaries</translation>
     </message>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="129"/>
+        <location filename="../src/services/yandexdictionaries.cpp" line="134"/>
         <source>%1 service returned an empty result</source>
         <translation>%1 de dienst geeft geen resultaat</translation>
     </message>
@@ -258,6 +376,14 @@
         <location filename="../src/services/yandextranslationservice.cpp" line="96"/>
         <source>Autodetect</source>
         <translation>Auto detecteer</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="37"/>
+        <source>About</source>
+        <translation type="unfinished">Over</translation>
     </message>
 </context>
 </TS>

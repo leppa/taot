@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>--------</name>
+    <message>
+        <source>AUTHORS</source>
+        <comment>A list of translation authors</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LANGUAGE_NAME</source>
+        <comment>Native language name (e.g., Deutsch for German)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AboutPage</name>
     <message>
         <source>About</source>
@@ -100,6 +113,26 @@
         <source>Enter the source text...</source>
         <translation>请输入源文...</translation>
     </message>
+    <message>
+        <source>Select all</source>
+        <translation type="unfinished">全选</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation type="unfinished">复制</translation>
+    </message>
+    <message>
+        <source>Translation was successfully copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t copy translation to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for Update</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MicrosoftTranslator</name>
@@ -164,6 +197,52 @@
     </message>
 </context>
 <context>
+    <name>UpdateCheckerPage</name>
+    <message>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current version: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checking for update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No update available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Updater</name>
+    <message>
+        <source>Couldn&apos;t parse release version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
+        <translation type="unfinished">服务器响应错误: &quot;%1&quot;,无法解析</translation>
+    </message>
+    <message>
+        <source>Can&apos;t evaluate JSON data</source>
+        <translation type="unfinished">无法计算JSON数据</translation>
+    </message>
+</context>
+<context>
     <name>YandexDictionaries</name>
     <message>
         <source>Yandex.Dictionaries</source>
@@ -191,6 +270,13 @@
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <translation type="unfinished">未知语言 (%1)</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">关于</translation>
     </message>
 </context>
 </TS>
