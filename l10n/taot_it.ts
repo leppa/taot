@@ -7,7 +7,7 @@
         <location filename="../src/main.cpp" line="179"/>
         <source>AUTHORS</source>
         <comment>A list of translation authors</comment>
-        <translation>AUTORI</translation>
+        <translation>Francesco Vaccaro (ghostofasmile), Watchmaker</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="180"/>

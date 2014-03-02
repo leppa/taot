@@ -7,7 +7,7 @@
         <location filename="../src/main.cpp" line="179"/>
         <source>AUTHORS</source>
         <comment>A list of translation authors</comment>
-        <translation>译者</translation>
+        <translation>gwmgdemj, 太空飞瓜 (finalmix)</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="180"/>

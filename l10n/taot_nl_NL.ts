@@ -7,13 +7,13 @@
         <location filename="../src/main.cpp" line="179"/>
         <source>AUTHORS</source>
         <comment>A list of translation authors</comment>
-        <translation type="unfinished"></translation>
+        <translation>teunwinters</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="180"/>
         <source>LANGUAGE_NAME</source>
         <comment>Native language name (e.g., Deutsch for German)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nederlands</translation>
     </message>
 </context>
 <context>

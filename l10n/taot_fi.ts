@@ -13,7 +13,7 @@
         <location filename="../src/main.cpp" line="180"/>
         <source>LANGUAGE_NAME</source>
         <comment>Native language name (e.g., Deutsch for German)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Suomi</translation>
     </message>
 </context>
 <context>
