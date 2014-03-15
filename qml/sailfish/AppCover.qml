@@ -31,7 +31,7 @@ CoverBackground {
     CoverPlaceholder {
         Label {
             text: root.swapped ? qsTr("From: <b>%1</b>").arg(translator.sourceLanguage.displayName)
-                                : qsTr("To: <b>%1</b>").arg(translator.targetLanguage.displayName)
+                               : qsTr("To: <b>%1</b>").arg(translator.targetLanguage.displayName)
             color: Theme.secondaryHighlightColor
             width: parent.width - 2 * Theme.paddingMedium
             horizontalAlignment: Text.AlignHCenter
