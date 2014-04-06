@@ -7,7 +7,7 @@
         <location filename="../src/main.cpp" line="179"/>
         <source>AUTHORS</source>
         <comment>A list of translation authors</comment>
-        <translation>buschmann</translation>
+        <translation>Buschmann</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="180"/>
@@ -130,7 +130,7 @@
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="159"/>
         <location filename="../qml/harmattan/MainPage.qml" line="246"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="189"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="190"/>
         <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
         <translation>Erkannte Sprache:</translation>
@@ -165,7 +165,7 @@
         <location filename="../qml/harmattan/MainPage.qml" line="445"/>
         <location filename="../qml/symbian/MainPage.qml" line="481"/>
         <source>Check for Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf Aktualisierung prüfen</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="451"/>
@@ -177,21 +177,21 @@
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="40"/>
         <location filename="../qml/sailfish/MainPage.qml" line="44"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="276"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="277"/>
         <location filename="../qml/symbian/MainPage.qml" line="39"/>
         <source>Translation Service</source>
         <translation>Übersetzungsdienst</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="49"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="290"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="291"/>
         <location filename="../qml/symbian/MainPage.qml" line="56"/>
         <source>Source Language</source>
         <translation>Ursprungssprache</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="303"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="304"/>
         <location filename="../qml/symbian/MainPage.qml" line="73"/>
         <source>Target Language</source>
         <translation>Zielsprache</translation>
@@ -283,43 +283,43 @@
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="30"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="34"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="57"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="61"/>
         <source>Current version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Version: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="61"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="66"/>
         <source>Checking for update...</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüfe auf Aktualisierung...</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
         <source>No update available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Aktualisierung verfügbar.</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="83"/>
         <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisierung verfügbar: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="89"/>
         <source>Changes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Änderungen:</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="93"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="131"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Herunterladen</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../src/updater.cpp" line="187"/>
         <source>Couldn&apos;t parse release version</source>
-        <translation type="unfinished"></translation>
+        <translation>Konnte Versionsinformation nicht verarbeiten</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="248"/>

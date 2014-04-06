@@ -130,7 +130,7 @@
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="159"/>
         <location filename="../qml/harmattan/MainPage.qml" line="246"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="189"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="190"/>
         <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
         <translation>检测语言：</translation>
@@ -177,21 +177,21 @@
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="40"/>
         <location filename="../qml/sailfish/MainPage.qml" line="44"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="276"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="277"/>
         <location filename="../qml/symbian/MainPage.qml" line="39"/>
         <source>Translation Service</source>
         <translation>翻译服务</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="49"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="290"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="291"/>
         <location filename="../qml/symbian/MainPage.qml" line="56"/>
         <source>Source Language</source>
         <translation>源语言</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="303"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="304"/>
         <location filename="../qml/symbian/MainPage.qml" line="73"/>
         <source>Target Language</source>
         <translation>目标语言</translation>
