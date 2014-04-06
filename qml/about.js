@@ -31,7 +31,7 @@ var aboutText =
 "<b>Chinese</b> by gwmgdemj and 太空飞瓜 (finalmix), " +
 "<b>Dutch</b> by teunwinters, " +
 "<b>German</b> by buschmann, " +
-"<b>Italian</b> by Francesco Vaccaro (ghostofasmile) and Watchmaker, " +
+"<b>Italian</b> by Francesco Vaccaro (ghostofasmile) and Alessandro Pra' (Watchmaker), " +
 "<b>Turkish</b> by Mehmet Ç. (fnldstntn). " +
 "</p> " +
 "<p>&nbsp;</p> " +
