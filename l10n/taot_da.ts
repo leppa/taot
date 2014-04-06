@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="da">
 <context>
     <name>--------</name>
     <message>
         <location filename="../src/main.cpp" line="179"/>
         <source>AUTHORS</source>
         <comment>A list of translation authors</comment>
-        <translation>Mehmet Ç. (fnldstntn)</translation>
+        <translation>Peter Jespersen (flywheeldk)</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="180"/>
         <source>LANGUAGE_NAME</source>
         <comment>Native language name (e.g., Deutsch for German)</comment>
-        <translation>Türk</translation>
+        <translation>Dansk</translation>
     </message>
 </context>
 <context>
@@ -23,12 +23,12 @@
         <location filename="../qml/harmattan/AboutPage.qml" line="59"/>
         <location filename="../qml/symbian/AboutPage.qml" line="61"/>
         <source>Version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Versiyon: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Version: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/sailfish/AboutPage.qml" line="50"/>
         <source>About</source>
-        <translation>Hakkında</translation>
+        <translation>Om</translation>
     </message>
 </context>
 <context>
@@ -37,13 +37,13 @@
         <location filename="../qml/bb10/AppCover.qml" line="33"/>
         <location filename="../qml/sailfish/AppCover.qml" line="33"/>
         <source>From: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Kaynak: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Fra: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/bb10/AppCover.qml" line="59"/>
         <location filename="../qml/sailfish/AppCover.qml" line="34"/>
         <source>To: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>To: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Til: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -61,13 +61,13 @@
     <message>
         <location filename="../src/services/googletranslate.cpp" line="38"/>
         <source>Google Translate</source>
-        <translation>Google Çeviri</translation>
+        <translation>Google Oversæt</translation>
     </message>
     <message>
         <location filename="../src/services/googletranslate.cpp" line="126"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
-        <translation>Bilinmiyor (%1)</translation>
+        <translation>Ukendt (%1)</translation>
     </message>
 </context>
 <context>
@@ -77,12 +77,12 @@
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation>Bir hata nedeniyle sunucudan yanıt alınamadı: &quot;%1&quot;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="48"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation>JSON verisi değerlendirilemedi</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -93,7 +93,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="67"/>
         <location filename="../qml/symbian/MainPage.qml" line="107"/>
         <source>From</source>
-        <translation>Kaynak dil</translation>
+        <translation>Fra</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="88"/>
@@ -101,7 +101,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="95"/>
         <location filename="../qml/symbian/MainPage.qml" line="141"/>
         <source>To</source>
-        <translation>Çevrilecek dil</translation>
+        <translation>Til</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="98"/>
@@ -109,7 +109,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="113"/>
         <location filename="../qml/symbian/MainPage.qml" line="159"/>
         <source>Enter the source text...</source>
-        <translation>Kaynak yazıyı girin...</translation>
+        <translation>Indtast kildeteksten ...</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="113"/>
@@ -117,7 +117,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="135"/>
         <location filename="../qml/symbian/MainPage.qml" line="181"/>
         <source>Translate</source>
-        <translation>Çevir</translation>
+        <translation>Oversæt</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="133"/>
@@ -125,7 +125,7 @@
         <location filename="../qml/sailfish/MainPage.qml" line="149"/>
         <location filename="../qml/symbian/MainPage.qml" line="198"/>
         <source>Clear</source>
-        <translation>Temizle</translation>
+        <translation>Ryd</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="159"/>
@@ -133,46 +133,46 @@
         <location filename="../qml/sailfish/MainPage.qml" line="190"/>
         <location filename="../qml/symbian/MainPage.qml" line="275"/>
         <source>Detected language:</source>
-        <translation>Algılanan dil:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="178"/>
         <source>Select all</source>
-        <translation>Tümünü seç</translation>
+        <translation>Marker alt</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="190"/>
         <source>Copy</source>
-        <translation>Kopyala</translation>
+        <translation>Kopier</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="198"/>
         <source>Translation was successfully copied to clipboard</source>
-        <translation>Çeviri başarılı bir şekilde panoya kopyalandı</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="200"/>
         <source>Couldn&apos;t copy translation to clipboard</source>
-        <translation>Çeviri panoya kopyalanamadı</translation>
+        <translation>Kunne ikke kopiere oversættelse til udklipsholder</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="438"/>
         <location filename="../qml/symbian/MainPage.qml" line="473"/>
         <source>Toggle Inverted Theme</source>
-        <translation>Temayı Tersine Çevir</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="445"/>
         <location filename="../qml/symbian/MainPage.qml" line="481"/>
         <source>Check for Update</source>
-        <translation>Güncellemeleri denetle</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="451"/>
         <location filename="../qml/sailfish/MainPage.qml" line="39"/>
         <location filename="../qml/symbian/MainPage.qml" line="488"/>
         <source>About</source>
-        <translation>Hakkında</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="40"/>
@@ -180,21 +180,21 @@
         <location filename="../qml/sailfish/MainPage.qml" line="277"/>
         <location filename="../qml/symbian/MainPage.qml" line="39"/>
         <source>Translation Service</source>
-        <translation>Çeviri Servisi</translation>
+        <translation>Oversættelsestjenesten</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="49"/>
         <location filename="../qml/sailfish/MainPage.qml" line="291"/>
         <location filename="../qml/symbian/MainPage.qml" line="56"/>
         <source>Source Language</source>
-        <translation>Kaynak Dil</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="58"/>
         <location filename="../qml/sailfish/MainPage.qml" line="304"/>
         <location filename="../qml/symbian/MainPage.qml" line="73"/>
         <source>Target Language</source>
-        <translation>Çevirilecek Dil</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -202,30 +202,30 @@
     <message>
         <location filename="../src/services/microsofttranslator.cpp" line="13"/>
         <source>Microsoft Translator</source>
-        <translation>Microsoft Çeviri</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/services/microsofttranslator.cpp" line="22"/>
         <location filename="../src/services/microsofttranslator.cpp" line="23"/>
         <source>Autodetect</source>
-        <translation>Otomatik algıla</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/services/microsofttranslator.cpp" line="97"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
-        <translation>Bilinmiyor (%1)</translation>
+        <translation>Ukendt (%1)</translation>
     </message>
     <message>
         <location filename="../src/services/microsofttranslator.cpp" line="162"/>
         <source>Server returned an error: &quot;%1&quot;</source>
-        <translation>Sunucuda bir hata ile karşılaşıldı: &quot;%1&quot;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/services/microsofttranslator.cpp" line="166"/>
         <location filename="../src/services/microsofttranslator.cpp" line="172"/>
         <source>Unexpected response from the server</source>
-        <translation>Sunucudan beklenmeyen karşılık</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -245,7 +245,7 @@
     <message>
         <location filename="../src/translationinterface.cpp" line="245"/>
         <source>Please, enter the source text</source>
-        <translation>Lütfen kaynak yazıyı girin</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -254,12 +254,12 @@
         <location filename="../src/translationservice.cpp" line="30"/>
         <source>Unknown</source>
         <comment>Unknown language</comment>
-        <translation>Bilinmiyor</translation>
+        <translation>Ukendt</translation>
     </message>
     <message>
         <location filename="../src/translationservice.cpp" line="55"/>
         <source>No error</source>
-        <translation>Hata yok</translation>
+        <translation>Ingen fejl</translation>
     </message>
 </context>
 <context>
@@ -268,13 +268,13 @@
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="45"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="49"/>
         <source>Select all</source>
-        <translation>Tümünü seç</translation>
+        <translation>Marker alt</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="51"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="56"/>
         <source>Copy</source>
-        <translation>Kopyala</translation>
+        <translation>Kopier</translation>
     </message>
 </context>
 <context>
@@ -283,43 +283,43 @@
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="30"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="34"/>
         <source>Update</source>
-        <translation>Güncelle</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="57"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="61"/>
         <source>Current version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Sahip olduğunuz sürüm: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Nuværende version: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="61"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="66"/>
         <source>Checking for update...</source>
-        <translation>Güncellemeler denetleniyor...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
         <source>No update available.</source>
-        <translation>Güncelleme yok.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="83"/>
         <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Güncelleme var: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="89"/>
         <source>Changes:</source>
-        <translation>Değişiklikler:</translation>
+        <translation>Ændringer:</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="93"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="131"/>
         <source>Download</source>
-        <translation>İndir</translation>
+        <translation>Hent</translation>
     </message>
 </context>
 <context>
@@ -327,19 +327,19 @@
     <message>
         <location filename="../src/updater.cpp" line="187"/>
         <source>Couldn&apos;t parse release version</source>
-        <translation>Couldn&apos;t parse release version</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="248"/>
         <location filename="../src/updater.cpp" line="255"/>
         <location filename="../src/updater.cpp" line="266"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation>Bir hata nedeniyle sunucudan yanıt alınamadı: &quot;%1&quot;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="249"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation>JSON verisi değerlendirilemedi</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -347,12 +347,12 @@
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="38"/>
         <source>Yandex.Dictionaries</source>
-        <translation>Yandex.Sözlükleri</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="134"/>
         <source>%1 service returned an empty result</source>
-        <translation>%1 servisten boş bir sonuç geldi</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -360,7 +360,7 @@
     <message>
         <location filename="../src/services/yandextranslate.cpp" line="33"/>
         <source>Yandex.Translate</source>
-        <translation>Yandex.Çeviri</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -369,13 +369,13 @@
         <location filename="../src/services/yandextranslationservice.cpp" line="62"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
-        <translation>Bilinmiyor (%1)</translation>
+        <translation>Ukendt (%1)</translation>
     </message>
     <message>
         <location filename="../src/services/yandextranslationservice.cpp" line="95"/>
         <location filename="../src/services/yandextranslationservice.cpp" line="96"/>
         <source>Autodetect</source>
-        <translation>Oyomatik algıla</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../qml/bb10/main.qml" line="37"/>
         <source>About</source>
-        <translation>Hakkında</translation>
+        <translation>Om</translation>
     </message>
 </context>
 </TS>

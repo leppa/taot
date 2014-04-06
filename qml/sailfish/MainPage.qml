@@ -169,7 +169,8 @@ Page {
                 height: translator.supportsTranslation ? implicitHeight
                                                        : 0
                 visible: height > 0
-//                readOnly: true
+                readOnly: true
+                focusOnClick: true
             }
 
             Row {

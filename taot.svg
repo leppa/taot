@@ -11,9 +11,13 @@
  <path stroke-opacity="0.4" fill-opacity="0.4" id="SHADOW_1_" d="M88.023,49c0,29.633-10.364,40-40,40c-29.635,0-40-10.367-40-40c0-29.634,10.366-40,40-40&#xd;&#xa;&#x9;C77.659,9,88.023,19.365,88.023,49z"/>
  <g>
   <g>
-   <linearGradient id="SVGID_1_" y1="96" x1="48.0005" y2="5.035400e-004" gradientUnits="userSpaceOnUse" x2="48.0005">
-    <stop offset="0" style="stop-color:#000000"/>
-    <stop offset="1" style="stop-color:#808080"/>
+   <linearGradient id="SVGID_1_" y1="96" x1="48.0005" y2="4.882813e-004" gradientUnits="userSpaceOnUse" x2="48.0005">
+    <stop offset="0" style="stop-color:#202020"/>
+    <stop offset="0.2186" style="stop-color:#242424"/>
+    <stop offset="0.4452" style="stop-color:#313131"/>
+    <stop offset="0.6754" style="stop-color:#454545"/>
+    <stop offset="0.9068" style="stop-color:#626262"/>
+    <stop offset="1" style="stop-color:#707070"/>
    </linearGradient>
    <path fill="url(#SVGID_1_)" d="M48,87.979c29.637,0,40-10.367,40-40C88,18.993,78.074,8.448,49.909,8h-3.818&#xd;&#xa;&#x9;&#x9;&#x9;C17.928,8.448,8,18.993,8,47.978C8,77.611,18.365,87.979,48,87.979z"/>
   </g>
