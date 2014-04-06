@@ -1,3 +1,13 @@
+taot (1.0.1) unstable; urgency=low
+  * Google Translate: updated list of available translation languages.
+  * Made icon background a bit smoother.
+  * Fix: old icon was shown in Settings -> Applications -> Manage
+    applications.
+  * New UI localization: Danish.
+  * German UI localization was updated.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Sun, 06 Apr 2014 17:05:53 +0200
+
 taot (1.0.0) unstable; urgency=low
   * Renamed application into TAO Translator.
   * New application icon.

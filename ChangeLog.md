@@ -1,6 +1,16 @@
 TAO Translator ChangeLog
 ========================
 
+TAOT v1.0.1
+-----------
+- Google Translate: updated list of available translation languages.
+- Made icon background a bit smoother.
+- New UI localization: Danish.
+- German UI localization was updated.
+- Sailfish: translation result text is now read only.
+- Nokia N9: fixed old icon was shown in Settings -> Applications ->
+  Manage applications.
+
 TAOT v1.0.0
 -----------
 - Renamed application into TAO Translator.
