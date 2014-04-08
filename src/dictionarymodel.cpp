@@ -105,6 +105,9 @@ void DictionaryModel::append(const DictionaryPos &pos)
 
 void DictionaryModel::clear()
 {
+    if (m_dict.count() <= 0)
+        return;
+
     emit beginRemoveRows(QModelIndex(), 0, m_dict.count() - 1);
     m_dict.clear();
     emit endRemoveRows();

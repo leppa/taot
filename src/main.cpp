@@ -53,7 +53,11 @@ using namespace bb::cascades;
 #   include <QApplication>
 #   include <QtDeclarative>
 #else
-#   include <QGuiApplication>
+#   ifdef Q_OS_SAILFISH
+#       include <QGuiApplication>
+#   else
+#       include <QApplication>
+#   endif
 #   include <QtQuick>
 #endif
 #include <QTextCodec>
@@ -88,7 +92,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 #else
-    QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
+    QScopedPointer<QApplication> app(new QApplication(argc, argv));
 #endif
 
 #ifdef Q_OS_BLACKBERRY
@@ -130,7 +134,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QmlApplicationViewer viewer;
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 #else
-    QQuickView viewer;
+    QQmlApplicationEngine engine;
 #endif
 
 #ifdef Q_OS_BLACKBERRY
@@ -147,8 +151,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
 #else
-    QObject::connect(viewer.engine(), SIGNAL(quit()), app.data(), SLOT(quit()));
-    viewer.setSource(QUrl(QLatin1String("qml/main.qml")));
+    engine.load(QUrl(QLatin1String("qrc:/ui/main.qml")));
 #endif
 
 #ifdef Q_OS_BLACKBERRY
@@ -159,12 +162,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     SceneCover *cover = new SceneCover(app.data());
     cover->setContent(qml->createRootObject<Container>());
     app->setCover(cover);
-#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    viewer.showExpanded();
 #elif defined(Q_OS_SAILFISH)
     viewer->show();
+#elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    viewer.showExpanded();
 #else
-    viewer.show();
+    QQuickWindow *win = qobject_cast<QQuickWindow *>(engine.rootObjects().at(0));
+    win->setIcon(QIcon(QLatin1String(":/ui/icons/icon.png")));
+    win->show();
 #endif
 
     return app->exec();

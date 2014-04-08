@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/ui">
+        <file>main.qml</file>
+        <file>icons/document-swap.svgz</file>
+        <file>icons/expand.png</file>
+        <file>icons/icon.png</file>
+        <file>DictionaryDelegate.qml</file>
+    </qresource>
+</RCC>

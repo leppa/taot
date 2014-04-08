@@ -27,6 +27,7 @@ lessThan(QT_MAJOR_VERSION, 5) {
     QT += declarative network script
 } else {
     QT += quick network
+    !sailfish:QT += widgets
 }
 
 blackberry:CONFIG += cascades
@@ -106,6 +107,8 @@ RESOURCES += \
     data/data.qrc \
     l10n/l10n.qrc
 
+!lessThan(QT_MAJOR_VERSION, 5):RESOURCES += qml/generic/generic.qrc
+
 TRANSLATIONS += \
     l10n/taot_da.ts \
     l10n/taot_de.ts \
@@ -121,6 +124,7 @@ TRANSLATIONS += \
 translate_hack {
     SOURCES += \
         qml/bb10/*.qml \
+        qml/generic/*.qml \
         qml/harmattan/*.qml \
         qml/sailfish/*.qml \
         qml/symbian/*.qml
@@ -132,6 +136,7 @@ OTHER_FILES += \
     data/langs/*.json \
     qml/about.js \
     qml/bb10/*.qml \
+    qml/generic/*.qml \
     qml/harmattan/*.js \
     qml/harmattan/*.qml \
     qml/harmattan/icons/* \
