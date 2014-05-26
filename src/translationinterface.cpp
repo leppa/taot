@@ -26,6 +26,7 @@
 #include "translationservicesmodel.h"
 #include "languagelistmodel.h"
 #ifdef Q_OS_BLACKBERRY
+#   include <bb/system/InvokeManager>
 #   include "bb10/dictionarymodel.h"
 #else
 #   include "dictionarymodel.h"
@@ -80,6 +81,14 @@ TranslationInterface::TranslationInterface(QObject *parent)
 #if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
     if (m_settings->contains("displayNokiaStoreNotice"))
         m_settings->remove("displayNokiaStoreNotice");
+#endif
+
+#ifdef Q_OS_BLACKBERRY
+    // No need to store this pointer - it will be
+    // deleted by TranslationInterface as its child.
+    bb::system::InvokeManager *manager = new bb::system::InvokeManager(this);
+    QObject::connect(manager, SIGNAL(invoked(bb::system::InvokeRequest)),
+                     this, SLOT(onInvoked(bb::system::InvokeRequest)));
 #endif
 }
 
@@ -407,3 +416,14 @@ void TranslationInterface::retranslate()
 
     translate();
 }
+
+#ifdef Q_OS_BLACKBERRY
+void TranslationInterface::onInvoked(const bb::system::InvokeRequest &request)
+{
+    if (request.mimeType() != "text/plain")
+        return;
+
+    setSourceText(QString::fromUtf8(request.data()));
+    retranslate();
+}
+#endif

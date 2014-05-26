@@ -35,6 +35,10 @@
 #include <QNetworkReply>
 #include <QSettings>
 
+#ifdef Q_OS_BLACKBERRY
+#   include <bb/system/InvokeRequest>
+#endif
+
 class TranslationServicesModel;
 class TranslationServiceItem;
 class LanguageListModel;
@@ -162,6 +166,10 @@ private:
 private slots:
     void onTranslationFinished();
     void retranslate();
+
+#ifdef Q_OS_BLACKBERRY
+    void onInvoked(const bb::system::InvokeRequest &request);
+#endif
 };
 
 #endif // TRANSLATIONINTERFACE_H

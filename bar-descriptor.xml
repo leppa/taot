@@ -25,4 +25,13 @@
     <asset path="%SRC_DIR%/taot480.png">icon.png</asset>
     <asset path="%SRC_DIR%/qml/about.js">assets/about.js</asset>
     <asset path="%SRC_DIR%/qml/bb10">assets</asset>
+    <invoke-target id="name.oleksii.taot.translate">
+        <invoke-target-type>application</invoke-target-type>
+        <invoke-target-name>TAO Translator</invoke-target-name>
+        <filter>
+            <action>bb.action.SHARE</action>
+            <mime-type>text/plain</mime-type>
+            <property var="uris" value="data://local" />
+        </filter>
+    </invoke-target>
 </qnx>

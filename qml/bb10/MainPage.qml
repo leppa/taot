@@ -234,6 +234,8 @@ Page {
 
         translation.editor.selectionStartChanged.connect(selectionChanged);
         translation.editor.selectionEndChanged.connect(selectionChanged);
+
+        translator.sourceTextChanged.connect(sourceTextChanged);
     }
 
     function updateSourceLanguages()
@@ -265,5 +267,9 @@ Page {
     function targetLanguageChanged()
     {
         targetLanguagesDropDown.selectedIndex = translator.targetLanguage.index;
+    }
+    function sourceTextChanged()
+    {
+        source.text = translator.sourceText;
     }
 }
