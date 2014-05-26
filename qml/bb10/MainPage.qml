@@ -202,6 +202,25 @@ Page {
                     toast.body = qsTr("Couldn't copy translation to clipboard");
                 toast.show();
             }
+        },
+        InvokeActionItem {
+            title: qsTr("Share translation") + Retranslate.onLanguageChanged
+            enabled: translator.translatedText != ""
+            query {
+                mimeType: "text/plain"
+                invokeActionId: "bb.action.SHARE"
+            }
+            onTriggered: {
+                /*: <source text> (<source/detected language>)
+                 *  -> <translated text> (<target language>)
+                 */
+                data = qsTr("%1 (%2) -> %3 (%4)").arg(translator.sourceText)
+                                                 .arg(translator.detectedLanguageName
+                                                      ? translator.detectedLanguageName
+                                                      : translator.sourceLanguage.displayName)
+                                                 .arg(translator.translatedText)
+                                                 .arg(translator.targetLanguage.displayName);
+            }
         }
     ]
 
