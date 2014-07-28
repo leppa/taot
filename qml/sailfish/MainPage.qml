@@ -270,6 +270,26 @@ Page {
         }
     }
 
+    RemorseItem {
+        id: popup
+
+        function show(errorString)
+        {
+            execute(app, errorString, function () {}, 10000);
+        }
+
+        cancelText: qsTr("Tap to close this message")
+    }
+
+    Connections {
+        target: translator
+
+        onError: {
+            console.debug(errorString);
+            popup.show(errorString);
+        }
+    }
+
     Component {
         id: servicePicker
 

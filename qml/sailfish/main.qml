@@ -35,11 +35,6 @@ ApplicationWindow {
 
     Translator {
         id: translator
-
-        onError: {
-            console.debug(errorString);
-            banner.show(errorString);
-        }
     }
 
     cover: AppCover {}
