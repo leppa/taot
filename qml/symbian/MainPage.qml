@@ -25,6 +25,8 @@ import com.nokia.symbian 1.1
 import taot 1.0
 
 Page {
+    id: root
+
     // A hack for text item to loose focus when clicked outside of it
     MouseArea {
         id: dummyFocus
@@ -150,24 +152,66 @@ Page {
                 }
             }
 
-            TextArea {
-                id: source
+            Item {
+                id: sourceWrapper
 
+                z: 1
                 width: parent.width
-                height: Math.min(implicitHeight, listDictionary.height * 0.4)
-//                text: "Welcome"
-                placeholderText: qsTr("Enter the source text...")
-                textFormat: TextEdit.PlainText
-                platformInverted: appWindow.platformInverted
+                height: source.implicitHeight
 
-//                Keys.onReturnPressed: translator.translate();
-//                Keys.onEnterPressed: translator.translate();
+                TextArea {
+                    id: source
 
-                onTextChanged: {
-                    if (translator.sourceText == text)
-                        return;
+                    width: parent.width
+                    height: parent.height
+//                    text: "Welcome"
+                    placeholderText: qsTr("Enter the source text...")
+                    textFormat: TextEdit.PlainText
+                    platformInverted: appWindow.platformInverted
 
-                    translator.sourceText = text;
+                    onTextChanged: {
+                        if (translator.sourceText == text)
+                            return;
+
+                        translator.sourceText = text;
+                    }
+
+                    states: [
+                        State {
+                            name: "Active"
+                            when: inputContext.visible
+                            ParentChange {
+                                target: source
+                                parent: root
+                                x: platformStyle.paddingSmall
+                                y: titleBar.height + platformStyle.paddingSmall
+                                width: parent.width - 2 * platformStyle.paddingSmall
+                                height: parent.height - inputContext.height - platformStyle.paddingSmall
+                            }
+                        }
+                    ]
+
+                    transitions: [
+                        Transition {
+                            from: "*"
+                            to: "Active"
+                            reversible: true
+                            ParentAnimation {
+                                target: source
+
+                                PropertyAnimation {
+                                    duration: 100
+                                    easing.type: Easing.InOutQuad
+                                    properties: "y"
+                                }
+                                PropertyAnimation {
+                                    duration: 100
+                                    easing.type: Easing.InOutQuad
+                                    properties: "height"
+                                }
+                            }
+                        }
+                    ]
                 }
             }
 
