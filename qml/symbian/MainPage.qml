@@ -401,6 +401,7 @@ Page {
 
         width: parent.width
         height: platformStyle.graphicSizeMedium
+        enabled: !inputContext.visible
 
         Rectangle {
             anchors.fill: parent
@@ -449,6 +450,8 @@ Page {
             id: icon
 
             source: "image://theme/qtg_graf_choice_list_indicator"
+            visible: opacity > 0
+            opacity: parent.enabled ? 1.0 : 0.0
             sourceSize {
                 width: platformStyle.graphicSizeSmall
                 height: platformStyle.graphicSizeSmall
@@ -458,6 +461,8 @@ Page {
                 rightMargin: 10
                 verticalCenter: parent.verticalCenter
             }
+
+            Behavior on opacity { NumberAnimation { duration: 100 } }
         }
     }
 
