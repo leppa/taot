@@ -27,15 +27,6 @@ import taot 1.0
 Page {
     id: root
 
-    // A hack for text item to loose focus when clicked outside of it
-    MouseArea {
-        id: dummyFocus
-        anchors.fill: parent
-        onClicked: {
-            focus = true;
-        }
-    }
-
     SelectionDialog {
         id: servicesDialog
         titleText: qsTr("Translation Service")
@@ -87,15 +78,103 @@ Page {
         }
     }
 
-    Component {
-        id: header
+    ScrollDecorator {
+        flickableItem: flickable
+    }
+
+    Item {
+        id: titleBar
+
+        width: parent.width
+        height: platformStyle.graphicSizeMedium
+        enabled: !inputContext.visible
+
+        Rectangle {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop {
+                    position: 0.00
+                    color: platformStyle.colorNormalLink
+                }
+                GradientStop {
+                    position: 1.0;
+                    color: Qt.darker(platformStyle.colorNormalLink)
+                }
+            }
+        }
+
+        Rectangle {
+            color: platformStyle.colorNormalLink
+            visible: mouseArea.pressed
+            anchors.fill: parent
+        }
+
+        MouseArea {
+            id: mouseArea
+            enabled: parent.enabled
+            anchors.fill: parent
+            onClicked: {
+                if (servicesDialog.selectedIndex < 0)
+                    servicesDialog.selectedIndex = translator.selectedService.index;
+                servicesDialog.open();
+            }
+        }
+
+        Label {
+            color: "white"
+            text: translator.selectedService.name
+            font.pixelSize: platformStyle.fontSizeLarge
+            platformInverted: appWindow.platformInverted
+            anchors {
+                left: parent.left
+                leftMargin: platformStyle.paddingLarge
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
+        Image {
+            id: icon
+
+            source: "image://theme/qtg_graf_choice_list_indicator"
+            visible: opacity > 0
+            opacity: parent.enabled ? 1.0 : 0.0
+            sourceSize {
+                width: platformStyle.graphicSizeSmall
+                height: platformStyle.graphicSizeSmall
+            }
+            anchors {
+                right: parent.right
+                rightMargin: 10
+                verticalCenter: parent.verticalCenter
+            }
+
+            Behavior on opacity { NumberAnimation { duration: 100 } }
+        }
+    }
+
+    Flickable {
+        id: flickable
+
+        clip: true
+        contentWidth: content.width
+        contentHeight: content.height
+        anchors {
+            top: titleBar.bottom
+            left: parent.left
+            leftMargin: platformStyle.paddingSmall
+            bottom: parent.bottom
+            bottomMargin: inputContext.visible ? inputContext.height - tools.height : 0
+            right: parent.right
+            rightMargin: platformStyle.paddingSmall
+        }
 
         Column {
-            id: col
+            id: content
 
-            width: ListView.view.width
-            height: childrenRect.height + platformStyle.paddingMedium
+            width: flickable.width
+            height: childrenRect.height + 2 * platformStyle.paddingMedium
             spacing: platformStyle.paddingMedium
+            y: platformStyle.paddingMedium
 
             Row {
                 width: parent.width
@@ -226,7 +305,6 @@ Page {
                     enabled: !translator.busy
                     platformInverted: !appWindow.platformInverted
                     onClicked: {
-                        dummyFocus.focus = true;
                         translator.translate();
                     }
 
@@ -291,7 +369,6 @@ Page {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        dummyFocus.focus = true;
                         if (translator.translatedText != "")
                             pageStack.push(translationPage);
                     }
@@ -386,116 +463,20 @@ Page {
                 ]
             }
 
-            Component.onCompleted: {
-                listDictionary.headerItem = col;
-            }
-        }
-    }
+            Column {
+                id: listDictionary
 
-    ScrollDecorator {
-        flickableItem: listDictionary
-    }
+                width: parent.width
+                height: childrenRect.height
 
-    Item {
-        id: titleBar
-
-        width: parent.width
-        height: platformStyle.graphicSizeMedium
-        enabled: !inputContext.visible
-
-        Rectangle {
-            anchors.fill: parent
-            gradient: Gradient {
-                GradientStop {
-                    position: 0.00
-                    color: platformStyle.colorNormalLink
-                }
-                GradientStop {
-                    position: 1.0;
-                    color: Qt.darker(platformStyle.colorNormalLink)
+                Repeater {
+                    model: translator.dictionary
+                    delegate: DictionaryDelegate {
+                        width: listDictionary.width
+                        platformInverted: appWindow.platformInverted
+                    }
                 }
             }
-        }
-
-        Rectangle {
-            color: platformStyle.colorNormalLink
-            visible: mouseArea.pressed
-            anchors.fill: parent
-        }
-
-        MouseArea {
-            id: mouseArea
-            enabled: parent.enabled
-            anchors.fill: parent
-            onClicked: {
-                if (servicesDialog.selectedIndex < 0)
-                    servicesDialog.selectedIndex = translator.selectedService.index;
-                servicesDialog.open();
-            }
-        }
-
-        Label {
-            color: "white"
-            text: translator.selectedService.name
-            font.pixelSize: platformStyle.fontSizeLarge
-            platformInverted: appWindow.platformInverted
-            anchors {
-                left: parent.left
-                leftMargin: platformStyle.paddingLarge
-                verticalCenter: parent.verticalCenter
-            }
-        }
-
-        Image {
-            id: icon
-
-            source: "image://theme/qtg_graf_choice_list_indicator"
-            visible: opacity > 0
-            opacity: parent.enabled ? 1.0 : 0.0
-            sourceSize {
-                width: platformStyle.graphicSizeSmall
-                height: platformStyle.graphicSizeSmall
-            }
-            anchors {
-                right: parent.right
-                rightMargin: 10
-                verticalCenter: parent.verticalCenter
-            }
-
-            Behavior on opacity { NumberAnimation { duration: 100 } }
-        }
-    }
-
-    ListView {
-        id: listDictionary
-
-        property Item headerItem
-
-        clip: true
-        model: translator.dictionary
-        interactive: visibleArea.heightRatio < 1.0 || (headerItem.height > height - 2 * platformStyle.paddingMedium)
-        // HACK: We need this to save the exapnded state of translation.
-        // TODO: Come up with more appropriate solution.
-        cacheBuffer: 65535
-        anchors {
-            top: titleBar.bottom
-            left: parent.left
-            leftMargin: platformStyle.paddingSmall
-            bottom: parent.bottom
-            right: parent.right
-            rightMargin: platformStyle.paddingSmall
-        }
-
-        header: header
-        delegate: DictionaryDelegate {
-            platformInverted: appWindow.platformInverted
-            onClicked: {
-                dummyFocus.focus = true;
-            }
-        }
-
-        onMovementStarted: {
-            dummyFocus.focus = true;
         }
     }
 

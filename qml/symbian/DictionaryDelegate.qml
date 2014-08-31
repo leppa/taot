@@ -28,7 +28,6 @@ MouseArea {
 
     property bool platformInverted: false
 
-    width: ListView.view.width
     height: posDelegate.height + indicator.height / 2
 
     onClicked: {
