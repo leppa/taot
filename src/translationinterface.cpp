@@ -71,6 +71,10 @@ TranslationInterface::TranslationInterface(QObject *parent)
     connect(this, SIGNAL(sourceLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
     connect(this, SIGNAL(targetLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
 
+#ifdef Q_OS_SYMBIAN
+    connect(qApp, SIGNAL(visibilityChanged()), this, SIGNAL(appVisibilityChanged()));
+#endif
+
     // TODO: Remove after few versions
 #if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
     if (m_settings->contains("displayNokiaStoreNotice"))
@@ -147,6 +151,13 @@ DictionaryModel *TranslationInterface::dictionary() const
 {
     return m_dict;
 }
+
+#ifdef Q_OS_SYMBIAN
+TranslationInterface::AppVisibility TranslationInterface::appVisibility() const
+{
+    return AppVisibility(qobject_cast<SymbianApplication *>(qApp)->visibility());
+}
+#endif
 
 TranslationInterface::~TranslationInterface()
 {

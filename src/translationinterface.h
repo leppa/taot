@@ -25,6 +25,10 @@
 
 #include "translationservice.h"
 
+#ifdef Q_OS_SYMBIAN
+#   include "symbian/symbianapplication.h"
+#endif
+
 #include <QObject>
 #include <QStringList>
 #include <QNetworkAccessManager>
@@ -57,6 +61,12 @@ class TranslationInterface: public QObject
     Q_PROPERTY(QString translatedText READ translatedText NOTIFY translatedTextChanged)
     Q_PROPERTY(DictionaryModel *dictionary READ dictionary CONSTANT)
 
+#ifdef Q_OS_SYMBIAN
+    Q_PROPERTY(TranslationInterface::AppVisibility appVisibility READ appVisibility
+                                                                 NOTIFY appVisibilityChanged)
+    Q_ENUMS(AppVisibility)
+#endif
+
 public:
     enum SupportedServices {
         GoogleTranslateService,
@@ -64,6 +74,14 @@ public:
         YandexTranslateService,
         YandexDictionariesService
     };
+
+#ifdef Q_OS_SYMBIAN
+    enum AppVisibility {
+        AppNotVisible = SymbianApplication::NotVisible,
+        AppPartiallyVisible = SymbianApplication::PartiallyVisible,
+        AppFullyVisible = SymbianApplication::FullyVisible
+    };
+#endif
 
     explicit TranslationInterface(QObject *parent = 0);
 
@@ -83,6 +101,10 @@ public:
     QString translatedText() const;
     DictionaryModel *dictionary() const;
 
+#ifdef Q_OS_SYMBIAN
+    TranslationInterface::AppVisibility appVisibility() const;
+#endif
+
     ~TranslationInterface();
 
 signals:
@@ -95,6 +117,9 @@ signals:
     void sourceTextChanged();
     void detectedLanguageChanged();
     void translatedTextChanged();
+#ifdef Q_OS_SYMBIAN
+    void appVisibilityChanged();
+#endif
 
 public slots:
     QString getSettingsValue(const QString &key) const;

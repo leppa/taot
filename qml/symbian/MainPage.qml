@@ -87,7 +87,7 @@ Page {
 
         width: parent.width
         height: platformStyle.graphicSizeMedium
-        enabled: !inputContext.visible
+        enabled: source.state != "Active"
 
         Rectangle {
             anchors.fill: parent
@@ -258,7 +258,11 @@ Page {
                     states: [
                         State {
                             name: "Active"
-                            when: inputContext.visible
+                            when: source.activeFocus
+                                  && (inputContext.visible
+                                      // HACK: There are some cases, where VKB is visible,
+                                      // but reported as not. This is a dirty workaround.
+                                      || translator.appVisibility == Translator.AppPartiallyVisible)
                             ParentChange {
                                 target: source
                                 parent: root

@@ -49,6 +49,9 @@
 #   include <bb/cascades/SceneCover>
 #   include <bb/system/SystemToast>
 using namespace bb::cascades;
+#elif defined(Q_OS_SYMBIAN)
+#   include "symbian/symbianapplication.h"
+#   include <QtDeclarative>
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
 #   include <QApplication>
 #   include <QtDeclarative>
@@ -85,6 +88,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QScopedPointer<Application> app(new Application(argc, argv));
 #elif defined(Q_OS_SAILFISH)
     QGuiApplication *app = SailfishApp::application(argc, argv);
+#elif defined(Q_OS_SYMBIAN)
+    QScopedPointer<QApplication> app(new SymbianApplication(argc, argv));
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 #else

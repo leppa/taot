@@ -99,6 +99,14 @@ blackberry {
         src/reversetranslationsmodel.cpp
 }
 
+symbian {
+    HEADERS += \
+        src/symbian/symbianapplication.h
+
+    SOURCES += \
+        src/symbian/symbianapplication.cpp
+}
+
 INCLUDEPATH += \
     src
 
