@@ -26,6 +26,7 @@ import com.nokia.extras 1.1
 PageStackWindow {
     id: appWindow
 
+    platformSoftwareInputPanelEnabled: true
     initialPage: MainPage {}
 
     InfoBanner { id: banner }

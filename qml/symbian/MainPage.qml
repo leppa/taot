@@ -163,7 +163,6 @@ Page {
             left: parent.left
             leftMargin: platformStyle.paddingSmall
             bottom: parent.bottom
-            bottomMargin: inputContext.visible ? inputContext.height - tools.height : 0
             right: parent.right
             rightMargin: platformStyle.paddingSmall
         }
@@ -269,7 +268,8 @@ Page {
                                 x: platformStyle.paddingSmall
                                 y: titleBar.height + platformStyle.paddingSmall
                                 width: parent.width - 2 * platformStyle.paddingSmall
-                                height: parent.height - inputContext.height - platformStyle.paddingSmall
+                                height: parent.height - titleBar.height
+                                        - 2 * platformStyle.paddingSmall
                             }
                         }
                     ]
@@ -482,6 +482,27 @@ Page {
                 }
             }
         }
+    }
+
+    Rectangle {
+        color: appWindow.platformInverted ? platformStyle.colorBackgroundInverted
+                                          : platformStyle.colorBackground
+        visible: opacity > 0
+        opacity: source.state == "Active" ? 1.0 : 0.0
+        anchors {
+            top: titleBar.bottom
+            left: parent.left
+            bottom: parent.bottom
+            right: parent.right
+        }
+
+        MouseArea {
+            enabled: parent.visible
+            acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
+            anchors.fill: parent
+        }
+
+        Behavior on opacity { NumberAnimation { duration: 100 }}
     }
 
     tools: ToolBarLayout {
