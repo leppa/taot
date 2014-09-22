@@ -33,8 +33,8 @@
 #include <QStringList>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QSettings>
 
+class AppSettings;
 class TranslationServicesModel;
 class TranslationServiceItem;
 class LanguageListModel;
@@ -151,7 +151,7 @@ private:
     QString m_translation;
     DictionaryModel *m_dict;
 
-    QSettings *m_settings;
+    AppSettings *m_settings;
 
     void createService(uint id);
     void resetTranslation();

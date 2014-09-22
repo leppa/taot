@@ -22,6 +22,7 @@
 
 #include "translationinterface.h"
 
+#include "appsettings.h"
 #include "translationservice.h"
 #include "translationservicesmodel.h"
 #include "languagelistmodel.h"
@@ -51,11 +52,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_sourceLanguage(NULL)
     , m_targetLanguage(NULL)
     , m_dict(new DictionaryModel(this))
-#ifdef Q_OS_SAILFISH
-    , m_settings(new QSettings("harbour-taot", "taot", this))
-#else
-    , m_settings(new QSettings(QCoreApplication::organizationName(), "taot", this))
-#endif
+    , m_settings(new AppSettings(this))
 {
     QStringList list;
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
