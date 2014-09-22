@@ -45,6 +45,8 @@ sailfish {
 }
 
 HEADERS += \
+    src/singlesettings.h \
+    src/appsettings.h \
     src/translationinterface.h \
     src/languagelistmodel.h \
     src/translationservice.h \
@@ -61,6 +63,8 @@ HEADERS += \
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
     src/main.cpp \
+    src/singlesettings.cpp \
+    src/appsettings.cpp \
     src/translationinterface.cpp \
     src/languagelistmodel.cpp \
     src/translationservice.cpp \
