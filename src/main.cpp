@@ -39,6 +39,7 @@
 #   include "dictionarymodel.h"
 #   include "reversetranslationsmodel.h"
 #endif
+#include "appsettings.h"
 #include "updater.h"
 
 #ifdef Q_OS_BLACKBERRY
@@ -114,8 +115,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #ifdef Q_OS_SAILFISH
     qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
+    qmlRegisterType<AppSettings>("harbour.taot", 1, 0, "Settings");
 #else
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
+    qmlRegisterType<AppSettings>("taot", 1, 0, "Settings");
 #endif
     qmlRegisterType<TranslationServiceItem>();
     qmlRegisterType<TranslationServicesModel>();

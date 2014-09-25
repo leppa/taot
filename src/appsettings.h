@@ -24,18 +24,38 @@
 #define APPSETTINGS_H
 
 #include <QObject>
+#include <QStack>
+#include <QSet>
 #include <QVariant>
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include <QDeclarativeParserStatus>
+#   define QQmlParserStatus QDeclarativeParserStatus
+#else
+#   include <QQmlParserStatus>
+#endif
 
 class SingleSettings;
-class AppSettings: public QObject
+class AppSettings: public QObject, public QQmlParserStatus
 {
     Q_OBJECT
+    Q_PROPERTY(QString group READ group WRITE setGroup NOTIFY groupChanged)
+    Q_PROPERTY(bool capitalizeFirstLetter READ capitalizeFirstLetter
+                                          WRITE setCapitalizeFirstLetter
+                                          NOTIFY capitalizeFirstLetterChanged)
 
 public:
     AppSettings(QObject *parent = 0);
 
-    void beginGroup(const QString &prefix);
+    void classBegin();
+    void componentComplete();
+
     QString group() const;
+    void setGroup(const QString &group);
+
+    bool capitalizeFirstLetter() const;
+    void setCapitalizeFirstLetter(bool enable);
+
+    void beginGroup(const QString &prefix);
     void endGroup();
 
     bool contains(const QString &key) const;
@@ -44,14 +64,29 @@ public:
     QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
 
 signals:
+    void groupChanged();
+    void capitalizeFirstLetterChanged();
     void valueChanged(const QString &key);
 
 private slots:
     void onValueChanged(const QString &key);
+    void onPropertyChanged();
 
 private:
+    bool m_componentComplete;
+    bool m_capitalizeFirst;
+
     SingleSettings *m_settings;
-    QString m_group;
+
+    QStack<QString> m_groupStack;
+    QString m_keyPrefix;
+
+    QSet<QString> m_ignored_properties;
+    QSet<QString> m_unset_properties;
+    QMultiHash<int, QString> m_properties;
+
+    QString capitalize(const QString &str) const;
+    QString decapitalize(const QString &str) const;
 };
 
 #endif // APPSETTINGS_H
