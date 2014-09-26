@@ -25,6 +25,8 @@ import bb.system 1.0
 import taot 1.0
 
 Page {
+    property bool darkTheme: Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark
+
     titleBar: TitleBar {
         kind: TitleBarKind.FreeForm
         kindProperties: FreeFormTitleBarKindProperties {
@@ -76,7 +78,7 @@ Page {
                 }
 
                 Button {
-                    imageSource: "asset:///icons/swap.png"
+                    imageSource: "asset:///icons/swap" + (darkTheme ? "_inverted" : "") + ".png"
                     visible: translator.canSwapLanguages
                     onClicked: {
                         translator.swapLanguages();

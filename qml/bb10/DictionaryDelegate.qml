@@ -84,7 +84,7 @@ Container {
         }
     }
     ImageView {
-        imageSource: "asset:///icons/collapse.png"
+        imageSource: "asset:///icons/collapse" + (darkTheme ? "_inverted" : "") + ".png"
         topMargin: 0
         bottomMargin: 0
         preferredWidth: 35
@@ -97,7 +97,7 @@ Container {
         bottomMargin: 0
     }
     ImageView {
-        imageSource: "asset:///icons/expand.png"
+        imageSource: "asset:///icons/expand" + (darkTheme ? "_inverted" : "") + ".png"
         topMargin: 0
         bottomMargin: 0
         preferredWidth: 35
