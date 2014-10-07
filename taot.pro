@@ -88,7 +88,7 @@ blackberry {
         src/bb10/clipboard.cpp \
         src/bb10/repeater.cpp
 
-    LIBS += -lbbsystem
+    LIBS += -lbbplatform -lbbsystem
 } else {
     HEADERS += \
         src/dictionarymodel.h \

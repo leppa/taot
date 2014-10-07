@@ -37,7 +37,7 @@ Page {
                 Label {
                     text: translator.selectedService.name
                     textStyle {
-                        color: Color.White
+                        color: osVersion < 0x0A0300 ? Color.White : undefined
                         base: SystemDefaults.TextStyles.TitleText
                     }
                     verticalAlignment: VerticalAlignment.Center

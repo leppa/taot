@@ -47,6 +47,7 @@
 #   include <bb/cascades/AbstractPane>
 #   include <bb/cascades/Container>
 #   include <bb/cascades/SceneCover>
+#   include <bb/platform/PlatformInfo>
 #   include <bb/system/SystemToast>
 using namespace bb::cascades;
 #elif defined(Q_OS_SYMBIAN)
@@ -142,6 +143,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     TranslationInterface *translator = new TranslationInterface(app.data());
     QmlDocument *qml = QmlDocument::create(QLatin1String("asset:///main.qml"))
             .property("translator", translator).parent(app.data());
+
+    const QStringList v = bb::platform::PlatformInfo().osVersion().split(".");
+    const int ver = v.count() >= 3 ? (v.at(0).toInt() << 16)
+                                     + (v.at(1).toInt() << 8)
+                                     + v.at(2).toInt()
+                                   : 0;
+    qml->documentContext()->setContextProperty("osVersion", ver);
+
 #elif defined(MEEGO_EDITION_HARMATTAN)
     QDir dir(app->applicationDirPath());
     dir.cdUp();
