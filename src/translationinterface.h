@@ -127,7 +127,7 @@ signals:
 #endif
 
 public slots:
-    QString getSettingsValue(const QString &key) const;
+    QString getSettingsValue(const QString &key, const QVariant &defaultValue = QVariant()) const;
     void setSettingsValue(const QString &key, const QVariant &value);
 
     void selectService(int index);
