@@ -62,6 +62,11 @@ QString YandexTranslationService::getLanguageName(const QVariant &info) const
                                   tr("Unknown (%1)", "Unknown language").arg(info.toString()));
 }
 
+bool YandexTranslationService::isAutoLanguage(const Language &lang) const
+{
+    return lang.info.toString().isEmpty();
+}
+
 bool YandexTranslationService::canSwapLanguages(const Language first, const Language second) const
 {
     if (first.info.toString().isEmpty() || second.info.toString().isEmpty() || first == second)

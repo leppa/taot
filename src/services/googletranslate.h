@@ -44,6 +44,7 @@ public:
     LanguageList targetLanguages(const Language &sourceLanguage) const;
     LanguagePair defaultLanguagePair() const;
     QString getLanguageName(const QVariant &info) const;
+    bool isAutoLanguage(const Language &lang) const;
     bool canSwapLanguages(const Language first, const Language second) const;
 
     bool translate(const Language &from, const Language &to, const QString &text);

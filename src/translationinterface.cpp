@@ -70,6 +70,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     connect(this, SIGNAL(targetLanguageChanged()), SLOT(retranslate()));
     connect(this, SIGNAL(sourceLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
     connect(this, SIGNAL(targetLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
+    connect(this, SIGNAL(detectedLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
 
 #ifdef Q_OS_SYMBIAN
     connect(qApp, SIGNAL(visibilityChanged()), this, SIGNAL(appVisibilityChanged()));
@@ -129,6 +130,10 @@ LanguageItem *TranslationInterface::targetLanguage() const
 
 bool TranslationInterface::canSwapLanguages() const
 {
+    if (m_service->isAutoLanguage(m_sourceLanguage->language())
+            && m_detectedLanguage.info.isValid())
+        return m_service->canSwapLanguages(m_detectedLanguage, m_targetLanguage->language());
+
     return m_service->canSwapLanguages(m_sourceLanguage->language(), m_targetLanguage->language());
 }
 
@@ -235,8 +240,11 @@ void TranslationInterface::selectTargetLanguage(int index)
 
 void TranslationInterface::swapLanguages()
 {
+    const Language oldsrc = m_service->isAutoLanguage(m_sourceLanguage->language())
+                            ? m_detectedLanguage
+                            : m_sourceLanguage->language();
     resetTranslation();
-    const Language oldsrc = m_sourceLanguage->language();
+
     selectSourceLanguage(m_sourceLanguages->indexOf(m_targetLanguage->language()));
     selectTargetLanguage(m_targetLanguages->indexOf(oldsrc));
 }

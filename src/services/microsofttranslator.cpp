@@ -97,6 +97,11 @@ QString MicrosoftTranslator::getLanguageName(const QVariant &info) const
                                   tr("Unknown (%1)", "Unknown language").arg(info.toString()));
 }
 
+bool MicrosoftTranslator::isAutoLanguage(const Language &lang) const
+{
+    return lang.info.toString().isEmpty();
+}
+
 bool MicrosoftTranslator::canSwapLanguages(const Language first, const Language second) const
 {
     return !first.info.toString().isEmpty() && !second.info.toString().isEmpty();
