@@ -87,6 +87,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("oleksii.name");
 
 #ifdef Q_OS_BLACKBERRY
+    QSettings *sets = new QSettings(QCoreApplication::organizationName(), "taot");
+    if (sets->contains("InvertedTheme"))
+        qputenv("CASCADES_THEME", sets->value("InvertedTheme").toBool() ? "dark" : "light");
+    delete sets;
+
     QScopedPointer<Application> app(new Application(argc, argv));
 #elif defined(Q_OS_SAILFISH)
     QGuiApplication *app = SailfishApp::application(argc, argv);
