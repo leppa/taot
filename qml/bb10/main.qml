@@ -64,12 +64,22 @@ NavigationPane {
                 }
             }
         ]
+        settingsAction: SettingsActionItem {
+            onTriggered: {
+                Application.menuEnabled = false;
+                navigationPane.push(settingsPageDefinition.createObject());
+            }
+        }
     }
 
     attachedObjects: [
         ComponentDefinition {
             id: aboutPageDefinition
             AboutPage {}
+        },
+        ComponentDefinition {
+            id: settingsPageDefinition
+            SettingsPage {}
         },
         SystemToast {
             id: toast
