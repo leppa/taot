@@ -30,6 +30,58 @@ Page {
     }
 
     ScrollView {
-        Container {}
+        Container {
+            Container {
+                layout: DockLayout {}
+
+                StandardListItem {
+                    title: qsTr("Dark Theme") + Retranslate.onLocaleOrLanguageChanged
+                    description: qsTr("Use dark color scheme")
+                                 + Retranslate.onLocaleOrLanguageChanged
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Center
+
+                    gestureHandlers: [
+                        TapHandler {
+                            onTapped: {
+                                invertedTheme.checked = !invertedTheme.checked;
+                                toast.body = qsTr("Please, restart the application"
+                                                  + " to apply this setting.");
+                                toast.show();
+                            }
+                        }
+                    ]
+                }
+
+                Container {
+                    rightPadding: 20
+                    horizontalAlignment: HorizontalAlignment.Right
+                    verticalAlignment: VerticalAlignment.Center
+
+                    ToggleButton {
+                        id: invertedTheme
+
+                        gestureHandlers: [
+                            TapHandler {
+                                onTapped: {
+                                    toast.body = qsTr("Please, restart the application"
+                                                      + " to apply this setting.");
+                                    toast.show();
+                                }
+                            }
+                        ]
+
+                        onCheckedChanged: {
+                            translator.setSettingsValue("InvertedTheme", invertedTheme.checked);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    onCreationCompleted: {
+        invertedTheme.checked = translator.getSettingsValue("InvertedTheme",
+                Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark);
     }
 }
