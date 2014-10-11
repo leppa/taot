@@ -102,7 +102,7 @@ bool MicrosoftTranslator::isAutoLanguage(const Language &lang) const
     return lang.info.toString().isEmpty();
 }
 
-bool MicrosoftTranslator::canSwapLanguages(const Language first, const Language second) const
+bool MicrosoftTranslator::canSwapLanguages(const Language &first, const Language &second) const
 {
     return !first.info.toString().isEmpty() && !second.info.toString().isEmpty();
 }

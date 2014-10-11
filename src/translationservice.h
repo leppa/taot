@@ -60,7 +60,7 @@ public:
     virtual LanguagePair defaultLanguagePair() const = 0;
     virtual QString getLanguageName(const QVariant &info) const = 0;
     virtual bool isAutoLanguage(const Language &lang) const = 0;
-    virtual bool canSwapLanguages(const Language first, const Language second) const = 0;
+    virtual bool canSwapLanguages(const Language &first, const Language &second) const = 0;
     virtual QString serializeLanguageInfo(const QVariant &info) const;
     virtual QVariant deserializeLanguageInfo(const QString &info) const;
 

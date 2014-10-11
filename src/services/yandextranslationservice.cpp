@@ -67,7 +67,7 @@ bool YandexTranslationService::isAutoLanguage(const Language &lang) const
     return lang.info.toString().isEmpty();
 }
 
-bool YandexTranslationService::canSwapLanguages(const Language first, const Language second) const
+bool YandexTranslationService::canSwapLanguages(const Language &first, const Language &second) const
 {
     if (first.info.toString().isEmpty() || second.info.toString().isEmpty() || first == second)
         return false;

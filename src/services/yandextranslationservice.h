@@ -39,7 +39,7 @@ public:
     LanguageList targetLanguages(const Language &sourceLanguage) const;
     QString getLanguageName(const QVariant &info) const;
     bool isAutoLanguage(const Language &lang) const;
-    bool canSwapLanguages(const Language first, const Language second) const;
+    bool canSwapLanguages(const Language &first, const Language &second) const;
 
     bool checkReplyForErrors(QNetworkReply *reply);
 
