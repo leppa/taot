@@ -104,7 +104,7 @@ bool MicrosoftTranslator::isAutoLanguage(const Language &lang) const
 
 bool MicrosoftTranslator::canSwapLanguages(const Language &first, const Language &second) const
 {
-    return !first.info.toString().isEmpty() && !second.info.toString().isEmpty();
+    return first != second && !first.info.toString().isEmpty() && !second.info.toString().isEmpty();
 }
 
 bool MicrosoftTranslator::translate(const Language &from, const Language &to, const QString &text)

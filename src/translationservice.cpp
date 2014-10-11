@@ -39,6 +39,11 @@ bool Language::operator ==(const Language &other) const
     return info == other.info;
 }
 
+bool Language::operator !=(const Language &other) const
+{
+    return !operator ==(other);
+}
+
 bool Language::operator <(const Language &other) const
 {
     // Autodetect's info is usually an invalid QVariant, empty

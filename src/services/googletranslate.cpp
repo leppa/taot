@@ -133,7 +133,7 @@ bool GoogleTranslate::isAutoLanguage(const Language &lang) const
 
 bool GoogleTranslate::canSwapLanguages(const Language &first, const Language &second) const
 {
-    return first.info.toString() != "auto" && second.info.toString() != "auto";
+    return first != second && first.info.toString() != "auto" && second.info.toString() != "auto";
 }
 
 bool GoogleTranslate::translate(const Language &from, const Language &to, const QString &text)
