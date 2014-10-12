@@ -401,32 +401,8 @@ Page {
             onClicked: Qt.quit();
         }
         ToolIcon {
-            iconId: "toolbar-view-menu"
-            onClicked: mainMenu.open();
-        }
-    }
-
-    Menu {
-        id: mainMenu
-
-        MenuLayout {
-            MenuItem {
-                text: qsTr("Toggle Inverted Theme")
-                onClicked: {
-                    theme.inverted = !theme.inverted;
-                    translator.setSettingsValue("InvertedTheme", theme.inverted);
-                }
-            }
-            MenuItem {
-                text: qsTr("Check for Update")
-                onClicked: {
-                    pageStack.push(updateCheckerPageComponent);
-                }
-            }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(aboutPageComponent);
-            }
+            iconId: "toolbar-settings"
+            onClicked: pageStack.push(settingsPageComponent);
         }
     }
 
@@ -446,13 +422,8 @@ Page {
     }
 
     Component {
-        id: aboutPageComponent
-        AboutPage {}
-    }
-
-    Component {
-        id: updateCheckerPageComponent
-        UpdateCheckerPage {}
+        id: settingsPageComponent
+        SettingsPage {}
     }
 
     Component.onCompleted: {

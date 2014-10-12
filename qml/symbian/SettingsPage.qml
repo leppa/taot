@@ -56,6 +56,47 @@ Page {
                 leftMargin: platformStyle.paddingMedium
                 rightMargin: platformStyle.paddingMedium
             }
+
+            Item {
+                height: childrenRect.height
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
+                Column {
+                    id: invertedThemeLabels
+
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+
+                    ListItemText {
+                        text: qsTr("Dark Theme")
+                        role: "Title"
+                        platformInverted: root.platformInverted
+                    }
+                    ListItemText {
+                        text: qsTr("Use dark color scheme")
+                        role: "SubTitle"
+                        platformInverted: root.platformInverted
+                    }
+                }
+                Switch {
+                    checked: !appWindow.platformInverted
+                    platformInverted: root.platformInverted
+                    anchors {
+                        right: parent.right
+                        verticalCenter: invertedThemeLabels.verticalCenter
+                    }
+
+                    onClicked: {
+                        appWindow.platformInverted = !checked;
+                        translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
+                    }
+                }
+            }
         }
     }
 
@@ -64,11 +105,50 @@ Page {
         platformInverted: root.platformInverted
     }
 
+    Menu {
+        id: menu
+        platformInverted: root.platformInverted
+
+        MenuLayout {
+            MenuItem {
+                text: qsTr("Check for Updates")
+                platformInverted: root.platformInverted
+                onClicked: {
+                    pageStack.push(updateCheckerPageComponent);
+                }
+            }
+            MenuItem {
+                text: qsTr("About")
+                platformInverted: root.platformInverted
+                onClicked: pageStack.push(aboutPageComponent);
+            }
+        }
+    }
+
+    Component {
+        id: aboutPageComponent
+        AboutPage {
+            platformInverted: root.platformInverted
+        }
+    }
+
+    Component {
+        id: updateCheckerPageComponent
+        UpdateCheckerPage {
+            platformInverted: root.platformInverted
+        }
+    }
+
     tools: ToolBarLayout {
         ToolButton {
             iconSource: "toolbar-back"
             platformInverted: root.platformInverted
             onClicked: pageStack.pop();
+        }
+        ToolButton {
+            iconSource: "toolbar-menu"
+            platformInverted: root.platformInverted
+            onClicked: menu.open();
         }
     }
 }

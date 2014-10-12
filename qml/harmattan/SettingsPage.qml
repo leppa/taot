@@ -55,6 +55,56 @@ Page {
                 leftMargin: UI.MARGIN_XLARGE
                 rightMargin: UI.MARGIN_XLARGE
             }
+
+            Item {
+                height: childrenRect.height
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
+                Column {
+                    id: invertedThemeLabels
+
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+
+                    Label {
+                        text: qsTr("Dark Theme")
+                        color: theme.inverted ? UI.LIST_TITLE_COLOR_INVERTED
+                                              : UI.LIST_TITLE_COLOR
+                        font {
+                            weight: Font.Bold
+                            pixelSize: UI.LIST_TILE_SIZE
+                        }
+                    }
+                    Label {
+                        text: qsTr("Use dark color scheme")
+                        color: theme.inverted ? UI.LIST_SUBTITLE_COLOR_INVERTED
+                                              : UI.LIST_SUBTITLE_COLOR
+                        font {
+                            weight: UI.LIST_SUBTILE_SIZE
+                            pixelSize: Font.Light
+                        }
+                    }
+                }
+                Switch {
+                    id: invertedThemeSwitch
+
+                    checked: theme.inverted
+                    anchors {
+                        right: parent.right
+                        verticalCenter: invertedThemeLabels.verticalCenter
+                    }
+
+                    onCheckedChanged: {
+                        theme.inverted = checked;
+                        translator.setSettingsValue("InvertedTheme", theme.inverted);
+                    }
+                }
+            }
         }
     }
 
@@ -62,10 +112,41 @@ Page {
         flickableItem: scrollArea
     }
 
+    Menu {
+        id: menu
+
+        MenuLayout {
+            MenuItem {
+                text: qsTr("Check for Updates")
+                onClicked: {
+                    pageStack.push(updateCheckerPageComponent);
+                }
+            }
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(aboutPageComponent);
+            }
+        }
+    }
+
+    Component {
+        id: aboutPageComponent
+        AboutPage {}
+    }
+
+    Component {
+        id: updateCheckerPageComponent
+        UpdateCheckerPage {}
+    }
+
     tools: ToolBarLayout {
         ToolIcon {
             iconId: "toolbar-back"
             onClicked: pageStack.pop();
+        }
+        ToolIcon {
+            iconId: "toolbar-view-menu"
+            onClicked: menu.open();
         }
     }
 }

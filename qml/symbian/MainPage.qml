@@ -513,37 +513,9 @@ Page {
             onClicked: Qt.quit();
         }
         ToolButton {
-            iconSource: "toolbar-menu"
+            iconSource: "toolbar-settings"
             platformInverted: appWindow.platformInverted
-            onClicked: mainMenu.open();
-        }
-    }
-
-    Menu {
-        id: mainMenu
-        platformInverted: appWindow.platformInverted
-
-        MenuLayout {
-            MenuItem {
-                text: qsTr("Toggle Inverted Theme")
-                platformInverted: appWindow.platformInverted
-                onClicked: {
-                    appWindow.platformInverted = !appWindow.platformInverted;
-                    translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
-                }
-            }
-            MenuItem {
-                text: qsTr("Check for Update")
-                platformInverted: appWindow.platformInverted
-                onClicked: {
-                    pageStack.push(updateCheckerPageComponent);
-                }
-            }
-            MenuItem {
-                text: qsTr("About")
-                platformInverted: appWindow.platformInverted
-                onClicked: pageStack.push(aboutPageComponent);
-            }
+            onClicked: pageStack.push(settingsPage);
         }
     }
 
@@ -565,16 +537,8 @@ Page {
     }
 
     Component {
-        id: aboutPageComponent
-
-        AboutPage {
-            platformInverted: appWindow.platformInverted
-        }
-    }
-
-    Component {
-        id: updateCheckerPageComponent
-        UpdateCheckerPage {
+        id: settingsPage
+        SettingsPage {
             platformInverted: appWindow.platformInverted
         }
     }
