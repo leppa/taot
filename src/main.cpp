@@ -187,6 +187,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #ifdef DUMMY_CODE_THAT_WILL_NEVER_BE_BUILT
 // This is meta information for translation files.
 // Not used anywhere ATM. Just ignore it.
-QT_TRANSLATE_NOOP3("--------", "AUTHORS", "A list of translation authors");
-QT_TRANSLATE_NOOP3("--------", "LANGUAGE_NAME", "Native language name (e.g., Deutsch for German)");
+//: A list of translation authors
+QT_TRANSLATE_NOOP3("--------", "AUTHORS");
+//: Native language name (e.g., Deutsch for German)
+QT_TRANSLATE_NOOP3("--------", "LANGUAGE_NAME");
 #endif

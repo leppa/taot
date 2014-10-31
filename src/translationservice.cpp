@@ -27,6 +27,7 @@
 #include <QDebug>
 
 Language::Language()
+    //: Unknown language
     : displayName(TranslationService::tr("Unknown", "Unknown language"))
 {}
 

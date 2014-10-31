@@ -93,6 +93,7 @@ LanguagePair MicrosoftTranslator::defaultLanguagePair() const
 
 QString MicrosoftTranslator::getLanguageName(const QVariant &info) const
 {
+    //: Unknown language
     return m_langCodeToName.value(info.toString(),
                                   tr("Unknown (%1)", "Unknown language").arg(info.toString()));
 }

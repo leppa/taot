@@ -67,8 +67,7 @@ void DictionaryModel::append(DictionaryPos &pos)
 {
     QVariantMap map;
     map.insert("pos", pos.pos());
-    map.insert("translations", pos.translations(tr(", ", "Separator for joining string lists"
-                                                   " (don't forget space after comma).")));
+    map.insert("translations", pos.translations(tr(", ")));
     map.insert("reverseTranslations",
                QVariant::fromValue(new ReverseTranslationsModel(pos.reverseTranslations(), this)));
 
