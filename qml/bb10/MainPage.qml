@@ -71,6 +71,8 @@ Page {
                 DropDown {
                     id: sourceLanguagesDropDown
                     title: qsTr("From") + Retranslate.onLocaleOrLanguageChanged
+                    visible: !targetLanguagesDropDown.expanded
+
                     onSelectedIndexChanged: {
                         if (selectedIndex >= 0)
                             translator.selectSourceLanguage(selectedIndex);
@@ -80,6 +82,9 @@ Page {
                 Button {
                     imageSource: "asset:///icons/swap" + (darkTheme ? "_inverted" : "") + ".png"
                     visible: translator.canSwapLanguages
+                             && !sourceLanguagesDropDown.expanded
+                             && !targetLanguagesDropDown.expanded
+
                     onClicked: {
                         translator.swapLanguages();
                     }
@@ -88,6 +93,8 @@ Page {
                 DropDown {
                     id: targetLanguagesDropDown
                     title: qsTr("To") + Retranslate.onLocaleOrLanguageChanged
+                    visible: !sourceLanguagesDropDown.expanded
+
                     onSelectedIndexChanged: {
                         if (selectedIndex >= 0)
                             translator.selectTargetLanguage(selectedIndex);
