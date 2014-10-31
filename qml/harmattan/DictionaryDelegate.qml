@@ -27,7 +27,6 @@ import "constants.js" as UI
 MouseArea {
     id: root
 
-    width: ListView.view.width
     height: posDelegate.height + indicator.height / 2
 
     onClicked: {
