@@ -111,6 +111,15 @@ Page {
 
         MenuLayout {
             MenuItem {
+                text: qsTr("Send Feedback")
+                platformInverted: root.platformInverted
+                onClicked: {
+                    Qt.openUrlExternally("mailto:contacts" + "@"
+                                         + "oleksii.name?subject=TAO%20Translator%20Feedback"
+                                         + "%20(Symbian)");
+                }
+            }
+            MenuItem {
                 text: qsTr("Check for Updates")
                 platformInverted: root.platformInverted
                 onClicked: {

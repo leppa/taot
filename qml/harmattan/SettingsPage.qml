@@ -117,6 +117,14 @@ Page {
 
         MenuLayout {
             MenuItem {
+                text: qsTr("Send Feedback")
+                onClicked: {
+                    Qt.openUrlExternally("mailto:contacts" + "@"
+                                         + "oleksii.name?subject=TAO%20Translator%20Feedback"
+                                         + "%20(Nokia%20N9)");
+                }
+            }
+            MenuItem {
                 text: qsTr("Check for Updates")
                 onClicked: {
                     pageStack.push(updateCheckerPageComponent);

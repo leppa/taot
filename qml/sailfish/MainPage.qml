@@ -41,6 +41,15 @@ Page {
             }
 
             MenuItem {
+                text: qsTr("Send Feedback")
+                onClicked: {
+                    Qt.openUrlExternally("mailto:contacts" + "@"
+                                         + "oleksii.name?subject=TAO%20Translator%20Feedback"
+                                         + "%20(Sailfish%20OS)");
+                }
+            }
+
+            MenuItem {
                 text: qsTr("Translation Service")
                 onClicked: pageStack.push(servicePicker);
             }
