@@ -22,7 +22,8 @@ More services might be added in future.
 What's New
 ----------
 
-You can check the [ChangeLog](ChangeLog.md) (updated only on releases).
+You can check the [ChangeLog](ChangeLog.md) (updated only on releases)
+and [what's changed since last release][changes].
 
 
 Download
@@ -71,6 +72,7 @@ Donations are always welcome. If you'd like to make a donation, please,
 refer to [Donate][] page for more information.
 
 
+[changes]: https://github.com/leppa/taot/compare/stable...master
 [openrepos]: https://openrepos.net/content/leppa/tao-translator-nokia-n9
 [opera]: http://symbian.apps.opera.com/the_advanced_online_translator.html
 [nokia]: http://store.ovi.com/content/359493
