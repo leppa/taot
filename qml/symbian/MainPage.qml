@@ -161,10 +161,10 @@ Page {
         anchors {
             top: titleBar.bottom
             left: parent.left
-            leftMargin: platformStyle.paddingSmall
+            leftMargin: platformStyle.paddingMedium
             bottom: parent.bottom
             right: parent.right
-            rightMargin: platformStyle.paddingSmall
+            rightMargin: platformStyle.paddingMedium
         }
 
         Column {
@@ -173,7 +173,6 @@ Page {
             width: flickable.width
             height: childrenRect.height + 2 * platformStyle.paddingMedium
             spacing: platformStyle.paddingMedium
-            y: platformStyle.paddingMedium
 
             Row {
                 width: parent.width
