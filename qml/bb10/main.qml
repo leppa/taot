@@ -41,6 +41,27 @@ NavigationPane {
                     Application.menuEnabled = false;
                     navigationPane.push(aboutPageDefinition.createObject());
                 }
+            },
+            ActionItem {
+                title: qsTr("Send feedback") + Retranslate.onLocaleOrLanguageChanged
+                imageSource: "asset:///icons/ic_feedback.png"
+
+                onTriggered: {
+                    translator.invoke("sys.pim.uib.email.hybridcomposer", "bb.action.SENDEMAIL",
+                                      "mailto:contacts" + "@"
+                                      + "oleksii.name?subject=TAO%20Translator%20Feedback"
+                                      + "%20(BlackBerry%2010)");
+                }
+            },
+            ActionItem {
+                title: qsTr("Write a review") + Retranslate.onLocaleOrLanguageChanged
+                imageSource: "asset:///icons/ic_edit_bookmarks.png"
+
+                onTriggered: {
+                    translator.invoke("sys.appworld",
+                                      "bb.action.OPEN",
+                                      "appworld://content/21908039");
+                }
             }
         ]
     }

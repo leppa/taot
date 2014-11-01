@@ -84,11 +84,9 @@ TranslationInterface::TranslationInterface(QObject *parent)
 #endif
 
 #ifdef Q_OS_BLACKBERRY
-    // No need to store this pointer - it will be
-    // deleted by TranslationInterface as its child.
-    bb::system::InvokeManager *manager = new bb::system::InvokeManager(this);
-    QObject::connect(manager, SIGNAL(invoked(bb::system::InvokeRequest)),
-                     this, SLOT(onInvoked(bb::system::InvokeRequest)));
+    m_invoker = new bb::system::InvokeManager();
+    connect(m_invoker, SIGNAL(invoked(bb::system::InvokeRequest)),
+            this, SLOT(onInvoked(bb::system::InvokeRequest)));
 #endif
 }
 
@@ -293,6 +291,19 @@ QString TranslationInterface::urlDecode(const QString &url) const
     QTextDocument doc;
     doc.setHtml(url);
     return doc.toPlainText();
+}
+#endif
+
+#ifdef Q_OS_BLACKBERRY
+void TranslationInterface::invoke(const QString &target,
+                                  const QString &action,
+                                  const QString &uri) const
+{
+    bb::system::InvokeRequest request;
+    request.setTarget(target);
+    request.setAction(action);
+    request.setUri(uri);
+    m_invoker->invoke(request);
 }
 #endif
 

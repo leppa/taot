@@ -39,6 +39,7 @@
 #   include <bb/system/InvokeRequest>
 #endif
 
+namespace bb { namespace system { class InvokeManager; } }
 class TranslationServicesModel;
 class TranslationServiceItem;
 class LanguageListModel;
@@ -140,6 +141,10 @@ public slots:
     QString urlDecode(const QString &url) const;
 #endif
 
+#ifdef Q_OS_BLACKBERRY
+    void invoke(const QString &target, const QString &action, const QString &uri) const;
+#endif
+
 private:
     TranslationService *m_service;
     TranslationServicesModel *m_services;
@@ -162,6 +167,10 @@ private:
     void setBusy(bool busy);
     void setDetectedLanguage(const Language &detectedLanguageName);
     void setTranslatedText(const QString &translatedText);
+
+#ifdef Q_OS_BLACKBERRY
+    bb::system::InvokeManager *m_invoker;
+#endif
 
 private slots:
     void onTranslationFinished();

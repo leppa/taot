@@ -211,7 +211,7 @@ Page {
             }
         },
         InvokeActionItem {
-            title: qsTr("Share translation") + Retranslate.onLanguageChanged
+            title: qsTr("Share") + Retranslate.onLanguageChanged
             enabled: translator.translatedText != ""
             query {
                 mimeType: "text/plain"
