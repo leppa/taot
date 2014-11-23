@@ -184,9 +184,10 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
             DictionaryPos pos(di.toMap().value("pos").toString(), trans);
             foreach (const QVariant &ei, di.toMap().value("entry").toList()) {
                 QStringList rtrans = ei.toMap().value("reverse_translation").toStringList();
-                pos.reverseTranslations()->append(ei.toMap().value("word").toString(),
-                                                  QStringList(),
-                                                  rtrans);
+                QString word = ei.toMap().value("word").toString();
+                if (!ei.toMap().value("previous_word").toString().isEmpty())
+                    word.prepend(ei.toMap().value("previous_word").toString() + " ");
+                pos.reverseTranslations()->append(word, QStringList(), rtrans);
             }
             m_dict->append(pos);
         }
