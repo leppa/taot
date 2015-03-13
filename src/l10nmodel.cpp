@@ -91,6 +91,7 @@ QVariant L10nModel::data(const QModelIndex &index, int role) const
     case Qt::DisplayRole:
         if (index.row() == 0) {
 #if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
+            //: The default language in the system (%1 will be replaced with language name)
             return tr("System default (%1)").arg(capitalize(QLocale().nativeLanguageName()));
 #else
             return tr("System default (%1)").arg(capitalize(QLocale::languageToString(

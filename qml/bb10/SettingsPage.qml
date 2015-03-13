@@ -27,6 +27,7 @@ Page {
     id: root
 
     titleBar: TitleBar {
+        //: %1 will be replaced with the application name
         title: qsTr("%1 Settings").arg("TAO Translator")
     }
 

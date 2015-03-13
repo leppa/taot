@@ -218,9 +218,7 @@ Page {
                 invokeActionId: "bb.action.SHARE"
             }
             onTriggered: {
-                /*: <source text> (<source/detected language>)
-                 *  -> <translated text> (<target language>)
-                 */
+                //: <source text> (<source/detected language>) -> <translated text> (<target language>)
                 data = qsTr("%1 (%2) -> %3 (%4)").arg(translator.sourceText)
                                                  .arg(translator.detectedLanguageName
                                                       ? translator.detectedLanguageName

@@ -6,13 +6,13 @@
     <message>
         <location filename="../src/main.cpp" line="179"/>
         <source>AUTHORS</source>
-        <comment>A list of translation authors</comment>
+        <extracomment>A list of translation authors</extracomment>
         <translation>Алексей Сердюк</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="180"/>
         <source>LANGUAGE_NAME</source>
-        <comment>Native language name (e.g., Deutsch for German)</comment>
+        <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Русский</translation>
     </message>
 </context>
@@ -52,7 +52,7 @@
         <location filename="../src/bb10/dictionarymodel.cpp" line="70"/>
         <location filename="../src/dictionarymodel.cpp" line="90"/>
         <source>, </source>
-        <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
+        <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
     </message>
 </context>
@@ -67,6 +67,7 @@
         <location filename="../src/services/googletranslate.cpp" line="126"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
+        <extracomment>Unknown language</extracomment>
         <translation>Неизвестный (%1)</translation>
     </message>
 </context>
@@ -214,6 +215,7 @@
         <location filename="../src/services/microsofttranslator.cpp" line="97"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
+        <extracomment>Unknown language</extracomment>
         <translation>Неизвестный (%1)</translation>
     </message>
     <message>
@@ -236,7 +238,7 @@
         <location filename="../src/reversetranslationsmodel.cpp" line="60"/>
         <location filename="../src/reversetranslationsmodel.cpp" line="64"/>
         <source>, </source>
-        <comment>Separator for joining string lists (don&apos;t forget space after comma).</comment>
+        <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
     </message>
 </context>
@@ -254,6 +256,7 @@
         <location filename="../src/translationservice.cpp" line="30"/>
         <source>Unknown</source>
         <comment>Unknown language</comment>
+        <extracomment>Unknown language</extracomment>
         <translation>Неизвестный</translation>
     </message>
     <message>
@@ -369,6 +372,7 @@
         <location filename="../src/services/yandextranslationservice.cpp" line="62"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
+        <extracomment>Unknown language</extracomment>
         <translation>Неизвестный (%1)</translation>
     </message>
     <message>
