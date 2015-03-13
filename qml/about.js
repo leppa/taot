@@ -29,8 +29,8 @@ var aboutText =
 "<p>" +
 qsTr("%1 contains the following contributed translations:").arg("TAO Translator") + " " +
 "<b>Chinese</b> by gwmgdemj and 太空飞瓜 (finalmix), " +
-"<b>Dutch</b> by teunwinters, " +
-"<b>German</b> by buschmann, " +
+"<b>Dutch</b> by teunwinters and Heimen Stoffels (Vistaus), " +
+"<b>German</b> by buschmann and DeadHorseRiding (Mee_Germany_Go), " +
 "<b>Italian</b> by Francesco Vaccaro (ghostofasmile) and Alessandro Pra' (Watchmaker), " +
 "<b>Turkish</b> by Mehmet Ç. (fnldstntn). " +
 "</p> " +

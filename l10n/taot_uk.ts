@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="179"/>
+        <location filename="../src/main.cpp" line="212"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Олексій Сердюк</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="180"/>
+        <location filename="../src/main.cpp" line="214"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Українська</translation>
@@ -30,17 +30,23 @@
         <source>About</source>
         <translation>Про програму</translation>
     </message>
+    <message>
+        <location filename="../src/main.cpp" line="88"/>
+        <source>%1 (build %2)</source>
+        <extracomment>%1 - version, %2 - build number</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AppCover</name>
     <message>
-        <location filename="../qml/bb10/AppCover.qml" line="33"/>
+        <location filename="../qml/bb10/AppCover.qml" line="36"/>
         <location filename="../qml/sailfish/AppCover.qml" line="33"/>
         <source>From: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>З: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/AppCover.qml" line="59"/>
+        <location filename="../qml/bb10/AppCover.qml" line="62"/>
         <location filename="../qml/sailfish/AppCover.qml" line="34"/>
         <source>To: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>На: &lt;b&gt;%1&lt;/b&gt;</translation>
@@ -50,7 +56,7 @@
     <name>DictionaryModel</name>
     <message>
         <location filename="../src/bb10/dictionarymodel.cpp" line="70"/>
-        <location filename="../src/dictionarymodel.cpp" line="90"/>
+        <location filename="../src/dictionarymodel.cpp" line="91"/>
         <source>, </source>
         <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
@@ -64,7 +70,7 @@
         <translation>Перекладач Google</translation>
     </message>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="126"/>
+        <location filename="../src/services/googletranslate.cpp" line="127"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
@@ -87,115 +93,114 @@
     </message>
 </context>
 <context>
+    <name>L10nModel</name>
+    <message>
+        <location filename="../src/l10nmodel.cpp" line="95"/>
+        <location filename="../src/l10nmodel.cpp" line="97"/>
+        <source>System default (%1)</source>
+        <extracomment>The default language in the system (%1 will be replaced with language name)</extracomment>
+        <translation>Мова системи (%1)</translation>
+    </message>
+</context>
+<context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="71"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="87"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="67"/>
-        <location filename="../qml/symbian/MainPage.qml" line="107"/>
+        <location filename="../qml/bb10/MainPage.qml" line="73"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="161"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="71"/>
+        <location filename="../qml/symbian/MainPage.qml" line="186"/>
         <source>From</source>
         <translation>З</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="88"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="112"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="95"/>
-        <location filename="../qml/symbian/MainPage.qml" line="141"/>
+        <location filename="../qml/bb10/MainPage.qml" line="95"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="186"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="99"/>
+        <location filename="../qml/symbian/MainPage.qml" line="220"/>
         <source>To</source>
         <translation>На</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="98"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="129"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="113"/>
-        <location filename="../qml/symbian/MainPage.qml" line="159"/>
+        <location filename="../qml/bb10/MainPage.qml" line="107"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="202"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="117"/>
+        <location filename="../qml/symbian/MainPage.qml" line="245"/>
         <source>Enter the source text...</source>
-        <translation>Введіть вихідний текст...</translation>
+        <translation>Введіть текст для перекладу...</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="113"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="150"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="135"/>
-        <location filename="../qml/symbian/MainPage.qml" line="181"/>
+        <location filename="../qml/bb10/MainPage.qml" line="122"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="222"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="137"/>
+        <location filename="../qml/symbian/MainPage.qml" line="309"/>
         <source>Translate</source>
         <translation>Перекласти</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="133"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="168"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="149"/>
-        <location filename="../qml/symbian/MainPage.qml" line="198"/>
-        <source>Clear</source>
-        <translation>Очистити</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/MainPage.qml" line="159"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="246"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="190"/>
-        <location filename="../qml/symbian/MainPage.qml" line="275"/>
+        <location filename="../qml/bb10/MainPage.qml" line="168"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="329"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="202"/>
+        <location filename="../qml/symbian/MainPage.qml" line="412"/>
         <source>Detected language:</source>
         <translation>Визначена мова:</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="178"/>
+        <location filename="../qml/bb10/MainPage.qml" line="187"/>
         <source>Select all</source>
         <translation>Виділити все</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="190"/>
+        <location filename="../qml/bb10/MainPage.qml" line="199"/>
         <source>Copy</source>
         <translation>Копіювати</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="198"/>
+        <location filename="../qml/bb10/MainPage.qml" line="207"/>
         <source>Translation was successfully copied to clipboard</source>
         <translation>Переклад був успішно скопійований до буферу обміну</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="200"/>
+        <location filename="../qml/bb10/MainPage.qml" line="209"/>
         <source>Couldn&apos;t copy translation to clipboard</source>
         <translation>Не вдалося скопіювати переклад до буферу обміну</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="438"/>
-        <location filename="../qml/symbian/MainPage.qml" line="473"/>
-        <source>Toggle Inverted Theme</source>
-        <translation>Інвертувати схему кольорів</translation>
+        <location filename="../qml/bb10/MainPage.qml" line="214"/>
+        <source>Share</source>
+        <translation>Поділитись</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="445"/>
-        <location filename="../qml/symbian/MainPage.qml" line="481"/>
-        <source>Check for Update</source>
-        <translation>Перевірити оновлення</translation>
+        <location filename="../qml/bb10/MainPage.qml" line="222"/>
+        <source>%1 (%2) -&gt; %3 (%4)</source>
+        <extracomment>&lt;source text&gt; (&lt;source/detected language&gt;) -&gt; &lt;translated text&gt; (&lt;target language&gt;)</extracomment>
+        <translation>%1 (%2) -&gt; %3 (%4)</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="451"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="39"/>
-        <location filename="../qml/symbian/MainPage.qml" line="488"/>
-        <source>About</source>
-        <translation>Про програму</translation>
-    </message>
-    <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="40"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="44"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="277"/>
-        <location filename="../qml/symbian/MainPage.qml" line="39"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="31"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="46"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="289"/>
+        <location filename="../qml/symbian/MainPage.qml" line="32"/>
         <source>Translation Service</source>
         <translation>Сервіс перекладу</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="49"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="291"/>
-        <location filename="../qml/symbian/MainPage.qml" line="56"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="40"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="303"/>
+        <location filename="../qml/symbian/MainPage.qml" line="49"/>
         <source>Source Language</source>
         <translation>Мова оригіналу</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="304"/>
-        <location filename="../qml/symbian/MainPage.qml" line="73"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="49"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="316"/>
+        <location filename="../qml/symbian/MainPage.qml" line="66"/>
         <source>Target Language</source>
         <translation>Мова перекладу</translation>
+    </message>
+    <message>
+        <location filename="../qml/sailfish/MainPage.qml" line="39"/>
+        <source>Settings</source>
+        <translation>Налаштування</translation>
     </message>
 </context>
 <context>
@@ -212,20 +217,20 @@
         <translation>Автовизначення</translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="97"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="98"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Невідома (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="162"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="168"/>
         <source>Server returned an error: &quot;%1&quot;</source>
         <translation>Сервер повернув помилку: %1</translation>
     </message>
     <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="166"/>
         <location filename="../src/services/microsofttranslator.cpp" line="172"/>
+        <location filename="../src/services/microsofttranslator.cpp" line="178"/>
         <source>Unexpected response from the server</source>
         <translation>Неочікувана відповідь сервера</translation>
     </message>
@@ -233,19 +238,85 @@
 <context>
     <name>ReverseTranslationsModel</name>
     <message>
+        <location filename="../src/bb10/reversetranslationsmodel.cpp" line="31"/>
         <location filename="../src/bb10/reversetranslationsmodel.cpp" line="32"/>
-        <location filename="../src/bb10/reversetranslationsmodel.cpp" line="35"/>
         <location filename="../src/reversetranslationsmodel.cpp" line="60"/>
-        <location filename="../src/reversetranslationsmodel.cpp" line="64"/>
+        <location filename="../src/reversetranslationsmodel.cpp" line="62"/>
         <source>, </source>
         <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
     </message>
 </context>
 <context>
+    <name>SettingsPage</name>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="31"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="33"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="59"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="34"/>
+        <source>%1 Settings</source>
+        <extracomment>%1 will be replaced with the application name</extracomment>
+        <translation>Налаштування %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="46"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="58"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="166"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="65"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="59"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="169"/>
+        <source>Interface Language</source>
+        <translation>Мова інтерфейсу</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="57"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="90"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="92"/>
+        <source>Dark Theme</source>
+        <translation>Темний стиль</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="58"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="103"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="103"/>
+        <source>Use dark color scheme</source>
+        <translation>Використовувати темну схему кольорів</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="67"/>
+        <location filename="../qml/bb10/SettingsPage.qml" line="86"/>
+        <location filename="../qml/bb10/SettingsPage.qml" line="111"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="177"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="99"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="188"/>
+        <source>Please, restart the application to apply this setting.</source>
+        <translation>Щоб налаштування вступило в силу, потрібно перезапустити додаток.</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="143"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="40"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="143"/>
+        <source>Send Feedback</source>
+        <translation>Зв&apos;язатися з автором</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="152"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="153"/>
+        <source>Check for Updates</source>
+        <translation>Перевірити наявність оновлень</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="158"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="85"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="160"/>
+        <source>About</source>
+        <translation>Про програму</translation>
+    </message>
+</context>
+<context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="245"/>
+        <location filename="../src/translationinterface.cpp" line="272"/>
         <source>Please, enter the source text</source>
         <translation>Будь-ласка, введіть текст для перекладу</translation>
     </message>
@@ -253,14 +324,14 @@
 <context>
     <name>TranslationService</name>
     <message>
-        <location filename="../src/translationservice.cpp" line="30"/>
+        <location filename="../src/translationservice.cpp" line="31"/>
         <source>Unknown</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Невідома</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.cpp" line="55"/>
+        <location filename="../src/translationservice.cpp" line="61"/>
         <source>No error</source>
         <translation>Без помилок</translation>
     </message>
@@ -369,17 +440,44 @@
 <context>
     <name>YandexTranslationService</name>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="62"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="63"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Невідома (%1)</translation>
     </message>
     <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="95"/>
-        <location filename="../src/services/yandextranslationservice.cpp" line="96"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="101"/>
+        <location filename="../src/services/yandextranslationservice.cpp" line="102"/>
         <source>Autodetect</source>
         <translation>Автовизначення</translation>
+    </message>
+</context>
+<context>
+    <name>about</name>
+    <message>
+        <location filename="../qml/about.js" line="30"/>
+        <source>%1 contains the following contributed translations:</source>
+        <translation>%1 містить наступні переклади:</translation>
+    </message>
+    <message>
+        <location filename="../qml/about.js" line="38"/>
+        <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
+        <translation>Якщо ваша мова відсутня, ви можете &lt;a href=&quot;%2&quot;&gt;допомогти перекласти %1 на вашу мову&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../qml/about.js" line="40"/>
+        <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, language detection, dictionary and reverse translations for single words.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation only.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - supports dictionary with synonyms and reverse translations.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;More services are possible in future.&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/about.js" line="50"/>
+        <source>%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: &lt;a href=&quot;%2&quot;&gt;Donate&lt;/a&gt;.</source>
+        <translation>%1 є безкоштовним програмним забезпеченням, яке я розробляю у свій вільний час. Якщо воно вам до вподоби, я буду вдячний за пожертву: &lt;a href=&quot;%2&quot;&gt;Зробити внесок&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -388,6 +486,21 @@
         <location filename="../qml/bb10/main.qml" line="37"/>
         <source>About</source>
         <translation>Про програму</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="46"/>
+        <source>Send feedback</source>
+        <translation>Зв&apos;язатися з автором</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="58"/>
+        <source>Write a review</source>
+        <translation>Написати відгук</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="69"/>
+        <source>Settings</source>
+        <translation>Налаштування</translation>
     </message>
 </context>
 </TS>
