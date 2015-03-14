@@ -32,7 +32,10 @@ qsTr("%1 contains the following contributed translations:").arg("TAO Translator"
 "<b>Dutch</b> by teunwinters and Heimen Stoffels (Vistaus), " +
 "<b>German</b> by buschmann and DeadHorseRiding (Mee_Germany_Go), " +
 "<b>Italian</b> by Francesco Vaccaro (ghostofasmile) and Alessandro Pra' (Watchmaker), " +
-"<b>Turkish</b> by Mehmet Ç. (fnldstntn). " +
+"<b>Turkish</b> by Mehmet Ç. (fnldstntn), " +
+"<b>Danish</b> by Peter Jespersen (flywheeldk), " +
+"<b>Chech</b> by Jakub Kožíšek (nodevel), " +
+"<b>Greek</b>, by Wasilis Mandratzis-Walz (beonex)." +
 "</p> " +
 "<p>&nbsp;</p> " +
 "<p>" + qsTr("If your language is missing, you can <a href=\"%2\">help translating %1 into your language</a>.").arg("TAO Translator").arg("https://www.transifex.com/projects/p/taot/") + "</p> " +

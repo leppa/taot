@@ -117,12 +117,19 @@ RESOURCES += \
     l10n/l10n.qrc
 
 TRANSLATIONS += \
+    l10n/taot_ar.ts \
+    l10n/taot_cs_CZ.ts \
     l10n/taot_da.ts \
     l10n/taot_de.ts \
+    l10n/taot_el.ts \
     l10n/taot_en.ts \
+    l10n/taot_es.ts \
+    l10n/taot_fa.ts \
     l10n/taot_fi.ts \
+    l10n/taot_gl.ts \
     l10n/taot_it.ts \
     l10n/taot_nl_NL.ts \
+    l10n/taot_pl.ts \
     l10n/taot_ru.ts \
     l10n/taot_tr.ts \
     l10n/taot_uk.ts \
