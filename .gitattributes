@@ -1,2 +1,3 @@
 * text=auto export-subst
 *.ai binary
+*.ts text eol=lf
