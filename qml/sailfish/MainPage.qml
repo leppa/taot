@@ -36,22 +36,17 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(aboutPageComponent);
-            }
-
-            MenuItem {
-                text: qsTr("Send Feedback")
+                text: qsTr("Settings")
                 onClicked: {
-                    Qt.openUrlExternally("mailto:contacts" + "@"
-                                         + "oleksii.name?subject=TAO%20Translator%20Feedback"
-                                         + "%20(Sailfish%20OS)");
+                    pageStack.push(settingsPage);
                 }
             }
 
             MenuItem {
                 text: qsTr("Translation Service")
-                onClicked: pageStack.push(servicePicker);
+                onClicked: {
+                    pageStack.push(servicePicker);
+                }
             }
             MenuLabel {
                 text: translator.selectedService.name
@@ -320,8 +315,8 @@ Page {
     }
 
     Component {
-        id: aboutPageComponent
+        id: settingsPage
 
-        AboutPage {}
+        SettingsPage {}
     }
 }

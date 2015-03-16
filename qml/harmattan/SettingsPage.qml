@@ -22,6 +22,7 @@
 
 import QtQuick 1.1
 import com.nokia.meego 1.1
+import taot 1.0
 import "constants.js" as UI
 
 Page {
@@ -52,8 +53,22 @@ Page {
                 left: parent.left
                 right: parent.right
                 topMargin: 8 /*UI.PADDING_LARGE*/
-                leftMargin: UI.MARGIN_XLARGE
-                rightMargin: UI.MARGIN_XLARGE
+            }
+
+            ListDelegate {
+                id: fromSelector
+
+                title: qsTr("Interface Language");
+                subTitle: l10n.get(l10n.currentIndex).name
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
+                onClicked: {
+                    languages.selectedIndex = l10n.currentIndex;
+                    languages.open();
+                }
             }
 
             Item {
@@ -61,6 +76,8 @@ Page {
                 anchors {
                     left: parent.left
                     right: parent.right
+                    leftMargin: UI.MARGIN_XLARGE
+                    rightMargin: UI.MARGIN_XLARGE
                 }
 
                 Column {
@@ -134,6 +151,24 @@ Page {
                 text: qsTr("About")
                 onClicked: pageStack.push(aboutPageComponent);
             }
+        }
+    }
+
+    SelectionDialog {
+        id: languages
+        titleText: qsTr("Interface Language")
+        model: l10n
+        onSelectedIndexChanged: {
+            l10n.currentLanguage = l10n.get(selectedIndex).language;
+        }
+    }
+
+    L10nModel {
+        id: l10n
+
+        onCurrentLanguageChanged: {
+            banner.text = qsTr("Please, restart the application to apply this setting.");
+            banner.show();
         }
     }
 

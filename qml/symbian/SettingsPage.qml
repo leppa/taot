@@ -22,6 +22,7 @@
 
 import QtQuick 1.1
 import com.nokia.symbian 1.1
+import taot 1.0
 
 Page {
     id: root
@@ -53,8 +54,23 @@ Page {
                 left: parent.left
                 right: parent.right
                 topMargin: platformStyle.paddingMedium
-                leftMargin: platformStyle.paddingMedium
-                rightMargin: platformStyle.paddingMedium
+            }
+
+            SelectionListItem {
+                id: fromSelector
+
+                title: qsTr("Interface Language");
+                subTitle: l10n.get(l10n.currentIndex).name
+                platformInverted: root.platformInverted
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
+                onClicked: {
+                    languages.selectedIndex = l10n.currentIndex;
+                    languages.open();
+                }
             }
 
             Item {
@@ -62,6 +78,8 @@ Page {
                 anchors {
                     left: parent.left
                     right: parent.right
+                    leftMargin: platformStyle.paddingLarge
+                    rightMargin: platformStyle.paddingLarge
                 }
 
                 Column {
@@ -131,6 +149,32 @@ Page {
                 platformInverted: root.platformInverted
                 onClicked: pageStack.push(aboutPageComponent);
             }
+        }
+    }
+
+    SelectionDialog {
+        id: languages
+        titleText: qsTr("Interface Language")
+        model: l10n
+        platformInverted: root.platformInverted
+        delegate: ListDelegate {
+            text: model.name
+            privateSelectionIndicator: selectedIndex === model.index
+            platformInverted: root.platformInverted
+            onClicked: {
+                selectedIndex = model.index;
+                l10n.currentLanguage = model.language;
+                languages.accept();
+            }
+        }
+    }
+
+    L10nModel {
+        id: l10n
+
+        onCurrentLanguageChanged: {
+            banner.text = qsTr("Please, restart the application to apply this setting.");
+            banner.open();
         }
     }
 

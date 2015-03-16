@@ -21,6 +21,7 @@
  */
 
 import bb.cascades 1.0
+import taot 1.0
 
 Page {
     id: root
@@ -31,6 +32,23 @@ Page {
 
     ScrollView {
         Container {
+            property int padding: 15
+
+            topPadding: padding
+            leftPadding: padding
+            bottomPadding: padding
+            rightPadding: padding
+
+            DropDown {
+                id: languages
+
+                title: qsTr("Interface Language") + Retranslate.onLocaleOrLanguageChanged
+
+                onSelectedIndexChanged: {
+                    l10n.currentLanguage = selectedValue;
+                }
+            }
+
             Container {
                 layout: DockLayout {}
 
@@ -80,8 +98,32 @@ Page {
         }
     }
 
+    attachedObjects: [
+        ComponentDefinition {
+            id: option
+            Option {}
+        },
+        L10nModel {
+            id: l10n
+
+            onCurrentLanguageChanged: {
+                toast.body = qsTr("Please, restart the application to apply this setting.");
+                toast.show();
+            }
+        }
+    ]
+
     onCreationCompleted: {
         invertedTheme.checked = translator.getSettingsValue("InvertedTheme",
                 Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark);
+
+        for (var k = 0; k < l10n.count; k++) {
+            var opt = option.createObject();
+            var lang = l10n.get(k);
+            opt.text = lang.name;
+            opt.value = lang.language;
+            opt.selected = (l10n.currentIndex === k);
+            languages.add(opt);
+        }
     }
 }

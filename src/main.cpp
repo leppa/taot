@@ -29,6 +29,7 @@
 #include "translationservice.h"
 #include "translationservicesmodel.h"
 #include "languagelistmodel.h"
+#include "l10nmodel.h"
 #ifdef Q_OS_BLACKBERRY
 #   include "bb10/dictionarymodel.h"
 #   include "bb10/reversetranslationsmodel.h"
@@ -61,6 +62,7 @@ using namespace bb::cascades;
 #   include <QtQuick>
 #endif
 #include <QTextCodec>
+#include <QSettings>
 
 #include <qplatformdefs.h>
 
@@ -106,7 +108,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     LanguageChangeListener *listener = new LanguageChangeListener(app.data());
     Q_UNUSED(listener);
 #else
-    const QString lc = QLocale().name();
+    QSettings settings(QCoreApplication::organizationName(), "taot");
+    QString lc = QLocale().name();
+    if (settings.contains("UILanguage")) {
+        const QString lang = settings.value("UILanguage").toString();
+        if (!lang.isEmpty())
+            lc = lang;
+    }
+
     // Load Qt's translation
     QTranslator qtTr;
     if (qtTr.load("qt_" + lc, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
@@ -119,8 +128,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #ifdef Q_OS_SAILFISH
     qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
+    qmlRegisterType<L10nModel>("harbour.taot", 1, 0, "L10nModel");
 #else
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
+    qmlRegisterType<L10nModel>("taot", 1, 0, "L10nModel");
 #endif
     qmlRegisterType<TranslationServiceItem>();
     qmlRegisterType<TranslationServicesModel>();

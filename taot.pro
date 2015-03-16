@@ -49,6 +49,7 @@ HEADERS += \
     src/languagelistmodel.h \
     src/translationservice.h \
     src/translationservicesmodel.h \
+    src/l10nmodel.h \
     src/updater.h \
     src/services/apikeys.h \
     src/services/jsontranslationservice.h \
@@ -65,6 +66,7 @@ SOURCES += \
     src/languagelistmodel.cpp \
     src/translationservice.cpp \
     src/translationservicesmodel.cpp \
+    src/l10nmodel.cpp \
     src/updater.cpp \
     src/services/jsontranslationservice.cpp \
     src/services/googletranslate.cpp \
