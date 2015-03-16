@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -25,7 +25,7 @@
 // TODO: Make it localizable.
 var aboutText =
 "<p><a href=\"https://github.com/leppa/taot\">https://github.com/leppa/taot</a></p> " +
-"<p>Copyright &copy; 2013-2014 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=The%20Advanced%20Online%20Translator\">Oleksii Serdiuk</a></p> " +
+"<p>Copyright &copy; 2013-2015 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=The%20Advanced%20Online%20Translator\">Oleksii Serdiuk</a></p> " +
 "<p> " +
 "<i>TAO Translator</i> contains the following contributed translations: " +
 "<b>Chinese</b> by gwmgdemj and 太空飞瓜 (finalmix), " +
