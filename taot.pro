@@ -130,6 +130,7 @@ TRANSLATIONS += \
 
 translate_hack {
     SOURCES += \
+        qml/about.js \
         qml/bb10/*.qml \
         qml/harmattan/*.qml \
         qml/sailfish/*.qml \
