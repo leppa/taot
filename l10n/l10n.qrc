@@ -2,7 +2,7 @@
     <qresource prefix="/l10n">
         <file>taot_da.qm</file>
         <file>taot_de.qm</file>
-        <file>taot_fi.qm</file>
+        <file>taot_en.qm</file>
         <file>taot_it.qm</file>
         <file>taot_nl_NL.qm</file>
         <file>taot_ru.qm</file>
