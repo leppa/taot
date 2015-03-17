@@ -65,6 +65,7 @@ NavigationPane {
             }
         ]
         settingsAction: SettingsActionItem {
+            title: qsTr("Settings") + Retranslate.onLocaleOrLanguageChanged
             onTriggered: {
                 Application.menuEnabled = false;
                 navigationPane.push(settingsPageDefinition.createObject());
