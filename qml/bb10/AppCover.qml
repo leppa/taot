@@ -27,6 +27,9 @@ Container {
     leftPadding: 10
     bottomPadding: 5
     rightPadding: 10
+    background: Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark
+                ? Color.Black
+                : Color.White
     Container {
         layoutProperties: StackLayoutProperties { spaceQuota: 0.5 }
         Label {
