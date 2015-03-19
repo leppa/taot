@@ -52,12 +52,9 @@ Page {
                 top: parent.top
                 left: parent.left
                 right: parent.right
-                topMargin: 8 /*UI.PADDING_LARGE*/
             }
 
             ListDelegate {
-                id: fromSelector
-
                 title: qsTr("Interface Language");
                 subTitle: l10n.get(l10n.currentIndex).name
                 anchors {
@@ -85,7 +82,8 @@ Page {
 
                     anchors {
                         left: parent.left
-                        right: parent.right
+                        right: invertedThemeSwitch.left
+                        rightMargin: 8 /*UI.PADDING_LARGE*/
                     }
 
                     Label {
@@ -96,6 +94,10 @@ Page {
                             weight: Font.Bold
                             pixelSize: UI.LIST_TILE_SIZE
                         }
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
                     }
                     Label {
                         text: qsTr("Use dark color scheme")
@@ -104,6 +106,10 @@ Page {
                         font {
                             weight: UI.LIST_SUBTILE_SIZE
                             pixelSize: Font.Light
+                        }
+                        anchors {
+                            left: parent.left
+                            right: parent.right
                         }
                     }
                 }

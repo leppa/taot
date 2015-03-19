@@ -53,12 +53,9 @@ Page {
                 top: parent.top
                 left: parent.left
                 right: parent.right
-                topMargin: platformStyle.paddingMedium
             }
 
             SelectionListItem {
-                id: fromSelector
-
                 title: qsTr("Interface Language");
                 subTitle: l10n.get(l10n.currentIndex).name
                 platformInverted: root.platformInverted
@@ -87,21 +84,35 @@ Page {
 
                     anchors {
                         left: parent.left
-                        right: parent.right
+                        right: invertedThemeSwitch.left
+                        rightMargin: platformStyle.paddingSmall
                     }
 
                     ListItemText {
                         text: qsTr("Dark Theme")
                         role: "Title"
+                        elide: Text.ElideNone
+                        wrapMode: Text.WordWrap
                         platformInverted: root.platformInverted
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
                     }
                     ListItemText {
                         text: qsTr("Use dark color scheme")
                         role: "SubTitle"
+                        elide: Text.ElideNone
+                        wrapMode: Text.WordWrap
                         platformInverted: root.platformInverted
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
                     }
                 }
                 Switch {
+                    id: invertedThemeSwitch
                     checked: !appWindow.platformInverted
                     platformInverted: root.platformInverted
                     anchors {
