@@ -3,6 +3,7 @@
     <id>name.oleksii.bb10.taot</id>
     <name>TAO Translator</name>
     <versionNumber>1.0.1</versionNumber>
+    <buildId>9001</buildId>
     <description>TAO Translator uses available online translation services to provide translations.</description>
     <icon>
         <image>icon.png</image>
