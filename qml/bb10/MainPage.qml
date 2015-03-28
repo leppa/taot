@@ -133,16 +133,16 @@ Page {
                         verticalAlignment: VerticalAlignment.Fill
                     }
                     layoutProperties: StackLayoutProperties {
-                        spaceQuota: 1
+                        spaceQuota: 5
                     }
                 }
                 Button {
                     id: clearButton
 
-                    text: qsTr("Clear") + Retranslate.onLocaleOrLanguageChanged
+                    imageSource: "asset:///icons/ic_clear" + (darkTheme ? "_inverted" : "") + ".png"
                     enabled: translator.sourceText != ""
                     layoutProperties: StackLayoutProperties {
-                        spaceQuota: -1
+                        spaceQuota: 1
                     }
                     onClicked: {
                         source.text = "";

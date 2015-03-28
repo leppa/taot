@@ -297,16 +297,24 @@ Page {
                 }
             }
 
-            Row {
-                width: parent.width
-                height: childrenRect.height
-                spacing: platformStyle.paddingMedium
+            Item {
+                height: Math.max(translateButton.height, clearButton.height)
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
 
                 Button {
-                    width: (parent.width - parent.spacing) / 2
+                    id: translateButton
                     text: qsTr("Translate")
                     enabled: !translator.busy
                     platformInverted: !appWindow.platformInverted
+                    anchors {
+                        left: parent.left
+                        right: clearButton.left
+                        rightMargin: platformStyle.paddingMedium
+                        verticalCenter: parent.verticalCenter
+                    }
                     onClicked: {
                         translator.translate();
                     }
@@ -319,10 +327,15 @@ Page {
                     }
                 }
                 Button {
-                    width: (parent.width - parent.spacing) / 2
-                    text: qsTr("Clear")
+                    id: clearButton
+                    iconSource: Qt.resolvedUrl(platformInverted ? "icons/close_inverted.svg"
+                                                                : "icons/close.svg")
                     enabled: source.text != ""
                     platformInverted: !appWindow.platformInverted
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                    }
                     onClicked: {
                         source.text = "";
                         source.forceActiveFocus();
