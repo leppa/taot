@@ -158,11 +158,16 @@ BARFILE = $$cat(bar-descriptor.xml)
 VERSION = $$find(BARFILE, <versionNumber>.*</versionNumber>)
 VERSION = $$replace(VERSION, "<versionNumber>", "")
 VERSION = $$replace(VERSION, "</versionNumber>", "")
+BUILD = $$find(BARFILE, <buildId>.*</buildId>)
+BUILD = $$replace(BUILD, "<buildId>", "")
+BUILD = $$replace(BUILD, "</buildId>", "")
+isEmpty(BUILD): BUILD = 0
 symbian {
     DEFINES += VERSION=$$VERSION
 } else {
     DEFINES += VERSION=\"$$VERSION\"
 }
+DEFINES += BUILD=$$BUILD
 
 symbian {
     CONFIG += qt-components

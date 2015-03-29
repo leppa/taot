@@ -144,8 +144,9 @@ Page {
                 platformInverted: root.platformInverted
                 onClicked: {
                     Qt.openUrlExternally("mailto:contacts" + "@"
-                                         + "oleksii.name?subject=TAO%20Translator%20Feedback"
-                                         + "%20(Symbian)");
+                                         + "oleksii.name?subject=TAO%20Translator%20v"
+                                         + encodeURIComponent(translator.version)
+                                         + "%20Feedback%20(Symbian)");
                 }
             }
             MenuItem {
