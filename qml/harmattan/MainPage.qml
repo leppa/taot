@@ -210,15 +210,23 @@ Page {
                 }
             }
 
-            Row {
-                width: parent.width
-                height: childrenRect.height
-                spacing: UiConstants.ButtonSpacing
+            Item {
+                height: Math.max(translateButton.height, clearButton.height)
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
 
                 Button {
-                    width: (parent.width - parent.spacing) / 2
+                    id: translateButton
                     text: qsTr("Translate")
                     enabled: !translator.busy
+                    anchors {
+                        left: parent.left
+                        right: clearButton.left
+                        rightMargin: UiConstants.ButtonSpacing
+                        verticalCenter: parent.verticalCenter
+                    }
                     platformStyle: ButtonStyle {
                         inverted: !theme.inverted
                     }
@@ -233,9 +241,16 @@ Page {
                     }
                 }
                 Button {
-                    width: (parent.width - parent.spacing) / 2
-                    text: qsTr("Clear")
+                    id: clearButton
+                    iconSource: platformStyle.inverted
+                                ? "image://theme/icon-m-toolbar-close-white-selected"
+                                : "image://theme/icon-m-toolbar-close"
                     enabled: source.text != ""
+                    width: height
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                    }
                     platformStyle: ButtonStyle {
                         inverted: !theme.inverted
                     }

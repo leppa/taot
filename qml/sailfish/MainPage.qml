@@ -124,10 +124,8 @@ Page {
                 }
             }
 
-            Row {
-                height: childrenRect.height
-                spacing: Theme.paddingSmall
-                clip: true
+            Item {
+                height: Math.max(translateButton.height, clearButton.height)
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -135,9 +133,15 @@ Page {
                 }
 
                 Button {
-                    width: (parent.width - parent.spacing) / 2
+                    id: translateButton
                     text: qsTr("Translate")
-                    enabled: !translator.busy
+                    enabled: !translator.busy && source.text != ""
+                    anchors {
+                        left: parent.left
+                        right: clearButton.left
+                        rightMargin: Theme.paddingSmall
+                        verticalCenter: parent.verticalCenter
+                    }
 
                     onClicked: translator.translate();
 
@@ -148,10 +152,14 @@ Page {
                         anchors.centerIn: parent
                     }
                 }
-                Button {
-                    width: (parent.width - parent.spacing) / 2
-                    text: qsTr("Clear")
+                IconButton {
+                    id: clearButton
                     enabled: source.text != ""
+                    icon.source: "image://theme/icon-m-clear"
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                    }
 
                     onClicked: {
                         source.text = "";
