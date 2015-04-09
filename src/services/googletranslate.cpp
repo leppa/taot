@@ -140,16 +140,33 @@ bool GoogleTranslate::canSwapLanguages(const Language &first, const Language &se
 bool GoogleTranslate::translate(const Language &from, const Language &to, const QString &text)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QUrl query("http://translate.google.com/translate_a/t");
+    QUrl query("https://translate.google.com/translate_a/single");
 #else
-    QUrl url("http://translate.google.com/translate_a/t");
+    QUrl url("https://translate.google.com/translate_a/single");
     QUrlQuery query;
 #endif
     query.addQueryItem("client", "q");
     query.addQueryItem("hl", "en");
     query.addQueryItem("sl", from.info.toString());
     query.addQueryItem("tl", to.info.toString());
-    query.addQueryItem("text", text);
+    query.addQueryItem("ie", "UTF-8");
+    query.addQueryItem("oe", "UTF-8");
+    // `dt` specifies what to return in the response
+    query.addQueryItem("dt", "t"); // Translation
+//    query.addQueryItem("dt", "at"); // Alternate translations
+    query.addQueryItem("dt", "bd"); // Dictionary (with reverse translations and articles)
+//    query.addQueryItem("dt", "rm"); // Transcription / transliteration
+//    query.addQueryItem("dt", "md"); // Definitions of source word
+//    query.addQueryItem("dt", "ss"); // Source text synonyms
+//    query.addQueryItem("dt", "ex"); // Examples
+//    query.addQueryItem("dt", "rw"); // "See also" list
+//    query.addQueryItem("dt", "ld"); // Unknown
+//    query.addQueryItem("dt", "qca"); // Unknown
+//    query.addQueryItem("ssel", "3");
+//    query.addQueryItem("tsel", "0");
+//    query.addQueryItem("otf", "1");
+
+    query.addQueryItem("q", text);
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     m_reply = m_nam.get(QNetworkRequest(query));
 #else
@@ -163,30 +180,42 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 bool GoogleTranslate::parseReply(const QByteArray &reply)
 {
     const QVariant data = parseJson(reply);
-    if (!data.isValid())
+    if (!data.isValid() || data.type() != QVariant::List)
         return false;
 
-    const QString detected = data.toMap().value("src").toString();
+    const QVariantList dl = data.toList();
+    if (dl.isEmpty())
+        return false;
+
+    const QString detected = dl.value(2).toString();
     m_detectedLanguage = Language(detected, getLanguageName(detected));
 
     m_translation.clear();
-    foreach (const QVariant &ti, data.toMap().value("sentences").toList()) {
-        m_translation.append(ti.toMap().value("trans").toString());
+    foreach (const QVariant &ti, dl.value(0).toList()) {
+        m_translation.append(ti.toList().value(0).toString());
     }
 
     m_dict->clear();
-    if (data.toMap().value("dict").type() == QVariant::List) {
-        foreach (const QVariant &di, data.toMap().value("dict").toList()) {
-            // Extracting translations
-            QStringList trans = di.toMap().value("terms").toStringList();
+    if (dl.value(1).type() == QVariant::List) {
+        foreach (const QVariant &di, dl.value(1).toList()) {
+            const QVariantList dil = di.toList();
 
-            // Extracting parts of speech (with reverse translations)
-            DictionaryPos pos(di.toMap().value("pos").toString(), trans);
-            foreach (const QVariant &ei, di.toMap().value("entry").toList()) {
-                QStringList rtrans = ei.toMap().value("reverse_translation").toStringList();
-                QString word = ei.toMap().value("word").toString();
-                if (!ei.toMap().value("previous_word").toString().isEmpty())
-                    word.prepend(ei.toMap().value("previous_word").toString() + " ");
+            // Translations
+            const QStringList trans = dil.value(1).toStringList();
+            // Part of speech
+            DictionaryPos pos(dil.value(0).toString(), trans);
+            // Reverse translations
+            foreach (const QVariant &ei, dil.value(2).toList()) {
+                const QVariantList eil = ei.toList();
+
+                // Word from translations for which reverse translations are provided
+                QString word = eil.value(0).toString();
+                // Reverse translations for the aforementioned word
+                const QStringList rtrans = eil.value(1).toStringList();
+                // Article for the aforementioned word (if provided)
+                if (!eil.value(4).toString().isEmpty())
+                    word.prepend(eil.value(4).toString() + " ");
+
                 pos.reverseTranslations()->append(word, QStringList(), rtrans);
             }
             m_dict->append(pos);
