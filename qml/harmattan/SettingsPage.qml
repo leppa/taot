@@ -143,8 +143,9 @@ Page {
                 text: qsTr("Send Feedback")
                 onClicked: {
                     Qt.openUrlExternally("mailto:contacts" + "@"
-                                         + "oleksii.name?subject=TAO%20Translator%20Feedback"
-                                         + "%20(Nokia%20N9)");
+                                         +"oleksii.name?subject=TAO%20Translator%20v"
+                                         + encodeURIComponent(translator.version)
+                                         + "%20Feedback%20(Nokia%20N9)");
                 }
             }
             MenuItem {

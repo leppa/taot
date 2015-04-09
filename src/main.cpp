@@ -83,7 +83,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     QCoreApplication::setApplicationName("TAO Translator");
-    QCoreApplication::setApplicationVersion(VERSION_STR);
+    QCoreApplication::setApplicationVersion((BUILD > 0)
+                                            //: %1 - version, %2 - build number
+                                            ? QCoreApplication::translate("AboutPage",
+                                                                          "%1 (build %2)")
+                                              .arg(VERSION_STR).arg(BUILD)
+                                            : VERSION_STR);
     QCoreApplication::setOrganizationName("Oleksii Serdiuk");
     QCoreApplication::setOrganizationDomain("oleksii.name");
 

@@ -49,8 +49,9 @@ NavigationPane {
                 onTriggered: {
                     translator.invoke("sys.pim.uib.email.hybridcomposer", "bb.action.SENDEMAIL",
                                       "mailto:contacts" + "@"
-                                      + "oleksii.name?subject=TAO%20Translator%20Feedback"
-                                      + "%20(BlackBerry%2010)");
+                                      + "oleksii.name?subject=TAO%20Translator%20v"
+                                      + encodeURIComponent(translator.version)
+                                      + "%20Feedback%20(BlackBerry%2010)");
                 }
             },
             ActionItem {
