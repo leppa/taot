@@ -1,8 +1,10 @@
 TAO Translator ChangeLog
 ========================
 
+
 TAOT v1.0.1
 -----------
+
 - Google Translate: updated list of available translation languages.
 - Made icon background a bit smoother.
 - New UI localization: Danish.

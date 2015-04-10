@@ -1,3 +1,4 @@
 * text=auto export-subst
 *.ai binary
 *.ts text eol=lf
+qtc_packaging/debian_harmattan/* text eof=lf
