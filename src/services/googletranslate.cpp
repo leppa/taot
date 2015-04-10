@@ -179,7 +179,17 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 
 bool GoogleTranslate::parseReply(const QByteArray &reply)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+    // JSON coming from Google is invalid due to sequences
+    // like ",,". Replacing all ",," with ",null," allows
+    // us to parse JSON with QJsonDocument.
+    QString json = QString::fromUtf8(reply);
+    json.replace(QRegExp(",(?=,)"), ",null");
+    const QVariant data = parseJson(json.toUtf8());
+#else
     const QVariant data = parseJson(reply);
+#endif
+
     if (!data.isValid() || data.type() != QVariant::List)
         return false;
 
