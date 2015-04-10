@@ -1,3 +1,23 @@
+taot (1.1.0) unstable; urgency=low
+  * Fixed Google Translate service.
+  * It is now possible to swap source and translation languages when
+    source language is set to autodetect and language was successfully
+    autodetected.
+  * Support for changing interface language.
+  * Clear button is now an icon.
+  * All settings were moved to a new Settings page.
+  * "Send Feedback" option was added. This will open an e-mail composer
+    with pre-filled subject and recipient.
+  * Source and target translation languages were updated for all services.
+  * Google Translate: Support for articles in the dictionary (provided
+    only for some languages, like German).
+  * Parts of text on the About page were made localizable.
+  * Workaround for a bug when virtual keyboard in some cases covers text
+    input.
+  * New UI localization: Czech.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Fri, 10 Apr 2015 21:44:08 +0200
+
 taot (1.0.1) unstable; urgency=low
   * Google Translate: updated list of available translation languages.
   * Made icon background a bit smoother.

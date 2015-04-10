@@ -2,6 +2,40 @@ TAO Translator ChangeLog
 ========================
 
 
+TAOT v1.1.0
+-----------
+
+- Fixed Google Translate service ([issue #36]).
+- It is now possible to swap source and translation languages when
+  source language is set to autodetect and language was successfully
+  autodetected.
+- Support for changing interface language ([issue #29][]).
+- Clear button is now an icon.
+- All settings were moved to a new Settings page.
+- "Send Feedback" option was added. This will open an e-mail composer
+  with pre-filled subject and recipient.
+- Parts of text on the About page were made localizable.
+- Source and target translation languages were updated for all services.
+- Google Translate: Support for articles in the dictionary (provided
+  only for some languages, like German).
+- BlackBerry 10: TAO Translator is now a share target: select text in
+  any application, press "Share" icon and select TAO Translator from the
+  list. The text will be opened for translation in TAO Translator.
+- BlackBerry 10: Source / target language selection dropdowns now expand
+  to full width when opened.
+- BlackBerry 10: Support for switching between Dark and Bright / Light
+  themes ([issue #33][]).
+- BlackBerry 10: A possibility to share translation through the standard
+  share menu.
+- BlackBerry 10: Fixed badly readable text in the title (white text on
+  light background) in BlackBerry OS 10.3.
+- BlackBerry 10: Fixed empty active frame when TAO Translator is started
+  with dark theme ([issue #35][]).
+- Symbian, Nokia N9: Workaround for a bug when virtual keyboard in some
+  cases covers text input ([issue #32][]).
+- New UI localization: Czech.
+
+
 TAOT v1.0.1
 -----------
 
@@ -145,5 +179,10 @@ Initial release.
 [issue #21]: https://github.com/leppa/taot/issues/21
 [issue #22]: https://github.com/leppa/taot/issues/22
 [issue #23]: https://github.com/leppa/taot/issues/23
+[issue #29]: https://github.com/leppa/taot/issues/29
+[issue #32]: https://github.com/leppa/taot/issues/32
+[issue #33]: https://github.com/leppa/taot/issues/33
+[issue #35]: https://github.com/leppa/taot/issues/35
+[issue #36]: https://github.com/leppa/taot/issues/36
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
