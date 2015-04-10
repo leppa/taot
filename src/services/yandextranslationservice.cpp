@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -58,11 +58,17 @@ LanguageList YandexTranslationService::targetLanguages(const Language &sourceLan
 
 QString YandexTranslationService::getLanguageName(const QVariant &info) const
 {
+    //: Unknown language
     return m_langCodeToName.value(info.toString(),
                                   tr("Unknown (%1)", "Unknown language").arg(info.toString()));
 }
 
-bool YandexTranslationService::canSwapLanguages(const Language first, const Language second) const
+bool YandexTranslationService::isAutoLanguage(const Language &lang) const
+{
+    return lang.info.toString().isEmpty();
+}
+
+bool YandexTranslationService::canSwapLanguages(const Language &first, const Language &second) const
 {
     if (first.info.toString().isEmpty() || second.info.toString().isEmpty() || first == second)
         return false;

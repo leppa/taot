@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -67,8 +67,7 @@ void DictionaryModel::append(DictionaryPos &pos)
 {
     QVariantMap map;
     map.insert("pos", pos.pos());
-    map.insert("translations", pos.translations(tr(", ", "Separator for joining string lists"
-                                                   " (don't forget space after comma).")));
+    map.insert("translations", pos.translations(tr(", ")));
     map.insert("reverseTranslations",
                QVariant::fromValue(new ReverseTranslationsModel(pos.reverseTranslations(), this)));
 

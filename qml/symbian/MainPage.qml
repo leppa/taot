@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -25,14 +25,7 @@ import com.nokia.symbian 1.1
 import taot 1.0
 
 Page {
-    // A hack for text item to loose focus when clicked outside of it
-    MouseArea {
-        id: dummyFocus
-        anchors.fill: parent
-        onClicked: {
-            focus = true;
-        }
-    }
+    id: root
 
     SelectionDialog {
         id: servicesDialog
@@ -85,14 +78,100 @@ Page {
         }
     }
 
-    Component {
-        id: header
+    ScrollDecorator {
+        flickableItem: flickable
+    }
+
+    Item {
+        id: titleBar
+
+        width: parent.width
+        height: platformStyle.graphicSizeMedium
+        enabled: source.state != "Active"
+
+        Rectangle {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop {
+                    position: 0.00
+                    color: platformStyle.colorNormalLink
+                }
+                GradientStop {
+                    position: 1.0;
+                    color: Qt.darker(platformStyle.colorNormalLink)
+                }
+            }
+        }
+
+        Rectangle {
+            color: platformStyle.colorNormalLink
+            visible: mouseArea.pressed
+            anchors.fill: parent
+        }
+
+        MouseArea {
+            id: mouseArea
+            enabled: parent.enabled
+            anchors.fill: parent
+            onClicked: {
+                if (servicesDialog.selectedIndex < 0)
+                    servicesDialog.selectedIndex = translator.selectedService.index;
+                servicesDialog.open();
+            }
+        }
+
+        Label {
+            color: "white"
+            text: translator.selectedService.name
+            font.pixelSize: platformStyle.fontSizeLarge
+            platformInverted: appWindow.platformInverted
+            anchors {
+                left: parent.left
+                leftMargin: platformStyle.paddingLarge
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
+        Image {
+            id: icon
+
+            source: "image://theme/qtg_graf_choice_list_indicator"
+            visible: opacity > 0
+            opacity: parent.enabled ? 1.0 : 0.0
+            sourceSize {
+                width: platformStyle.graphicSizeSmall
+                height: platformStyle.graphicSizeSmall
+            }
+            anchors {
+                right: parent.right
+                rightMargin: 10
+                verticalCenter: parent.verticalCenter
+            }
+
+            Behavior on opacity { NumberAnimation { duration: 100 } }
+        }
+    }
+
+    Flickable {
+        id: flickable
+
+        clip: true
+        contentWidth: content.width
+        contentHeight: content.height
+        anchors {
+            top: titleBar.bottom
+            left: parent.left
+            leftMargin: platformStyle.paddingMedium
+            bottom: parent.bottom
+            right: parent.right
+            rightMargin: platformStyle.paddingMedium
+        }
 
         Column {
-            id: col
+            id: content
 
-            width: ListView.view.width
-            height: childrenRect.height + platformStyle.paddingMedium
+            width: flickable.width
+            height: childrenRect.height + 2 * platformStyle.paddingMedium
             spacing: platformStyle.paddingMedium
 
             Row {
@@ -150,39 +229,93 @@ Page {
                 }
             }
 
-            TextArea {
-                id: source
+            Item {
+                id: sourceWrapper
 
+                z: 1
                 width: parent.width
-                height: Math.min(implicitHeight, listDictionary.height * 0.4)
-//                text: "Welcome"
-                placeholderText: qsTr("Enter the source text...")
-                textFormat: TextEdit.PlainText
-                platformInverted: appWindow.platformInverted
+                height: source.implicitHeight
 
-//                Keys.onReturnPressed: translator.translate();
-//                Keys.onEnterPressed: translator.translate();
+                TextArea {
+                    id: source
 
-                onTextChanged: {
-                    if (translator.sourceText == text)
-                        return;
+                    width: parent.width
+                    height: parent.height
+//                    text: "Welcome"
+                    placeholderText: qsTr("Enter the source text...")
+                    textFormat: TextEdit.PlainText
+                    platformInverted: appWindow.platformInverted
 
-                    translator.sourceText = text;
+                    onTextChanged: {
+                        if (translator.sourceText == text)
+                            return;
+
+                        translator.sourceText = text;
+                    }
+
+                    states: [
+                        State {
+                            name: "Active"
+                            when: source.activeFocus
+                                  && (inputContext.visible
+                                      // HACK: There are some cases, where VKB is visible,
+                                      // but reported as not. This is a dirty workaround.
+                                      || translator.appVisibility == Translator.AppPartiallyVisible)
+                            ParentChange {
+                                target: source
+                                parent: root
+                                x: platformStyle.paddingSmall
+                                y: titleBar.height + platformStyle.paddingSmall
+                                width: parent.width - 2 * platformStyle.paddingSmall
+                                height: parent.height - titleBar.height
+                                        - 2 * platformStyle.paddingSmall
+                            }
+                        }
+                    ]
+
+                    transitions: [
+                        Transition {
+                            from: "*"
+                            to: "Active"
+                            reversible: true
+                            ParentAnimation {
+                                target: source
+
+                                PropertyAnimation {
+                                    duration: 100
+                                    easing.type: Easing.InOutQuad
+                                    properties: "y"
+                                }
+                                PropertyAnimation {
+                                    duration: 100
+                                    easing.type: Easing.InOutQuad
+                                    properties: "height"
+                                }
+                            }
+                        }
+                    ]
                 }
             }
 
-            Row {
-                width: parent.width
-                height: childrenRect.height
-                spacing: platformStyle.paddingMedium
+            Item {
+                height: Math.max(translateButton.height, clearButton.height)
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
 
                 Button {
-                    width: (parent.width - parent.spacing) / 2
+                    id: translateButton
                     text: qsTr("Translate")
                     enabled: !translator.busy
                     platformInverted: !appWindow.platformInverted
+                    anchors {
+                        left: parent.left
+                        right: clearButton.left
+                        rightMargin: platformStyle.paddingMedium
+                        verticalCenter: parent.verticalCenter
+                    }
                     onClicked: {
-                        dummyFocus.focus = true;
                         translator.translate();
                     }
 
@@ -194,10 +327,15 @@ Page {
                     }
                 }
                 Button {
-                    width: (parent.width - parent.spacing) / 2
-                    text: qsTr("Clear")
+                    id: clearButton
+                    iconSource: Qt.resolvedUrl(platformInverted ? "icons/close_inverted.svg"
+                                                                : "icons/close.svg")
                     enabled: source.text != ""
                     platformInverted: !appWindow.platformInverted
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                    }
                     onClicked: {
                         source.text = "";
                         source.forceActiveFocus();
@@ -247,7 +385,6 @@ Page {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        dummyFocus.focus = true;
                         if (translator.translatedText != "")
                             pageStack.push(translationPage);
                     }
@@ -342,112 +479,42 @@ Page {
                 ]
             }
 
-            Component.onCompleted: {
-                listDictionary.headerItem = col;
-            }
-        }
-    }
+            Column {
+                id: listDictionary
 
-    ScrollDecorator {
-        flickableItem: listDictionary
-    }
+                width: parent.width
+                height: childrenRect.height
 
-    Item {
-        id: titleBar
-
-        width: parent.width
-        height: platformStyle.graphicSizeMedium
-
-        Rectangle {
-            anchors.fill: parent
-            gradient: Gradient {
-                GradientStop {
-                    position: 0.00
-                    color: platformStyle.colorNormalLink
-                }
-                GradientStop {
-                    position: 1.0;
-                    color: Qt.darker(platformStyle.colorNormalLink)
+                Repeater {
+                    model: translator.dictionary
+                    delegate: DictionaryDelegate {
+                        width: listDictionary.width
+                        platformInverted: appWindow.platformInverted
+                    }
                 }
             }
         }
-
-        Rectangle {
-            color: platformStyle.colorNormalLink
-            visible: mouseArea.pressed
-            anchors.fill: parent
-        }
-
-        MouseArea {
-            id: mouseArea
-            enabled: parent.enabled
-            anchors.fill: parent
-            onClicked: {
-                if (servicesDialog.selectedIndex < 0)
-                    servicesDialog.selectedIndex = translator.selectedService.index;
-                servicesDialog.open();
-            }
-        }
-
-        Label {
-            color: "white"
-            text: translator.selectedService.name
-            font.pixelSize: platformStyle.fontSizeLarge
-            platformInverted: appWindow.platformInverted
-            anchors {
-                left: parent.left
-                leftMargin: platformStyle.paddingLarge
-                verticalCenter: parent.verticalCenter
-            }
-        }
-
-        Image {
-            id: icon
-
-            source: "image://theme/qtg_graf_choice_list_indicator"
-            sourceSize {
-                width: platformStyle.graphicSizeSmall
-                height: platformStyle.graphicSizeSmall
-            }
-            anchors {
-                right: parent.right
-                rightMargin: 10
-                verticalCenter: parent.verticalCenter
-            }
-        }
     }
 
-    ListView {
-        id: listDictionary
-
-        property Item headerItem
-
-        clip: true
-        model: translator.dictionary
-        interactive: visibleArea.heightRatio < 1.0 || (headerItem.height > height - 2 * platformStyle.paddingMedium)
-        // HACK: We need this to save the exapnded state of translation.
-        // TODO: Come up with more appropriate solution.
-        cacheBuffer: 65535
+    Rectangle {
+        color: appWindow.platformInverted ? platformStyle.colorBackgroundInverted
+                                          : platformStyle.colorBackground
+        visible: opacity > 0
+        opacity: source.state == "Active" ? 1.0 : 0.0
         anchors {
             top: titleBar.bottom
             left: parent.left
-            leftMargin: platformStyle.paddingSmall
             bottom: parent.bottom
             right: parent.right
-            rightMargin: platformStyle.paddingSmall
         }
 
-        header: header
-        delegate: DictionaryDelegate {
-            platformInverted: appWindow.platformInverted
-            onClicked: {
-                dummyFocus.focus = true;
-            }
+        MouseArea {
+            enabled: parent.visible
+            acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
+            anchors.fill: parent
         }
 
-        onMovementStarted: {
-            dummyFocus.focus = true;
-        }
+        Behavior on opacity { NumberAnimation { duration: 100 }}
     }
 
     tools: ToolBarLayout {
@@ -458,37 +525,9 @@ Page {
             onClicked: Qt.quit();
         }
         ToolButton {
-            iconSource: "toolbar-menu"
+            iconSource: "toolbar-settings"
             platformInverted: appWindow.platformInverted
-            onClicked: mainMenu.open();
-        }
-    }
-
-    Menu {
-        id: mainMenu
-        platformInverted: appWindow.platformInverted
-
-        MenuLayout {
-            MenuItem {
-                text: qsTr("Toggle Inverted Theme")
-                platformInverted: appWindow.platformInverted
-                onClicked: {
-                    appWindow.platformInverted = !appWindow.platformInverted;
-                    translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
-                }
-            }
-            MenuItem {
-                text: qsTr("Check for Update")
-                platformInverted: appWindow.platformInverted
-                onClicked: {
-                    pageStack.push(updateCheckerPageComponent);
-                }
-            }
-            MenuItem {
-                text: qsTr("About")
-                platformInverted: appWindow.platformInverted
-                onClicked: pageStack.push(aboutPageComponent);
-            }
+            onClicked: pageStack.push(settingsPage);
         }
     }
 
@@ -510,16 +549,8 @@ Page {
     }
 
     Component {
-        id: aboutPageComponent
-
-        AboutPage {
-            platformInverted: appWindow.platformInverted
-        }
-    }
-
-    Component {
-        id: updateCheckerPageComponent
-        UpdateCheckerPage {
+        id: settingsPage
+        SettingsPage {
             platformInverted: appWindow.platformInverted
         }
     }

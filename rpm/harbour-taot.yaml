@@ -1,13 +1,13 @@
 Name: harbour-taot
 Summary: Online Translator with some advanced features
-Version: 1.0.1
+Version: 1.1.0
 Release: 1
 Group: Qt/Qt
 License: 'GPLv2'
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |-
-  TAO Translator uses available online translation services to provide translations.
+  TAO Translator uses online translation services to provide translations.
 
   Currently supported services:
    * Google Translate - supports translation, language detection, dictionary and reverse translations for single words.
@@ -25,12 +25,8 @@ PkgConfigBR:
 Requires:
 - sailfishsilica-qt5
 Files:
-- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
-- '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/%{name}/qml'
 - '%{_bindir}'
-- /usr/bin
-- /usr/share/harbour-taot/qml
-- /usr/share/icons/hicolor/86x86/apps
-- /usr/share/applications
+- '%{_datadir}/%{name}/qml'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 PkgBR: []

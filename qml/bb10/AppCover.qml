@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -27,6 +27,9 @@ Container {
     leftPadding: 10
     bottomPadding: 5
     rightPadding: 10
+    background: Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark
+                ? Color.Black
+                : Color.White
     Container {
         layoutProperties: StackLayoutProperties { spaceQuota: 0.5 }
         Label {

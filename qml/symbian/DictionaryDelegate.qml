@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -28,7 +28,6 @@ MouseArea {
 
     property bool platformInverted: false
 
-    width: ListView.view.width
     height: posDelegate.height + indicator.height / 2
 
     onClicked: {

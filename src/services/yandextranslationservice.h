@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -38,7 +38,8 @@ public:
     LanguageList sourceLanguages() const;
     LanguageList targetLanguages(const Language &sourceLanguage) const;
     QString getLanguageName(const QVariant &info) const;
-    bool canSwapLanguages(const Language first, const Language second) const;
+    bool isAutoLanguage(const Language &lang) const;
+    bool canSwapLanguages(const Language &first, const Language &second) const;
 
     bool checkReplyForErrors(QNetworkReply *reply);
 

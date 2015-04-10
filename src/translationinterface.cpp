@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -26,6 +26,7 @@
 #include "translationservicesmodel.h"
 #include "languagelistmodel.h"
 #ifdef Q_OS_BLACKBERRY
+#   include <bb/system/InvokeManager>
 #   include "bb10/dictionarymodel.h"
 #else
 #   include "dictionarymodel.h"
@@ -70,11 +71,22 @@ TranslationInterface::TranslationInterface(QObject *parent)
     connect(this, SIGNAL(targetLanguageChanged()), SLOT(retranslate()));
     connect(this, SIGNAL(sourceLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
     connect(this, SIGNAL(targetLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
+    connect(this, SIGNAL(detectedLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
+
+#ifdef Q_OS_SYMBIAN
+    connect(qApp, SIGNAL(visibilityChanged()), this, SIGNAL(appVisibilityChanged()));
+#endif
 
     // TODO: Remove after few versions
 #if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
     if (m_settings->contains("displayNokiaStoreNotice"))
         m_settings->remove("displayNokiaStoreNotice");
+#endif
+
+#ifdef Q_OS_BLACKBERRY
+    m_invoker = new bb::system::InvokeManager();
+    connect(m_invoker, SIGNAL(invoked(bb::system::InvokeRequest)),
+            this, SLOT(onInvoked(bb::system::InvokeRequest)));
 #endif
 }
 
@@ -125,6 +137,10 @@ LanguageItem *TranslationInterface::targetLanguage() const
 
 bool TranslationInterface::canSwapLanguages() const
 {
+    if (m_service->isAutoLanguage(m_sourceLanguage->language())
+            && m_detectedLanguage.info.isValid())
+        return m_service->canSwapLanguages(m_detectedLanguage, m_targetLanguage->language());
+
     return m_service->canSwapLanguages(m_sourceLanguage->language(), m_targetLanguage->language());
 }
 
@@ -148,6 +164,13 @@ DictionaryModel *TranslationInterface::dictionary() const
     return m_dict;
 }
 
+#ifdef Q_OS_SYMBIAN
+TranslationInterface::AppVisibility TranslationInterface::appVisibility() const
+{
+    return AppVisibility(qobject_cast<SymbianApplication *>(qApp)->visibility());
+}
+#endif
+
 TranslationInterface::~TranslationInterface()
 {
     delete m_service;
@@ -161,9 +184,10 @@ TranslationInterface::~TranslationInterface()
 }
 
 // HACK: We return a QString here, else JavaScript treats `false` as undefined value.
-QString TranslationInterface::getSettingsValue(const QString &key) const
+QString TranslationInterface::getSettingsValue(const QString &key,
+                                               const QVariant &defaultValue) const
 {
-    return m_settings->value(key).toString();
+    return m_settings->value(key, defaultValue).toString();
 }
 
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
@@ -224,8 +248,11 @@ void TranslationInterface::selectTargetLanguage(int index)
 
 void TranslationInterface::swapLanguages()
 {
+    const Language oldsrc = m_service->isAutoLanguage(m_sourceLanguage->language())
+                            ? m_detectedLanguage
+                            : m_sourceLanguage->language();
     resetTranslation();
-    const Language oldsrc = m_sourceLanguage->language();
+
     selectSourceLanguage(m_sourceLanguages->indexOf(m_targetLanguage->language()));
     selectTargetLanguage(m_targetLanguages->indexOf(oldsrc));
 }
@@ -265,6 +292,19 @@ QString TranslationInterface::urlDecode(const QString &url) const
     QTextDocument doc;
     doc.setHtml(url);
     return doc.toPlainText();
+}
+#endif
+
+#ifdef Q_OS_BLACKBERRY
+void TranslationInterface::invoke(const QString &target,
+                                  const QString &action,
+                                  const QString &uri) const
+{
+    bb::system::InvokeRequest request;
+    request.setTarget(target);
+    request.setAction(action);
+    request.setUri(uri);
+    m_invoker->invoke(request);
 }
 #endif
 
@@ -388,3 +428,14 @@ void TranslationInterface::retranslate()
 
     translate();
 }
+
+#ifdef Q_OS_BLACKBERRY
+void TranslationInterface::onInvoked(const bb::system::InvokeRequest &request)
+{
+    if (request.mimeType() != "text/plain")
+        return;
+
+    setSourceText(QString::fromUtf8(request.data()));
+    retranslate();
+}
+#endif

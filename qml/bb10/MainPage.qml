@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -25,6 +25,8 @@ import bb.system 1.0
 import taot 1.0
 
 Page {
+    property bool darkTheme: Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark
+
     titleBar: TitleBar {
         kind: TitleBarKind.FreeForm
         kindProperties: FreeFormTitleBarKindProperties {
@@ -35,7 +37,7 @@ Page {
                 Label {
                     text: translator.selectedService.name
                     textStyle {
-                        color: Color.White
+                        color: osVersion < 0x0A0300 ? Color.White : undefined
                         base: SystemDefaults.TextStyles.TitleText
                     }
                     verticalAlignment: VerticalAlignment.Center
@@ -69,6 +71,8 @@ Page {
                 DropDown {
                     id: sourceLanguagesDropDown
                     title: qsTr("From") + Retranslate.onLocaleOrLanguageChanged
+                    visible: !targetLanguagesDropDown.expanded
+
                     onSelectedIndexChanged: {
                         if (selectedIndex >= 0)
                             translator.selectSourceLanguage(selectedIndex);
@@ -76,8 +80,11 @@ Page {
                 }
 
                 Button {
-                    imageSource: "asset:///icons/swap.png"
+                    imageSource: "asset:///icons/swap" + (darkTheme ? "_inverted" : "") + ".png"
                     visible: translator.canSwapLanguages
+                             && !sourceLanguagesDropDown.expanded
+                             && !targetLanguagesDropDown.expanded
+
                     onClicked: {
                         translator.swapLanguages();
                     }
@@ -86,6 +93,8 @@ Page {
                 DropDown {
                     id: targetLanguagesDropDown
                     title: qsTr("To") + Retranslate.onLocaleOrLanguageChanged
+                    visible: !sourceLanguagesDropDown.expanded
+
                     onSelectedIndexChanged: {
                         if (selectedIndex >= 0)
                             translator.selectTargetLanguage(selectedIndex);
@@ -124,16 +133,16 @@ Page {
                         verticalAlignment: VerticalAlignment.Fill
                     }
                     layoutProperties: StackLayoutProperties {
-                        spaceQuota: 1
+                        spaceQuota: 5
                     }
                 }
                 Button {
                     id: clearButton
 
-                    text: qsTr("Clear") + Retranslate.onLocaleOrLanguageChanged
+                    imageSource: "asset:///icons/ic_clear" + (darkTheme ? "_inverted" : "") + ".png"
                     enabled: translator.sourceText != ""
                     layoutProperties: StackLayoutProperties {
-                        spaceQuota: -1
+                        spaceQuota: 1
                     }
                     onClicked: {
                         source.text = "";
@@ -200,6 +209,23 @@ Page {
                     toast.body = qsTr("Couldn't copy translation to clipboard");
                 toast.show();
             }
+        },
+        InvokeActionItem {
+            title: qsTr("Share") + Retranslate.onLanguageChanged
+            enabled: translator.translatedText != ""
+            query {
+                mimeType: "text/plain"
+                invokeActionId: "bb.action.SHARE"
+            }
+            onTriggered: {
+                //: <source text> (<source/detected language>) -> <translated text> (<target language>)
+                data = qsTr("%1 (%2) -> %3 (%4)").arg(translator.sourceText)
+                                                 .arg(translator.detectedLanguageName
+                                                      ? translator.detectedLanguageName
+                                                      : translator.sourceLanguage.displayName)
+                                                 .arg(translator.translatedText)
+                                                 .arg(translator.targetLanguage.displayName);
+            }
         }
     ]
 
@@ -232,6 +258,8 @@ Page {
 
         translation.editor.selectionStartChanged.connect(selectionChanged);
         translation.editor.selectionEndChanged.connect(selectionChanged);
+
+        translator.sourceTextChanged.connect(sourceTextChanged);
     }
 
     function updateSourceLanguages()
@@ -263,5 +291,9 @@ Page {
     function targetLanguageChanged()
     {
         targetLanguagesDropDown.selectedIndex = translator.targetLanguage.index;
+    }
+    function sourceTextChanged()
+    {
+        source.text = translator.sourceText;
     }
 }

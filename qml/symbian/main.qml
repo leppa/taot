@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -26,6 +26,7 @@ import com.nokia.extras 1.1
 PageStackWindow {
     id: appWindow
 
+    platformSoftwareInputPanelEnabled: true
     initialPage: MainPage {}
 
     InfoBanner { id: banner }

@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -28,12 +28,8 @@ void ReverseTranslations::append(const QString &term,
 {
     QVariantMap map;
     map.insert("term", term);
-    map.insert("synonyms", synonyms.join(
-                   tr(", ", "Separator for joining string lists (don't forget space after comma)."))
-               );
-    map.insert("translations", translations.join(
-                   tr(", ", "Separator for joining string lists (don't forget space after comma)."))
-               );
+    map.insert("synonyms", synonyms.join(tr(", ")));
+    map.insert("translations", translations.join(tr(", ")));
 
     QList<QVariantMap>::append(map);
 }

@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -22,30 +22,35 @@
 
 .pragma library
 
-// TODO: Make it localizable.
+// TODO: Clean up this mess!
 var aboutText =
 "<p><a href=\"https://github.com/leppa/taot\">https://github.com/leppa/taot</a></p> " +
-"<p>Copyright &copy; 2013-2014 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=The%20Advanced%20Online%20Translator\">Oleksii Serdiuk</a></p> " +
-"<p> " +
-"<i>TAO Translator</i> contains the following contributed translations: " +
+"<p>Copyright &copy; 2013-2015 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=TAO%20Translator\">Oleksii Serdiuk</a></p> " +
+"<p>" +
+qsTr("%1 contains the following contributed translations:").arg("TAO Translator") + " " +
 "<b>Chinese</b> by gwmgdemj and 太空飞瓜 (finalmix), " +
-"<b>Dutch</b> by teunwinters, " +
-"<b>German</b> by buschmann, " +
+"<b>Dutch</b> by teunwinters and Heimen Stoffels (Vistaus), " +
+"<b>German</b> by buschmann and DeadHorseRiding (Mee_Germany_Go), " +
 "<b>Italian</b> by Francesco Vaccaro (ghostofasmile) and Alessandro Pra' (Watchmaker), " +
-"<b>Turkish</b> by Mehmet Ç. (fnldstntn). " +
+"<b>Turkish</b> by Mehmet Ç. (fnldstntn), " +
+"<b>Danish</b> by Peter Jespersen (flywheeldk), " +
+"<b>Chech</b> by Jakub Kožíšek (nodevel), " +
+"<b>Greek</b>, by Wasilis Mandratzis-Walz (beonex)." +
 "</p> " +
 "<p>&nbsp;</p> " +
-"<p>TAO Translator uses available online translation services to provide translations.</p> " +
-"<p>Currently supported services:</p> " +
-"<ul> " +
-"<li><b>Google Translate</b> - supports translation, language detection, dictionary and reverse translations for single words.</li> " +
-"<li><b>Microsoft Translator</b> (a.k.a. <b>Bing Translator</b>) - supports translation only.</li> " +
-"<li><b>Yandex.Translate</b> - supports translation and language detection.</li> " +
-"<li><b>Yandex.Dictionaries</b> - supports dictionary with synonyms and reverse translations.</li> " +
-"</ul> " +
-"<p>More services are possible in future.</p> " +
+"<p>" + qsTr("If your language is missing, you can <a href=\"%2\">help translating %1 into your language</a>.").arg("TAO Translator").arg("https://www.transifex.com/projects/p/taot/") + "</p> " +
 "<p>&nbsp;</p> " +
-"<p><a href=\"https://github.com/leppa/taot/wiki/Donate\">Donate</a></p> " +
+qsTr("<p>%1 uses online translation services to provide translations.</p>" +
+     "<p>Currently supported services:</p>" +
+     "<ul>" +
+     "\t<li><b>Google Translate</b> - supports translation, language detection, dictionary and reverse translations for single words.</li>\n" +
+     "\t<li><b>Microsoft Translator</b> (a.k.a. <b>Bing Translator</b>) - supports translation only.</li>\n" +
+     "\t<li><b>Yandex.Translate</b> - supports translation and language detection.</li>\n" +
+     "\t<li><b>Yandex.Dictionaries</b> - supports dictionary with synonyms and reverse translations.</li>\n" +
+     "</ul>" +
+     "<p>More services are possible in future.</p>").arg("TAO Translator") + " " +
+"<p>&nbsp;</p> " +
+"<p>" + qsTr("%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: <a href=\"%2\">Donate</a>.").arg("TAO Translator").arg("https://github.com/leppa/taot/wiki/Donate") + "</p> " +
 "<p>&nbsp;</p> " +
 "<p>This program is free software; you can redistribute it and/or " +
 "modify it under the terms of the GNU General Public License " +

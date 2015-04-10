@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -27,6 +27,7 @@
 #include <QDebug>
 
 Language::Language()
+    //: Unknown language
     : displayName(TranslationService::tr("Unknown", "Unknown language"))
 {}
 
@@ -37,6 +38,11 @@ Language::Language(const QVariant info, const QString &name)
 bool Language::operator ==(const Language &other) const
 {
     return info == other.info;
+}
+
+bool Language::operator !=(const Language &other) const
+{
+    return !operator ==(other);
 }
 
 bool Language::operator <(const Language &other) const

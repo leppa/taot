@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -38,6 +38,7 @@ struct Language
     explicit Language(const QVariant info, const QString &name);
 
     bool operator ==(const Language &other) const;
+    bool operator !=(const Language &other) const;
     bool operator <(const Language &other) const;
 };
 typedef QPair<Language, Language> LanguagePair;
@@ -59,7 +60,8 @@ public:
     virtual LanguageList targetLanguages(const Language &sourceLanguage) const = 0;
     virtual LanguagePair defaultLanguagePair() const = 0;
     virtual QString getLanguageName(const QVariant &info) const = 0;
-    virtual bool canSwapLanguages(const Language first, const Language second) const = 0;
+    virtual bool isAutoLanguage(const Language &lang) const = 0;
+    virtual bool canSwapLanguages(const Language &first, const Language &second) const = 0;
     virtual QString serializeLanguageInfo(const QVariant &info) const;
     virtual QVariant deserializeLanguageInfo(const QString &info) const;
 

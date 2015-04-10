@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -26,15 +26,6 @@ import taot 1.0
 import "constants.js" as UI
 
 Page {
-    // A hack for text item to loose focus when clicked outside of it
-    MouseArea {
-        id: dummyFocus
-        anchors.fill: parent
-        onClicked: {
-            focus = true;
-        }
-    }
-
     SelectionDialog {
         id: servicesDialog
         titleText: qsTr("Translation Service")
@@ -62,15 +53,98 @@ Page {
         }
     }
 
-    Component {
-        id: header
+    Item {
+        id: titleBar
+
+        height: appWindow.inPortrait ? UiConstants.HeaderDefaultHeightPortrait
+                                     : UiConstants.HeaderDefaultHeightLandscape
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop {
+                    position: 0.00
+                    color: theme.selectionColor
+                }
+                GradientStop {
+                    position: 1.0;
+                    color: Qt.darker(theme.selectionColor)
+                }
+            }
+        }
+
+        Rectangle {
+            color: theme.selectionColor
+            visible: mouseArea.pressed
+            anchors.fill: parent
+        }
+
+        MouseArea {
+            id: mouseArea
+            enabled: parent.enabled
+            anchors.fill: parent
+            onClicked: {
+                if (servicesDialog.selectedIndex < 0)
+                    servicesDialog.selectedIndex = translator.selectedService.index;
+                servicesDialog.open();
+            }
+        }
+
+        Label {
+            color: "white"
+            text: translator.selectedService.name
+            font: UiConstants.HeaderFont
+            anchors {
+                left: parent.left
+                leftMargin: UiConstants.DefaultMargin
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
+        Image {
+            id: icon
+
+            height: sourceSize.height
+            width: sourceSize.width
+            source: "image://theme/meegotouch-combobox-indicator-inverted"
+            anchors {
+                right: parent.right
+                rightMargin: UI.MARGIN_XLARGE
+                verticalCenter: parent.verticalCenter
+            }
+        }
+    }
+
+    ScrollDecorator {
+        flickableItem: flickable
+    }
+
+    Flickable {
+        id: flickable
+
+        clip: true
+        contentWidth: content.width
+        contentHeight: content.height
+        anchors {
+            top: titleBar.bottom
+            left: parent.left
+            leftMargin: 8 /*UI.PADDING_LARGE*/
+            bottom: parent.bottom
+            right: parent.right
+            rightMargin: 8 /*UI.PADDING_LARGE*/
+        }
 
         Column {
-            id: col
+            id: content
 
-            width: ListView.view.width
-            height: childrenRect.height + UiConstants.ButtonSpacing
+            width: flickable.width
+            height: childrenRect.height + 2 * UiConstants.ButtonSpacing
             spacing: UiConstants.ButtonSpacing
+            y: UiConstants.ButtonSpacing
 
             Row {
                 height: fromSelector.height
@@ -124,13 +198,9 @@ Page {
                 id: source
 
                 width: parent.width
-                height: Math.min(implicitHeight, listDictionary.height * 0.4)
 //                text: "Welcome"
                 placeholderText: qsTr("Enter the source text...")
                 textFormat: TextEdit.PlainText
-
-//                Keys.onReturnPressed: translator.translate();
-//                Keys.onEnterPressed: translator.translate();
 
                 onTextChanged: {
                     if (translator.sourceText == text)
@@ -140,20 +210,27 @@ Page {
                 }
             }
 
-            Row {
-                width: parent.width
-                height: childrenRect.height
-                spacing: UiConstants.ButtonSpacing
+            Item {
+                height: Math.max(translateButton.height, clearButton.height)
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
 
                 Button {
-                    width: (parent.width - parent.spacing) / 2
+                    id: translateButton
                     text: qsTr("Translate")
                     enabled: !translator.busy
+                    anchors {
+                        left: parent.left
+                        right: clearButton.left
+                        rightMargin: UiConstants.ButtonSpacing
+                        verticalCenter: parent.verticalCenter
+                    }
                     platformStyle: ButtonStyle {
                         inverted: !theme.inverted
                     }
                     onClicked: {
-                        dummyFocus.focus = true;
                         translator.translate();
                     }
 
@@ -164,9 +241,16 @@ Page {
                     }
                 }
                 Button {
-                    width: (parent.width - parent.spacing) / 2
-                    text: qsTr("Clear")
+                    id: clearButton
+                    iconSource: platformStyle.inverted
+                                ? "image://theme/icon-m-toolbar-close-white-selected"
+                                : "image://theme/icon-m-toolbar-close"
                     enabled: source.text != ""
+                    width: height
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                    }
                     platformStyle: ButtonStyle {
                         inverted: !theme.inverted
                     }
@@ -218,7 +302,6 @@ Page {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        dummyFocus.focus = true;
                         if (translator.translatedText != "")
                             pageStack.push(translationPage);
                     }
@@ -311,112 +394,20 @@ Page {
                 ]
             }
 
-            Component.onCompleted: {
-                listDictionary.headerItem = col;
-            }
-        }
-    }
+            Column {
+                id: listDictionary
 
-    Item {
-        id: titleBar
+                width: parent.width
+                height: childrenRect.height
 
-        height: appWindow.inPortrait ? UiConstants.HeaderDefaultHeightPortrait
-                                     : UiConstants.HeaderDefaultHeightLandscape
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        Rectangle {
-            anchors.fill: parent
-            gradient: Gradient {
-                GradientStop {
-                    position: 0.00
-                    color: theme.selectionColor
-                }
-                GradientStop {
-                    position: 1.0;
-                    color: Qt.darker(theme.selectionColor)
+                Repeater {
+                    model: translator.dictionary
+                    delegate: DictionaryDelegate {
+                        width: listDictionary.width
+                    }
                 }
             }
         }
-
-        Rectangle {
-            color: theme.selectionColor
-            visible: mouseArea.pressed
-            anchors.fill: parent
-        }
-
-        MouseArea {
-            id: mouseArea
-            enabled: parent.enabled
-            anchors.fill: parent
-            onClicked: {
-                if (servicesDialog.selectedIndex < 0)
-                    servicesDialog.selectedIndex = translator.selectedService.index;
-                servicesDialog.open();
-            }
-        }
-
-        Label {
-            color: "white"
-            text: translator.selectedService.name
-            font: UiConstants.HeaderFont
-            anchors {
-                left: parent.left
-                leftMargin: UiConstants.DefaultMargin
-                verticalCenter: parent.verticalCenter
-            }
-        }
-
-        Image {
-            id: icon
-
-            height: sourceSize.height
-            width: sourceSize.width
-            source: "image://theme/meegotouch-combobox-indicator-inverted"
-            anchors {
-                right: parent.right
-                rightMargin: UI.MARGIN_XLARGE
-                verticalCenter: parent.verticalCenter
-            }
-        }
-    }
-
-    ListView {
-        id: listDictionary
-
-        property Item headerItem
-
-        clip: true
-        model: translator.dictionary
-        interactive: visibleArea.heightRatio < 1.0 || (headerItem.height > height - 2 * UiConstants.ButtonSpacing)
-        // HACK: We need this to save the exapnded state of translation.
-        // TODO: Come up with more appropriate solution.
-        cacheBuffer: 65535
-        anchors {
-            top: titleBar.bottom
-            left: parent.left
-            leftMargin: 8 /*UI.PADDING_LARGE*/
-            bottom: parent.bottom
-            right: parent.right
-            rightMargin: 8 /*UI.PADDING_LARGE*/
-        }
-
-        header: header
-        delegate: DictionaryDelegate {
-            onClicked: {
-                dummyFocus.focus = true;
-            }
-        }
-
-        onMovementStarted: {
-            dummyFocus.focus = true;
-        }
-    }
-
-    ScrollDecorator {
-        flickableItem: listDictionary
     }
 
     tools: ToolBarLayout {
@@ -425,32 +416,8 @@ Page {
             onClicked: Qt.quit();
         }
         ToolIcon {
-            iconId: "toolbar-view-menu"
-            onClicked: mainMenu.open();
-        }
-    }
-
-    Menu {
-        id: mainMenu
-
-        MenuLayout {
-            MenuItem {
-                text: qsTr("Toggle Inverted Theme")
-                onClicked: {
-                    theme.inverted = !theme.inverted;
-                    translator.setSettingsValue("InvertedTheme", theme.inverted);
-                }
-            }
-            MenuItem {
-                text: qsTr("Check for Update")
-                onClicked: {
-                    pageStack.push(updateCheckerPageComponent);
-                }
-            }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(aboutPageComponent);
-            }
+            iconId: "toolbar-settings"
+            onClicked: pageStack.push(settingsPageComponent);
         }
     }
 
@@ -470,13 +437,8 @@ Page {
     }
 
     Component {
-        id: aboutPageComponent
-        AboutPage {}
-    }
-
-    Component {
-        id: updateCheckerPageComponent
-        UpdateCheckerPage {}
+        id: settingsPageComponent
+        SettingsPage {}
     }
 
     Component.onCompleted: {

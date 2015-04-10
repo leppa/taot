@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -29,6 +29,7 @@
 #include "translationservice.h"
 #include "translationservicesmodel.h"
 #include "languagelistmodel.h"
+#include "l10nmodel.h"
 #ifdef Q_OS_BLACKBERRY
 #   include "bb10/dictionarymodel.h"
 #   include "bb10/reversetranslationsmodel.h"
@@ -47,8 +48,12 @@
 #   include <bb/cascades/AbstractPane>
 #   include <bb/cascades/Container>
 #   include <bb/cascades/SceneCover>
+#   include <bb/platform/PlatformInfo>
 #   include <bb/system/SystemToast>
 using namespace bb::cascades;
+#elif defined(Q_OS_SYMBIAN)
+#   include "symbian/symbianapplication.h"
+#   include <QtDeclarative>
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
 #   include <QApplication>
 #   include <QtDeclarative>
@@ -57,6 +62,7 @@ using namespace bb::cascades;
 #   include <QtQuick>
 #endif
 #include <QTextCodec>
+#include <QSettings>
 
 #include <qplatformdefs.h>
 
@@ -77,17 +83,26 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     QCoreApplication::setApplicationName("TAO Translator");
-    QCoreApplication::setApplicationVersion(VERSION_STR);
+    QCoreApplication::setApplicationVersion((BUILD > 0)
+                                            //: %1 - version, %2 - build number
+                                            ? QCoreApplication::translate("AboutPage",
+                                                                          "%1 (build %2)")
+                                              .arg(VERSION_STR).arg(BUILD)
+                                            : VERSION_STR);
     QCoreApplication::setOrganizationName("Oleksii Serdiuk");
     QCoreApplication::setOrganizationDomain("oleksii.name");
 
 #ifdef Q_OS_BLACKBERRY
-    // This is needed for clicks to work more reliably indside Flickable.
-    QApplication::setStartDragDistance(42);
+    QSettings *sets = new QSettings(QCoreApplication::organizationName(), "taot");
+    if (sets->contains("InvertedTheme"))
+        qputenv("CASCADES_THEME", sets->value("InvertedTheme").toBool() ? "dark" : "bright");
+    delete sets;
 
     QScopedPointer<Application> app(new Application(argc, argv));
 #elif defined(Q_OS_SAILFISH)
     QGuiApplication *app = SailfishApp::application(argc, argv);
+#elif defined(Q_OS_SYMBIAN)
+    QScopedPointer<QApplication> app(new SymbianApplication(argc, argv));
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 #else
@@ -98,7 +113,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     LanguageChangeListener *listener = new LanguageChangeListener(app.data());
     Q_UNUSED(listener);
 #else
-    const QString lc = QLocale().name();
+    QSettings settings(QCoreApplication::organizationName(), "taot");
+    QString lc = QLocale().name();
+    if (settings.contains("UILanguage")) {
+        const QString lang = settings.value("UILanguage").toString();
+        if (!lang.isEmpty())
+            lc = lang;
+    }
+
     // Load Qt's translation
     QTranslator qtTr;
     if (qtTr.load("qt_" + lc, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
@@ -111,8 +133,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #ifdef Q_OS_SAILFISH
     qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
+    qmlRegisterType<L10nModel>("harbour.taot", 1, 0, "L10nModel");
 #else
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
+    qmlRegisterType<L10nModel>("taot", 1, 0, "L10nModel");
 #endif
     qmlRegisterType<TranslationServiceItem>();
     qmlRegisterType<TranslationServicesModel>();
@@ -140,6 +164,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     TranslationInterface *translator = new TranslationInterface(app.data());
     QmlDocument *qml = QmlDocument::create(QLatin1String("asset:///main.qml"))
             .property("translator", translator).parent(app.data());
+
+    const QStringList v = bb::platform::PlatformInfo().osVersion().split(".");
+    const int ver = v.count() >= 3 ? (v.at(0).toInt() << 16)
+                                     + (v.at(1).toInt() << 8)
+                                     + v.at(2).toInt()
+                                   : 0;
+    qml->documentContext()->setContextProperty("osVersion", ver);
+
 #elif defined(MEEGO_EDITION_HARMATTAN)
     QDir dir(app->applicationDirPath());
     dir.cdUp();
@@ -176,6 +208,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #ifdef DUMMY_CODE_THAT_WILL_NEVER_BE_BUILT
 // This is meta information for translation files.
 // Not used anywhere ATM. Just ignore it.
-QT_TRANSLATE_NOOP3("--------", "AUTHORS", "A list of translation authors");
-QT_TRANSLATE_NOOP3("--------", "LANGUAGE_NAME", "Native language name (e.g., Deutsch for German)");
+//: A list of translation authors
+QT_TRANSLATE_NOOP3("--------", "AUTHORS");
+//: Native language name (e.g., Deutsch for German)
+QT_TRANSLATE_NOOP3("--------", "LANGUAGE_NAME");
 #endif

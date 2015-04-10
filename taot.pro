@@ -1,7 +1,7 @@
 ######################################################################
 #
 #  TAO Translator
-#  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+#  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 #
 #  $Id: $Format:%h %ai %an$ $
 #
@@ -34,7 +34,7 @@ blackberry:CONFIG += cascades
 QMAKE_TARGET_COMPANY = Oleksii Serdiuk
 QMAKE_TARGET_PRODUCT = TAO Translator
 QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
-QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2014 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2015 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 
 lessThan(QT_MAJOR_VERSION, 5):!blackberry {
     include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -49,6 +49,7 @@ HEADERS += \
     src/languagelistmodel.h \
     src/translationservice.h \
     src/translationservicesmodel.h \
+    src/l10nmodel.h \
     src/updater.h \
     src/services/apikeys.h \
     src/services/jsontranslationservice.h \
@@ -65,6 +66,7 @@ SOURCES += \
     src/languagelistmodel.cpp \
     src/translationservice.cpp \
     src/translationservicesmodel.cpp \
+    src/l10nmodel.cpp \
     src/updater.cpp \
     src/services/jsontranslationservice.cpp \
     src/services/googletranslate.cpp \
@@ -88,7 +90,7 @@ blackberry {
         src/bb10/clipboard.cpp \
         src/bb10/repeater.cpp
 
-    LIBS += -lbbsystem
+    LIBS += -lbbplatform -lbbsystem
 } else {
     HEADERS += \
         src/dictionarymodel.h \
@@ -99,6 +101,14 @@ blackberry {
         src/reversetranslationsmodel.cpp
 }
 
+symbian {
+    HEADERS += \
+        src/symbian/symbianapplication.h
+
+    SOURCES += \
+        src/symbian/symbianapplication.cpp
+}
+
 INCLUDEPATH += \
     src
 
@@ -107,12 +117,19 @@ RESOURCES += \
     l10n/l10n.qrc
 
 TRANSLATIONS += \
+    l10n/taot_ar.ts \
+    l10n/taot_cs_CZ.ts \
     l10n/taot_da.ts \
     l10n/taot_de.ts \
+    l10n/taot_el.ts \
     l10n/taot_en.ts \
+    l10n/taot_es.ts \
+    l10n/taot_fa.ts \
     l10n/taot_fi.ts \
+    l10n/taot_gl.ts \
     l10n/taot_it.ts \
     l10n/taot_nl_NL.ts \
+    l10n/taot_pl.ts \
     l10n/taot_ru.ts \
     l10n/taot_tr.ts \
     l10n/taot_uk.ts \
@@ -120,6 +137,7 @@ TRANSLATIONS += \
 
 translate_hack {
     SOURCES += \
+        qml/about.js \
         qml/bb10/*.qml \
         qml/harmattan/*.qml \
         qml/sailfish/*.qml \
@@ -147,11 +165,16 @@ BARFILE = $$cat(bar-descriptor.xml)
 VERSION = $$find(BARFILE, <versionNumber>.*</versionNumber>)
 VERSION = $$replace(VERSION, "<versionNumber>", "")
 VERSION = $$replace(VERSION, "</versionNumber>", "")
+BUILD = $$find(BARFILE, <buildId>.*</buildId>)
+BUILD = $$replace(BUILD, "<buildId>", "")
+BUILD = $$replace(BUILD, "</buildId>", "")
+isEmpty(BUILD): BUILD = 0
 symbian {
     DEFINES += VERSION=$$VERSION
 } else {
     DEFINES += VERSION=\"$$VERSION\"
 }
+DEFINES += BUILD=$$BUILD
 
 symbian {
     CONFIG += qt-components

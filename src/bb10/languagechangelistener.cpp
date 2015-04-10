@@ -45,7 +45,14 @@ void LanguageChangeListener::onSystemLanguageChanged()
         delete tr;
     }
 
-    const QString lc = QLocale().name();
+    QString lc = QLocale().name();
+    QSettings settings(QCoreApplication::organizationName(), "taot");
+    if (settings.contains("UILanguage")) {
+        const QString lang = settings.value("UILanguage").toString();
+        if (!lang.isEmpty())
+            lc = lang;
+    }
+
     // Load Qt's translation
     qtTr = new QTranslator(this);
     if (qtTr->load("qt_" + lc, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))

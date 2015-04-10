@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -56,13 +56,10 @@ QVariant ReverseTranslationsModel::data(const QModelIndex &index, int role) cons
     case TermRole:
         return m_terms.at(index.row()).first;
     case SynonymsRole:
-        return m_terms.at(index.row()).second.first.join(
-                    tr(", ", "Separator for joining string lists (don't forget space after comma).")
-                    );
+        //: Separator for joining string lists (don't forget space after comma)
+        return m_terms.at(index.row()).second.first.join(tr(", "));
     case TranslationsRole:
-        return m_terms.at(index.row()).second.second.join(
-                    tr(", ", "Separator for joining string lists (don't forget space after comma).")
-                    );
+        return m_terms.at(index.row()).second.second.join(tr(", "));
     }
 
     return QVariant();

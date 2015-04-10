@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -25,12 +25,21 @@
 
 #include "translationservice.h"
 
+#ifdef Q_OS_SYMBIAN
+#   include "symbian/symbianapplication.h"
+#endif
+
 #include <QObject>
 #include <QStringList>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QSettings>
 
+#ifdef Q_OS_BLACKBERRY
+#   include <bb/system/InvokeRequest>
+#endif
+
+namespace bb { namespace system { class InvokeManager; } }
 class TranslationServicesModel;
 class TranslationServiceItem;
 class LanguageListModel;
@@ -57,6 +66,12 @@ class TranslationInterface: public QObject
     Q_PROPERTY(QString translatedText READ translatedText NOTIFY translatedTextChanged)
     Q_PROPERTY(DictionaryModel *dictionary READ dictionary CONSTANT)
 
+#ifdef Q_OS_SYMBIAN
+    Q_PROPERTY(TranslationInterface::AppVisibility appVisibility READ appVisibility
+                                                                 NOTIFY appVisibilityChanged)
+    Q_ENUMS(AppVisibility)
+#endif
+
 public:
     enum SupportedServices {
         GoogleTranslateService,
@@ -64,6 +79,14 @@ public:
         YandexTranslateService,
         YandexDictionariesService
     };
+
+#ifdef Q_OS_SYMBIAN
+    enum AppVisibility {
+        AppNotVisible = SymbianApplication::NotVisible,
+        AppPartiallyVisible = SymbianApplication::PartiallyVisible,
+        AppFullyVisible = SymbianApplication::FullyVisible
+    };
+#endif
 
     explicit TranslationInterface(QObject *parent = 0);
 
@@ -83,6 +106,10 @@ public:
     QString translatedText() const;
     DictionaryModel *dictionary() const;
 
+#ifdef Q_OS_SYMBIAN
+    TranslationInterface::AppVisibility appVisibility() const;
+#endif
+
     ~TranslationInterface();
 
 signals:
@@ -95,9 +122,12 @@ signals:
     void sourceTextChanged();
     void detectedLanguageChanged();
     void translatedTextChanged();
+#ifdef Q_OS_SYMBIAN
+    void appVisibilityChanged();
+#endif
 
 public slots:
-    QString getSettingsValue(const QString &key) const;
+    QString getSettingsValue(const QString &key, const QVariant &defaultValue = QVariant()) const;
     void setSettingsValue(const QString &key, const QVariant &value);
 
     void selectService(int index);
@@ -109,6 +139,10 @@ public slots:
 
 #ifdef Q_OS_SAILFISH
     QString urlDecode(const QString &url) const;
+#endif
+
+#ifdef Q_OS_BLACKBERRY
+    void invoke(const QString &target, const QString &action, const QString &uri) const;
 #endif
 
 private:
@@ -134,9 +168,17 @@ private:
     void setDetectedLanguage(const Language &detectedLanguageName);
     void setTranslatedText(const QString &translatedText);
 
+#ifdef Q_OS_BLACKBERRY
+    bb::system::InvokeManager *m_invoker;
+#endif
+
 private slots:
     void onTranslationFinished();
     void retranslate();
+
+#ifdef Q_OS_BLACKBERRY
+    void onInvoked(const bb::system::InvokeRequest &request);
+#endif
 };
 
 #endif // TRANSLATIONINTERFACE_H

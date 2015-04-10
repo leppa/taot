@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -36,13 +36,17 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(aboutPageComponent);
+                text: qsTr("Settings")
+                onClicked: {
+                    pageStack.push(settingsPage);
+                }
             }
 
             MenuItem {
                 text: qsTr("Translation Service")
-                onClicked: pageStack.push(servicePicker);
+                onClicked: {
+                    pageStack.push(servicePicker);
+                }
             }
             MenuLabel {
                 text: translator.selectedService.name
@@ -120,10 +124,8 @@ Page {
                 }
             }
 
-            Row {
-                height: childrenRect.height
-                spacing: Theme.paddingSmall
-                clip: true
+            Item {
+                height: Math.max(translateButton.height, clearButton.height)
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -131,9 +133,15 @@ Page {
                 }
 
                 Button {
-                    width: (parent.width - parent.spacing) / 2
+                    id: translateButton
                     text: qsTr("Translate")
-                    enabled: !translator.busy
+                    enabled: !translator.busy && source.text != ""
+                    anchors {
+                        left: parent.left
+                        right: clearButton.left
+                        rightMargin: Theme.paddingSmall
+                        verticalCenter: parent.verticalCenter
+                    }
 
                     onClicked: translator.translate();
 
@@ -144,10 +152,14 @@ Page {
                         anchors.centerIn: parent
                     }
                 }
-                Button {
-                    width: (parent.width - parent.spacing) / 2
-                    text: qsTr("Clear")
+                IconButton {
+                    id: clearButton
                     enabled: source.text != ""
+                    icon.source: "image://theme/icon-m-clear"
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                    }
 
                     onClicked: {
                         source.text = "";
@@ -311,8 +323,8 @@ Page {
     }
 
     Component {
-        id: aboutPageComponent
+        id: settingsPage
 
-        AboutPage {}
+        SettingsPage {}
     }
 }

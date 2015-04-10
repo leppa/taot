@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2014  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -41,14 +41,47 @@ NavigationPane {
                     Application.menuEnabled = false;
                     navigationPane.push(aboutPageDefinition.createObject());
                 }
+            },
+            ActionItem {
+                title: qsTr("Send feedback") + Retranslate.onLocaleOrLanguageChanged
+                imageSource: "asset:///icons/ic_feedback.png"
+
+                onTriggered: {
+                    translator.invoke("sys.pim.uib.email.hybridcomposer", "bb.action.SENDEMAIL",
+                                      "mailto:contacts" + "@"
+                                      + "oleksii.name?subject=TAO%20Translator%20v"
+                                      + encodeURIComponent(translator.version)
+                                      + "%20Feedback%20(BlackBerry%2010)");
+                }
+            },
+            ActionItem {
+                title: qsTr("Write a review") + Retranslate.onLocaleOrLanguageChanged
+                imageSource: "asset:///icons/ic_edit_bookmarks.png"
+
+                onTriggered: {
+                    translator.invoke("sys.appworld",
+                                      "bb.action.OPEN",
+                                      "appworld://content/21908039");
+                }
             }
         ]
+        settingsAction: SettingsActionItem {
+            title: qsTr("Settings") + Retranslate.onLocaleOrLanguageChanged
+            onTriggered: {
+                Application.menuEnabled = false;
+                navigationPane.push(settingsPageDefinition.createObject());
+            }
+        }
     }
 
     attachedObjects: [
         ComponentDefinition {
             id: aboutPageDefinition
             AboutPage {}
+        },
+        ComponentDefinition {
+            id: settingsPageDefinition
+            SettingsPage {}
         },
         SystemToast {
             id: toast

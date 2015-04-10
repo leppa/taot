@@ -10,8 +10,8 @@ Package: taot
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Online Translator with some advanced features
- TAO Translator uses available online translation
- services to provide translations.
+ TAO Translator uses online translation services to provide
+ translations.
  .
  Currently supported services:
  .
