@@ -66,6 +66,20 @@ Page {
                     translator.setSettingsValue("InvertedTheme", checked);
                 }
             }
+
+            SettingsSwitch {
+                id: translateOnEnterSwitch
+
+                title: qsTr("Translate on Enter Press") + Retranslate.onLocaleOrLanguageChanged
+                description: qsTr("Hold <em>Shift</em> while pressing <em>Enter</em>"
+                                  + " to start a new line")
+                             + Retranslate.onLocaleOrLanguageChanged
+                checked: translateOnEnter
+
+                onCheckedChanged: {
+                    translateOnEnter = checked;
+                }
+            }
         }
     }
 

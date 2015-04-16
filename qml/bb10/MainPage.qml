@@ -107,6 +107,15 @@ Page {
                 hintText: qsTr("Enter the source text...") + Retranslate.onLocaleOrLanguageChanged
                 textFormat: TextFormat.Plain
 
+                input {
+                    submitKey: translateOnEnter ? SubmitKey.Go : SubmitKey.Default
+
+                    onSubmitted: {
+                        if (translator.sourceText != "")
+                            translator.translate();
+                    }
+                }
+
                 onTextChanging: {
                     translator.sourceText = text;
                 }

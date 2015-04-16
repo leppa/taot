@@ -81,6 +81,17 @@ Page {
                     translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
                 }
             }
+
+            SettingsSwitch {
+                title: qsTr("Translate on Enter Press")
+                description: qsTr("Only one line of text is supported in this mode")
+                checked: translateOnEnter
+                platformInverted: root.platformInverted
+
+                onCheckedChanged: {
+                    translateOnEnter = checked;
+                }
+            }
         }
     }
 

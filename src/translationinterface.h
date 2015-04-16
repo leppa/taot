@@ -127,7 +127,15 @@ signals:
 #endif
 
 public slots:
-    QString getSettingsValue(const QString &key, const QVariant &defaultValue = QVariant()) const;
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    // HACK: We return a QString here, else JavaScript
+    // treats `false` as undefined value.
+    QString
+#else
+    QVariant
+#endif
+    getSettingsValue(const QString &key,
+                     const QVariant &defaultValue = QVariant()) const;
     void setSettingsValue(const QString &key, const QVariant &value);
 
     void selectService(int index);

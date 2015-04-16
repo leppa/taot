@@ -183,11 +183,20 @@ TranslationInterface::~TranslationInterface()
     delete m_settings;
 }
 
-// HACK: We return a QString here, else JavaScript treats `false` as undefined value.
-QString TranslationInterface::getSettingsValue(const QString &key,
-                                               const QVariant &defaultValue) const
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+QString
+#else
+QVariant
+#endif
+TranslationInterface::getSettingsValue(const QString &key,
+                                       const QVariant &defaultValue) const
 {
-    return m_settings->value(key, defaultValue).toString();
+    const QVariant val = m_settings->value(key, defaultValue);
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    return val.toString();
+#else
+    return val;
+#endif
 }
 
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)

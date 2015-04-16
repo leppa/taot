@@ -27,6 +27,12 @@ import taot 1.0
 NavigationPane {
     id: navigationPane
 
+    property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
+
+    onTranslateOnEnterChanged: {
+        translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+    }
+
     MainPage {}
 
     Menu.definition: MenuDefinition {

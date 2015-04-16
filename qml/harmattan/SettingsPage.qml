@@ -78,6 +78,16 @@ Page {
                     translator.setSettingsValue("InvertedTheme", theme.inverted);
                 }
             }
+
+            SettingsSwitch {
+                title: qsTr("Translate on Enter Press")
+                description: qsTr("Only one line of text is supported in this mode")
+                checked: translateOnEnter
+
+                onCheckedChanged: {
+                    translateOnEnter = checked;
+                }
+            }
         }
     }
 

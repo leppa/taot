@@ -26,6 +26,20 @@ import taot 1.0
 import "constants.js" as UI
 
 Page {
+    property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
+    property Item source: translateOnEnter ? sourceSingle : sourceMulti
+
+    onTranslateOnEnterChanged: {
+        translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+        if (translateOnEnter) {
+            sourceSingle.text = sourceMulti.text;
+            sourceMulti.text = "";
+        } else {
+            sourceMulti.text = sourceSingle.text;
+            sourceSingle.text = "";
+        }
+    }
+
     SelectionDialog {
         id: servicesDialog
         titleText: qsTr("Translation Service")
@@ -194,19 +208,52 @@ Page {
                 }
             }
 
-            TextArea {
-                id: source
-
+            Item {
                 width: parent.width
-//                text: "Welcome"
-                placeholderText: qsTr("Enter the source text...")
-                textFormat: TextEdit.PlainText
+                height: source.height
 
-                onTextChanged: {
-                    if (translator.sourceText == text)
-                        return;
+                SipAttributes {
+                     id: sipAttributes
+                     actionKeyLabel: qsTr("Go")
+                     actionKeyHighlighted: true
+                     actionKeyEnabled: translateButton.enabled
+                }
 
-                    translator.sourceText = text;
+                TextField {
+                    id: sourceSingle
+
+                    width: parent.width
+                    placeholderText: qsTr("Enter the source text...")
+                    platformSipAttributes: sipAttributes
+                    visible: translateOnEnter
+                    onTextChanged: {
+                        if (!visible || translator.sourceText == text)
+                            return;
+
+                        translator.sourceText = text;
+                    }
+
+                    Keys.onReturnPressed: {
+                        translateButton.focus = true;
+                        translator.translate();
+                    }
+                }
+
+                TextArea {
+                    id: sourceMulti
+
+                    width: parent.width
+//                    text: "Welcome"
+                    placeholderText: qsTr("Enter the source text...")
+                    textFormat: TextEdit.PlainText
+                    visible: !translateOnEnter
+
+                    onTextChanged: {
+                        if (!visible || translator.sourceText == text)
+                            return;
+
+                        translator.sourceText = text;
+                    }
                 }
             }
 
@@ -268,18 +315,22 @@ Page {
                                                          + (52 /*UI.FIELD_DEFAULT_HEIGHT*/
                                                             - trans.font.pixelSize)
                                                        : 0
-                source: source.style.backgroundDisabled
+                source: style.backgroundDisabled
                 smooth: true
                 clip: true
                 border {
-                    top: source.style.backgroundCornerMargin
-                    left: source.style.backgroundCornerMargin
-                    bottom: source.style.backgroundCornerMargin
-                    right: source.style.backgroundCornerMargin
+                    top: style.backgroundCornerMargin
+                    left: style.backgroundCornerMargin
+                    bottom: style.backgroundCornerMargin
+                    right: style.backgroundCornerMargin
                 }
                 anchors {
                     left: parent.left
                     right: parent.right
+                }
+
+                TextAreaStyle {
+                    id: style
                 }
 
                 Label {
@@ -287,15 +338,15 @@ Page {
 
                     text: translator.translatedText
                     wrapMode: TextEdit.Wrap
-                    color: source.style.textColor
-                    font: source.style.textFont
+                    color: style.textColor
+                    font: style.textFont
                     anchors {
                         top: parent.top
                         topMargin: (52 /*UI.FIELD_DEFAULT_HEIGHT*/ - font.pixelSize) / 2
                         left: parent.left
-                        leftMargin: source.style.paddingLeft
+                        leftMargin: style.paddingLeft
                         right: parent.right
-                        rightMargin: source.style.paddingRight
+                        rightMargin: style.paddingRight
                     }
                 }
 

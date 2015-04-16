@@ -27,6 +27,20 @@ import taot 1.0
 Page {
     id: root
 
+    property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
+    property Item source: translateOnEnter ? sourceSingle : sourceMulti
+
+    onTranslateOnEnterChanged: {
+        translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+        if (translateOnEnter) {
+            sourceSingle.text = sourceMulti.text;
+            sourceMulti.text = "";
+        } else {
+            sourceMulti.text = sourceSingle.text;
+            sourceSingle.text = "";
+        }
+    }
+
     SelectionDialog {
         id: servicesDialog
         titleText: qsTr("Translation Service")
@@ -236,8 +250,29 @@ Page {
                 width: parent.width
                 height: source.implicitHeight
 
+                TextField {
+                    id: sourceSingle
+
+                    width: parent.width
+                    height: sourceWrapper.height
+                    placeholderText: qsTr("Enter the source text...")
+                    platformInverted: appWindow.platformInverted
+                    visible: translateOnEnter
+                    onTextChanged: {
+                        if (!visible || translator.sourceText == text)
+                            return;
+
+                        translator.sourceText = text;
+                    }
+
+                    Keys.onEnterPressed: {
+                        translateButton.focus = true;
+                        translator.translate();
+                    }
+                }
+
                 TextArea {
-                    id: source
+                    id: sourceMulti
 
                     width: parent.width
                     height: parent.height
@@ -245,9 +280,10 @@ Page {
                     placeholderText: qsTr("Enter the source text...")
                     textFormat: TextEdit.PlainText
                     platformInverted: appWindow.platformInverted
+                    visible: !translateOnEnter
 
                     onTextChanged: {
-                        if (translator.sourceText == text)
+                        if (!visible || translator.sourceText == text)
                             return;
 
                         translator.sourceText = text;
@@ -256,7 +292,7 @@ Page {
                     states: [
                         State {
                             name: "Active"
-                            when: source.activeFocus
+                            when: sourceMulti.activeFocus
                                   && (inputContext.visible
                                       // HACK: There are some cases, where VKB is visible,
                                       // but reported as not. This is a dirty workaround.
@@ -316,6 +352,7 @@ Page {
                         verticalCenter: parent.verticalCenter
                     }
                     onClicked: {
+                        focus = true;
                         translator.translate();
                     }
 

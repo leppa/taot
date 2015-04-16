@@ -78,6 +78,16 @@ Page {
                     l10n.currentLanguage = l10n.get(currentIndex).language;
                 }
             }
+
+            TextSwitch {
+                text: qsTr("Translate on Enter Press")
+                description: qsTr("Only one line of text is supported in this mode")
+                checked: translateOnEnter
+
+                onCheckedChanged: {
+                    translateOnEnter = checked;
+                }
+            }
         }
 
         PushUpMenu {

@@ -26,6 +26,12 @@ import Sailfish.Silica 1.0
 Page {
     id: page
 
+    property bool translateOnEnter: false
+
+    onTranslateOnEnterChanged: {
+        translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+    }
+
     allowedOrientations: Orientation.Portrait
                          | Orientation.Landscape
                          | Orientation.LandscapeInverted
@@ -121,6 +127,20 @@ Page {
                         return;
 
                     translator.sourceText = text;
+                }
+
+                EnterKey.iconSource: translateOnEnter
+                                     ? "image://theme/icon-m-enter-accept"
+                                     : "image://theme/icon-m-enter"
+                EnterKey.enabled: !translateOnEnter
+                                  || (!translator.busy && text != "")
+                EnterKey.onClicked: {
+                    if (!translateOnEnter)
+                        return;
+
+                    if (_editor)
+                        _editor.undo();
+                    translator.translate();
                 }
             }
 
@@ -326,5 +346,10 @@ Page {
         id: settingsPage
 
         SettingsPage {}
+    }
+
+    Component.onCompleted: {
+        translateOnEnter = translator.getSettingsValue("TranslateOnEnter",
+                                                       false);
     }
 }
