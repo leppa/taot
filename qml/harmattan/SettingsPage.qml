@@ -68,64 +68,14 @@ Page {
                 }
             }
 
-            Item {
-                height: childrenRect.height
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: UI.MARGIN_XLARGE
-                    rightMargin: UI.MARGIN_XLARGE
-                }
+            SettingsSwitch {
+                title: qsTr("Dark Theme")
+                description: qsTr("Use dark color scheme")
+                checked: theme.inverted
 
-                Column {
-                    id: invertedThemeLabels
-
-                    anchors {
-                        left: parent.left
-                        right: invertedThemeSwitch.left
-                        rightMargin: 8 /*UI.PADDING_LARGE*/
-                    }
-
-                    Label {
-                        text: qsTr("Dark Theme")
-                        color: theme.inverted ? UI.LIST_TITLE_COLOR_INVERTED
-                                              : UI.LIST_TITLE_COLOR
-                        font {
-                            weight: Font.Bold
-                            pixelSize: UI.LIST_TILE_SIZE
-                        }
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
-                    Label {
-                        text: qsTr("Use dark color scheme")
-                        color: theme.inverted ? UI.LIST_SUBTITLE_COLOR_INVERTED
-                                              : UI.LIST_SUBTITLE_COLOR
-                        font {
-                            weight: UI.LIST_SUBTILE_SIZE
-                            pixelSize: Font.Light
-                        }
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
-                }
-                Switch {
-                    id: invertedThemeSwitch
-
-                    checked: theme.inverted
-                    anchors {
-                        right: parent.right
-                        verticalCenter: invertedThemeLabels.verticalCenter
-                    }
-
-                    onCheckedChanged: {
-                        theme.inverted = checked;
-                        translator.setSettingsValue("InvertedTheme", theme.inverted);
-                    }
+                onCheckedChanged: {
+                    theme.inverted = checked;
+                    translator.setSettingsValue("InvertedTheme", theme.inverted);
                 }
             }
         }

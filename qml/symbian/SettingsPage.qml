@@ -70,60 +70,15 @@ Page {
                 }
             }
 
-            Item {
-                height: childrenRect.height
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: platformStyle.paddingLarge
-                    rightMargin: platformStyle.paddingLarge
-                }
+            SettingsSwitch {
+                title: qsTr("Dark Theme")
+                description: qsTr("Use dark color scheme")
+                checked: !appWindow.platformInverted
+                platformInverted: root.platformInverted
 
-                Column {
-                    id: invertedThemeLabels
-
-                    anchors {
-                        left: parent.left
-                        right: invertedThemeSwitch.left
-                        rightMargin: platformStyle.paddingSmall
-                    }
-
-                    ListItemText {
-                        text: qsTr("Dark Theme")
-                        role: "Title"
-                        elide: Text.ElideNone
-                        wrapMode: Text.WordWrap
-                        platformInverted: root.platformInverted
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
-                    ListItemText {
-                        text: qsTr("Use dark color scheme")
-                        role: "SubTitle"
-                        elide: Text.ElideNone
-                        wrapMode: Text.WordWrap
-                        platformInverted: root.platformInverted
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
-                }
-                Switch {
-                    id: invertedThemeSwitch
-                    checked: !appWindow.platformInverted
-                    platformInverted: root.platformInverted
-                    anchors {
-                        right: parent.right
-                        verticalCenter: invertedThemeLabels.verticalCenter
-                    }
-
-                    onClicked: {
-                        appWindow.platformInverted = !checked;
-                        translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
-                    }
+                onCheckedChanged: {
+                    appWindow.platformInverted = !checked;
+                    translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
                 }
             }
         }
