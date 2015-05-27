@@ -113,22 +113,23 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
     if (m_reply && m_reply->isRunning())
         m_reply->abort();
 
+    m_translationPair = LanguagePair(from, to);
     if (m_token.isEmpty()) {
-        m_translationPair = LanguagePair(from, to);
         m_sourceText = text;
         requestToken();
         return true;
     }
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QUrl query("http://api.microsofttranslator.com/V2/Ajax.svc/Translate");
+    QUrl query("http://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
 #else
-    QUrl url("http://api.microsofttranslator.com/V2/Ajax.svc/Translate");
+    QUrl url("http://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
     QUrlQuery query;
 #endif
     query.addQueryItem("text", text);
     query.addQueryItem("from", from.info.toString());
     query.addQueryItem("to", to.info.toString());
+    query.addQueryItem("maxTranslations", "1");
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QNetworkRequest request(query);
@@ -145,21 +146,34 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
 
 bool MicrosoftTranslator::parseReply(const QByteArray &reply)
 {
-    if (reply.startsWith("\xef\xbb\xbf\"") && reply.endsWith('"')) {
-        m_translation = QString::fromUtf8(reply);
-        m_translation.remove(0, 1).chop(1);
-        return true;
-    }
-
     const QVariant data = parseJson(reply);
     if (!data.isValid())
         return false;
 
     if (data.type() == QVariant::Map) {
-        if (data.toMap().value("access_token").type() == QVariant::String) {
-            m_token = "Bearer " + data.toMap().value("access_token").toString();
+        const QVariantMap dataMap = data.toMap();
+
+        if (dataMap.value("Translations").type() == QVariant::List) {
+            const QVariantList translations = dataMap.value("Translations").toList();
+            if (translations.count() < 1) {
+                m_error = commonString(EmptyResultCommonString).arg(displayName());
+                return false;
+            }
+
+            if (isAutoLanguage(m_translationPair.first)) {
+                const QString detected = dataMap.value("From").toString();
+                m_detectedLanguage = Language(detected, getLanguageName(detected));
+            }
+
+            m_translation = translations.at(0).toMap().value("TranslatedText").toString();
+
+            return true;
+        }
+
+        if (dataMap.value("access_token").type() == QVariant::String) {
+            m_token = "Bearer " + dataMap.value("access_token").toString();
             // Clear token 30 secs before the timeout. Just to be sure :-)
-            m_tokenTimeout.setInterval(1000 * (data.toMap().value("expires_in").toInt() - 30));
+            m_tokenTimeout.setInterval(1000 * (dataMap.value("expires_in").toInt() - 30));
             m_tokenTimeout.start();
             return translate(m_translationPair.first, m_translationPair.second, m_sourceText);
         }
@@ -173,6 +187,9 @@ bool MicrosoftTranslator::parseReply(const QByteArray &reply)
             m_error = commonString(UnexpectedResponseCommonString);
         }
 
+        return false;
+    } else if (data.type() == QVariant::String) {
+        m_error = commonString(ErrorReturnedCommonString).arg(displayName(), data.toString());
         return false;
     }
 
