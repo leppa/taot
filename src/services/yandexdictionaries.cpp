@@ -131,7 +131,7 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
     }
 
     if (poses.isEmpty()) {
-        m_error = tr("%1 service returned an empty result").arg(displayName());
+        m_error = commonString(EmptyResultCommonString).arg(displayName());
         return false;
     }
 

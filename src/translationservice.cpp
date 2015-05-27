@@ -58,7 +58,7 @@ bool Language::operator <(const Language &other) const
 }
 
 TranslationService::TranslationService(QObject *parent)
-    : QObject(parent), m_reply(NULL), m_error(tr("No error"))
+    : QObject(parent), m_reply(NULL), m_error(commonString(NoErrorCommonString))
 {
     connect(&m_nam, SIGNAL(finished(QNetworkReply*)), SLOT(onNetworkReply(QNetworkReply*)));
 }

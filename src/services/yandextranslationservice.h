@@ -44,6 +44,7 @@ public:
     bool checkReplyForErrors(QNetworkReply *reply);
 
 protected:
+    virtual QString serviceName() const = 0;
     void loadLanguages(const QString &file, bool withAutodetect = true);
 
     QSslConfiguration m_sslConfiguration;

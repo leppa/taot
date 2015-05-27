@@ -19,8 +19,8 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     m_tokenTimeout.setSingleShot(true);
     connect(&m_tokenTimeout, SIGNAL(timeout()), SLOT(onTokenTimeout()));
 
-    m_sourceLanguages << Language("", tr("Autodetect"));
-    m_langCodeToName.insert("", tr("Autodetect"));
+    m_sourceLanguages << Language("", commonString(AutodetectLanguageCommonString));
+    m_langCodeToName.insert("", commonString(AutodetectLanguageCommonString));
 
     // TODO: Download actual list from
     // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguagesForTranslate
@@ -94,8 +94,8 @@ LanguagePair MicrosoftTranslator::defaultLanguagePair() const
 QString MicrosoftTranslator::getLanguageName(const QVariant &info) const
 {
     //: Unknown language
-    return m_langCodeToName.value(info.toString(),
-                                  tr("Unknown (%1)", "Unknown language").arg(info.toString()));
+    return m_langCodeToName.value(info.toString(), commonString(UnknownLanguageWithInfoCommonString)
+                                                   .arg(info.toString()));
 }
 
 bool MicrosoftTranslator::isAutoLanguage(const Language &lang) const
@@ -165,17 +165,18 @@ bool MicrosoftTranslator::parseReply(const QByteArray &reply)
         }
 
         if (data.toMap().value("error_description").type() == QVariant::String) {
-            m_error = tr("Server returned an error: \"%1\"").arg(data.toMap()
-                                                                 .value("error_description")
-                                                                 .toString());
+            m_error = commonString(ErrorReturnedCommonString).arg(displayName(),
+                                                                  data.toMap()
+                                                                  .value("error_description")
+                                                                  .toString());
         } else {
-            m_error = tr("Unexpected response from the server");
+            m_error = commonString(UnexpectedResponseCommonString);
         }
 
         return false;
     }
 
-    m_error = tr("Unexpected response from the server");
+    m_error = commonString(UnexpectedResponseCommonString);
     return false;
 }
 

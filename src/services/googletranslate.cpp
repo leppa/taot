@@ -123,8 +123,8 @@ LanguagePair GoogleTranslate::defaultLanguagePair() const
 QString GoogleTranslate::getLanguageName(const QVariant &info) const
 {
     //: Unknown language
-    return m_langCodeToName.value(info.toString(),
-                                  tr("Unknown (%1)", "Unknown language").arg(info.toString()));
+    return m_langCodeToName.value(info.toString(), commonString(UnknownLanguageWithInfoCommonString)
+                                                   .arg(info.toString()));
 }
 
 bool GoogleTranslate::isAutoLanguage(const Language &lang) const
@@ -194,8 +194,10 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
         return false;
 
     const QVariantList dl = data.toList();
-    if (dl.isEmpty())
+    if (dl.isEmpty()) {
+        m_error = commonString(EmptyResultCommonString).arg(displayName());
         return false;
+    }
 
     const QString detected = dl.value(2).toString();
     m_detectedLanguage = Language(detected, getLanguageName(detected));
