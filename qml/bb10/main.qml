@@ -91,6 +91,7 @@ NavigationPane {
         },
         SystemToast {
             id: toast
+            button.label: qsTr("Close")
         }
     ]
 
