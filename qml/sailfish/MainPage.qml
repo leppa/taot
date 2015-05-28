@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.taot 1.0
 
 Page {
     id: page
@@ -354,6 +355,33 @@ Page {
                 }
             }
         }
+
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Paste")
+                enabled: !clipboard.empty
+                onClicked: {
+                    source.paste();
+                    translator.translate();
+                }
+            }
+            MenuItem {
+                property bool hasSelection: translation.selectionStart
+                                            != translation.selectionEnd
+                text: hasSelection ? qsTr("Copy selection") : qsTr("Copy all")
+                enabled: translation.text != ""
+                onClicked: {
+                    if (hasSelection)
+                        clipboard.insert(translation.selectedText);
+                    else
+                        clipboard.insert(translation.text);
+                }
+            }
+        }
+    }
+
+    Clipboard {
+        id: clipboard
     }
 
     Component {

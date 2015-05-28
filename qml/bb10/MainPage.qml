@@ -20,6 +20,7 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import QtQuick 1.0
 import bb.cascades 1.0
 import bb.system 1.0
 import taot 1.0
@@ -237,26 +238,31 @@ Page {
 
     actions: [
         ActionItem {
-            title: qsTr("Select all") + Retranslate.onLocaleOrLanguageChanged
-            imageSource: "asset:///icons/ic_select_text_all.png"
-            enabled: translation.text != ""
+            title: qsTr("Paste") + Retranslate.onLocaleOrLanguageChanged
+            imageSource: "asset:///icons/ic_paste.png"
+            enabled: !clipboard.empty
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                translation.editor.setSelection(0, translation.text.length);
+                source.text = clipboard.text;
+                translator.translate();
             }
         },
         ActionItem {
             id: copyAction
 
-            title: qsTr("Copy") + Retranslate.onLocaleOrLanguageChanged
+            property bool hasSelection: translation.editor.selectedText != ""
+
+            title: (hasSelection ? qsTr("Copy selection") : qsTr("Copy all"))
+                   + Retranslate.onLocaleOrLanguageChanged
             imageSource: "asset:///icons/ic_copy.png"
-            enabled: translation.editor.selectedText != ""
+            enabled: translation.text != ""
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
                 clipboard.clear();
-                if (clipboard.insert("text/plain", translation.editor.selectedText))
+                if (clipboard.insert(hasSelection ? translation.editor.selectedText
+                                                  : translation.text))
                     toast.body = qsTr("Translation was successfully copied to clipboard");
                 else
                     toast.body = qsTr("Couldn't copy translation to clipboard");
@@ -289,7 +295,17 @@ Page {
         },
         Clipboard {
             id: clipboard
+        },
+        Connections {
+            target: translation.editor
+            onSelectionStartChanged: {
+                selectionChanged();
+            }
+            onSelectionEndChanged: {
+                selectionChanged();
+            }
         }
+
     ]
 
     onCreationCompleted: {
@@ -308,9 +324,6 @@ Page {
         updateTargetLanguages();
         sourceLanguagesDropDown.selectedIndex = translator.sourceLanguage.index;
         targetLanguagesDropDown.selectedIndex = translator.targetLanguage.index;
-
-        translation.editor.selectionStartChanged.connect(selectionChanged);
-        translation.editor.selectionEndChanged.connect(selectionChanged);
 
         translator.sourceTextChanged.connect(sourceTextChanged);
     }
@@ -335,7 +348,7 @@ Page {
     }
     function selectionChanged()
     {
-        copyAction.enabled = (translation.editor.selectedText != "");
+        copyAction.hasSelection = (translation.editor.selectedText != "");
     }
     function sourceLanguageChanged()
     {

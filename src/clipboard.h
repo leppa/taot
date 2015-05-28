@@ -24,10 +24,8 @@
 #define CLIPBOARD_H
 
 #include <QObject>
-#include <QMetaType>
+#include <QClipboard>
 
-class QFileSystemWatcher;
-namespace bb { namespace system { class Clipboard; } }
 class Clipboard: public QObject
 {
     Q_OBJECT
@@ -39,22 +37,18 @@ public:
     bool isEmpty() const;
 
 public slots:
-    bool clear();
+    void clear();
     QString text() const;
-    bool insert(const QString &text);
+    void insert(const QString &text);
 
 signals:
     void textChanged();
 
 private slots:
-    void onFileChanged(const QString &path);
+    void onChanged(QClipboard::Mode mode = QClipboard::Clipboard);
 
 private:
-    bb::system::Clipboard *m_clipboard;
     QString m_text;
-    QFileSystemWatcher *m_clipboardWatcher;
 };
-
-Q_DECLARE_METATYPE(Clipboard *)
 
 #endif // CLIPBOARD_H

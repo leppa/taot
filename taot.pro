@@ -94,11 +94,13 @@ blackberry {
 } else {
     HEADERS += \
         src/dictionarymodel.h \
-        src/reversetranslationsmodel.h
+        src/reversetranslationsmodel.h \
+        src/clipboard.h
 
     SOURCES += \
         src/dictionarymodel.cpp \
-        src/reversetranslationsmodel.cpp
+        src/reversetranslationsmodel.cpp \
+        src/clipboard.cpp
 }
 
 symbian {

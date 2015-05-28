@@ -602,6 +602,23 @@ Page {
             onClicked: Qt.quit();
         }
         ToolButton {
+            text: qsTr("Paste")
+            enabled: !clipboard.empty
+            platformInverted: appWindow.platformInverted
+            onClicked: {
+                source.paste();
+                translator.translate();
+            }
+        }
+        ToolButton {
+            text: qsTr("Copy")
+            enabled: translator.translatedText != ""
+            platformInverted: appWindow.platformInverted
+            onClicked: {
+                clipboard.insert(translator.translatedText);
+            }
+        }
+        ToolButton {
             iconSource: "toolbar-settings"
             platformInverted: appWindow.platformInverted
             onClicked: pageStack.push(settingsPage);
@@ -616,6 +633,10 @@ Page {
             banner.text = errorString;
             banner.open();
         }
+    }
+
+    Clipboard {
+        id: clipboard
     }
 
     Component {

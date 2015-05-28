@@ -46,18 +46,16 @@ Page {
             }
         }
         ToolButton {
-            text: qsTr("Select all")
+            property bool hasSelection: translation.selectionStart
+                                        != translation.selectionEnd
+            text: hasSelection ? qsTr("Copy selection") : qsTr("Copy all")
+            enabled: translation.text != ""
             platformInverted: root.platformInverted
             onClicked: {
-                translation.selectAll();
-            }
-        }
-        ToolButton {
-            text: qsTr("Copy")
-            enabled: translation.selectedText != ""
-            platformInverted: root.platformInverted
-            onClicked: {
-                translation.copy();
+                if (hasSelection)
+                    clipboard.insert(translation.selectedText);
+                else
+                    clipboard.insert(translation.text);
             }
         }
     }

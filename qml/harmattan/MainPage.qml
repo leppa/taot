@@ -498,9 +498,22 @@ Page {
     }
 
     tools: ToolBarLayout {
-        ToolIcon {
-            iconId: "toolbar-close"
-            onClicked: Qt.quit();
+        ToolButtonRow {
+            ToolButton {
+                text: qsTr("Paste")
+                enabled: !clipboard.empty
+                onClicked: {
+                    source.paste();
+                    translator.translate();
+                }
+            }
+            ToolButton {
+                text: qsTr("Copy")
+                enabled: translator.translatedText != ""
+                onClicked: {
+                    clipboard.insert(translator.translatedText);
+                }
+            }
         }
         ToolIcon {
             iconId: "toolbar-settings"
@@ -516,6 +529,10 @@ Page {
             banner.text = errorString;
             banner.show();
         }
+    }
+
+    Clipboard {
+        id: clipboard
     }
 
     Component {
