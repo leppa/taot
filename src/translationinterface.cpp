@@ -84,6 +84,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_settings(new QSettings(QCoreApplication::organizationName(), "taot", this))
 #endif
 {
+    setTranscription(new SourceTranslatedTextPair());
     setTranslit(new SourceTranslatedTextPair());
 
     QStringList list;
@@ -185,6 +186,11 @@ QString TranslationInterface::detectedLanguageName() const
 QString TranslationInterface::translatedText() const
 {
     return m_translation;
+}
+
+SourceTranslatedTextPair *TranslationInterface::transcription() const
+{
+    return m_transcription.data();
 }
 
 SourceTranslatedTextPair *TranslationInterface::translit() const
@@ -422,6 +428,7 @@ void TranslationInterface::resetTranslation()
     m_service->cancelTranslation();
     m_service->clear();
     setTranslatedText(QString());
+    setTranscription(new SourceTranslatedTextPair());
     setTranslit(new SourceTranslatedTextPair());
     setDetectedLanguage(Language());
     m_dict->clear();
@@ -451,6 +458,20 @@ void TranslationInterface::setTranslatedText(const QString &translatedText)
     emit translatedTextChanged();
 }
 
+void TranslationInterface::setTranscription(SourceTranslatedTextPair *transcription)
+{
+    if (m_transcription.data() == transcription)
+        return;
+
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QDeclarativeEngine::setObjectOwnership(transcription, QDeclarativeEngine::CppOwnership);
+#else
+    QQmlEngine::setObjectOwnership(transcription, QQmlEngine::CppOwnership);
+#endif
+    m_transcription.reset(transcription);
+    emit transcriptionChanged();
+}
+
 void TranslationInterface::setTranslit(SourceTranslatedTextPair *translit)
 {
     if (m_translit.data() == translit)
@@ -475,6 +496,7 @@ void TranslationInterface::onTranslationFinished()
     }
 
     setTranslatedText(m_service->translation());
+    setTranscription(new SourceTranslatedTextPair(m_service->transcription()));
     setTranslit(new SourceTranslatedTextPair(m_service->translit()));
     setDetectedLanguage(m_service->detectedLanguage());
 }

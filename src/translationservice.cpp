@@ -77,6 +77,7 @@ void TranslationService::clear()
 {
     m_error.clear();
     m_translation.clear();
+    m_transcription = StringPair();
     m_translit = StringPair();
     m_detectedLanguage = Language();
 }
@@ -90,6 +91,11 @@ void TranslationService::cancelTranslation()
 QString TranslationService::translation() const
 {
     return m_translation;
+}
+
+StringPair TranslationService::transcription() const
+{
+    return m_transcription;
 }
 
 StringPair TranslationService::translit() const

@@ -83,6 +83,8 @@ class TranslationInterface: public QObject
     Q_PROPERTY(QString sourceText READ sourceText WRITE setSourceText NOTIFY sourceTextChanged)
     Q_PROPERTY(QString detectedLanguageName READ detectedLanguageName NOTIFY detectedLanguageChanged)
     Q_PROPERTY(QString translatedText READ translatedText NOTIFY translatedTextChanged)
+    Q_PROPERTY(SourceTranslatedTextPair *transcription READ transcription
+                                                       NOTIFY transcriptionChanged)
     Q_PROPERTY(SourceTranslatedTextPair *translit READ translit NOTIFY translitChanged)
     Q_PROPERTY(DictionaryModel *dictionary READ dictionary CONSTANT)
 
@@ -124,6 +126,7 @@ public:
     QString sourceText() const;
     QString detectedLanguageName() const;
     QString translatedText() const;
+    SourceTranslatedTextPair *transcription() const;
     SourceTranslatedTextPair *translit() const;
     DictionaryModel *dictionary() const;
 
@@ -143,6 +146,7 @@ signals:
     void sourceTextChanged();
     void detectedLanguageChanged();
     void translatedTextChanged();
+    void transcriptionChanged();
     void translitChanged();
 #ifdef Q_OS_SYMBIAN
     void appVisibilityChanged();
@@ -188,6 +192,7 @@ private:
     Language m_detectedLanguage;
     QString m_srcText;
     QString m_translation;
+    QScopedPointer<SourceTranslatedTextPair> m_transcription;
     QScopedPointer<SourceTranslatedTextPair> m_translit;
     DictionaryModel *m_dict;
 
@@ -198,6 +203,7 @@ private:
     void setBusy(bool busy);
     void setDetectedLanguage(const Language &detectedLanguageName);
     void setTranslatedText(const QString &translatedText);
+    void setTranscription(SourceTranslatedTextPair *transcription);
     void setTranslit(SourceTranslatedTextPair *translit);
 
 #ifdef Q_OS_BLACKBERRY
