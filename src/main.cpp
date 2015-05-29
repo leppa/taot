@@ -138,6 +138,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
     qmlRegisterType<L10nModel>("taot", 1, 0, "L10nModel");
 #endif
+    qmlRegisterType<SourceTranslatedTextPair>();
     qmlRegisterType<TranslationServiceItem>();
     qmlRegisterType<TranslationServicesModel>();
     qmlRegisterType<LanguageItem>();

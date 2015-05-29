@@ -42,6 +42,32 @@
 #   include <QTextDocument>
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include <QDeclarativeEngine>
+#else
+#   include <QQmlEngine>
+#endif
+
+SourceTranslatedTextPair::SourceTranslatedTextPair(QObject *parent)
+    : QObject(parent)
+{}
+
+SourceTranslatedTextPair::SourceTranslatedTextPair(const StringPair &translit, QObject *parent)
+    : QObject(parent)
+    , m_sourceText(translit.first)
+    , m_translatedText(translit.second)
+{}
+
+QString SourceTranslatedTextPair::sourceText() const
+{
+    return m_sourceText;
+}
+
+QString SourceTranslatedTextPair::translatedText() const
+{
+    return m_translatedText;
+}
+
 TranslationInterface::TranslationInterface(QObject *parent)
     : QObject(parent)
     , m_service(NULL)
@@ -58,6 +84,8 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_settings(new QSettings(QCoreApplication::organizationName(), "taot", this))
 #endif
 {
+    setTranslit(new SourceTranslatedTextPair());
+
     QStringList list;
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
     list.insert(MicrosoftTranslatorService, MicrosoftTranslator::displayName());
@@ -157,6 +185,11 @@ QString TranslationInterface::detectedLanguageName() const
 QString TranslationInterface::translatedText() const
 {
     return m_translation;
+}
+
+SourceTranslatedTextPair *TranslationInterface::translit() const
+{
+    return m_translit.data();
 }
 
 DictionaryModel *TranslationInterface::dictionary() const
@@ -389,6 +422,7 @@ void TranslationInterface::resetTranslation()
     m_service->cancelTranslation();
     m_service->clear();
     setTranslatedText(QString());
+    setTranslit(new SourceTranslatedTextPair());
     setDetectedLanguage(Language());
     m_dict->clear();
 }
@@ -417,6 +451,20 @@ void TranslationInterface::setTranslatedText(const QString &translatedText)
     emit translatedTextChanged();
 }
 
+void TranslationInterface::setTranslit(SourceTranslatedTextPair *translit)
+{
+    if (m_translit.data() == translit)
+        return;
+
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QDeclarativeEngine::setObjectOwnership(translit, QDeclarativeEngine::CppOwnership);
+#else
+    QQmlEngine::setObjectOwnership(translit, QQmlEngine::CppOwnership);
+#endif
+    m_translit.reset(translit);
+    emit translitChanged();
+}
+
 void TranslationInterface::onTranslationFinished()
 {
     setBusy(false);
@@ -427,6 +475,7 @@ void TranslationInterface::onTranslationFinished()
     }
 
     setTranslatedText(m_service->translation());
+    setTranslit(new SourceTranslatedTextPair(m_service->translit()));
     setDetectedLanguage(m_service->detectedLanguage());
 }
 

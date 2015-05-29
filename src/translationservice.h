@@ -44,6 +44,8 @@ struct Language
 typedef QPair<Language, Language> LanguagePair;
 typedef QList<Language> LanguageList;
 
+typedef QPair<QString, QString> StringPair;
+
 class TranslationService: public QObject
 {
     Q_OBJECT
@@ -71,6 +73,7 @@ public:
     virtual bool parseReply(const QByteArray &reply) = 0;
 
     virtual QString translation() const;
+    virtual StringPair translit() const;
     virtual Language detectedLanguage() const;
 
     virtual QString errorString() const;
@@ -92,6 +95,7 @@ protected:
 
     QString m_error;
     QString m_translation;
+    StringPair m_translit;
     Language m_detectedLanguage;
 };
 
