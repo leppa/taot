@@ -115,10 +115,13 @@ inline QString commonString(CommonString id)
 {
     switch (id) {
     case AutodetectLanguageCommonString:
+        //: As in "Automatically detect language"
         return TranslationService::tr("Autodetect", "Automatically detect language");
     case UnknownLanguageCommonString:
+        //: Unknown language
         return TranslationService::tr("Unknown", "Unknown language");
     case UnknownLanguageWithInfoCommonString:
+        //: Unknown language
         return TranslationService::tr("Unknown (%1)", "Unknown language");
     case NoErrorCommonString:
         return TranslationService::tr("No error");

@@ -27,8 +27,7 @@
 #include <QDebug>
 
 Language::Language()
-    //: Unknown language
-    : displayName(TranslationService::tr("Unknown", "Unknown language"))
+    : displayName(commonString(UnknownLanguageCommonString))
 {}
 
 Language::Language(const QVariant info, const QString &name)
