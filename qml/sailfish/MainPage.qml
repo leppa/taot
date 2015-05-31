@@ -121,6 +121,7 @@ Page {
 
                 width: parent.width
                 placeholderText: qsTr("Enter the source text...")
+                labelVisible: false
 
                 onTextChanged: {
                     if (translator.sourceText === text)
@@ -141,6 +142,26 @@ Page {
                     if (_editor)
                         _editor.undo();
                     translator.translate();
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.transcription.sourceText
+                visible: translator.transcription.sourceText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.sourceText
+                visible: translator.translit.sourceText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
                 }
             }
 
@@ -196,13 +217,46 @@ Page {
             }
 
             TextArea {
+                id: translation
+
                 text: translator.translatedText
                 width: parent.width
                 height: translator.supportsTranslation ? implicitHeight
                                                        : 0
                 visible: height > 0
+                labelVisible: false
                 readOnly: true
                 focusOnClick: true
+
+                Separator {
+                    color: translation.color
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        bottom: parent.bottom
+                        bottomMargin: -Theme.paddingSmall / 2
+                    }
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.transcription.translatedText
+                visible: translator.transcription.translatedText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.translatedText
+                visible: translator.translit.translatedText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
             }
 
             Row {

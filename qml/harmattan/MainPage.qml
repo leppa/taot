@@ -257,6 +257,24 @@ Page {
                 }
             }
 
+            ExpandableLabel {
+                text: translator.transcription.sourceText
+                visible: translator.transcription.sourceText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.sourceText
+                visible: translator.translit.sourceText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+
             Item {
                 height: Math.max(translateButton.height, clearButton.height)
                 anchors {
@@ -363,6 +381,24 @@ Page {
                         duration: 200
                         easing.type: Easing.InOutQuad
                     }
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.transcription.translatedText
+                visible: translator.transcription.translatedText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.translatedText
+                visible: translator.translit.translatedText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
                 }
             }
 

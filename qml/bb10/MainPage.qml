@@ -122,6 +122,28 @@ Page {
             }
 
             Container {
+                leftPadding: 15
+                bottomPadding: 15
+                visible: translator.transcription.sourceText != ""
+
+                Label {
+                    text: translator.transcription.sourceText
+                    topMargin: 0
+                    bottomMargin: 0
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.sourceText
+                leftPadding: 15
+                bottomPadding: 15
+                visible: translator.translit.sourceText != ""
+                textStyle {
+                    fontStyle: FontStyle.Italic
+                }
+            }
+
+            Container {
                 layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
 
                 Container {
@@ -166,6 +188,28 @@ Page {
                 editable: false
                 textFormat: TextFormat.Plain
                 visible: translator.supportsTranslation
+            }
+
+            Container {
+                leftPadding: 15
+                bottomPadding: 15
+                visible: translator.transcription.translatedText != ""
+
+                Label {
+                    text: translator.transcription.translatedText
+                    topMargin: 0
+                    bottomMargin: 0
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.translatedText
+                visible: translator.translit.translatedText != ""
+                leftPadding: 15
+                bottomPadding: 15
+                textStyle {
+                    fontStyle: FontStyle.Italic
+                }
             }
 
             Container {
