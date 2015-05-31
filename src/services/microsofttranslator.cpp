@@ -136,7 +136,7 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
     url.setQuery(query);
     QNetworkRequest request(url);
 #endif
-    request.setRawHeader("Authorization", m_token.toLatin1());
+    request.setRawHeader("Authorization", m_token);
 
     m_reply = m_nam.get(request);
 
@@ -170,7 +170,7 @@ bool MicrosoftTranslator::parseReply(const QByteArray &reply)
         }
 
         if (dataMap.value("access_token").type() == QVariant::String) {
-            m_token = "Bearer " + dataMap.value("access_token").toString();
+            m_token = "Bearer " + dataMap.value("access_token").toByteArray();
             // Clear token 30 secs before the timeout. Just to be sure :-)
             m_tokenTimeout.setInterval(1000 * (dataMap.value("expires_in").toInt() - 30));
             m_tokenTimeout.start();

@@ -36,7 +36,7 @@ private:
     bool checkReplyForErrors(QNetworkReply *reply);
     void requestToken();
 
-    QString m_token;
+    QByteArray m_token;
     QTimer m_tokenTimeout;
     LanguageList m_sourceLanguages;
     LanguageList m_targetLanguages;
