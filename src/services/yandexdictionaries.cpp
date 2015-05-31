@@ -76,24 +76,30 @@ bool YandexDictionaries::translate(const Language &from, const Language &to, con
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QUrl query("https://dictionary.yandex.net/api/v1/dicservice.json/lookup");
+    QUrl dataQuery;
 #else
     QUrl url("https://dictionary.yandex.net/api/v1/dicservice.json/lookup");
-    QUrlQuery query;
+    QUrlQuery query, dataQuery;
 #endif
     query.addQueryItem("ui", "en");
     query.addQueryItem("key", YANDEXDICTIONARIES_API_KEY);
     query.addQueryItem("lang", lang);
-    query.addQueryItem("text", text.trimmed());
+
+    dataQuery.addQueryItem("text", text.trimmed());
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QNetworkRequest request(query);
+    const QByteArray data(dataQuery.encodedQuery());
 #else
     url.setQuery(query);
     QNetworkRequest request(url);
+    const QByteArray data(dataQuery.toString(QUrl::FullyEncoded).toUtf8());
 #endif
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+                      "application/x-www-form-urlencoded;charset=UTF-8");
     request.setSslConfiguration(m_sslConfiguration);
 
-    m_reply = m_nam.get(request);
+    m_reply = m_nam.post(request, data);
 
     return true;
 }

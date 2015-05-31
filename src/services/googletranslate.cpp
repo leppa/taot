@@ -140,9 +140,10 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 {
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QUrl query("https://translate.google.com/translate_a/single");
+    QUrl dataQuery;
 #else
     QUrl url("https://translate.google.com/translate_a/single");
-    QUrlQuery query;
+    QUrlQuery query, dataQuery;
 #endif
     query.addQueryItem("client", "q");
     query.addQueryItem("hl", "en");
@@ -165,13 +166,19 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 //    query.addQueryItem("tsel", "0");
 //    query.addQueryItem("otf", "1");
 
-    query.addQueryItem("q", text);
+    dataQuery.addQueryItem("q", text);
+
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    m_reply = m_nam.get(QNetworkRequest(query));
+    QNetworkRequest request(query);
+    const QByteArray data(dataQuery.encodedQuery());
 #else
     url.setQuery(query);
-    m_reply = m_nam.get(QNetworkRequest(url));
+    QNetworkRequest request(url);
+    const QByteArray data(dataQuery.toString(QUrl::FullyEncoded).toUtf8());
 #endif
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+                      "application/x-www-form-urlencoded;charset=UTF-8");
+    m_reply = m_nam.post(request, data);
 
     return true;
 }
