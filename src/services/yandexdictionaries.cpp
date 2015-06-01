@@ -105,7 +105,9 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
         return false;
 
     QHash<QString, DictionaryPos> poses;
+    QSet<QString> transcriptions;
     foreach (const QVariant &di, data.toMap().value("def").toList()) {
+        transcriptions.insert(di.toMap().value("ts").toString());
         foreach (const QVariant &pi, di.toMap().value("tr").toList()) {
             const QString posname = pi.toMap().value("pos").toString();
             DictionaryPos pos = poses.value(posname, DictionaryPos(posname));
@@ -135,7 +137,13 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
         return false;
     }
 
-    m_translation.clear();
+    m_transcription = StringPair();
+    if (!transcriptions.isEmpty()) {
+        //: Separator for joining string lists (don't forget space after comma)
+        m_transcription.first
+                = "[" + QStringList(transcriptions.toList()).join("]" + tr(", ") + "[") + "]";
+    }
+
     m_dict->clear();
     foreach (DictionaryPos pos, poses) {
         m_dict->append(pos);
