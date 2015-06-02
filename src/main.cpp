@@ -83,12 +83,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     QCoreApplication::setApplicationName("TAO Translator");
-    QCoreApplication::setApplicationVersion((BUILD > 0)
-                                            //: %1 - version, %2 - build number
-                                            ? QCoreApplication::translate("AboutPage",
-                                                                          "%1 (build %2)")
-                                              .arg(VERSION_STR).arg(BUILD)
-                                            : VERSION_STR);
+    QCoreApplication::setApplicationVersion(VERSION_STR);
     QCoreApplication::setOrganizationName("Oleksii Serdiuk");
     QCoreApplication::setOrganizationDomain("oleksii.name");
 
@@ -129,6 +124,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QTranslator tr;
     if (tr.load("taot_" + lc, ":/l10n"))
         app->installTranslator(&tr);
+#endif
+
+#if BUILD > 0
+    //: %1 - version, %2 - build number
+    QCoreApplication::setApplicationVersion(QCoreApplication::translate("AboutPage","%1 (build %2)")
+                                            .arg(VERSION_STR).arg(BUILD));
 #endif
 
 #ifdef Q_OS_SAILFISH
