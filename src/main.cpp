@@ -126,7 +126,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         app->installTranslator(&tr);
 #endif
 
-#if BUILD > 0
+#if BUILD > 1
     //: %1 - version, %2 - build number
     QCoreApplication::setApplicationVersion(QCoreApplication::translate("AboutPage","%1 (build %2)")
                                             .arg(VERSION_STR).arg(BUILD));

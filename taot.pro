@@ -168,7 +168,7 @@ VERSION = $$replace(VERSION, "</versionNumber>", "")
 BUILD = $$find(BARFILE, <buildId>.*</buildId>)
 BUILD = $$replace(BUILD, "<buildId>", "")
 BUILD = $$replace(BUILD, "</buildId>", "")
-isEmpty(BUILD): BUILD = 0
+isEmpty(BUILD): BUILD = 1
 symbian {
     DEFINES += VERSION=$$VERSION
 } else {
