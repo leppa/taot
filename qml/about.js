@@ -26,6 +26,9 @@
 var aboutText =
 "<p><a href=\"https://github.com/leppa/taot\">https://github.com/leppa/taot</a></p> " +
 "<p>Copyright &copy; 2013-2015 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=TAO%20Translator\">Oleksii Serdiuk</a></p> " +
+"<p>&nbsp;</p> " +
+"<p>" + qsTr("%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: <a href=\"%2\">Donate</a>.").arg("TAO Translator").arg("https://github.com/leppa/taot/wiki/Donate") + "</p> " +
+"<p>&nbsp;</p> " +
 "<p>" +
 qsTr("%1 contains the following contributed translations:").arg("TAO Translator") + " " +
 "<b>Chinese</b> by gwmgdemj and 太空飞瓜 (finalmix), " +
@@ -49,8 +52,6 @@ qsTr("<p>%1 uses online translation services to provide translations.</p>" +
      "\t<li><b>Yandex.Dictionaries</b> - supports dictionary with synonyms and reverse translations.</li>\n" +
      "</ul>" +
      "<p>More services are possible in future.</p>").arg("TAO Translator") + " " +
-"<p>&nbsp;</p> " +
-"<p>" + qsTr("%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: <a href=\"%2\">Donate</a>.").arg("TAO Translator").arg("https://github.com/leppa/taot/wiki/Donate") + "</p> " +
 "<p>&nbsp;</p> " +
 "<p>This program is free software; you can redistribute it and/or " +
 "modify it under the terms of the GNU General Public License " +
