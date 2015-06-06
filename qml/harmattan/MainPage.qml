@@ -529,6 +529,6 @@ Page {
     }
 
     Component.onCompleted: {
-        theme.inverted = translator.getSettingsValue("InvertedTheme");
+        theme.inverted = translator.getSettingsValue("InvertedTheme", false);
     }
 }

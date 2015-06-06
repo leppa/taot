@@ -404,6 +404,6 @@ Page {
 
     Component.onCompleted: {
         translateOnEnter = translator.getSettingsValue("TranslateOnEnter",
-                                                       false);
+                                                       "false") === "true";
     }
 }

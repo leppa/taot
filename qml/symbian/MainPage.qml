@@ -633,6 +633,6 @@ Page {
     }
 
     Component.onCompleted: {
-        appWindow.platformInverted = translator.getSettingsValue("InvertedTheme");
+        appWindow.platformInverted = translator.getSettingsValue("InvertedTheme", false);
     }
 }

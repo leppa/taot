@@ -222,20 +222,10 @@ TranslationInterface::~TranslationInterface()
     delete m_settings;
 }
 
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-QString
-#else
-QVariant
-#endif
-TranslationInterface::getSettingsValue(const QString &key,
-                                       const QVariant &defaultValue) const
+QVariant TranslationInterface::getSettingsValue(const QString &key,
+                                                const QVariant &defaultValue) const
 {
-    const QVariant val = m_settings->value(key, defaultValue);
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    return val.toString();
-#else
-    return val;
-#endif
+    return m_settings->value(key, defaultValue);
 }
 
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
