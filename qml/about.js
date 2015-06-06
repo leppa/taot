@@ -46,10 +46,10 @@ qsTr("%1 contains the following contributed translations:").arg("TAO Translator"
 qsTr("<p>%1 uses online translation services to provide translations.</p>" +
      "<p>Currently supported services:</p>" +
      "<ul>" +
-     "\t<li><b>Google Translate</b> - supports translation, language detection, dictionary and reverse translations for single words.</li>\n" +
-     "\t<li><b>Microsoft Translator</b> (a.k.a. <b>Bing Translator</b>) - supports translation only.</li>\n" +
+     "\t<li><b>Google Translate</b> - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.</li>\n" +
+     "\t<li><b>Microsoft Translator</b> (a.k.a. <b>Bing Translator</b>) - supports translation and language detection.</li>\n" +
      "\t<li><b>Yandex.Translate</b> - supports translation and language detection.</li>\n" +
-     "\t<li><b>Yandex.Dictionaries</b> - supports dictionary with synonyms and reverse translations.</li>\n" +
+     "\t<li><b>Yandex.Dictionaries</b> - supports dictionary with transcription for some languages, synonyms, and reverse translations.</li>\n" +
      "</ul>" +
      "<p>More services are possible in future.</p>").arg("TAO Translator") + " " +
 "<p>&nbsp;</p> " +

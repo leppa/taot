@@ -8,13 +8,14 @@ translations.
 
 Currently supported services:
 
- - **Google Translate** - supports translation, language detection,
-   dictionary and reverse translations for single words.
+ - **Google Translate** - supports translation, transliteration for most
+   non-latin scripts, language detection, and dictionary with reverse
+   translations for single words.
  - **Microsoft Translator** (a.k.a. **Bing Translator**) - supports
-   translation only.
+   translation and language detection.
  - **Yandex.Translate** - supports translation and language detection.
- - **Yandex.Dictionaries** - supports dictionary with synonyms and
-   reverse translations.
+ - **Yandex.Dictionaries** - supports dictionary with transcription
+   for some languages, synonyms, and reverse translations.
 
 More services might be added in future.
 
