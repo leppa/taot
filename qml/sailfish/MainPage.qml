@@ -28,9 +28,14 @@ Page {
     id: page
 
     property bool translateOnEnter: false
+    property bool translateOnPaste: true
 
     onTranslateOnEnterChanged: {
         translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+    }
+
+    onTranslateOnPasteChanged: {
+        translator.setSettingsValue("TranslateOnPaste", translateOnPaste);
     }
 
     allowedOrientations: Orientation.Portrait
@@ -362,7 +367,8 @@ Page {
                 enabled: !clipboard.empty
                 onClicked: {
                     source.paste();
-                    translator.translate();
+                    if (translateOnPaste)
+                        translator.translate();
                 }
             }
             MenuItem {
@@ -431,7 +437,7 @@ Page {
     }
 
     Component.onCompleted: {
-        translateOnEnter = translator.getSettingsValue("TranslateOnEnter",
-                                                       "false") === "true";
+        translateOnEnter = translator.getSettingsValue("TranslateOnEnter", "false") === "true";
+        translateOnPaste = translator.getSettingsValue("TranslateOnPaste", "true") === "true";
     }
 }

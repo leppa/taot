@@ -28,6 +28,7 @@ Page {
     id: root
 
     property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
+    property bool translateOnPaste: translator.getSettingsValue("TranslateOnPaste", true)
     property Item source: translateOnEnter ? sourceSingle : sourceMulti
 
     onTranslateOnEnterChanged: {
@@ -39,6 +40,10 @@ Page {
             sourceMulti.text = sourceSingle.text;
             sourceSingle.text = "";
         }
+    }
+
+    onTranslateOnPasteChanged: {
+        translator.setSettingsValue("TranslateOnPaste", translateOnPaste);
     }
 
     SelectionDialog {
@@ -607,7 +612,8 @@ Page {
             platformInverted: appWindow.platformInverted
             onClicked: {
                 source.paste();
-                translator.translate();
+                if (translateOnPaste)
+                    translator.translate();
             }
         }
         ToolButton {

@@ -28,9 +28,14 @@ NavigationPane {
     id: navigationPane
 
     property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
+    property bool translateOnPaste: translator.getSettingsValue("TranslateOnPaste", true)
 
     onTranslateOnEnterChanged: {
         translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+    }
+
+    onTranslateOnPasteChanged: {
+        translator.setSettingsValue("TranslateOnPaste", translateOnPaste);
     }
 
     MainPage {}

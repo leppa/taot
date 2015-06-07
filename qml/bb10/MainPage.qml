@@ -245,7 +245,8 @@ Page {
 
             onTriggered: {
                 source.text = clipboard.text;
-                translator.translate();
+                if (translateOnPaste)
+                    translator.translate();
             }
         },
         ActionItem {

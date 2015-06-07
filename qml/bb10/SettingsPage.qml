@@ -80,6 +80,18 @@ Page {
                     translateOnEnter = checked;
                 }
             }
+
+            SettingsSwitch {
+                title: qsTr("Paste'n'Translate") + Retranslate.onLocaleOrLanguageChanged
+                description: qsTr("Automatically start translation after inserting text with"
+                                  + " <em>Paste</em> button")
+                             + Retranslate.onLocaleOrLanguageChanged
+                checked: translateOnPaste
+
+                onCheckedChanged: {
+                    translateOnPaste = checked;
+                }
+            }
         }
     }
 

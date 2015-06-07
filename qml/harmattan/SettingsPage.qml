@@ -88,6 +88,17 @@ Page {
                     translateOnEnter = checked;
                 }
             }
+
+            SettingsSwitch {
+                title: qsTr("Paste'n'Translate")
+                description: qsTr("Automatically start translation after inserting text with"
+                                  + " <em>Paste</em> button")
+                checked: translateOnPaste
+
+                onCheckedChanged: {
+                    translateOnPaste = checked;
+                }
+            }
         }
     }
 

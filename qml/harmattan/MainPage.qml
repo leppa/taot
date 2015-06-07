@@ -27,6 +27,7 @@ import "constants.js" as UI
 
 Page {
     property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
+    property bool translateOnPaste: translator.getSettingsValue("TranslateOnPaste", true)
     property Item source: translateOnEnter ? sourceSingle : sourceMulti
 
     onTranslateOnEnterChanged: {
@@ -38,6 +39,10 @@ Page {
             sourceMulti.text = sourceSingle.text;
             sourceSingle.text = "";
         }
+    }
+
+    onTranslateOnPasteChanged: {
+        translator.setSettingsValue("TranslateOnPaste", translateOnPaste);
     }
 
     SelectionDialog {
@@ -504,7 +509,8 @@ Page {
                 enabled: !clipboard.empty
                 onClicked: {
                     source.paste();
-                    translator.translate();
+                    if (translateOnPaste)
+                        translator.translate();
                 }
             }
             ToolButton {
