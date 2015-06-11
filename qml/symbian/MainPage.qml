@@ -106,7 +106,6 @@ Page {
 
         width: parent.width
         height: platformStyle.graphicSizeMedium
-        enabled: source.state != "Active"
 
         Rectangle {
             anchors.fill: parent
@@ -235,6 +234,8 @@ Page {
                     }
                 }
                 SelectionListItem {
+                    id: toSelector
+
                     width: (parent.width - swap.width - 2 * parent.spacing) / 2
                     title: qsTr("To")
                     subTitle: translator.targetLanguage.displayName
@@ -259,7 +260,6 @@ Page {
                     id: sourceSingle
 
                     width: parent.width
-                    height: sourceWrapper.height
                     placeholderText: qsTr("Enter the source text...")
                     platformInverted: appWindow.platformInverted
                     visible: translateOnEnter
@@ -280,7 +280,7 @@ Page {
                     id: sourceMulti
 
                     width: parent.width
-                    height: parent.height
+                    height: implicitHeight
 //                    text: "Welcome"
                     placeholderText: qsTr("Enter the source text...")
                     textFormat: TextEdit.PlainText
@@ -293,48 +293,6 @@ Page {
 
                         translator.sourceText = text;
                     }
-
-                    states: [
-                        State {
-                            name: "Active"
-                            when: sourceMulti.activeFocus
-                                  && (inputContext.visible
-                                      // HACK: There are some cases, where VKB is visible,
-                                      // but reported as not. This is a dirty workaround.
-                                      || translator.appVisibility == Translator.AppPartiallyVisible)
-                            ParentChange {
-                                target: source
-                                parent: root
-                                x: platformStyle.paddingSmall
-                                y: titleBar.height + platformStyle.paddingSmall
-                                width: parent.width - 2 * platformStyle.paddingSmall
-                                height: parent.height - titleBar.height
-                                        - 2 * platformStyle.paddingSmall
-                            }
-                        }
-                    ]
-
-                    transitions: [
-                        Transition {
-                            from: "*"
-                            to: "Active"
-                            reversible: true
-                            ParentAnimation {
-                                target: source
-
-                                PropertyAnimation {
-                                    duration: 100
-                                    easing.type: Easing.InOutQuad
-                                    properties: "y"
-                                }
-                                PropertyAnimation {
-                                    duration: 100
-                                    easing.type: Easing.InOutQuad
-                                    properties: "height"
-                                }
-                            }
-                        }
-                    ]
                 }
             }
 
@@ -658,6 +616,76 @@ Page {
             platformInverted: appWindow.platformInverted
         }
     }
+
+    states: [
+        State {
+            name: "Active"
+            when: (sourceMulti.activeFocus || (sourceSingle.activeFocus && !inPortrait))
+                  && (inputContext.visible
+                      // HACK: There are some cases, where VKB is visible,
+                      // but reported as not. This is a dirty workaround.
+                      || translator.appVisibility == Translator.AppPartiallyVisible)
+
+            ParentChange {
+                target: source
+                parent: root
+                x: platformStyle.paddingSmall
+                y: parent.height - source.height - platformStyle.paddingSmall
+                width: parent.width - 2 * platformStyle.paddingSmall
+            }
+            PropertyChanges {
+                target: sourceMulti
+                height: parent.height - titleBar.height - 2 * platformStyle.paddingSmall
+            }
+            PropertyChanges {
+                target: titleBar
+                enabled: false
+            }
+            PropertyChanges {
+                target: fromSelector
+                enabled: false
+            }
+            PropertyChanges {
+                target: swap
+                enabled: false
+            }
+            PropertyChanges {
+                target: toSelector
+                enabled: false
+            }
+            PropertyChanges {
+                target: flickable
+                interactive: false
+            }
+        }
+    ]
+
+    transitions: [
+        Transition {
+            from: "*"
+            to: "Active"
+            reversible: true
+            ParentAnimation {
+                target: source
+
+                ScriptAction {
+                    script: {
+                        flickable.contentY = 0;
+                    }
+                }
+                PropertyAnimation {
+                    duration: 100
+                    easing.type: Easing.InOutQuad
+                    properties: "y"
+                }
+                PropertyAnimation {
+                    duration: 100
+                    easing.type: Easing.InOutQuad
+                    properties: "height"
+                }
+            }
+        }
+    ]
 
     Component.onCompleted: {
         appWindow.platformInverted = translator.getSettingsValue("InvertedTheme", false);
