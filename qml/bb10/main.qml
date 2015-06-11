@@ -94,9 +94,50 @@ NavigationPane {
             id: settingsPageDefinition
             SettingsPage {}
         },
+        ComponentDefinition {
+            id: donationFaqPageDefinition
+            DonationFaqPage {}
+        },
         SystemToast {
             id: toast
             button.label: qsTr("Close")
+        },
+        SystemDialog {
+            id: systemDialog
+            cancelButton.label: undefined
+        },
+        SystemListDialog {
+            id: donationDialog
+
+            title: qsTr("Donation") + Retranslate.onLanguageChanged
+            body: qsTr("How much would you like to donate?") + Retranslate.onLanguageChanged
+            customButton.label: qsTr("Donation FAQ")
+
+            onFinished: {
+                if (value == SystemUiResult.CustomButtonSelection) {
+                    navigationPane.push(donationFaqPageDefinition.createObject());
+                    return;
+                }
+
+                if (value != SystemUiResult.ConfirmButtonSelection || selectedIndices.length == 0)
+                    return;
+
+                donationManager.donate(selectedIndices[0]);
+            }
+        },
+        DonationManager {
+            id: donationManager
+
+            onDonationSucceeded: {
+                systemDialog.title = qsTr("Payment Succeeded");
+                systemDialog.body = qsTr("Thanks a lot for your donation!");
+                systemDialog.exec();
+            }
+            onDonationFailed: {
+                systemDialog.title = qsTr("Payment Error");
+                systemDialog.body = errorMessage;
+                systemDialog.exec();
+            }
         }
     ]
 

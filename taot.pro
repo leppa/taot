@@ -81,14 +81,16 @@ blackberry {
         src/bb10/reversetranslationsmodel.h \
         src/bb10/languagechangelistener.h \
         src/bb10/clipboard.h \
-        src/bb10/repeater.h
+        src/bb10/repeater.h \
+        src/bb10/donationmanager.h
 
     SOURCES += \
         src/bb10/dictionarymodel.cpp \
         src/bb10/reversetranslationsmodel.cpp \
         src/bb10/languagechangelistener.cpp \
         src/bb10/clipboard.cpp \
-        src/bb10/repeater.cpp
+        src/bb10/repeater.cpp \
+        src/bb10/donationmanager.cpp
 
     LIBS += -lbbplatform -lbbsystem
 } else {

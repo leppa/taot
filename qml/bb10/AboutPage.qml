@@ -44,6 +44,14 @@ Page {
                 textFormat: TextFormat.Html
             }
             Label {
+                text: qsTr("You donated <b>%n coins</b>. Thank you!",
+                           "",
+                           donationManager.totalCoinCount)
+                textFormat: TextFormat.Html
+                multiline: true
+                visible: donationManager.totalCoinCount > 0
+            }
+            Label {
                 multiline: true
                 text: About.aboutText
                 textFormat: TextFormat.Html
