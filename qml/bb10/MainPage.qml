@@ -244,7 +244,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                source.text = clipboard.text;
+                source.editor.insertPlainText(clipboard.text);
                 if (translateOnPaste)
                     translator.translate();
             }
