@@ -1,10 +1,13 @@
 <RCC>
     <qresource prefix="/l10n">
+        <file>taot_ar.qm</file>
         <file>taot_cs_CZ.qm</file>
         <file>taot_da.qm</file>
         <file>taot_de.qm</file>
         <file>taot_el.qm</file>
         <file>taot_en.qm</file>
+        <file>taot_es.qm</file>
+        <file>taot_fr_FR.qm</file>
         <file>taot_it.qm</file>
         <file>taot_nl_NL.qm</file>
         <file>taot_ru.qm</file>

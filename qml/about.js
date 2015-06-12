@@ -31,14 +31,17 @@ var aboutText =
 "<p>&nbsp;</p> " +
 "<p>" +
 qsTr("%1 contains the following contributed translations:").arg("TAO Translator") + " " +
-"<b>Chinese</b> by gwmgdemj and 太空飞瓜 (finalmix), " +
+"<b>Chinese</b> by gwmgdemj, 太空飞瓜 (finalmix), and YF (yfdyh000), " +
 "<b>Dutch</b> by teunwinters and Heimen Stoffels (Vistaus), " +
-"<b>German</b> by buschmann and DeadHorseRiding (Mee_Germany_Go), " +
+"<b>German</b> by buschmann, DeadHorseRiding (Mee_Germany_Go), and R.G. Sidler (rgsidler), " +
 "<b>Italian</b> by Francesco Vaccaro (ghostofasmile) and Alessandro Pra' (Watchmaker), " +
 "<b>Turkish</b> by Mehmet Ç. (fnldstntn), " +
 "<b>Danish</b> by Peter Jespersen (flywheeldk), " +
-"<b>Chech</b> by Jakub Kožíšek (nodevel), " +
-"<b>Greek</b>, by Wasilis Mandratzis-Walz (beonex)." +
+"<b>Czech</b> by Jakub Kožíšek (nodevel), " +
+"<b>Greek</b> by Wasilis Mandratzis-Walz (beonex), " +
+"<b>Spanish</b> by Carmen Fernández B., " +
+"<b>Arabic</b> by Sary AWAD (sary.1991), " +
+"<b>French</b> by Jordi." +
 "</p> " +
 "<p>&nbsp;</p> " +
 "<p>" + qsTr("If your language is missing, you can <a href=\"%2\">help translating %1 into your language</a>.").arg("TAO Translator").arg("https://www.transifex.com/projects/p/taot/") + "</p> " +

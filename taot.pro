@@ -130,6 +130,7 @@ TRANSLATIONS += \
     l10n/taot_es.ts \
     l10n/taot_fa.ts \
     l10n/taot_fi.ts \
+    l10n/taot_fr_FR.ts \
     l10n/taot_gl.ts \
     l10n/taot_it.ts \
     l10n/taot_nl_NL.ts \
