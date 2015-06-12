@@ -113,7 +113,9 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
     QHash<QString, DictionaryPos> poses;
     QSet<QString> transcriptions;
     foreach (const QVariant &di, data.toMap().value("def").toList()) {
-        transcriptions.insert(di.toMap().value("ts").toString());
+        const QString trans = di.toMap().value("ts").toString();
+        if (!trans.isEmpty())
+            transcriptions.insert(trans);
         foreach (const QVariant &pi, di.toMap().value("tr").toList()) {
             const QString posname = pi.toMap().value("pos").toString();
             DictionaryPos pos = poses.value(posname, DictionaryPos(posname));
