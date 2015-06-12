@@ -1,3 +1,22 @@
+taot (1.2.0) unstable; urgency=low
+  * An option to start translation after pressing Enter / Return key on
+    the keyboard.
+  * Paste'n'Translate: New Paste button will insert source text from the
+    clipboard and trigger a translation right away.
+  * Copy button will now copy whole translation if nothing is selected.
+  * As a consequence, redundant Select All button was removed.
+  * Donation link was moved higher on the About page.
+  * Google Translate: Support for displaying transliteration, when
+    provided.
+  * Google Translate: Longer texts can be translated now.
+  * Microsoft Translator: Display detected language when source language
+    is set to autodetect
+  * Yandex.Dictionaries: Support for displaying transcription, when
+    provided.
+  * New UI localizations: Arabic, French, and Spanish.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Fri, 12 Jun 2015 21:28:39 +0200
+
 taot (1.1.0) unstable; urgency=low
   * Fixed Google Translate service.
   * It is now possible to swap source and translation languages when
