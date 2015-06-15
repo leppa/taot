@@ -27,6 +27,25 @@ import taot 1.0
 Page {
     id: root
 
+    property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
+    property bool translateOnPaste: translator.getSettingsValue("TranslateOnPaste", true)
+    property Item source: translateOnEnter ? sourceSingle : sourceMulti
+
+    onTranslateOnEnterChanged: {
+        translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+        if (translateOnEnter) {
+            sourceSingle.text = sourceMulti.text;
+            sourceMulti.text = "";
+        } else {
+            sourceMulti.text = sourceSingle.text;
+            sourceSingle.text = "";
+        }
+    }
+
+    onTranslateOnPasteChanged: {
+        translator.setSettingsValue("TranslateOnPaste", translateOnPaste);
+    }
+
     SelectionDialog {
         id: servicesDialog
         titleText: qsTr("Translation Service")
@@ -87,7 +106,6 @@ Page {
 
         width: parent.width
         height: platformStyle.graphicSizeMedium
-        enabled: source.state != "Active"
 
         Rectangle {
             anchors.fill: parent
@@ -216,6 +234,8 @@ Page {
                     }
                 }
                 SelectionListItem {
+                    id: toSelector
+
                     width: (parent.width - swap.width - 2 * parent.spacing) / 2
                     title: qsTr("To")
                     subTitle: translator.targetLanguage.displayName
@@ -236,64 +256,63 @@ Page {
                 width: parent.width
                 height: source.implicitHeight
 
-                TextArea {
-                    id: source
+                TextField {
+                    id: sourceSingle
 
                     width: parent.width
-                    height: parent.height
-//                    text: "Welcome"
                     placeholderText: qsTr("Enter the source text...")
-                    textFormat: TextEdit.PlainText
                     platformInverted: appWindow.platformInverted
-
+                    visible: translateOnEnter
                     onTextChanged: {
-                        if (translator.sourceText == text)
+                        if (!visible || translator.sourceText == text)
                             return;
 
                         translator.sourceText = text;
                     }
 
-                    states: [
-                        State {
-                            name: "Active"
-                            when: source.activeFocus
-                                  && (inputContext.visible
-                                      // HACK: There are some cases, where VKB is visible,
-                                      // but reported as not. This is a dirty workaround.
-                                      || translator.appVisibility == Translator.AppPartiallyVisible)
-                            ParentChange {
-                                target: source
-                                parent: root
-                                x: platformStyle.paddingSmall
-                                y: titleBar.height + platformStyle.paddingSmall
-                                width: parent.width - 2 * platformStyle.paddingSmall
-                                height: parent.height - titleBar.height
-                                        - 2 * platformStyle.paddingSmall
-                            }
-                        }
-                    ]
+                    Keys.onEnterPressed: {
+                        translateButton.focus = true;
+                        translator.translate();
+                    }
+                }
 
-                    transitions: [
-                        Transition {
-                            from: "*"
-                            to: "Active"
-                            reversible: true
-                            ParentAnimation {
-                                target: source
+                TextArea {
+                    id: sourceMulti
 
-                                PropertyAnimation {
-                                    duration: 100
-                                    easing.type: Easing.InOutQuad
-                                    properties: "y"
-                                }
-                                PropertyAnimation {
-                                    duration: 100
-                                    easing.type: Easing.InOutQuad
-                                    properties: "height"
-                                }
-                            }
-                        }
-                    ]
+                    width: parent.width
+                    height: implicitHeight
+//                    text: "Welcome"
+                    placeholderText: qsTr("Enter the source text...")
+                    textFormat: TextEdit.PlainText
+                    platformInverted: appWindow.platformInverted
+                    visible: !translateOnEnter
+
+                    onTextChanged: {
+                        if (!visible || translator.sourceText == text)
+                            return;
+
+                        translator.sourceText = text;
+                    }
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.transcription.sourceText
+                visible: translator.transcription.sourceText != ""
+                platformInverted: appWindow.platformInverted
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.sourceText
+                visible: translator.translit.sourceText != ""
+                platformInverted: appWindow.platformInverted
+                anchors {
+                    left: parent.left
+                    right: parent.right
                 }
             }
 
@@ -316,6 +335,7 @@ Page {
                         verticalCenter: parent.verticalCenter
                     }
                     onClicked: {
+                        focus = true;
                         translator.translate();
                     }
 
@@ -395,6 +415,26 @@ Page {
                         duration: 200
                         easing.type: Easing.InOutQuad
                     }
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.transcription.translatedText
+                visible: translator.transcription.translatedText != ""
+                platformInverted: appWindow.platformInverted
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.translatedText
+                visible: translator.translit.translatedText != ""
+                platformInverted: appWindow.platformInverted
+                anchors {
+                    left: parent.left
+                    right: parent.right
                 }
             }
 
@@ -525,6 +565,24 @@ Page {
             onClicked: Qt.quit();
         }
         ToolButton {
+            text: qsTr("Paste")
+            enabled: !clipboard.empty
+            platformInverted: appWindow.platformInverted
+            onClicked: {
+                source.paste();
+                if (translateOnPaste)
+                    translator.translate();
+            }
+        }
+        ToolButton {
+            text: qsTr("Copy")
+            enabled: translator.translatedText != ""
+            platformInverted: appWindow.platformInverted
+            onClicked: {
+                clipboard.insert(translator.translatedText);
+            }
+        }
+        ToolButton {
             iconSource: "toolbar-settings"
             platformInverted: appWindow.platformInverted
             onClicked: pageStack.push(settingsPage);
@@ -541,6 +599,10 @@ Page {
         }
     }
 
+    Clipboard {
+        id: clipboard
+    }
+
     Component {
         id: translationPage
         TranslationTextAreaPage {
@@ -555,7 +617,77 @@ Page {
         }
     }
 
+    states: [
+        State {
+            name: "Active"
+            when: (sourceMulti.activeFocus || (sourceSingle.activeFocus && !inPortrait))
+                  && (inputContext.visible
+                      // HACK: There are some cases, where VKB is visible,
+                      // but reported as not. This is a dirty workaround.
+                      || translator.appVisibility == Translator.AppPartiallyVisible)
+
+            ParentChange {
+                target: source
+                parent: root
+                x: platformStyle.paddingSmall
+                y: parent.height - source.height - platformStyle.paddingSmall
+                width: parent.width - 2 * platformStyle.paddingSmall
+            }
+            PropertyChanges {
+                target: sourceMulti
+                height: parent.height - titleBar.height - 2 * platformStyle.paddingSmall
+            }
+            PropertyChanges {
+                target: titleBar
+                enabled: false
+            }
+            PropertyChanges {
+                target: fromSelector
+                enabled: false
+            }
+            PropertyChanges {
+                target: swap
+                enabled: false
+            }
+            PropertyChanges {
+                target: toSelector
+                enabled: false
+            }
+            PropertyChanges {
+                target: flickable
+                interactive: false
+            }
+        }
+    ]
+
+    transitions: [
+        Transition {
+            from: "*"
+            to: "Active"
+            reversible: true
+            ParentAnimation {
+                target: source
+
+                ScriptAction {
+                    script: {
+                        flickable.contentY = 0;
+                    }
+                }
+                PropertyAnimation {
+                    duration: 100
+                    easing.type: Easing.InOutQuad
+                    properties: "y"
+                }
+                PropertyAnimation {
+                    duration: 100
+                    easing.type: Easing.InOutQuad
+                    properties: "height"
+                }
+            }
+        }
+    ]
+
     Component.onCompleted: {
-        appWindow.platformInverted = translator.getSettingsValue("InvertedTheme");
+        appWindow.platformInverted = translator.getSettingsValue("InvertedTheme", false);
     }
 }

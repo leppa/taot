@@ -70,24 +70,30 @@ bool YandexTranslate::translate(const Language &from, const Language &to, const 
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QUrl query("https://translate.yandex.net/api/v1.5/tr.json/translate");
+    QUrl dataQuery;
 #else
     QUrl url("https://translate.yandex.net/api/v1.5/tr.json/translate");
-    QUrlQuery query;
+    QUrlQuery dataQuery, query;
 #endif
     query.addQueryItem("key", YANDEXTRANSLATE_API_KEY);
     query.addQueryItem("lang", lang);
     query.addQueryItem("options", "1");
-    query.addQueryItem("text", text);
+
+    dataQuery.addQueryItem("text", text);
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QNetworkRequest request(query);
+    const QByteArray data(dataQuery.encodedQuery());
 #else
     url.setQuery(query);
     QNetworkRequest request(url);
+    const QByteArray data(dataQuery.toString(QUrl::FullyEncoded).toUtf8());
 #endif
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+                      "application/x-www-form-urlencoded;charset=UTF-8");
     request.setSslConfiguration(m_sslConfiguration);
 
-    m_reply = m_nam.get(request);
+    m_reply = m_nam.post(request, data);
 
     return true;
 }

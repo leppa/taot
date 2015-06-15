@@ -28,6 +28,10 @@ PageStackWindow {
 
     initialPage: MainPage {}
 
+    onOrientationChangeFinished: {
+        showStatusBar = inPortrait;
+    }
+
     InfoBanner {
         id: banner
         y: 36 /* StatusBar height */ + 8

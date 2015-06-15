@@ -76,24 +76,30 @@ bool YandexDictionaries::translate(const Language &from, const Language &to, con
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QUrl query("https://dictionary.yandex.net/api/v1/dicservice.json/lookup");
+    QUrl dataQuery;
 #else
     QUrl url("https://dictionary.yandex.net/api/v1/dicservice.json/lookup");
-    QUrlQuery query;
+    QUrlQuery query, dataQuery;
 #endif
     query.addQueryItem("ui", "en");
     query.addQueryItem("key", YANDEXDICTIONARIES_API_KEY);
     query.addQueryItem("lang", lang);
-    query.addQueryItem("text", text.trimmed());
+
+    dataQuery.addQueryItem("text", text.trimmed());
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QNetworkRequest request(query);
+    const QByteArray data(dataQuery.encodedQuery());
 #else
     url.setQuery(query);
     QNetworkRequest request(url);
+    const QByteArray data(dataQuery.toString(QUrl::FullyEncoded).toUtf8());
 #endif
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+                      "application/x-www-form-urlencoded;charset=UTF-8");
     request.setSslConfiguration(m_sslConfiguration);
 
-    m_reply = m_nam.get(request);
+    m_reply = m_nam.post(request, data);
 
     return true;
 }
@@ -105,7 +111,11 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
         return false;
 
     QHash<QString, DictionaryPos> poses;
+    QSet<QString> transcriptions;
     foreach (const QVariant &di, data.toMap().value("def").toList()) {
+        const QString trans = di.toMap().value("ts").toString();
+        if (!trans.isEmpty())
+            transcriptions.insert(trans);
         foreach (const QVariant &pi, di.toMap().value("tr").toList()) {
             const QString posname = pi.toMap().value("pos").toString();
             DictionaryPos pos = poses.value(posname, DictionaryPos(posname));
@@ -131,11 +141,17 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
     }
 
     if (poses.isEmpty()) {
-        m_error = tr("%1 service returned an empty result").arg(displayName());
+        m_error = commonString(EmptyResultCommonString).arg(displayName());
         return false;
     }
 
-    m_translation.clear();
+    m_transcription = StringPair();
+    if (!transcriptions.isEmpty()) {
+        //: Separator for joining string lists (don't forget space after comma)
+        m_transcription.first
+                = "[" + QStringList(transcriptions.toList()).join("]" + tr(", ") + "[") + "]";
+    }
+
     m_dict->clear();
     foreach (DictionaryPos pos, poses) {
         m_dict->append(pos);

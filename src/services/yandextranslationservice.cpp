@@ -58,9 +58,8 @@ LanguageList YandexTranslationService::targetLanguages(const Language &sourceLan
 
 QString YandexTranslationService::getLanguageName(const QVariant &info) const
 {
-    //: Unknown language
-    return m_langCodeToName.value(info.toString(),
-                                  tr("Unknown (%1)", "Unknown language").arg(info.toString()));
+    return m_langCodeToName.value(info.toString(), commonString(UnknownLanguageWithInfoCommonString)
+                                                   .arg(info.toString()));
 }
 
 bool YandexTranslationService::isAutoLanguage(const Language &lang) const
@@ -88,7 +87,10 @@ bool YandexTranslationService::checkReplyForErrors(QNetworkReply *reply)
     case 422:
     case 501:
         QVariant data = parseJson(reply->readAll());
-        m_error = data.toMap().value("message").toString();
+        m_error = commonString(ErrorReturnedCommonString).arg(serviceName(),
+                                                              data.toMap()
+                                                              .value("message")
+                                                              .toString());
         return false;
     }
 
@@ -98,8 +100,8 @@ bool YandexTranslationService::checkReplyForErrors(QNetworkReply *reply)
 void YandexTranslationService::loadLanguages(const QString &file, bool withAutodetect)
 {
     if (withAutodetect) {
-        m_sourceLanguages << Language("", tr("Autodetect"));
-        m_langCodeToName.insert("", tr("Autodetect"));
+        m_sourceLanguages << Language("", commonString(AutodetectLanguageCommonString));
+        m_langCodeToName.insert("", commonString(AutodetectLanguageCommonString));
     }
 
     QFile f(file);

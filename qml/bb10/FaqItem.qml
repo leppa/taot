@@ -20,41 +20,25 @@
  *  with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CLIPBOARD_H
-#define CLIPBOARD_H
+import bb.cascades 1.0
 
-#include <QObject>
-#include <QMetaType>
+Container {
+    property alias q: question.text
+    property alias a: answer.text
 
-class QFileSystemWatcher;
-namespace bb { namespace system { class Clipboard; } }
-class Clipboard: public QObject
-{
-    Q_OBJECT
-    Q_PROPERTY(QString text READ text WRITE insert NOTIFY textChanged)
-    Q_PROPERTY(bool empty READ isEmpty NOTIFY textChanged)
+    bottomPadding: 15
 
-public:
-    explicit Clipboard(QObject *parent = 0);
-    bool isEmpty() const;
-
-public slots:
-    bool clear();
-    QString text() const;
-    bool insert(const QString &text);
-
-signals:
-    void textChanged();
-
-private slots:
-    void onFileChanged(const QString &path);
-
-private:
-    bb::system::Clipboard *m_clipboard;
-    QString m_text;
-    QFileSystemWatcher *m_clipboardWatcher;
-};
-
-Q_DECLARE_METATYPE(Clipboard *)
-
-#endif // CLIPBOARD_H
+    Label {
+        id: question
+        multiline: true
+        textStyle.base: SystemDefaults.TextStyles.TitleText
+        bottomMargin: 5
+    }
+    Label {
+        id: answer
+        multiline: true
+        topMargin: 0
+        textFormat: TextFormat.Html
+    }
+    Divider {}
+}

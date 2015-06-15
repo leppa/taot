@@ -36,9 +36,11 @@
 #   include "bb10/languagechangelistener.h"
 #   include "bb10/clipboard.h"
 #   include "bb10/repeater.h"
+#   include "bb10/donationmanager.h"
 #else
 #   include "dictionarymodel.h"
 #   include "reversetranslationsmodel.h"
+#   include "clipboard.h"
 #endif
 #include "updater.h"
 
@@ -83,12 +85,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     QCoreApplication::setApplicationName("TAO Translator");
-    QCoreApplication::setApplicationVersion((BUILD > 0)
-                                            //: %1 - version, %2 - build number
-                                            ? QCoreApplication::translate("AboutPage",
-                                                                          "%1 (build %2)")
-                                              .arg(VERSION_STR).arg(BUILD)
-                                            : VERSION_STR);
+    QCoreApplication::setApplicationVersion(VERSION_STR);
     QCoreApplication::setOrganizationName("Oleksii Serdiuk");
     QCoreApplication::setOrganizationDomain("oleksii.name");
 
@@ -131,26 +128,36 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         app->installTranslator(&tr);
 #endif
 
+#if BUILD > 1
+    //: %1 - version, %2 - build number
+    QCoreApplication::setApplicationVersion(QCoreApplication::translate("AboutPage","%1 (build %2)")
+                                            .arg(VERSION_STR).arg(BUILD));
+#endif
+
 #ifdef Q_OS_SAILFISH
     qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
     qmlRegisterType<L10nModel>("harbour.taot", 1, 0, "L10nModel");
+    qmlRegisterType<Clipboard>("harbour.taot", 1, 0, "Clipboard");
+    qmlRegisterType<Updater>("harbour.taot", 1, 0, "Updater");
 #else
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");
     qmlRegisterType<L10nModel>("taot", 1, 0, "L10nModel");
+    qmlRegisterType<Clipboard>("taot", 1, 0, "Clipboard");
+    qmlRegisterType<Updater>("taot", 1, 0, "Updater");
 #endif
+    qmlRegisterType<SourceTranslatedTextPair>();
     qmlRegisterType<TranslationServiceItem>();
     qmlRegisterType<TranslationServicesModel>();
     qmlRegisterType<LanguageItem>();
     qmlRegisterType<LanguageListModel>();
     qmlRegisterType<DictionaryModel>();
     qmlRegisterType<ReverseTranslationsModel>();
-    qmlRegisterType<Updater>("taot", 1, 0, "Updater");
     qmlRegisterType<Release>();
 
 #ifdef Q_OS_BLACKBERRY
     qmlRegisterType<bb::system::SystemToast>("bb.system", 1, 0, "SystemToast");
-    qmlRegisterType<Clipboard>("taot", 1, 0, "Clipboard");
     qmlRegisterType<Repeater>("taot", 1, 0, "Repeater");
+    qmlRegisterType<DonationManager>("taot", 1, 0, "DonationManager");
 #elif defined(Q_OS_SAILFISH)
     QQuickView *viewer = SailfishApp::createView();
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)

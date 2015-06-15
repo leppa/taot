@@ -27,8 +27,7 @@
 #include <QDebug>
 
 Language::Language()
-    //: Unknown language
-    : displayName(TranslationService::tr("Unknown", "Unknown language"))
+    : displayName(commonString(UnknownLanguageCommonString))
 {}
 
 Language::Language(const QVariant info, const QString &name)
@@ -58,7 +57,7 @@ bool Language::operator <(const Language &other) const
 }
 
 TranslationService::TranslationService(QObject *parent)
-    : QObject(parent), m_reply(NULL), m_error(tr("No error"))
+    : QObject(parent), m_reply(NULL), m_error(commonString(NoErrorCommonString))
 {
     connect(&m_nam, SIGNAL(finished(QNetworkReply*)), SLOT(onNetworkReply(QNetworkReply*)));
 }
@@ -77,6 +76,8 @@ void TranslationService::clear()
 {
     m_error.clear();
     m_translation.clear();
+    m_transcription = StringPair();
+    m_translit = StringPair();
     m_detectedLanguage = Language();
 }
 
@@ -89,6 +90,16 @@ void TranslationService::cancelTranslation()
 QString TranslationService::translation() const
 {
     return m_translation;
+}
+
+StringPair TranslationService::transcription() const
+{
+    return m_transcription;
+}
+
+StringPair TranslationService::translit() const
+{
+    return m_translit;
 }
 
 Language TranslationService::detectedLanguage() const

@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="212"/>
+        <location filename="../src/main.cpp" line="227"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Алексей Сердюк</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="214"/>
+        <location filename="../src/main.cpp" line="229"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Русский</translation>
@@ -25,16 +25,25 @@
         <source>Version: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>Версия: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../qml/bb10/AboutPage.qml" line="47"/>
+        <source>You donated &lt;b&gt;%n coins&lt;/b&gt;. Thank you!</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
         <location filename="../qml/sailfish/AboutPage.qml" line="50"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="88"/>
+        <location filename="../src/main.cpp" line="141"/>
         <source>%1 (build %2)</source>
         <extracomment>%1 - version, %2 - build number</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (сборка %2)</translation>
     </message>
 </context>
 <context>
@@ -63,18 +72,116 @@
     </message>
 </context>
 <context>
+    <name>DonationFaqPage</name>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
+        <source>Donation FAQ</source>
+        <translation>Частые вопросы про пожертвование</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
+        <source>Why do you ask for donations?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
+        <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
+        <source>Am I required to donate to use %1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
+        <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
+        <source>What are those coins?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
+        <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
+        <source>Do I get something for making a donation?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
+        <source>You already have %1. Completely for free :-)
+However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
+        <source>I want to increase my donation. Is it possible?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
+        <source>Just make a new one. You can make as many donations as you want. They will accumulate and total amount will be displayed on the About page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
+        <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
+        <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
+        <source>I changed my mind and want to get my donation back!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
+        <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
+        <source>My question isn&apos;t answered. How can I get in touch?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
+        <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DonationManager</name>
+    <message numerus="yes">
+        <location filename="../src/bb10/donationmanager.cpp" line="47"/>
+        <location filename="../src/bb10/donationmanager.cpp" line="50"/>
+        <location filename="../src/bb10/donationmanager.cpp" line="53"/>
+        <location filename="../src/bb10/donationmanager.cpp" line="56"/>
+        <location filename="../src/bb10/donationmanager.cpp" line="59"/>
+        <source>%n coins</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>GoogleTranslate</name>
     <message>
         <location filename="../src/services/googletranslate.cpp" line="38"/>
         <source>Google Translate</source>
         <translation>Переводчик Google</translation>
-    </message>
-    <message>
-        <location filename="../src/services/googletranslate.cpp" line="127"/>
-        <source>Unknown (%1)</source>
-        <comment>Unknown language</comment>
-        <extracomment>Unknown language</extracomment>
-        <translation>Неизвестный (%1)</translation>
     </message>
 </context>
 <context>
@@ -106,99 +213,127 @@
     <name>MainPage</name>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="73"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="161"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="71"/>
-        <location filename="../qml/symbian/MainPage.qml" line="186"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="180"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="83"/>
+        <location filename="../qml/symbian/MainPage.qml" line="204"/>
         <source>From</source>
         <translation>С</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="95"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="186"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="99"/>
-        <location filename="../qml/symbian/MainPage.qml" line="220"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="205"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="111"/>
+        <location filename="../qml/symbian/MainPage.qml" line="240"/>
         <source>To</source>
         <translation>На</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="107"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="202"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="117"/>
-        <location filename="../qml/symbian/MainPage.qml" line="245"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="231"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="252"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="129"/>
+        <location filename="../qml/symbian/MainPage.qml" line="263"/>
+        <location filename="../qml/symbian/MainPage.qml" line="285"/>
         <source>Enter the source text...</source>
         <translation>Введите исходный текст...</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="122"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="222"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="137"/>
-        <location filename="../qml/symbian/MainPage.qml" line="309"/>
+        <location filename="../qml/bb10/MainPage.qml" line="153"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="292"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="184"/>
+        <location filename="../qml/symbian/MainPage.qml" line="328"/>
         <source>Translate</source>
         <translation>Перевести</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="168"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="329"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="202"/>
-        <location filename="../qml/symbian/MainPage.qml" line="412"/>
+        <location filename="../qml/bb10/MainPage.qml" line="221"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="421"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="282"/>
+        <location filename="../qml/symbian/MainPage.qml" line="452"/>
         <source>Detected language:</source>
         <translation>Определенный язык:</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="187"/>
-        <source>Select all</source>
-        <translation>Выделить всё</translation>
+        <location filename="../qml/bb10/MainPage.qml" line="240"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="508"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="366"/>
+        <location filename="../qml/symbian/MainPage.qml" line="568"/>
+        <source>Paste</source>
+        <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="199"/>
+        <location filename="../qml/bb10/MainPage.qml" line="256"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="377"/>
+        <source>Copy selection</source>
+        <translation>Копировать выбор</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/MainPage.qml" line="256"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="377"/>
+        <source>Copy all</source>
+        <translation>Копировать всё</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="517"/>
+        <location filename="../qml/symbian/MainPage.qml" line="578"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="207"/>
+        <location filename="../qml/bb10/MainPage.qml" line="266"/>
         <source>Translation was successfully copied to clipboard</source>
         <translation>Перевод был успешно скопирован в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="209"/>
+        <location filename="../qml/bb10/MainPage.qml" line="268"/>
         <source>Couldn&apos;t copy translation to clipboard</source>
         <translation>Не удалось скопировать перевод в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="214"/>
+        <location filename="../qml/bb10/MainPage.qml" line="273"/>
         <source>Share</source>
         <translation>Поделиться</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/MainPage.qml" line="222"/>
+        <location filename="../qml/bb10/MainPage.qml" line="281"/>
         <source>%1 (%2) -&gt; %3 (%4)</source>
         <extracomment>&lt;source text&gt; (&lt;source/detected language&gt;) -&gt; &lt;translated text&gt; (&lt;target language&gt;)</extracomment>
         <translation>%1 (%2) -&gt; %3 (%4)</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="31"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="46"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="289"/>
-        <location filename="../qml/symbian/MainPage.qml" line="32"/>
+        <location filename="../qml/bb10/MainPage.qml" line="290"/>
+        <source>Donate</source>
+        <translation>Поблагодарить</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="50"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="58"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="397"/>
+        <location filename="../qml/symbian/MainPage.qml" line="51"/>
         <source>Translation Service</source>
         <translation>Сервис перевода</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="40"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="303"/>
-        <location filename="../qml/symbian/MainPage.qml" line="49"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="59"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="411"/>
+        <location filename="../qml/symbian/MainPage.qml" line="68"/>
         <source>Source Language</source>
         <translation>Язык оригинала</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="49"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="316"/>
-        <location filename="../qml/symbian/MainPage.qml" line="66"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="68"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="424"/>
+        <location filename="../qml/symbian/MainPage.qml" line="85"/>
         <source>Target Language</source>
         <translation>Язык перевода</translation>
     </message>
     <message>
-        <location filename="../qml/sailfish/MainPage.qml" line="39"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="222"/>
+        <source>Go</source>
+        <translation>Старт</translation>
+    </message>
+    <message>
+        <location filename="../qml/sailfish/MainPage.qml" line="51"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
@@ -209,30 +344,6 @@
         <location filename="../src/services/microsofttranslator.cpp" line="13"/>
         <source>Microsoft Translator</source>
         <translation>Microsoft Translator</translation>
-    </message>
-    <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="22"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="23"/>
-        <source>Autodetect</source>
-        <translation>Автоопределение</translation>
-    </message>
-    <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="98"/>
-        <source>Unknown (%1)</source>
-        <comment>Unknown language</comment>
-        <extracomment>Unknown language</extracomment>
-        <translation>Неизвестный (%1)</translation>
-    </message>
-    <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="168"/>
-        <source>Server returned an error: &quot;%1&quot;</source>
-        <translation>Сервер вернул ошибку: %1</translation>
-    </message>
-    <message>
-        <location filename="../src/services/microsofttranslator.cpp" line="172"/>
-        <location filename="../src/services/microsofttranslator.cpp" line="178"/>
-        <source>Unexpected response from the server</source>
-        <translation>Неожиданный ответ от сервера</translation>
     </message>
 </context>
 <context>
@@ -261,62 +372,101 @@
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="46"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="58"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="166"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="137"/>
         <location filename="../qml/sailfish/SettingsPage.qml" line="65"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="59"/>
-        <location filename="../qml/symbian/SettingsPage.qml" line="169"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="147"/>
         <source>Interface Language</source>
         <translation>Язык интерфейса</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/SettingsPage.qml" line="57"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="90"/>
-        <location filename="../qml/symbian/SettingsPage.qml" line="92"/>
+        <location filename="../qml/bb10/SettingsPage.qml" line="56"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="72"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="74"/>
         <source>Dark Theme</source>
         <translation>Тёмный стиль</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/SettingsPage.qml" line="58"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="103"/>
-        <location filename="../qml/symbian/SettingsPage.qml" line="103"/>
+        <location filename="../qml/bb10/SettingsPage.qml" line="57"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="73"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="75"/>
         <source>Use dark color scheme</source>
         <translation>Использовать тёмную цветовую схему</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/SettingsPage.qml" line="67"/>
-        <location filename="../qml/bb10/SettingsPage.qml" line="86"/>
-        <location filename="../qml/bb10/SettingsPage.qml" line="111"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="177"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="99"/>
-        <location filename="../qml/symbian/SettingsPage.qml" line="188"/>
+        <location filename="../qml/bb10/SettingsPage.qml" line="61"/>
+        <location filename="../qml/bb10/SettingsPage.qml" line="107"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="148"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="120"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="166"/>
         <source>Please, restart the application to apply this setting.</source>
         <translation>Чтобы настройка вступила в силу, необходимо перезапустить приложение.</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="143"/>
+        <location filename="../qml/bb10/SettingsPage.qml" line="73"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="83"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="83"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="86"/>
+        <source>Translate on Enter Press</source>
+        <translation>Перевод по нажатию кнопки Enter</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="74"/>
+        <source>Hold &lt;em&gt;Shift&lt;/em&gt; while pressing &lt;em&gt;Enter&lt;/em&gt; to start a new line</source>
+        <translation>Держите &lt;em&gt;Shift&lt;/em&gt; во вроемя нажатия &lt;em&gt;Enter&lt;/em&gt; чтобы начать новую строку</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="85"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="93"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="93"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="97"/>
+        <source>Paste&apos;n&apos;Translate</source>
+        <translation>Paste&apos;n&apos;Translate</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/SettingsPage.qml" line="86"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="94"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="98"/>
+        <source>Automatically start translation after inserting text with &lt;em&gt;Paste&lt;/em&gt; button</source>
+        <translation>Автоматически начинать перевод после вставки текста при помощи кнопки &lt;em&gt;Вставить&lt;/em&gt;</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="84"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="87"/>
+        <source>Only one line of text is supported in this mode</source>
+        <translation>В этом режиме поддерживается только одна строка текста</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="114"/>
         <location filename="../qml/sailfish/SettingsPage.qml" line="40"/>
-        <location filename="../qml/symbian/SettingsPage.qml" line="143"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="121"/>
         <source>Send Feedback</source>
         <translation>Связаться с автором</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="152"/>
-        <location filename="../qml/symbian/SettingsPage.qml" line="153"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="123"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="131"/>
         <source>Check for Updates</source>
         <translation>Проверить наличие обновлений</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="158"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="85"/>
-        <location filename="../qml/symbian/SettingsPage.qml" line="160"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="129"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="106"/>
+        <location filename="../qml/symbian/SettingsPage.qml" line="138"/>
         <source>About</source>
         <translation>О программе</translation>
+    </message>
+    <message>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="94"/>
+        <source>Automatically start translation after inserting text with &lt;i&gt;Paste&lt;/i&gt; button</source>
+        <translation>Автоматически начинать перевод после вставки текста при помощи кнопки &lt;i&gt;Вставить&lt;/i&gt;</translation>
     </message>
 </context>
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="272"/>
+        <location filename="../src/translationinterface.cpp" line="310"/>
         <source>Please, enter the source text</source>
         <translation>Пожалуйста, введите текст для перевода</translation>
     </message>
@@ -324,31 +474,60 @@
 <context>
     <name>TranslationService</name>
     <message>
-        <location filename="../src/translationservice.cpp" line="31"/>
+        <location filename="../src/translationservice.h" line="122"/>
         <source>Unknown</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Неизвестный</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.cpp" line="61"/>
+        <location filename="../src/translationservice.h" line="119"/>
+        <source>Autodetect</source>
+        <comment>Automatically detect language</comment>
+        <extracomment>As in &quot;Automatically detect language&quot;</extracomment>
+        <translation>Автоопределение</translation>
+    </message>
+    <message>
+        <location filename="../src/translationservice.h" line="125"/>
+        <source>Unknown (%1)</source>
+        <comment>Unknown language</comment>
+        <extracomment>Unknown language</extracomment>
+        <translation>Неизвестный (%1)</translation>
+    </message>
+    <message>
+        <location filename="../src/translationservice.h" line="127"/>
         <source>No error</source>
         <translation>Без ошибок</translation>
+    </message>
+    <message>
+        <location filename="../src/translationservice.h" line="129"/>
+        <source>%1 service returned an error: &quot;%2&quot;</source>
+        <translation>Сервис %1 вернул ошибку: &quot;%2&quot;</translation>
+    </message>
+    <message>
+        <location filename="../src/translationservice.h" line="131"/>
+        <source>Unexpected response from the server</source>
+        <translation>Неожиданный ответ от сервера</translation>
+    </message>
+    <message>
+        <location filename="../src/translationservice.h" line="133"/>
+        <source>No translation available as %1 service returned an empty result</source>
+        <translation>Перевод недоступен, так как сервис %1 вернул пустой результат</translation>
     </message>
 </context>
 <context>
     <name>TranslationTextAreaPage</name>
     <message>
-        <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="45"/>
-        <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="49"/>
-        <source>Select all</source>
-        <translation>Выделить всё</translation>
+        <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
+        <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
+        <source>Copy selection</source>
+        <translation>Копировать выбор</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="51"/>
-        <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="56"/>
-        <source>Copy</source>
-        <translation>Копировать</translation>
+        <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
+        <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
+        <source>Copy all</source>
+        <translation>Копировать всё</translation>
     </message>
 </context>
 <context>
@@ -424,9 +603,10 @@
         <translation>Яндекс.Словари</translation>
     </message>
     <message>
-        <location filename="../src/services/yandexdictionaries.cpp" line="134"/>
-        <source>%1 service returned an empty result</source>
-        <translation>Сервис перевода %1 вернул пустой результат</translation>
+        <location filename="../src/services/yandexdictionaries.cpp" line="150"/>
+        <source>, </source>
+        <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
+        <translation>, </translation>
     </message>
 </context>
 <context>
@@ -438,44 +618,28 @@
     </message>
 </context>
 <context>
-    <name>YandexTranslationService</name>
-    <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="63"/>
-        <source>Unknown (%1)</source>
-        <comment>Unknown language</comment>
-        <extracomment>Unknown language</extracomment>
-        <translation>Неизвестный (%1)</translation>
-    </message>
-    <message>
-        <location filename="../src/services/yandextranslationservice.cpp" line="101"/>
-        <location filename="../src/services/yandextranslationservice.cpp" line="102"/>
-        <source>Autodetect</source>
-        <translation>Автоопределение</translation>
-    </message>
-</context>
-<context>
     <name>about</name>
     <message>
-        <location filename="../qml/about.js" line="30"/>
+        <location filename="../qml/about.js" line="33"/>
         <source>%1 contains the following contributed translations:</source>
         <translation>%1 содержит следующие переводы:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="38"/>
+        <location filename="../qml/about.js" line="47"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Если ваш язык отсутствует, вы можете &lt;a href=&quot;%2&quot;&gt;помочь перевести %1 на ваш язык&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="40"/>
-        <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, language detection, dictionary and reverse translations for single words.&lt;/li&gt;
-	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation only.&lt;/li&gt;
+        <location filename="../qml/about.js" line="49"/>
+        <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
-	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - supports dictionary with synonyms and reverse translations.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - supports dictionary with transcription for some languages, synonyms, and reverse translations.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;More services are possible in future.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="50"/>
+        <location filename="../qml/about.js" line="30"/>
         <source>%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: &lt;a href=&quot;%2&quot;&gt;Donate&lt;/a&gt;.</source>
         <translation>%1 является бесплатным программным обеспечением, которое я разрабатываю в свое свободное время. Если оно вам нравится, я буду благодарен за пожертвование: &lt;a href=&quot;%2&quot;&gt;Сделать взнос&lt;/a&gt;.</translation>
     </message>
@@ -483,24 +647,59 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/bb10/main.qml" line="37"/>
+        <location filename="../qml/bb10/main.qml" line="48"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="46"/>
+        <location filename="../qml/bb10/main.qml" line="57"/>
         <source>Send feedback</source>
         <translation>Связаться с автором</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="58"/>
+        <location filename="../qml/bb10/main.qml" line="69"/>
         <source>Write a review</source>
         <translation>Написать отзыв</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="69"/>
+        <location filename="../qml/bb10/main.qml" line="80"/>
         <source>Settings</source>
         <translation>Настройки</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="103"/>
+        <source>Close</source>
+        <translation>Закрыть</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="112"/>
+        <source>Donation</source>
+        <translation>Пожертвование</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="113"/>
+        <source>How much would you like to donate?</source>
+        <translation>Сколько вы хотели бы пожертвовать?</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="114"/>
+        <source>Donation FAQ</source>
+        <translation>О пожертвовании</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="132"/>
+        <source>Payment Succeeded</source>
+        <translation>Удачный платёж</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="133"/>
+        <source>Thanks a lot for your donation!</source>
+        <translation>Большое спасибо за Ваше пожертвование!</translation>
+    </message>
+    <message>
+        <location filename="../qml/bb10/main.qml" line="137"/>
+        <source>Payment Error</source>
+        <translation>Ошибка платежа</translation>
     </message>
 </context>
 </TS>

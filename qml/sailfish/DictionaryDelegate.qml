@@ -183,18 +183,14 @@ MouseArea {
         ]
     }
 
-    Rectangle {
+    Separator {
         id: line
 
-        height: 2
+        color: "#ffffff"
         anchors {
             top: posDelegate.bottom
             left: parent.left
             right: parent.right
-        }
-        border {
-            width: 1
-            color: "#ffffff"
         }
     }
 
@@ -204,7 +200,7 @@ MouseArea {
         source: Qt.resolvedUrl("icons/expand.png")
         sourceSize {
             width: Theme.iconSizeSmall
-            height:Theme.iconSizeSmall
+            height: Theme.iconSizeSmall
         }
         anchors {
             top: posDelegate.bottom

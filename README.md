@@ -8,13 +8,14 @@ translations.
 
 Currently supported services:
 
- - **Google Translate** - supports translation, language detection,
-   dictionary and reverse translations for single words.
+ - **Google Translate** - supports translation, transliteration for most
+   non-latin scripts, language detection, and dictionary with reverse
+   translations for single words.
  - **Microsoft Translator** (a.k.a. **Bing Translator**) - supports
-   translation only.
+   translation and language detection.
  - **Yandex.Translate** - supports translation and language detection.
- - **Yandex.Dictionaries** - supports dictionary with synonyms and
-   reverse translations.
+ - **Yandex.Dictionaries** - supports dictionary with transcription
+   for some languages, synonyms, and reverse translations.
 
 More services might be added in future.
 
@@ -34,7 +35,8 @@ Download
 
  - **BlackBerry 10**: [BlackBerry World][bb10].
  - **Nokia N9**: [OpenRepos.net][openrepos] (self-signed).
- - **Nokia Symbian**: [Opera Mobile Store][opera] (self-signed).
+ - **Nokia Symbian**: [AppList][applist] (recommended, self-signed),
+   [Opera Mobile Store][opera] (Smart Installer, self-signed).
  - **Sailfish OS**: search for `taot` in the Store.
 
 
@@ -72,6 +74,7 @@ refer to [Donate][] page for more information.
 
 [changes]: https://github.com/leppa/taot/compare/stable...master
 [openrepos]: https://openrepos.net/content/leppa/tao-translator-nokia-n9
+[applist]: http://applist.schumi1331.de/content/85
 [opera]: http://symbian.apps.opera.com/the_advanced_online_translator.html
 [bb10]: http://appworld.blackberry.com/webstore/content/21908039/
 [Travis CI]: https://travis-ci.org/leppa/taot

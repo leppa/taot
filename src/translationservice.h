@@ -44,6 +44,8 @@ struct Language
 typedef QPair<Language, Language> LanguagePair;
 typedef QList<Language> LanguageList;
 
+typedef QPair<QString, QString> StringPair;
+
 class TranslationService: public QObject
 {
     Q_OBJECT
@@ -71,6 +73,8 @@ public:
     virtual bool parseReply(const QByteArray &reply) = 0;
 
     virtual QString translation() const;
+    virtual StringPair transcription() const;
+    virtual StringPair translit() const;
     virtual Language detectedLanguage() const;
 
     virtual QString errorString() const;
@@ -92,7 +96,45 @@ protected:
 
     QString m_error;
     QString m_translation;
+    StringPair m_transcription;
+    StringPair m_translit;
     Language m_detectedLanguage;
 };
+
+enum CommonString {
+    AutodetectLanguageCommonString,
+    UnknownLanguageCommonString,
+    UnknownLanguageWithInfoCommonString,
+    NoErrorCommonString,
+    ErrorReturnedCommonString,
+    UnexpectedResponseCommonString,
+    EmptyResultCommonString
+};
+
+inline QString commonString(CommonString id)
+{
+    switch (id) {
+    case AutodetectLanguageCommonString:
+        //: As in "Automatically detect language"
+        return TranslationService::tr("Autodetect", "Automatically detect language");
+    case UnknownLanguageCommonString:
+        //: Unknown language
+        return TranslationService::tr("Unknown", "Unknown language");
+    case UnknownLanguageWithInfoCommonString:
+        //: Unknown language
+        return TranslationService::tr("Unknown (%1)", "Unknown language");
+    case NoErrorCommonString:
+        return TranslationService::tr("No error");
+    case ErrorReturnedCommonString:
+        return TranslationService::tr("%1 service returned an error: \"%2\"");
+    case UnexpectedResponseCommonString:
+        return TranslationService::tr("Unexpected response from the server");
+    case EmptyResultCommonString:
+        return TranslationService::tr("No translation available as %1 service"
+                                      " returned an empty result");
+    default:
+        return QString();
+    }
+}
 
 #endif // TRANSLATIONSERVICE_H

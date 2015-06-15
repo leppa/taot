@@ -22,9 +22,21 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.taot 1.0
 
 Page {
     id: page
+
+    property bool translateOnEnter: false
+    property bool translateOnPaste: true
+
+    onTranslateOnEnterChanged: {
+        translator.setSettingsValue("TranslateOnEnter", translateOnEnter);
+    }
+
+    onTranslateOnPasteChanged: {
+        translator.setSettingsValue("TranslateOnPaste", translateOnPaste);
+    }
 
     allowedOrientations: Orientation.Portrait
                          | Orientation.Landscape
@@ -115,12 +127,47 @@ Page {
 
                 width: parent.width
                 placeholderText: qsTr("Enter the source text...")
+                labelVisible: false
 
                 onTextChanged: {
                     if (translator.sourceText === text)
                         return;
 
                     translator.sourceText = text;
+                }
+
+                EnterKey.iconSource: translateOnEnter
+                                     ? "image://theme/icon-m-enter-accept"
+                                     : "image://theme/icon-m-enter"
+                EnterKey.enabled: !translateOnEnter
+                                  || (!translator.busy && text != "")
+                EnterKey.onClicked: {
+                    if (!translateOnEnter)
+                        return;
+
+                    if (_editor)
+                        _editor.undo();
+                    translator.translate();
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.transcription.sourceText
+                visible: translator.transcription.sourceText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.sourceText
+                visible: translator.translit.sourceText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
                 }
             }
 
@@ -176,13 +223,46 @@ Page {
             }
 
             TextArea {
+                id: translation
+
                 text: translator.translatedText
                 width: parent.width
                 height: translator.supportsTranslation ? implicitHeight
                                                        : 0
                 visible: height > 0
+                labelVisible: false
                 readOnly: true
                 focusOnClick: true
+
+                Separator {
+                    color: translation.color
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        bottom: parent.bottom
+                        bottomMargin: -Theme.paddingSmall / 2
+                    }
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.transcription.translatedText
+                visible: translator.transcription.translatedText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+            }
+
+            ExpandableLabel {
+                text: translator.translit.translatedText
+                visible: translator.translit.translatedText != ""
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
             }
 
             Row {
@@ -280,6 +360,34 @@ Page {
                 }
             }
         }
+
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Paste")
+                enabled: !clipboard.empty
+                onClicked: {
+                    source.paste();
+                    if (translateOnPaste)
+                        translator.translate();
+                }
+            }
+            MenuItem {
+                property bool hasSelection: translation.selectionStart
+                                            != translation.selectionEnd
+                text: hasSelection ? qsTr("Copy selection") : qsTr("Copy all")
+                enabled: translation.text != ""
+                onClicked: {
+                    if (hasSelection)
+                        clipboard.insert(translation.selectedText);
+                    else
+                        clipboard.insert(translation.text);
+                }
+            }
+        }
+    }
+
+    Clipboard {
+        id: clipboard
     }
 
     Component {
@@ -326,5 +434,10 @@ Page {
         id: settingsPage
 
         SettingsPage {}
+    }
+
+    Component.onCompleted: {
+        translateOnEnter = translator.getSettingsValue("TranslateOnEnter", "false") === "true";
+        translateOnPaste = translator.getSettingsValue("TranslateOnPaste", "true") === "true";
     }
 }

@@ -70,60 +70,38 @@ Page {
                 }
             }
 
-            Item {
-                height: childrenRect.height
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: platformStyle.paddingLarge
-                    rightMargin: platformStyle.paddingLarge
+            SettingsSwitch {
+                title: qsTr("Dark Theme")
+                description: qsTr("Use dark color scheme")
+                checked: !appWindow.platformInverted
+                platformInverted: root.platformInverted
+
+                onCheckedChanged: {
+                    appWindow.platformInverted = !checked;
+                    translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
                 }
+            }
 
-                Column {
-                    id: invertedThemeLabels
+            SettingsSwitch {
+                title: qsTr("Translate on Enter Press")
+                description: qsTr("Only one line of text is supported in this mode")
+                checked: translateOnEnter
+                platformInverted: root.platformInverted
 
-                    anchors {
-                        left: parent.left
-                        right: invertedThemeSwitch.left
-                        rightMargin: platformStyle.paddingSmall
-                    }
-
-                    ListItemText {
-                        text: qsTr("Dark Theme")
-                        role: "Title"
-                        elide: Text.ElideNone
-                        wrapMode: Text.WordWrap
-                        platformInverted: root.platformInverted
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
-                    ListItemText {
-                        text: qsTr("Use dark color scheme")
-                        role: "SubTitle"
-                        elide: Text.ElideNone
-                        wrapMode: Text.WordWrap
-                        platformInverted: root.platformInverted
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
+                onCheckedChanged: {
+                    translateOnEnter = checked;
                 }
-                Switch {
-                    id: invertedThemeSwitch
-                    checked: !appWindow.platformInverted
-                    platformInverted: root.platformInverted
-                    anchors {
-                        right: parent.right
-                        verticalCenter: invertedThemeLabels.verticalCenter
-                    }
+            }
 
-                    onClicked: {
-                        appWindow.platformInverted = !checked;
-                        translator.setSettingsValue("InvertedTheme", appWindow.platformInverted);
-                    }
+            SettingsSwitch {
+                title: qsTr("Paste'n'Translate")
+                description: qsTr("Automatically start translation after inserting text with"
+                                  + " <em>Paste</em> button")
+                checked: translateOnPaste
+                platformInverted: root.platformInverted
+
+                onCheckedChanged: {
+                    translateOnPaste = checked;
                 }
             }
         }

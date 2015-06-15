@@ -50,50 +50,46 @@ Page {
                 }
             }
 
-            Container {
-                layout: DockLayout {}
+            SettingsSwitch {
+                id: invertedThemeSwitch
 
-                StandardListItem {
-                    title: qsTr("Dark Theme") + Retranslate.onLocaleOrLanguageChanged
-                    description: qsTr("Use dark color scheme")
-                                 + Retranslate.onLocaleOrLanguageChanged
-                    horizontalAlignment: HorizontalAlignment.Fill
-                    verticalAlignment: VerticalAlignment.Center
+                title: qsTr("Dark Theme") + Retranslate.onLocaleOrLanguageChanged
+                description: qsTr("Use dark color scheme")
+                             + Retranslate.onLocaleOrLanguageChanged
 
-                    gestureHandlers: [
-                        TapHandler {
-                            onTapped: {
-                                invertedTheme.checked = !invertedTheme.checked;
-                                toast.body = qsTr("Please, restart the application"
-                                                  + " to apply this setting.");
-                                toast.show();
-                            }
-                        }
-                    ]
+                onTapped: {
+                    toast.body = qsTr("Please, restart the application to apply this setting.");
+                    toast.show();
                 }
 
-                Container {
-                    rightPadding: 20
-                    horizontalAlignment: HorizontalAlignment.Right
-                    verticalAlignment: VerticalAlignment.Center
+                onCheckedChanged: {
+                    translator.setSettingsValue("InvertedTheme", checked);
+                }
+            }
 
-                    ToggleButton {
-                        id: invertedTheme
+            SettingsSwitch {
+                id: translateOnEnterSwitch
 
-                        gestureHandlers: [
-                            TapHandler {
-                                onTapped: {
-                                    toast.body = qsTr("Please, restart the application"
-                                                      + " to apply this setting.");
-                                    toast.show();
-                                }
-                            }
-                        ]
+                title: qsTr("Translate on Enter Press") + Retranslate.onLocaleOrLanguageChanged
+                description: qsTr("Hold <em>Shift</em> while pressing <em>Enter</em>"
+                                  + " to start a new line")
+                             + Retranslate.onLocaleOrLanguageChanged
+                checked: translateOnEnter
 
-                        onCheckedChanged: {
-                            translator.setSettingsValue("InvertedTheme", invertedTheme.checked);
-                        }
-                    }
+                onCheckedChanged: {
+                    translateOnEnter = checked;
+                }
+            }
+
+            SettingsSwitch {
+                title: qsTr("Paste'n'Translate") + Retranslate.onLocaleOrLanguageChanged
+                description: qsTr("Automatically start translation after inserting text with"
+                                  + " <em>Paste</em> button")
+                             + Retranslate.onLocaleOrLanguageChanged
+                checked: translateOnPaste
+
+                onCheckedChanged: {
+                    translateOnPaste = checked;
                 }
             }
         }
@@ -115,7 +111,7 @@ Page {
     ]
 
     onCreationCompleted: {
-        invertedTheme.checked = translator.getSettingsValue("InvertedTheme",
+        invertedThemeSwitch.checked = translator.getSettingsValue("InvertedTheme",
                 Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark);
 
         for (var k = 0; k < l10n.count; k++) {

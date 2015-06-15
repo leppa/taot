@@ -81,24 +81,28 @@ blackberry {
         src/bb10/reversetranslationsmodel.h \
         src/bb10/languagechangelistener.h \
         src/bb10/clipboard.h \
-        src/bb10/repeater.h
+        src/bb10/repeater.h \
+        src/bb10/donationmanager.h
 
     SOURCES += \
         src/bb10/dictionarymodel.cpp \
         src/bb10/reversetranslationsmodel.cpp \
         src/bb10/languagechangelistener.cpp \
         src/bb10/clipboard.cpp \
-        src/bb10/repeater.cpp
+        src/bb10/repeater.cpp \
+        src/bb10/donationmanager.cpp
 
     LIBS += -lbbplatform -lbbsystem
 } else {
     HEADERS += \
         src/dictionarymodel.h \
-        src/reversetranslationsmodel.h
+        src/reversetranslationsmodel.h \
+        src/clipboard.h
 
     SOURCES += \
         src/dictionarymodel.cpp \
-        src/reversetranslationsmodel.cpp
+        src/reversetranslationsmodel.cpp \
+        src/clipboard.cpp
 }
 
 symbian {
@@ -126,6 +130,7 @@ TRANSLATIONS += \
     l10n/taot_es.ts \
     l10n/taot_fa.ts \
     l10n/taot_fi.ts \
+    l10n/taot_fr_FR.ts \
     l10n/taot_gl.ts \
     l10n/taot_it.ts \
     l10n/taot_nl_NL.ts \
@@ -168,7 +173,7 @@ VERSION = $$replace(VERSION, "</versionNumber>", "")
 BUILD = $$find(BARFILE, <buildId>.*</buildId>)
 BUILD = $$replace(BUILD, "<buildId>", "")
 BUILD = $$replace(BUILD, "</buildId>", "")
-isEmpty(BUILD): BUILD = 0
+isEmpty(BUILD): BUILD = 1
 symbian {
     DEFINES += VERSION=$$VERSION
 } else {

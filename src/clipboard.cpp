@@ -22,22 +22,20 @@
 
 #include "clipboard.h"
 
-#include <QFileSystemWatcher>
-#include <bb/system/Clipboard>
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include <QApplication>
+#else
+#   include <QGuiApplication>
+#endif
+
+#include <QDebug>
 
 Clipboard::Clipboard(QObject *parent)
     : QObject(parent)
-    , m_clipboard(new bb::system::Clipboard(this))
-    , m_text(QString::fromUtf8(m_clipboard->value("text/plain")))
-    , m_clipboardWatcher(new QFileSystemWatcher(this))
+    , m_text(qApp->clipboard()->text())
 {
-    connect(m_clipboardWatcher, SIGNAL(fileChanged(QString)), SLOT(onFileChanged(QString)));
-    m_clipboardWatcher->addPath("/accounts/1000/clipboard/text.plain");
-}
-
-bool Clipboard::clear()
-{
-    return m_clipboard->clear();
+    connect(qApp->clipboard(), SIGNAL(changed(QClipboard::Mode)),
+            this, SLOT(onChanged(QClipboard::Mode)));
 }
 
 bool Clipboard::isEmpty() const
@@ -45,21 +43,25 @@ bool Clipboard::isEmpty() const
     return m_text.isEmpty();
 }
 
+void Clipboard::clear()
+{
+    qApp->clipboard()->clear();
+}
+
 QString Clipboard::text() const
 {
     return m_text;
 }
 
-bool Clipboard::insert(const QString &text)
+void Clipboard::insert(const QString &text)
 {
-    m_clipboard->clear();
-    return m_clipboard->insert("text/plain", text.toUtf8());
+    qApp->clipboard()->setText(text);
 }
 
-void Clipboard::onFileChanged(const QString &path)
+void Clipboard::onChanged(QClipboard::Mode mode)
 {
-    const QString text = QString::fromUtf8(m_clipboard->value("text/plain"));
-    if (m_text == text)
+    const QString text = qApp->clipboard()->text();
+    if (mode != QClipboard::Clipboard || m_text == text)
         return;
 
     m_text = text;

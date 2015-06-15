@@ -29,5 +29,9 @@ PageStackWindow {
     platformSoftwareInputPanelEnabled: true
     initialPage: MainPage {}
 
+    onOrientationChangeFinished: {
+        showStatusBar = inPortrait;
+    }
+
     InfoBanner { id: banner }
 }

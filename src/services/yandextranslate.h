@@ -44,6 +44,9 @@ public:
 
     bool translate(const Language &from, const Language &to, const QString &text);
     bool parseReply(const QByteArray &reply);
+
+protected:
+    QString serviceName() const { return displayName(); }
 };
 
 #endif // YANDEXTRANSLATE_H

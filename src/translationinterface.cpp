@@ -42,6 +42,32 @@
 #   include <QTextDocument>
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+#   include <QDeclarativeEngine>
+#else
+#   include <QQmlEngine>
+#endif
+
+SourceTranslatedTextPair::SourceTranslatedTextPair(QObject *parent)
+    : QObject(parent)
+{}
+
+SourceTranslatedTextPair::SourceTranslatedTextPair(const StringPair &translit, QObject *parent)
+    : QObject(parent)
+    , m_sourceText(translit.first)
+    , m_translatedText(translit.second)
+{}
+
+QString SourceTranslatedTextPair::sourceText() const
+{
+    return m_sourceText;
+}
+
+QString SourceTranslatedTextPair::translatedText() const
+{
+    return m_translatedText;
+}
+
 TranslationInterface::TranslationInterface(QObject *parent)
     : QObject(parent)
     , m_service(NULL)
@@ -58,6 +84,9 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_settings(new QSettings(QCoreApplication::organizationName(), "taot", this))
 #endif
 {
+    setTranscription(new SourceTranslatedTextPair());
+    setTranslit(new SourceTranslatedTextPair());
+
     QStringList list;
     list.insert(GoogleTranslateService, GoogleTranslate::displayName());
     list.insert(MicrosoftTranslatorService, MicrosoftTranslator::displayName());
@@ -159,6 +188,16 @@ QString TranslationInterface::translatedText() const
     return m_translation;
 }
 
+SourceTranslatedTextPair *TranslationInterface::transcription() const
+{
+    return m_transcription.data();
+}
+
+SourceTranslatedTextPair *TranslationInterface::translit() const
+{
+    return m_translit.data();
+}
+
 DictionaryModel *TranslationInterface::dictionary() const
 {
     return m_dict;
@@ -183,11 +222,10 @@ TranslationInterface::~TranslationInterface()
     delete m_settings;
 }
 
-// HACK: We return a QString here, else JavaScript treats `false` as undefined value.
-QString TranslationInterface::getSettingsValue(const QString &key,
-                                               const QVariant &defaultValue) const
+QVariant TranslationInterface::getSettingsValue(const QString &key,
+                                                const QVariant &defaultValue) const
 {
-    return m_settings->value(key, defaultValue).toString();
+    return m_settings->value(key, defaultValue);
 }
 
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
@@ -380,6 +418,8 @@ void TranslationInterface::resetTranslation()
     m_service->cancelTranslation();
     m_service->clear();
     setTranslatedText(QString());
+    setTranscription(new SourceTranslatedTextPair());
+    setTranslit(new SourceTranslatedTextPair());
     setDetectedLanguage(Language());
     m_dict->clear();
 }
@@ -408,6 +448,34 @@ void TranslationInterface::setTranslatedText(const QString &translatedText)
     emit translatedTextChanged();
 }
 
+void TranslationInterface::setTranscription(SourceTranslatedTextPair *transcription)
+{
+    if (m_transcription.data() == transcription)
+        return;
+
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QDeclarativeEngine::setObjectOwnership(transcription, QDeclarativeEngine::CppOwnership);
+#else
+    QQmlEngine::setObjectOwnership(transcription, QQmlEngine::CppOwnership);
+#endif
+    m_transcription.reset(transcription);
+    emit transcriptionChanged();
+}
+
+void TranslationInterface::setTranslit(SourceTranslatedTextPair *translit)
+{
+    if (m_translit.data() == translit)
+        return;
+
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
+    QDeclarativeEngine::setObjectOwnership(translit, QDeclarativeEngine::CppOwnership);
+#else
+    QQmlEngine::setObjectOwnership(translit, QQmlEngine::CppOwnership);
+#endif
+    m_translit.reset(translit);
+    emit translitChanged();
+}
+
 void TranslationInterface::onTranslationFinished()
 {
     setBusy(false);
@@ -418,6 +486,8 @@ void TranslationInterface::onTranslationFinished()
     }
 
     setTranslatedText(m_service->translation());
+    setTranscription(new SourceTranslatedTextPair(m_service->transcription()));
+    setTranslit(new SourceTranslatedTextPair(m_service->translit()));
     setDetectedLanguage(m_service->detectedLanguage());
 }
 

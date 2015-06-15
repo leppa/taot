@@ -2,6 +2,27 @@ TAO Translator ChangeLog
 ========================
 
 
+TAOT v1.2.0
+-----------
+
+- An option to start translation after pressing Enter / Return key on
+  the keyboard ([issue #41][]).
+- Paste'n'Translate: New Paste button will insert source text from the
+  clipboard and trigger a translation right away.
+- Copy button will now copy whole translation if nothing is selected.
+- As a consequence, redundant Select All button was removed.
+- Donation link was moved higher on the About page.
+- Google Translate: Support for displaying transliteration, when
+  provided ([issue #34][]).
+- Google Translate: Longer texts can be translated now.
+- Microsoft Translator: Display detected language when source language
+  is set to autodetect
+- Yandex.Dictionaries: Support for displaying transcription, when
+  provided ([issue #34][]).
+- BlackBerry 10: Support for making donations directly from the app.
+- New UI localizations: Arabic, French, and Spanish.
+
+
 TAOT v1.1.0
 -----------
 
@@ -182,7 +203,9 @@ Initial release.
 [issue #29]: https://github.com/leppa/taot/issues/29
 [issue #32]: https://github.com/leppa/taot/issues/32
 [issue #33]: https://github.com/leppa/taot/issues/33
+[issue #34]: https://github.com/leppa/taot/issues/34
 [issue #35]: https://github.com/leppa/taot/issues/35
 [issue #36]: https://github.com/leppa/taot/issues/36
+[issue #41]: https://github.com/leppa/taot/issues/41
 
 <!-- $Id: $Format:%h %ai %an$ $ -->

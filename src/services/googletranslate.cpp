@@ -122,9 +122,8 @@ LanguagePair GoogleTranslate::defaultLanguagePair() const
 
 QString GoogleTranslate::getLanguageName(const QVariant &info) const
 {
-    //: Unknown language
-    return m_langCodeToName.value(info.toString(),
-                                  tr("Unknown (%1)", "Unknown language").arg(info.toString()));
+    return m_langCodeToName.value(info.toString(), commonString(UnknownLanguageWithInfoCommonString)
+                                                   .arg(info.toString()));
 }
 
 bool GoogleTranslate::isAutoLanguage(const Language &lang) const
@@ -141,9 +140,10 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 {
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QUrl query("https://translate.google.com/translate_a/single");
+    QUrl dataQuery;
 #else
     QUrl url("https://translate.google.com/translate_a/single");
-    QUrlQuery query;
+    QUrlQuery query, dataQuery;
 #endif
     query.addQueryItem("client", "q");
     query.addQueryItem("hl", "en");
@@ -155,7 +155,7 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
     query.addQueryItem("dt", "t"); // Translation
 //    query.addQueryItem("dt", "at"); // Alternate translations
     query.addQueryItem("dt", "bd"); // Dictionary (with reverse translations and articles)
-//    query.addQueryItem("dt", "rm"); // Transcription / transliteration
+    query.addQueryItem("dt", "rm"); // Transliteration
 //    query.addQueryItem("dt", "md"); // Definitions of source word
 //    query.addQueryItem("dt", "ss"); // Source text synonyms
 //    query.addQueryItem("dt", "ex"); // Examples
@@ -166,13 +166,19 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 //    query.addQueryItem("tsel", "0");
 //    query.addQueryItem("otf", "1");
 
-    query.addQueryItem("q", text);
+    dataQuery.addQueryItem("q", text);
+
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    m_reply = m_nam.get(QNetworkRequest(query));
+    QNetworkRequest request(query);
+    const QByteArray data(dataQuery.encodedQuery());
 #else
     url.setQuery(query);
-    m_reply = m_nam.get(QNetworkRequest(url));
+    QNetworkRequest request(url);
+    const QByteArray data(dataQuery.toString(QUrl::FullyEncoded).toUtf8());
 #endif
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+                      "application/x-www-form-urlencoded;charset=UTF-8");
+    m_reply = m_nam.post(request, data);
 
     return true;
 }
@@ -185,6 +191,8 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     // us to parse JSON with QJsonDocument.
     QString json = QString::fromUtf8(reply);
     json.replace(QRegExp(",(?=,)"), ",null");
+    json.replace(",]", ",null]");
+    json.replace("[,", "[null,");
     const QVariant data = parseJson(json.toUtf8());
 #else
     const QVariant data = parseJson(reply);
@@ -194,15 +202,24 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
         return false;
 
     const QVariantList dl = data.toList();
-    if (dl.isEmpty())
+    if (dl.isEmpty()) {
+        m_error = commonString(EmptyResultCommonString).arg(displayName());
         return false;
+    }
 
     const QString detected = dl.value(2).toString();
     m_detectedLanguage = Language(detected, getLanguageName(detected));
 
     m_translation.clear();
+    m_translit = StringPair();
     foreach (const QVariant &ti, dl.value(0).toList()) {
-        m_translation.append(ti.toList().value(0).toString());
+        const QVariantList tr = ti.toList();
+        if (!tr.value(0).isNull())
+            m_translation.append(tr.value(0).toString());
+        if (!tr.value(2).isNull())
+            m_translit.second.append(tr.value(2).toString());
+        if (!tr.value(3).isNull())
+            m_translit.first.append(tr.value(3).toString());
     }
 
     m_dict->clear();
