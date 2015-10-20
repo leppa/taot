@@ -145,7 +145,7 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
     QUrl url("https://translate.google.com/translate_a/single");
     QUrlQuery query, dataQuery;
 #endif
-    query.addQueryItem("client", "q");
+    query.addQueryItem("client", "t");
     query.addQueryItem("hl", "en");
     query.addQueryItem("sl", from.info.toString());
     query.addQueryItem("tl", to.info.toString());
@@ -165,6 +165,7 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 //    query.addQueryItem("ssel", "3");
 //    query.addQueryItem("tsel", "0");
 //    query.addQueryItem("otf", "1");
+    query.addQueryItem("tk", ""); // Access token placeholder
 
     dataQuery.addQueryItem("q", text);
 
@@ -178,6 +179,8 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 #endif
     request.setHeader(QNetworkRequest::ContentTypeHeader,
                       "application/x-www-form-urlencoded;charset=UTF-8");
+    request.setRawHeader("User-Agent", "Mozilla/5.0");
+    request.setRawHeader("Referer", "https://translate.google.com/");
     m_reply = m_nam.post(request, data);
 
     return true;
