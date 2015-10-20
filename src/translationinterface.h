@@ -178,6 +178,7 @@ private:
     TranslationServiceItem *m_serviceItem;
 
     bool m_busy;
+    bool m_suppressRetranslate;
     LanguageListModel *m_sourceLanguages;
     LanguageListModel *m_targetLanguages;
     LanguageItem *m_sourceLanguage;

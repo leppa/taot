@@ -73,6 +73,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_service(NULL)
     , m_serviceItem(NULL)
     , m_busy(false)
+    , m_suppressRetranslate(false)
     , m_sourceLanguages(new LanguageListModel(this))
     , m_targetLanguages(new LanguageListModel(this))
     , m_sourceLanguage(NULL)
@@ -348,6 +349,8 @@ void TranslationInterface::invoke(const QString &target,
 
 void TranslationInterface::createService(uint id)
 {
+    m_suppressRetranslate = true;
+
     delete m_sourceLanguage;
     m_sourceLanguage = NULL;
     delete m_targetLanguage;
@@ -411,6 +414,9 @@ void TranslationInterface::createService(uint id)
 
     emit sourceLanguageChanged();
     emit targetLanguageChanged();
+
+    m_suppressRetranslate = false;
+    retranslate();
 }
 
 void TranslationInterface::resetTranslation()
@@ -493,7 +499,7 @@ void TranslationInterface::onTranslationFinished()
 
 void TranslationInterface::retranslate()
 {
-    if (m_srcText.isEmpty())
+    if (m_suppressRetranslate || m_srcText.isEmpty())
         return;
 
     translate();
