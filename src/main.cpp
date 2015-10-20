@@ -106,6 +106,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(4,8,0)
+    // More and more sites are disabling SSLv3 due to vulnerabilities,
+    // however Qt < 4.8 has only SSLv3 enabled by default.
+    QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
+    sslConfig.setProtocol(QSsl::TlsV1);
+    QSslConfiguration::setDefaultConfiguration(sslConfig);
+#endif
+
 #ifdef Q_OS_BLACKBERRY
     LanguageChangeListener *listener = new LanguageChangeListener(app.data());
     Q_UNUSED(listener);
