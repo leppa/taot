@@ -193,9 +193,28 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     // like ",,". Replacing all ",," with ",null," allows
     // us to parse JSON with QJsonDocument.
     QString json = QString::fromUtf8(reply);
-    json.replace(QRegExp(",(?=,)"), ",null");
-    json.replace(",]", ",null]");
-    json.replace("[,", "[null,");
+    if (json.isEmpty()) {
+        m_error = commonString(EmptyResultCommonString).arg(displayName());
+        return false;
+    }
+
+    int i = 1;
+    bool skip = json.at(0) == '"';
+    while (i < json.length()) {
+        const QStringRef mid = json.midRef(i - 1, 2);
+        if (mid.at(1) == '"' && mid.compare(QLatin1String("\\\"")) != 0) {
+            skip = !skip;
+            ++i;
+        }
+        if (!skip && (mid.compare(QLatin1String(",,")) == 0
+                      || mid.compare(QLatin1String("[,")) == 0
+                      || mid.compare(QLatin1String(",]")) == 0)) {
+            json.insert(i, "null");
+            i += 4;
+        }
+        ++i;
+    }
+
     const QVariant data = parseJson(json.toUtf8());
 #else
     const QVariant data = parseJson(reply);
