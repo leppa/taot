@@ -118,7 +118,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     LanguageChangeListener *listener = new LanguageChangeListener(app.data());
     Q_UNUSED(listener);
 #else
+# ifdef Q_OS_SAILFISH
+    QSettings settings("harbour-taot", "taot");
+# else
     QSettings settings(QCoreApplication::organizationName(), "taot");
+# endif
     QString lc = QLocale().name();
     if (settings.contains("UILanguage")) {
         const QString lang = settings.value("UILanguage").toString();
