@@ -86,6 +86,7 @@ protected:
 
 private slots:
     void onNetworkReply(QNetworkReply *reply);
+    void onSslErrors(QNetworkReply *reply,const QList<QSslError> &errors);
 
 signals:
     void translationFinished();
@@ -95,6 +96,7 @@ protected:
     QNetworkReply *m_reply;
 
     QString m_error;
+    QString m_sslErrors;
     QString m_translation;
     StringPair m_transcription;
     StringPair m_translit;

@@ -22,8 +22,10 @@
 
 #include "translationservice.h"
 
+#include <QStringList>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QSslError>
 #include <QDebug>
 
 Language::Language()
@@ -60,6 +62,9 @@ TranslationService::TranslationService(QObject *parent)
     : QObject(parent), m_reply(NULL), m_error(commonString(NoErrorCommonString))
 {
     connect(&m_nam, SIGNAL(finished(QNetworkReply*)), SLOT(onNetworkReply(QNetworkReply*)));
+    connect(&m_nam,
+            SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
+            SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
 }
 
 QString TranslationService::serializeLanguageInfo(const QVariant &info) const
@@ -75,6 +80,7 @@ QVariant TranslationService::deserializeLanguageInfo(const QString &info) const
 void TranslationService::clear()
 {
     m_error.clear();
+    m_sslErrors.clear();
     m_translation.clear();
     m_transcription = StringPair();
     m_translit = StringPair();
@@ -124,8 +130,10 @@ bool TranslationService::checkReplyForErrors(QNetworkReply *reply)
     }
 
     if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << reply->errorString();
         m_error = reply->errorString();
+        if (reply->error() == QNetworkReply::SslHandshakeFailedError && !m_sslErrors.isEmpty())
+            m_error.append(": ").append(m_sslErrors);
+        qWarning() << Q_FUNC_INFO << m_error;
         reply->deleteLater();
         return false;
     }
@@ -152,4 +160,17 @@ void TranslationService::onNetworkReply(QNetworkReply *reply)
     reply->deleteLater();
 
     emit translationFinished();
+}
+
+void TranslationService::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors)
+{
+    if (reply != m_reply)
+        return;
+
+    QStringList errorList;
+    foreach (const QSslError &error, errors) {
+        errorList << error.errorString();
+    }
+
+    m_sslErrors = errorList.join(", ");
 }
