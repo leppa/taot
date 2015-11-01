@@ -29,15 +29,22 @@ YandexTranslationService::YandexTranslationService(QObject *parent)
     : JsonTranslationService(parent)
 {
     QFile f;
+    QSslCertificate cert;
+    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
+    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
 
     f.setFileName("://cacertificates/certum.ca.pem");
     f.open(QFile::ReadOnly);
-    QSslCertificate cert(f.readAll());
+    cert = QSslCertificate(f.readAll());
     f.close();
+    cacerts << cert;
 
-    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
-    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
-    cacerts.append(cert);
+    f.setFileName("://cacertificates/certum.network.ca.pem");
+    f.open(QFile::ReadOnly);
+    cert = QSslCertificate(f.readAll());
+    f.close();
+    cacerts << cert;
+
     m_sslConfiguration.setCaCertificates(cacerts);
 }
 
