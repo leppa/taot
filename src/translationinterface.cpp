@@ -107,12 +107,6 @@ TranslationInterface::TranslationInterface(QObject *parent)
     connect(qApp, SIGNAL(visibilityChanged()), this, SIGNAL(appVisibilityChanged()));
 #endif
 
-    // TODO: Remove after few versions
-#if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
-    if (m_settings->contains("displayNokiaStoreNotice"))
-        m_settings->remove("displayNokiaStoreNotice");
-#endif
-
 #ifdef Q_OS_BLACKBERRY
     m_invoker = new bb::system::InvokeManager();
     connect(m_invoker, SIGNAL(invoked(bb::system::InvokeRequest)),
