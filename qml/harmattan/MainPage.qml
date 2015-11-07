@@ -508,9 +508,12 @@ Page {
                 text: qsTr("Paste")
                 enabled: !clipboard.empty
                 onClicked: {
-                    source.paste();
-                    if (translateOnPaste)
+                    if (translateOnPaste) {
+                        source.text = clipboard.text;
                         translator.translate();
+                    } else {
+                        source.paste();
+                    }
                 }
             }
             ToolButton {

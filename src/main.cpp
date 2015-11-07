@@ -149,7 +149,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #ifdef Q_OS_SAILFISH
     qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
     qmlRegisterType<L10nModel>("harbour.taot", 1, 0, "L10nModel");
-    qmlRegisterType<Clipboard>("harbour.taot", 1, 0, "Clipboard");
     qmlRegisterType<Updater>("harbour.taot", 1, 0, "Updater");
 #else
     qmlRegisterType<TranslationInterface>("taot", 1, 0, "Translator");

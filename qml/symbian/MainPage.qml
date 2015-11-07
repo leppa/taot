@@ -579,9 +579,12 @@ Page {
             enabled: !clipboard.empty
             platformInverted: appWindow.platformInverted
             onClicked: {
-                source.paste();
-                if (translateOnPaste)
+                if (translateOnPaste) {
+                    source.text = clipboard.text;
                     translator.translate();
+                } else {
+                    source.paste();
+                }
             }
         }
         ToolButton {

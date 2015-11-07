@@ -364,11 +364,14 @@ Page {
         PushUpMenu {
             MenuItem {
                 text: qsTr("Paste")
-                enabled: !clipboard.empty
+                enabled: Clipboard.hasText
                 onClicked: {
-                    source.paste();
-                    if (translateOnPaste)
+                    if (translateOnPaste) {
+                        source.text = Clipboard.text;
                         translator.translate();
+                    } else {
+                        source.paste();
+                    }
                 }
             }
             MenuItem {
@@ -378,16 +381,12 @@ Page {
                 enabled: translation.text != ""
                 onClicked: {
                     if (hasSelection)
-                        clipboard.insert(translation.selectedText);
+                        Clipboard.text = translation.selectedText;
                     else
-                        clipboard.insert(translation.text);
+                        Clipboard.text = translation.text;
                 }
             }
         }
-    }
-
-    Clipboard {
-        id: clipboard
     }
 
     Component {

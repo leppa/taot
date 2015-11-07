@@ -96,13 +96,19 @@ blackberry {
 } else {
     HEADERS += \
         src/dictionarymodel.h \
-        src/reversetranslationsmodel.h \
-        src/clipboard.h
+        src/reversetranslationsmodel.h
 
     SOURCES += \
         src/dictionarymodel.cpp \
-        src/reversetranslationsmodel.cpp \
-        src/clipboard.cpp
+        src/reversetranslationsmodel.cpp
+
+    !sailfish {
+        HEADERS += \
+            src/clipboard.h
+
+        SOURCES += \
+            src/clipboard.cpp
+    }
 }
 
 symbian {
