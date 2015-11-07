@@ -47,12 +47,16 @@ signals:
     void textChanged();
 
 private slots:
+    void onDirectoryChanged(const QString &path);
     void onFileChanged(const QString &path);
 
 private:
     bb::system::Clipboard *m_clipboard;
     QString m_text;
     QFileSystemWatcher *m_clipboardWatcher;
+
+    void addClipboardFileWatcher();
+    void updateClipboardText();
 };
 
 Q_DECLARE_METATYPE(Clipboard *)

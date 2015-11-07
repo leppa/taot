@@ -22,8 +22,12 @@
 
 #include "clipboard.h"
 
+#include <QFile>
 #include <QFileSystemWatcher>
 #include <bb/system/Clipboard>
+
+#define CLIPBOARD_PATH "/accounts/1000/clipboard"
+#define CLIPBOARD_FILE_PATH CLIPBOARD_PATH"/text.plain"
 
 Clipboard::Clipboard(QObject *parent)
     : QObject(parent)
@@ -32,7 +36,13 @@ Clipboard::Clipboard(QObject *parent)
     , m_clipboardWatcher(new QFileSystemWatcher(this))
 {
     connect(m_clipboardWatcher, SIGNAL(fileChanged(QString)), SLOT(onFileChanged(QString)));
-    m_clipboardWatcher->addPath("/accounts/1000/clipboard/text.plain");
+    connect(m_clipboardWatcher,
+            SIGNAL(directoryChanged(QString)),
+            SLOT(onDirectoryChanged(QString)));
+    if (QFile::exists(CLIPBOARD_FILE_PATH))
+        m_clipboardWatcher->addPath(CLIPBOARD_FILE_PATH);
+    else
+        m_clipboardWatcher->addPath(CLIPBOARD_PATH);
 }
 
 bool Clipboard::clear()
@@ -56,7 +66,26 @@ bool Clipboard::insert(const QString &text)
     return m_clipboard->insert("text/plain", text.toUtf8());
 }
 
-void Clipboard::onFileChanged(const QString &path)
+void Clipboard::onDirectoryChanged(const QString &)
+{
+    addClipboardFileWatcher();
+}
+
+void Clipboard::onFileChanged(const QString &)
+{
+    updateClipboardText();
+}
+
+void Clipboard::addClipboardFileWatcher()
+{
+    if (QFile::exists(CLIPBOARD_FILE_PATH)) {
+        m_clipboardWatcher->removePath(CLIPBOARD_PATH);
+        m_clipboardWatcher->addPath(CLIPBOARD_FILE_PATH);
+        updateClipboardText();
+    }
+}
+
+void Clipboard::updateClipboardText()
 {
     const QString text = QString::fromUtf8(m_clipboard->value("text/plain"));
     if (m_text == text)
