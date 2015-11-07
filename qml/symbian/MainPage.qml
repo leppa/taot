@@ -104,6 +104,8 @@ Page {
     Item {
         id: titleBar
 
+        property bool active: true
+
         width: parent.width
         height: platformStyle.graphicSizeMedium
 
@@ -123,18 +125,21 @@ Page {
 
         Rectangle {
             color: platformStyle.colorNormalLink
-            visible: mouseArea.pressed
+            visible: parent.active && mouseArea.pressed
             anchors.fill: parent
         }
 
         MouseArea {
             id: mouseArea
-            enabled: parent.enabled
             anchors.fill: parent
             onClicked: {
-                if (servicesDialog.selectedIndex < 0)
-                    servicesDialog.selectedIndex = translator.selectedService.index;
-                servicesDialog.open();
+                if (parent.active) {
+                    if (servicesDialog.selectedIndex < 0)
+                        servicesDialog.selectedIndex = translator.selectedService.index;
+                    servicesDialog.open();
+                } else {
+                    translateButton.focus = true;
+                }
             }
         }
 
@@ -155,7 +160,7 @@ Page {
 
             source: "image://theme/qtg_graf_choice_list_indicator"
             visible: opacity > 0
-            opacity: parent.enabled ? 1.0 : 0.0
+            opacity: parent.active ? 1.0 : 0.0
             sourceSize {
                 width: platformStyle.graphicSizeSmall
                 height: platformStyle.graphicSizeSmall
@@ -189,10 +194,12 @@ Page {
             id: content
 
             width: flickable.width
-            height: childrenRect.height + 2 * platformStyle.paddingMedium
+            height: childrenRect.height + 2 * spacing
             spacing: platformStyle.paddingMedium
 
             Row {
+                id: languageSelectors
+
                 width: parent.width
                 height: fromSelector.height
                 spacing: platformStyle.paddingSmall
@@ -252,9 +259,8 @@ Page {
             Item {
                 id: sourceWrapper
 
-                z: 1
                 width: parent.width
-                height: source.implicitHeight
+                height: source.height
 
                 TextField {
                     id: sourceSingle
@@ -296,28 +302,37 @@ Page {
                 }
             }
 
-            ExpandableLabel {
-                text: translator.transcription.sourceText
-                visible: translator.transcription.sourceText != ""
-                platformInverted: appWindow.platformInverted
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
-            }
+            Column {
+                id: sourceExpandables
+                width: parent.width
+                height: childrenRect.height
+                spacing: parent.spacing
 
-            ExpandableLabel {
-                text: translator.translit.sourceText
-                visible: translator.translit.sourceText != ""
-                platformInverted: appWindow.platformInverted
-                anchors {
-                    left: parent.left
-                    right: parent.right
+                ExpandableLabel {
+                    text: translator.transcription.sourceText
+                    visible: translator.transcription.sourceText != ""
+                    platformInverted: appWindow.platformInverted
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+                }
+
+                ExpandableLabel {
+                    text: translator.translit.sourceText
+                    visible: translator.translit.sourceText != ""
+                    platformInverted: appWindow.platformInverted
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
                 }
             }
 
             Item {
-                height: Math.max(translateButton.height, clearButton.height)
+                id: buttonRow
+
+                implicitHeight: Math.max(translateButton.height, clearButton.height)
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -362,199 +377,194 @@ Page {
                     }
                 }
 
-                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
-            }
-
-            BorderImage {
-                height: translator.supportsTranslation ? trans.implicitHeight
-                                                         + platformStyle.borderSizeMedium / 2
-                                                         + 2 * platformStyle.paddingMedium
-                                                       : 0
-                source: privateStyle.imagePath("qtg_fr_textfield_uneditable",
-                                               appWindow.platformInverted)
-                smooth: true
-                clip: true
-                border {
-                    top: platformStyle.borderSizeMedium
-                    left: platformStyle.borderSizeMedium
-                    bottom: platformStyle.borderSizeMedium
-                    right: platformStyle.borderSizeMedium
-                }
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
-
-                Label {
-                    id: trans
-
-                    text: translator.translatedText
-                    wrapMode: TextEdit.Wrap
-                    color: platformStyle.colorNormalDark
-                    platformInverted: appWindow.platformInverted
-                    anchors {
-                        top: parent.top
-                        topMargin: platformStyle.borderSizeMedium / 4 + platformStyle.paddingMedium
-                        left: parent.left
-                        leftMargin: platformStyle.borderSizeMedium / 2 + platformStyle.paddingSmall
-                        right: parent.right
-                        rightMargin: platformStyle.borderSizeMedium / 2 + platformStyle.paddingSmall
-                    }
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        if (translator.translatedText != "")
-                            pageStack.push(translationPage);
-                    }
-                }
-
                 Behavior on height {
                     NumberAnimation {
-                        duration: 200
-                        easing.type: Easing.InOutQuad
+                        duration: 200; easing.type: Easing.InOutQuad
                     }
                 }
-            }
-
-            ExpandableLabel {
-                text: translator.transcription.translatedText
-                visible: translator.transcription.translatedText != ""
-                platformInverted: appWindow.platformInverted
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
-            }
-
-            ExpandableLabel {
-                text: translator.translit.translatedText
-                visible: translator.translit.translatedText != ""
-                platformInverted: appWindow.platformInverted
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
-            }
-
-            Row {
-                id: detectedLanguage
-
-                width: parent.width
-                height: childrenRect.height
-                spacing: platformStyle.paddingSmall
-                state: "Empty"
-                clip: true
-
-                Label {
-                    font.weight: Font.Light
-                    text: qsTr("Detected language:")
-                    platformInverted: appWindow.platformInverted
-                }
-                Label {
-                    id: dl
-                    text: translator.detectedLanguageName
-                    platformInverted: appWindow.platformInverted
-                }
-
-                states: [
-                    State {
-                        name: "Empty"
-                        when: translator.detectedLanguageName === ""
-
-                        PropertyChanges {
-                            target: detectedLanguage
-                            height: 0
-                            opacity: 0
-                            scale: 0
-                        }
-                        PropertyChanges {
-                            target: dl
-                            text: ""
-                        }
-                    }
-                ]
-
-                transitions: [
-                    Transition {
-                        from: ""
-                        to: "Empty"
-
-                        ParallelAnimation {
-                            NumberAnimation {
-                                target: detectedLanguage
-                                property: "height"
-                                duration: 1300
-                                easing.type: Easing.OutBack
-                            }
-                            SequentialAnimation {
-                                PauseAnimation {
-                                    duration: 1300
-                                }
-                                PropertyAction {
-                                    targets: [detectedLanguage,dl]
-                                    properties: "scale,opacity,text"
-                                }
-                            }
-                        }
-                    },
-                    Transition {
-                        from: "Empty"
-                        to: ""
-
-                        SequentialAnimation {
-                            PropertyAction {
-                                targets: [detectedLanguage,dl]
-                                properties: "height,text"
-                            }
-                            NumberAnimation {
-                                target: detectedLanguage
-                                properties: "scale,opacity"
-                                duration: 300
-                                easing.type: Easing.OutBack
-                            }
-                        }
-                    }
-                ]
             }
 
             Column {
-                id: listDictionary
-
+                id: bottom
                 width: parent.width
                 height: childrenRect.height
+                spacing: parent.spacing
 
-                Repeater {
-                    model: translator.dictionary
-                    delegate: DictionaryDelegate {
-                        width: listDictionary.width
+                BorderImage {
+                    id: translation
+
+                    height: translator.supportsTranslation ? trans.implicitHeight
+                                                             + platformStyle.borderSizeMedium / 2
+                                                             + 2 * platformStyle.paddingMedium
+                                                           : 0
+                    source: privateStyle.imagePath("qtg_fr_textfield_uneditable",
+                                                   appWindow.platformInverted)
+                    smooth: true
+                    clip: true
+                    border {
+                        top: platformStyle.borderSizeMedium
+                        left: platformStyle.borderSizeMedium
+                        bottom: platformStyle.borderSizeMedium
+                        right: platformStyle.borderSizeMedium
+                    }
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+
+                    Label {
+                        id: trans
+
+                        text: translator.translatedText
+                        wrapMode: TextEdit.Wrap
+                        color: platformStyle.colorNormalDark
                         platformInverted: appWindow.platformInverted
+                        anchors {
+                            top: parent.top
+                            topMargin: platformStyle.borderSizeMedium / 4
+                                       + platformStyle.paddingMedium
+                            left: parent.left
+                            leftMargin: platformStyle.borderSizeMedium / 2
+                                        + platformStyle.paddingSmall
+                            right: parent.right
+                            rightMargin: platformStyle.borderSizeMedium / 2
+                                         + platformStyle.paddingSmall
+                        }
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            if (translator.translatedText != "")
+                                pageStack.push(translationPage);
+                        }
+                    }
+
+                    Behavior on height {
+                        NumberAnimation {
+                            duration: 200
+                            easing.type: Easing.InOutQuad
+                        }
+                    }
+                }
+
+                ExpandableLabel {
+                    text: translator.transcription.translatedText
+                    visible: translator.transcription.translatedText != ""
+                    platformInverted: appWindow.platformInverted
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+                }
+
+                ExpandableLabel {
+                    text: translator.translit.translatedText
+                    visible: translator.translit.translatedText != ""
+                    platformInverted: appWindow.platformInverted
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+                }
+
+                Row {
+                    id: detectedLanguage
+
+                    width: parent.width
+                    height: childrenRect.height
+                    spacing: platformStyle.paddingSmall
+                    state: "Empty"
+                    clip: true
+
+                    Label {
+                        font.weight: Font.Light
+                        text: qsTr("Detected language:")
+                        platformInverted: appWindow.platformInverted
+                    }
+                    Label {
+                        id: dl
+                        text: translator.detectedLanguageName
+                        platformInverted: appWindow.platformInverted
+                    }
+
+                    states: [
+                        State {
+                            name: "Empty"
+                            when: translator.detectedLanguageName === ""
+
+                            PropertyChanges {
+                                target: detectedLanguage
+                                height: 0
+                                opacity: 0
+                                scale: 0
+                            }
+                            PropertyChanges {
+                                target: dl
+                                text: ""
+                            }
+                        }
+                    ]
+
+                    transitions: [
+                        Transition {
+                            from: ""
+                            to: "Empty"
+
+                            ParallelAnimation {
+                                NumberAnimation {
+                                    target: detectedLanguage
+                                    property: "height"
+                                    duration: 1300
+                                    easing.type: Easing.OutBack
+                                }
+                                SequentialAnimation {
+                                    PauseAnimation {
+                                        duration: 1300
+                                    }
+                                    PropertyAction {
+                                        targets: [detectedLanguage,dl]
+                                        properties: "scale,opacity,text"
+                                    }
+                                }
+                            }
+                        },
+                        Transition {
+                            from: "Empty"
+                            to: ""
+
+                            SequentialAnimation {
+                                PropertyAction {
+                                    targets: [detectedLanguage,dl]
+                                    properties: "height,text"
+                                }
+                                NumberAnimation {
+                                    target: detectedLanguage
+                                    properties: "scale,opacity"
+                                    duration: 300
+                                    easing.type: Easing.OutBack
+                                }
+                            }
+                        }
+                    ]
+                }
+
+                Column {
+                    id: listDictionary
+
+                    width: parent.width
+                    height: childrenRect.height
+
+                    Repeater {
+                        model: translator.dictionary
+                        delegate: DictionaryDelegate {
+                            width: listDictionary.width
+                            platformInverted: appWindow.platformInverted
+                        }
                     }
                 }
             }
         }
-    }
-
-    Rectangle {
-        color: appWindow.platformInverted ? platformStyle.colorBackgroundInverted
-                                          : platformStyle.colorBackground
-        visible: opacity > 0
-        opacity: source.state == "Active" ? 1.0 : 0.0
-        anchors {
-            top: titleBar.bottom
-            left: parent.left
-            bottom: parent.bottom
-            right: parent.right
-        }
-
-        MouseArea {
-            enabled: parent.visible
-            acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
-            anchors.fill: parent
-        }
-
-        Behavior on opacity { NumberAnimation { duration: 100 }}
     }
 
     tools: ToolBarLayout {
@@ -617,45 +627,61 @@ Page {
         }
     }
 
+    Connections {
+        target: Qt.application
+        onActiveChanged: {
+            console.debug("Application active", Qt.application.active);
+        }
+    }
+
     states: [
         State {
             name: "Active"
-            when: (sourceMulti.activeFocus || (sourceSingle.activeFocus && !inPortrait))
+            when: Qt.application.active
+                  && (sourceMulti.activeFocus || (sourceSingle.activeFocus && !inPortrait))
                   && (inputContext.visible
                       // HACK: There are some cases, where VKB is visible,
                       // but reported as not. This is a dirty workaround.
                       || translator.appVisibility == Translator.AppPartiallyVisible)
 
-            ParentChange {
-                target: source
-                parent: root
-                x: platformStyle.paddingSmall
-                y: parent.height - source.height - platformStyle.paddingSmall
-                width: parent.width - 2 * platformStyle.paddingSmall
-            }
-            PropertyChanges {
-                target: sourceMulti
-                height: parent.height - titleBar.height - 2 * platformStyle.paddingSmall
-            }
             PropertyChanges {
                 target: titleBar
-                enabled: false
-            }
-            PropertyChanges {
-                target: fromSelector
-                enabled: false
-            }
-            PropertyChanges {
-                target: swap
-                enabled: false
-            }
-            PropertyChanges {
-                target: toSelector
-                enabled: false
+                active: false
             }
             PropertyChanges {
                 target: flickable
-                interactive: false
+            }
+            PropertyChanges {
+                target: content
+                y: platformStyle.paddingMedium
+                height: content.y + sourceWrapper.height + content.spacing + buttonRow.height
+                        + platformStyle.paddingMedium
+            }
+            PropertyChanges {
+                target: sourceMulti
+                height: Math.max(flickable.height - buttonRow.height
+                                 - (inPortrait ? 3 : 2) * content.spacing,
+                                 privateStyle.textFieldHeight)
+            }
+            PropertyChanges {
+                target: languageSelectors
+                visible: false
+                height: 0
+            }
+            PropertyChanges {
+                target: sourceExpandables
+                visible: false
+                height: 0
+            }
+            PropertyChanges {
+                target: buttonRow
+                visible: inPortrait ? true : false
+                height: inPortrait ? implicitHeight : 0
+            }
+            PropertyChanges {
+                target: bottom
+                visible: false
+                height: 0
             }
         }
     ]
@@ -665,23 +691,12 @@ Page {
             from: "*"
             to: "Active"
             reversible: true
-            ParentAnimation {
-                target: source
 
+            ParallelAnimation {
                 ScriptAction {
                     script: {
                         flickable.contentY = 0;
                     }
-                }
-                PropertyAnimation {
-                    duration: 100
-                    easing.type: Easing.InOutQuad
-                    properties: "y"
-                }
-                PropertyAnimation {
-                    duration: 100
-                    easing.type: Easing.InOutQuad
-                    properties: "height"
                 }
             }
         }
