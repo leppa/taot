@@ -142,6 +142,8 @@ RESOURCES += \
 
 TRANSLATIONS += \
     l10n/taot_ar.ts \
+    l10n/taot_bg.ts \
+    l10n/taot_ca.ts \
     l10n/taot_cs_CZ.ts \
     l10n/taot_da.ts \
     l10n/taot_de.ts \
@@ -156,6 +158,7 @@ TRANSLATIONS += \
     l10n/taot_nl_NL.ts \
     l10n/taot_pl.ts \
     l10n/taot_ru.ts \
+    l10n/taot_sv.ts \
     l10n/taot_tr.ts \
     l10n/taot_uk.ts \
     l10n/taot_zh_CN.ts
