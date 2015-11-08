@@ -435,8 +435,26 @@ Page {
         SettingsPage {}
     }
 
+    Component {
+        id: privacyNoticePage
+
+        PrivacyNoticePage {}
+    }
+
+    Timer {
+        id: noticePagePusher
+
+        interval: 10
+        onTriggered: {
+            pageStack.push(privacyNoticePage);
+        }
+    }
+
     Component.onCompleted: {
         translateOnEnter = translator.getSettingsValue("TranslateOnEnter", "false") === "true";
         translateOnPaste = translator.getSettingsValue("TranslateOnPaste", "true") === "true";
+
+        if (analytics_enabled && translator.privacyLevel == Translator.UndefinedPrivacy)
+            noticePagePusher.start();
     }
 }

@@ -1,0 +1,3 @@
+[submodule "3rdparty/qtinappanalytics"]
+	path = 3rdparty/qtinappanalytics
+	url = https://github.com/leppa/qtinappanalytics.git

@@ -36,10 +36,17 @@
 #include "services/yandextranslate.h"
 #include "services/yandexdictionaries.h"
 
+#ifdef WITH_ANALYTICS
+#   include "services/apikeys.h"
+#   include <QAmplitudeAnalytics>
+#endif
+
 #include <qplatformdefs.h>
 
 #ifdef Q_OS_SAILFISH
 #   include <QTextDocument>
+#   include <QStandardPaths>
+#   include <QDir>
 #endif
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
@@ -83,8 +90,51 @@ TranslationInterface::TranslationInterface(QObject *parent)
     , m_settings(new QSettings("harbour-taot", "taot", this))
 #else
     , m_settings(new QSettings(QCoreApplication::organizationName(), "taot", this))
+# ifdef WITH_ANALYTICS
+    , m_analytics(new QAmplitudeAnalytics(AMPLITUDE_API_KEY))
+# endif
 #endif
 {
+#ifdef WITH_ANALYTICS
+# if defined(Q_OS_SAILFISH)
+    QString path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    path.append(QDir::separator()).append("harbour-taot");
+    QDir dir(path);
+    if (!dir.exists())
+        dir.mkpath(".");
+    m_analytics.reset(new QAmplitudeAnalytics(AMPLITUDE_API_KEY,
+                                              dir.filePath("QtInAppAnalytics.ini")));
+# endif
+
+    updatePersistentProperties();
+
+    m_privacyLevel = PrivacyLevel(m_settings->value("PrivacyLevel", UndefinedPrivacy).toInt());
+    if (m_privacyLevel != NoPrivacy)
+        m_analytics->setPrivacyEnabled(true);
+
+    if (m_settings->contains("AppInfo/CurrentVersion")) {
+        const QString version = m_settings->value("AppInfo/CurrentVersion").toString();
+        if (version != QCoreApplication::applicationVersion()) {
+            QVariantMap props;
+            props.insert("Old Version", version);
+            props.insert("New Version", QCoreApplication::applicationVersion());
+            m_analytics->trackEvent("Upgrade", props);
+
+            m_settings->setValue("AppInfo/CurrentVersion", QCoreApplication::applicationVersion());
+        }
+    } else {
+        QVariantMap props;
+        props.insert("Version", QCoreApplication::applicationVersion());
+        m_analytics->trackEvent("Installation", props);
+
+        m_settings->setValue("AppInfo/CurrentVersion", QCoreApplication::applicationVersion());
+    }
+
+    if (m_privacyLevel == NoPrivacy) {
+        trackSessionStart();
+    }
+#endif
+
     setTranscription(new SourceTranslatedTextPair());
     setTranslit(new SourceTranslatedTextPair());
 
@@ -102,6 +152,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
     connect(this, SIGNAL(sourceLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
     connect(this, SIGNAL(targetLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
     connect(this, SIGNAL(detectedLanguageChanged()), SIGNAL(canSwapLanguagesChanged()));
+    connect(this, SIGNAL(error(QString)), SLOT(onError(QString)));
 
 #ifdef Q_OS_SYMBIAN
     connect(qApp, SIGNAL(visibilityChanged()), this, SIGNAL(appVisibilityChanged()));
@@ -116,7 +167,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
 
 QString TranslationInterface::version()
 {
-    return qApp->applicationVersion();
+    return QCoreApplication::applicationVersion();
 }
 
 TranslationServicesModel *TranslationInterface::supportedServices() const
@@ -198,6 +249,43 @@ DictionaryModel *TranslationInterface::dictionary() const
     return m_dict;
 }
 
+#ifdef WITH_ANALYTICS
+TranslationInterface::PrivacyLevel TranslationInterface::privacyLevel() const
+{
+    return m_privacyLevel;
+}
+
+void TranslationInterface::setPrivacyLevel(PrivacyLevel level)
+{
+    if (m_privacyLevel == level)
+        return;
+
+    if (m_privacyLevel == UndefinedPrivacy) {
+        switch (level) {
+        case NoPrivacy:
+            m_analytics->setPrivacyEnabled(false);
+            trackSessionStart();
+            break;
+        case ErrorsOnlyPrivacy:
+        case MaximumPrivacy:
+            m_analytics->clearQueuedEvents();
+            break;
+        default:
+            ; // do nothing
+        }
+    }
+    m_privacyLevel = level;
+    m_settings->setValue("PrivacyLevel", m_privacyLevel);
+    if (m_privacyLevel == NoPrivacy) {
+        m_analytics->setPrivacyEnabled(false);
+        m_analytics->identifyUser();
+    } else {
+        m_analytics->setPrivacyEnabled(true);
+    }
+    emit privacyLevelChanged();
+}
+#endif
+
 #ifdef Q_OS_SYMBIAN
 TranslationInterface::AppVisibility TranslationInterface::appVisibility() const
 {
@@ -207,6 +295,12 @@ TranslationInterface::AppVisibility TranslationInterface::appVisibility() const
 
 TranslationInterface::~TranslationInterface()
 {
+#ifdef WITH_ANALYTICS
+    if (m_privacyLevel == NoPrivacy) {
+        m_analytics->trackEvent("Session End", QVariantMap(), true);
+    }
+#endif
+
     delete m_service;
     delete m_services;
     delete m_sourceLanguages;
@@ -226,6 +320,7 @@ QVariant TranslationInterface::getSettingsValue(const QString &key,
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
 {
     m_settings->setValue(key, value);
+    updatePersistentProperties();
 }
 
 void TranslationInterface::selectService(int index)
@@ -307,6 +402,14 @@ void TranslationInterface::translate()
     }
 
     resetTranslation();
+
+#ifdef WITH_ANALYTICS
+    if (m_privacyLevel == NoPrivacy) {
+        QVariantMap props;
+        fillTranslationProperties(props);
+        m_analytics->trackEvent("Translation", props);
+    }
+#endif
 
     if (!m_service->translate(m_sourceLanguage->language(),
                               m_targetLanguage->language(),
@@ -476,6 +579,40 @@ void TranslationInterface::setTranslit(SourceTranslatedTextPair *translit)
     emit translitChanged();
 }
 
+#ifdef WITH_ANALYTICS
+void TranslationInterface::fillTranslationProperties(QVariantMap &properties) const
+{
+    properties.insert("Service", m_service->uid());
+    if (m_service->isAutoLanguage(m_sourceLanguage->language()))
+        properties.insert("From", "<auto>");
+    else
+        properties.insert("from", m_sourceLanguage->language().info);
+    properties.insert("To", m_targetLanguage->language().info);
+    properties.insert("Length", m_srcText.length());
+}
+
+void TranslationInterface::updatePersistentProperties()
+{
+    QVariantMap props;
+    QLocale lc;
+    const QString lang = getSettingsValue("UILanguage").toString();
+    if (!lang.isEmpty())
+        lc = QLocale(lang);
+    if (lc.language() == QLocale::C)
+        lc = QLocale(QLocale::English, QLocale::UnitedStates);
+    props.insert("UI Language", lc.name());
+    props.insert("Inverted Theme", getSettingsValue("InvertedTheme"));
+    props.insert("Translate on Enter", getSettingsValue("TranslateOnEnter"));
+    props.insert("Paste'n'Translate", getSettingsValue("TranslateOnPaste"));
+    m_analytics->setPersistentUserProperties(props);
+}
+
+void TranslationInterface::trackSessionStart()
+{
+    m_analytics->trackEvent("Session Start", QVariantMap(), true);
+}
+#endif
+
 void TranslationInterface::onTranslationFinished()
 {
     setBusy(false);
@@ -489,6 +626,20 @@ void TranslationInterface::onTranslationFinished()
     setTranscription(new SourceTranslatedTextPair(m_service->transcription()));
     setTranslit(new SourceTranslatedTextPair(m_service->translit()));
     setDetectedLanguage(m_service->detectedLanguage());
+}
+
+void TranslationInterface::onError(const QString &errorString)
+{
+#ifdef WITH_ANALYTICS
+    if (m_privacyLevel == NoPrivacy || m_privacyLevel == ErrorsOnlyPrivacy) {
+        QVariantMap props;
+        fillTranslationProperties(props);
+        props.insert("Error Message", errorString);
+        m_analytics->trackEvent("Error", props);
+    }
+#else
+    Q_UNUSED(errorString);
+#endif
 }
 
 void TranslationInterface::retranslate()
@@ -506,6 +657,15 @@ void TranslationInterface::onInvoked(const bb::system::InvokeRequest &request)
         return;
 
     setSourceText(QString::fromUtf8(request.data()));
+
+#ifdef WITH_ANALYTICS
+    if (m_privacyLevel == NoPrivacy) {
+        QVariantMap props;
+        fillTranslationProperties(props);
+        m_analytics->trackEvent("Invoked", props, true);
+    }
+#endif
+
     retranslate();
 }
 #endif

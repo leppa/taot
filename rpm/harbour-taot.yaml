@@ -26,6 +26,7 @@ PkgConfigBR:
 - Qt5Quick
 - Qt5Qml
 - Qt5Core
+- Qt5SystemInfo
 Requires:
 - sailfishsilica-qt5
 Files:

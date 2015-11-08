@@ -92,6 +92,17 @@ Page {
                     translateOnPaste = checked;
                 }
             }
+            Button {
+                text: qsTr("Privacy Settings")
+                horizontalAlignment: HorizontalAlignment.Center
+                visible: analytics_enabled
+
+                onClicked: {
+                    var page = privacyNoticePageDefinition.createObject();
+                    page.closed.connect(function() { page.destroy(); });
+                    page.open();
+                }
+            }
         }
     }
 

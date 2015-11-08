@@ -64,6 +64,7 @@ class TranslationServiceItem;
 class LanguageListModel;
 class LanguageItem;
 class DictionaryModel;
+class QAmplitudeAnalytics;
 class TranslationInterface: public QObject
 {
     Q_OBJECT
@@ -88,6 +89,14 @@ class TranslationInterface: public QObject
     Q_PROPERTY(SourceTranslatedTextPair *translit READ translit NOTIFY translitChanged)
     Q_PROPERTY(DictionaryModel *dictionary READ dictionary CONSTANT)
 
+#ifdef WITH_ANALYTICS
+    Q_PROPERTY(TranslationInterface::PrivacyLevel privacyLevel READ privacyLevel
+                                                               WRITE setPrivacyLevel
+                                                               NOTIFY privacyLevelChanged)
+
+    Q_ENUMS(PrivacyLevel)
+#endif
+
 #ifdef Q_OS_SYMBIAN
     Q_PROPERTY(TranslationInterface::AppVisibility appVisibility READ appVisibility
                                                                  NOTIFY appVisibilityChanged)
@@ -101,6 +110,15 @@ public:
         YandexTranslateService,
         YandexDictionariesService
     };
+
+#ifdef WITH_ANALYTICS
+    enum PrivacyLevel {
+        NoPrivacy = 0,
+        ErrorsOnlyPrivacy,
+        MaximumPrivacy = 254,
+        UndefinedPrivacy = 255
+    };
+#endif
 
 #ifdef Q_OS_SYMBIAN
     enum AppVisibility {
@@ -130,6 +148,11 @@ public:
     SourceTranslatedTextPair *translit() const;
     DictionaryModel *dictionary() const;
 
+#ifdef WITH_ANALYTICS
+    TranslationInterface::PrivacyLevel privacyLevel() const;
+    void setPrivacyLevel(TranslationInterface::PrivacyLevel level);
+#endif
+
 #ifdef Q_OS_SYMBIAN
     TranslationInterface::AppVisibility appVisibility() const;
 #endif
@@ -148,6 +171,9 @@ signals:
     void translatedTextChanged();
     void transcriptionChanged();
     void translitChanged();
+#ifdef WITH_ANALYTICS
+    void privacyLevelChanged();
+#endif
 #ifdef Q_OS_SYMBIAN
     void appVisibilityChanged();
 #endif
@@ -192,6 +218,11 @@ private:
 
     QSettings *m_settings;
 
+#ifdef WITH_ANALYTICS
+    PrivacyLevel m_privacyLevel;
+    QScopedPointer<QAmplitudeAnalytics> m_analytics;
+#endif
+
     void createService(uint id);
     void resetTranslation();
     void setBusy(bool busy);
@@ -200,12 +231,19 @@ private:
     void setTranscription(SourceTranslatedTextPair *transcription);
     void setTranslit(SourceTranslatedTextPair *translit);
 
+#ifdef WITH_ANALYTICS
+    void fillTranslationProperties(QVariantMap &map) const;
+    void updatePersistentProperties();
+    void trackSessionStart();
+#endif
+
 #ifdef Q_OS_BLACKBERRY
     bb::system::InvokeManager *m_invoker;
 #endif
 
 private slots:
     void onTranslationFinished();
+    void onError(const QString &errorString);
     void retranslate();
 
 #ifdef Q_OS_BLACKBERRY

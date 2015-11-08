@@ -49,7 +49,6 @@ NavigationPane {
                 imageSource: "asset:///icons/ic_info.png"
 
                 onTriggered: {
-                    Application.menuEnabled = false;
                     navigationPane.push(aboutPageDefinition.createObject());
                 }
             },
@@ -79,7 +78,6 @@ NavigationPane {
         settingsAction: SettingsActionItem {
             title: qsTr("Settings") + Retranslate.onLocaleOrLanguageChanged
             onTriggered: {
-                Application.menuEnabled = false;
                 navigationPane.push(settingsPageDefinition.createObject());
             }
         }
@@ -97,6 +95,10 @@ NavigationPane {
         ComponentDefinition {
             id: donationFaqPageDefinition
             DonationFaqPage {}
+        },
+        ComponentDefinition {
+            id: privacyNoticePageDefinition
+            PrivacyNoticePage {}
         },
         SystemToast {
             id: toast
@@ -141,10 +143,18 @@ NavigationPane {
         }
     ]
 
+    onPushTransitionEnded: {
+        if (count() > 1) {
+            Application.menuEnabled = false;
+        }
+    }
+
     onPopTransitionEnded: {
         // Destroy the popped Page once the back transition has ended.
         page.destroy();
-        Application.menuEnabled = true;
+
+        if (count() == 1)
+            Application.menuEnabled = true;
     }
 
     function onError(errorString)
@@ -156,5 +166,11 @@ NavigationPane {
 
     onCreationCompleted: {
         translator.error.connect(onError);
+
+        if (analytics_enabled && translator.privacyLevel == Translator.UndefinedPrivacy) {
+            var page = privacyNoticePageDefinition.createObject();
+            page.closed.connect(function() { page.destroy(); });
+            page.open();
+        }
     }
 }

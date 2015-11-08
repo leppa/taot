@@ -50,6 +50,7 @@ Page {
         Column {
             id: column
 
+            spacing: Theme.paddingMedium
             anchors {
                 left: parent.left
                 right: parent.right
@@ -97,6 +98,18 @@ Page {
 
                 onCheckedChanged: {
                     translateOnPaste = checked;
+                }
+            }
+
+            Button {
+                text: qsTr("Privacy Settings")
+                visible: analytics_enabled
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                onClicked: {
+                    pageStack.push(privacyNoticePage);
                 }
             }
         }

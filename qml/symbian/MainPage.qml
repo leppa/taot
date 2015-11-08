@@ -637,6 +637,13 @@ Page {
         }
     }
 
+    Component {
+        id: privacyNoticePage
+        PrivacyNoticePage {
+            platformInverted: appWindow.platformInverted
+        }
+    }
+
     states: [
         State {
             name: "Active"
@@ -705,7 +712,18 @@ Page {
         }
     ]
 
+    Timer {
+        id: noticePagePusher
+
+        interval: 10
+        onTriggered: {
+            pageStack.push(privacyNoticePage);
+        }
+    }
+
     Component.onCompleted: {
         appWindow.platformInverted = translator.getSettingsValue("InvertedTheme", false);
+        if (analytics_enabled && translator.privacyLevel == Translator.UndefinedPrivacy)
+            noticePagePusher.start();
     }
 }

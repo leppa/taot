@@ -84,8 +84,17 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QCoreApplication::setApplicationName("TAO Translator");
+#else
+    QGuiApplication::setApplicationDisplayName("TAO Translator");
+    QCoreApplication::setApplicationName("taot");
+#endif
+#if BUILD > 1
+    QCoreApplication::setApplicationVersion(QString("%1 (build %2)").arg(VERSION_STR).arg(BUILD));
+#else
     QCoreApplication::setApplicationVersion(VERSION_STR);
+#endif
     QCoreApplication::setOrganizationName("Oleksii Serdiuk");
     QCoreApplication::setOrganizationDomain("oleksii.name");
 
@@ -140,12 +149,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         app->installTranslator(&tr);
 #endif
 
-#if BUILD > 1
-    //: %1 - version, %2 - build number
-    QCoreApplication::setApplicationVersion(QCoreApplication::translate("AboutPage","%1 (build %2)")
-                                            .arg(VERSION_STR).arg(BUILD));
-#endif
-
 #ifdef Q_OS_SAILFISH
     qmlRegisterType<TranslationInterface>("harbour.taot", 1, 0, "Translator");
     qmlRegisterType<L10nModel>("harbour.taot", 1, 0, "L10nModel");
@@ -172,10 +175,18 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #elif defined(Q_OS_SAILFISH)
     QQuickView *viewer = SailfishApp::createView();
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QmlApplicationViewer viewer;
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+    QScopedPointer<QmlApplicationViewer> viewer(new QmlApplicationViewer());
+    viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 #else
-    QQuickView viewer;
+    QScopedPointer<QQuickView> viewer(new QQuickView());
+#endif
+
+#ifndef Q_OS_BLACKBERRY
+# ifdef WITH_ANALYTICS
+    viewer->engine()->rootContext()->setContextProperty("analytics_enabled", QVariant(true));
+# else
+    viewer->engine()->rootContext()->setContextProperty("analytics_enabled", QVariant(false));
+# endif
 #endif
 
 #ifdef Q_OS_BLACKBERRY
@@ -190,18 +201,23 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                    : 0;
     qml->documentContext()->setContextProperty("osVersion", ver);
 
+# ifdef WITH_ANALYTICS
+    qml->documentContext()->setContextProperty("analytics_enabled", QVariant(true));
+# else
+    qml->documentContext()->setContextProperty("analytics_enabled", QVariant(false));
+# endif
 #elif defined(MEEGO_EDITION_HARMATTAN)
     QDir dir(app->applicationDirPath());
     dir.cdUp();
-    viewer.setMainQmlFile(dir.filePath(QLatin1String("qml/main.qml")));
+    viewer->setMainQmlFile(dir.filePath(QLatin1String("qml/main.qml")));
 #elif defined(Q_OS_SAILFISH)
     QObject::connect(viewer->engine(), SIGNAL(quit()), app, SLOT(quit()));
     viewer->setSource(SailfishApp::pathTo("qml/main.qml"));
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
+    viewer->setMainQmlFile(QLatin1String("qml/main.qml"));
 #else
-    QObject::connect(viewer.engine(), SIGNAL(quit()), app.data(), SLOT(quit()));
-    viewer.setSource(QUrl(QLatin1String("qml/main.qml")));
+    QObject::connect(viewer->engine(), SIGNAL(quit()), app.data(), SLOT(quit()));
+    viewer->setSource(QUrl(QLatin1String("qml/main.qml")));
 #endif
 
 #ifdef Q_OS_BLACKBERRY
@@ -213,11 +229,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     cover->setContent(qml->createRootObject<Container>());
     app->setCover(cover);
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    viewer.showExpanded();
-#elif defined(Q_OS_SAILFISH)
-    viewer->show();
+    viewer->showExpanded();
 #else
-    viewer.show();
+    viewer->show();
 #endif
 
     return app->exec();

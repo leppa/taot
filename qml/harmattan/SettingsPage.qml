@@ -99,6 +99,20 @@ Page {
                     translateOnPaste = checked;
                 }
             }
+
+            Button {
+                text: qsTr("Privacy Settings")
+                visible: analytics_enabled
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                onClicked: {
+                    var sheet = privacyNoticePageComponent.createObject(root);
+                    sheet.accepted.connect(function() { sheet.destroy(); });
+                    sheet.open();
+                }
+            }
         }
     }
 
