@@ -2,6 +2,34 @@ TAO Translator ChangeLog
 ========================
 
 
+TAOT v1.3.0
+-----------
+
+- Google Translate: A possible fix (workaround) for "Service
+  unavailable" translation error ([issue #49][]).
+- Yandex.Dictionaries: Fix for "SSL handshake failed" error on some
+  phones ([issue #50][]).
+- Actual SSL errors are now reported instead of just "SSL handshake
+  failed".
+- In-app analytics were added. You will be asked whether to enable them
+  at first start.
+- When Paste'n'Translate is activated, "Paste" button will replace
+  existing source text with the text from clipboard; when
+  Paste'n'Translate is deactivated, "Paste" button will insert clipboard
+  text without touching existing source text.
+- BlackBerry 10: "Paste" button was never enabled when TAO Translator
+  was started after phone restart but before any text was copied to
+  clipboard.
+- Sailfish OS: Fix wrong path for saving language settings.
+- Nokia N9, Symbian: Fix for "SSL handshake fail" when checking for
+  updates ([issue #48][]).
+- Symbian: Yet another try to fix Symbian input issues. Also, pressing
+  on the application title while in input mode will now return to the
+  normal mode.
+- New UI localizations: Bulgarian, Catalan, Finnish, Polish, and
+  Swedish.
+
+
 TAOT v1.2.0
 -----------
 
@@ -26,7 +54,7 @@ TAOT v1.2.0
 TAOT v1.1.0
 -----------
 
-- Fixed Google Translate service ([issue #36]).
+- Fixed Google Translate service ([issue #36][]).
 - It is now possible to swap source and translation languages when
   source language is set to autodetect and language was successfully
   autodetected.
@@ -207,5 +235,8 @@ Initial release.
 [issue #35]: https://github.com/leppa/taot/issues/35
 [issue #36]: https://github.com/leppa/taot/issues/36
 [issue #41]: https://github.com/leppa/taot/issues/41
+[issue #48]: https://github.com/leppa/taot/issues/48
+[issue #49]: https://github.com/leppa/taot/issues/49
+[issue #50]: https://github.com/leppa/taot/issues/50
 
 <!-- $Id: $Format:%h %ai %an$ $ -->

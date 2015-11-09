@@ -1,3 +1,21 @@
+taot (1.3.0) unstable; urgency=low
+  * Google Translate: A possible fix (workaround) for "Service
+    unavailable" translation error.
+  * Yandex.Dictionaries: Fix for "SSL handshake failed" error.
+  * Actual SSL errors are now reported instead of just "SSL handshake
+    failed".
+  * In-app analytics were added. You will be asked whether to enable them
+    at first start.
+  * When Paste'n'Translate is activated, "Paste" button will replace
+    existing source text with the text from clipboard; when
+    Paste'n'Translate is deactivated, "Paste" button will insert clipboard
+    text without touching existing source text.
+  * Fix for "SSL handshake fail" when checking for updates.
+  * New UI localizations: Bulgarian, Catalan, Finnish, Polish, and
+    Swedish.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Mon, 09 Nov 2015 13:48:43 +0100
+
 taot (1.2.0) unstable; urgency=low
   * An option to start translation after pressing Enter / Return key on
     the keyboard.
