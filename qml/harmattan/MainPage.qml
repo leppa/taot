@@ -26,6 +26,8 @@ import taot 1.0
 import "constants.js" as UI
 
 Page {
+    id: root
+
     property bool translateOnEnter: translator.getSettingsValue("TranslateOnEnter", false)
     property bool translateOnPaste: translator.getSettingsValue("TranslateOnPaste", true)
     property Item source: translateOnEnter ? sourceSingle : sourceMulti
@@ -508,9 +510,12 @@ Page {
                 text: qsTr("Paste")
                 enabled: !clipboard.empty
                 onClicked: {
-                    source.paste();
-                    if (translateOnPaste)
+                    if (translateOnPaste) {
+                        source.text = clipboard.text;
                         translator.translate();
+                    } else {
+                        source.paste();
+                    }
                 }
             }
             ToolButton {
@@ -551,7 +556,25 @@ Page {
         SettingsPage {}
     }
 
+    Component {
+        id: privacyNoticePageComponent
+        PrivacyNoticePage {}
+    }
+
+    Timer {
+        id: noticePagePusher
+
+        interval: 10
+        onTriggered: {
+            var sheet = privacyNoticePageComponent.createObject(root);
+            sheet.accepted.connect(function() { sheet.destroy(); });
+            sheet.open();
+        }
+    }
+
     Component.onCompleted: {
         theme.inverted = translator.getSettingsValue("InvertedTheme", false);
+        if (analytics_enabled && translator.privacyLevel == Translator.UndefinedPrivacy)
+            noticePagePusher.start();
     }
 }

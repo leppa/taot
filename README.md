@@ -61,8 +61,9 @@ Build Status
 ------------
 
 Buld status of the `master` branch:
-- [![Travis CI Build Status][tci]][Travis CI]
-- [![BuildHive Build Status][bh]][BuildHive]
+
+ - [![Travis CI Build Status][tci]][Travis CI]
+ - [![BuildHive Build Status][bh]][BuildHive]
 
 
 Donate

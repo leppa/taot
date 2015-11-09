@@ -40,6 +40,20 @@ lessThan(QT_MAJOR_VERSION, 5):!blackberry {
     include(qmlapplicationviewer/qmlapplicationviewer.pri)
 }
 
+analytics {
+    symbian|contains(MEEGO_EDITION,harmattan) {
+        CONFIG += mobility
+        MOBILITY += systeminfo
+    }
+    sailfish {
+        QT += systeminfo
+    }
+
+    include(3rdparty/qtinappanalytics/qtinappanalytics.pri)
+
+    DEFINES += WITH_ANALYTICS
+}
+
 sailfish {
     DEFINES += Q_OS_SAILFISH
 }
@@ -96,13 +110,19 @@ blackberry {
 } else {
     HEADERS += \
         src/dictionarymodel.h \
-        src/reversetranslationsmodel.h \
-        src/clipboard.h
+        src/reversetranslationsmodel.h
 
     SOURCES += \
         src/dictionarymodel.cpp \
-        src/reversetranslationsmodel.cpp \
-        src/clipboard.cpp
+        src/reversetranslationsmodel.cpp
+
+    !sailfish {
+        HEADERS += \
+            src/clipboard.h
+
+        SOURCES += \
+            src/clipboard.cpp
+    }
 }
 
 symbian {
@@ -122,27 +142,28 @@ RESOURCES += \
 
 TRANSLATIONS += \
     l10n/taot_ar.ts \
+    l10n/taot_bg.ts \
+    l10n/taot_ca.ts \
     l10n/taot_cs_CZ.ts \
     l10n/taot_da.ts \
     l10n/taot_de.ts \
     l10n/taot_el.ts \
     l10n/taot_en.ts \
     l10n/taot_es.ts \
-    l10n/taot_fa.ts \
     l10n/taot_fi.ts \
     l10n/taot_fr_FR.ts \
-    l10n/taot_gl.ts \
     l10n/taot_it.ts \
     l10n/taot_nl_NL.ts \
     l10n/taot_pl.ts \
     l10n/taot_ru.ts \
+    l10n/taot_sv.ts \
     l10n/taot_tr.ts \
     l10n/taot_uk.ts \
     l10n/taot_zh_CN.ts
 
 translate_hack {
     SOURCES += \
-        qml/about.js \
+        qml/*.js \
         qml/bb10/*.qml \
         qml/harmattan/*.qml \
         qml/sailfish/*.qml \
@@ -153,7 +174,7 @@ OTHER_FILES += \
     bar-descriptor.xml \
     data/*.pem \
     data/langs/*.json \
-    qml/about.js \
+    qml/*.js \
     qml/bb10/*.qml \
     qml/harmattan/*.js \
     qml/harmattan/*.qml \
@@ -191,7 +212,7 @@ symbian {
     TARGET.CAPABILITY += NetworkServices ReadUserData
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 
-    ui.sources = qml/about.js qml/symbian/* qml/symbian/icons
+    ui.sources = qml/*.js qml/symbian/* qml/symbian/icons
     ui.path = qml
     DEPLOYMENT += ui
 
@@ -221,7 +242,7 @@ contains(MEEGO_EDITION,harmattan) {
     DEFINES += HARMATTAN_BOOSTER
 
     target.path = /opt/$${TARGET}/bin
-    ui.files = qml/about.js qml/harmattan/*
+    ui.files = qml/*.js qml/harmattan/*
     ui.path = /opt/$${TARGET}/qml
     icon.files = $${TARGET}80.png
     icon.path = /usr/share/icons/hicolor/80x80/apps
@@ -236,18 +257,28 @@ sailfish {
     TARGET = harbour-taot
 
     target.path = /usr/bin
-    ui.files = qml/about.js qml/sailfish/*
+    libs.files = rpm/lib/$${QT_ARCH}/*
+    libs.path = /usr/share/$${TARGET}/lib
+    ui.files = qml/*.js qml/sailfish/*
     ui.path = /usr/share/$${TARGET}/qml
     icon.files = $${TARGET}.png
-    icon.path = /usr/share/icons/hicolor/86x86/apps
+    icon.path = /usr/share/icons/hicolor/256x256/apps
+    icon128.files = rpm/icons/128/$${TARGET}.png
+    icon128.path = /usr/share/icons/hicolor/128x128/apps
+    icon108.files = rpm/icons/108/$${TARGET}.png
+    icon108.path = /usr/share/icons/hicolor/108x108/apps
+    icon86.files = rpm/icons/86/$${TARGET}.png
+    icon86.path = /usr/share/icons/hicolor/86x86/apps
     desktopfile.files = rpm/$${TARGET}.desktop
     desktopfile.path = /usr/share/applications
 
-    INSTALLS += target ui icon desktopfile
+    INSTALLS += target libs ui icon icon128 icon108 icon86 desktopfile
 
     CONFIG += link_pkgconfig
     PKGCONFIG += sailfishapp
     INCLUDEPATH += /usr/include/sailfishapp
+
+    QMAKE_RPATHDIR += $$libs.path
 
     OTHER_FILES += $$files(rpm/*)
 }

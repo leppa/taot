@@ -243,9 +243,12 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                source.editor.insertPlainText(clipboard.text);
-                if (translateOnPaste)
+                if (translateOnPaste) {
+                    source.text = clipboard.text;
                     translator.translate();
+                } else {
+                    source.editor.insertPlainText(clipboard.text);
+                }
             }
         },
         ActionItem {

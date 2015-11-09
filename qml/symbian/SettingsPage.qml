@@ -104,6 +104,19 @@ Page {
                     translateOnPaste = checked;
                 }
             }
+
+            Button {
+                text: qsTr("Privacy Settings")
+                visible: analytics_enabled
+                platformInverted: root.platformInverted
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                onClicked: {
+                    pageStack.push(privacyNoticePage);
+                }
+            }
         }
     }
 

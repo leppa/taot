@@ -41,6 +41,12 @@ inline QString capitalize(QString str)
 
 L10nModel::L10nModel(QObject *parent)
     : QAbstractListModel(parent)
+#ifdef Q_OS_SAILFISH
+    , m_settings(new QSettings("harbour-taot", "taot"))
+#else
+    , m_settings(new QSettings(QCoreApplication::organizationName(), "taot"))
+#endif
+
 {
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
     setRoleNames(roleNames());
@@ -57,8 +63,6 @@ L10nModel::L10nModel(QObject *parent)
         translation.remove(0, 5).chop(3);
         *m_translations << translation;
     }
-
-    m_settings = new QSettings(QCoreApplication::organizationName(), "taot");
 }
 
 QHash<int, QByteArray> L10nModel::roleNames() const

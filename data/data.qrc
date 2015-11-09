@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/cacertificates">
         <file>certum.ca.pem</file>
+        <file>certum.network.ca.pem</file>
     </qresource>
     <qresource prefix="/">
         <file>langs/google.json</file>

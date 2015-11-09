@@ -145,7 +145,7 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
     QUrl url("https://translate.google.com/translate_a/single");
     QUrlQuery query, dataQuery;
 #endif
-    query.addQueryItem("client", "q");
+    query.addQueryItem("client", "t");
     query.addQueryItem("hl", "en");
     query.addQueryItem("sl", from.info.toString());
     query.addQueryItem("tl", to.info.toString());
@@ -165,6 +165,7 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 //    query.addQueryItem("ssel", "3");
 //    query.addQueryItem("tsel", "0");
 //    query.addQueryItem("otf", "1");
+    query.addQueryItem("tk", ""); // Access token placeholder
 
     dataQuery.addQueryItem("q", text);
 
@@ -178,6 +179,8 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 #endif
     request.setHeader(QNetworkRequest::ContentTypeHeader,
                       "application/x-www-form-urlencoded;charset=UTF-8");
+    request.setRawHeader("User-Agent", "Mozilla/5.0");
+    request.setRawHeader("Referer", "https://translate.google.com/");
     m_reply = m_nam.post(request, data);
 
     return true;
@@ -190,9 +193,28 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     // like ",,". Replacing all ",," with ",null," allows
     // us to parse JSON with QJsonDocument.
     QString json = QString::fromUtf8(reply);
-    json.replace(QRegExp(",(?=,)"), ",null");
-    json.replace(",]", ",null]");
-    json.replace("[,", "[null,");
+    if (json.isEmpty()) {
+        m_error = commonString(EmptyResultCommonString).arg(displayName());
+        return false;
+    }
+
+    int i = 1;
+    bool skip = json.at(0) == '"';
+    while (i < json.length()) {
+        const QStringRef mid = json.midRef(i - 1, 2);
+        if (mid.at(1) == '"' && mid.compare(QLatin1String("\\\"")) != 0) {
+            skip = !skip;
+            ++i;
+        }
+        if (!skip && (mid.compare(QLatin1String(",,")) == 0
+                      || mid.compare(QLatin1String("[,")) == 0
+                      || mid.compare(QLatin1String(",]")) == 0)) {
+            json.insert(i, "null");
+            i += 4;
+        }
+        ++i;
+    }
+
     const QVariant data = parseJson(json.toUtf8());
 #else
     const QVariant data = parseJson(reply);

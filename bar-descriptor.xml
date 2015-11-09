@@ -2,7 +2,7 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>name.oleksii.bb10.taot</id>
     <name>TAO Translator</name>
-    <versionNumber>1.2.0</versionNumber>
+    <versionNumber>1.3.0</versionNumber>
     <description>TAO Translator uses online translation services to provide translations.</description>
     <icon>
         <image>icon.png</image>
@@ -21,9 +21,11 @@
     <env var="LD_LIBRARY_PATH" value="/usr/lib/qt4/lib:$LD_LIBRARY_PATH"/>
     <action system="true">run_native</action>
     <action>access_internet</action>
+    <action>access_device_model_name</action>
     <asset entry="true" type="Qnx/Elf" path="${BUILD_DIR}/taot">taot</asset>
     <asset path="taot480.png">icon.png</asset>
     <asset path="qml/about.js">assets/about.js</asset>
+    <asset path="qml/privacy.js">assets/privacy.js</asset>
     <asset path="qml/bb10">assets</asset>
     <invoke-target id="name.oleksii.taot.translate">
         <invoke-target-type>application</invoke-target-type>
