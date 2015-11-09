@@ -320,7 +320,9 @@ QVariant TranslationInterface::getSettingsValue(const QString &key,
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
 {
     m_settings->setValue(key, value);
+#ifdef WITH_ANALYTICS
     updatePersistentProperties();
+#endif
 }
 
 void TranslationInterface::selectService(int index)
