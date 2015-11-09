@@ -257,6 +257,8 @@ sailfish {
     TARGET = harbour-taot
 
     target.path = /usr/bin
+    libs.files = rpm/lib/$${QT_ARCH}/*
+    libs.path = /usr/share/$${TARGET}/lib
     ui.files = qml/*.js qml/sailfish/*
     ui.path = /usr/share/$${TARGET}/qml
     icon.files = $${TARGET}.png
@@ -264,11 +266,13 @@ sailfish {
     desktopfile.files = rpm/$${TARGET}.desktop
     desktopfile.path = /usr/share/applications
 
-    INSTALLS += target ui icon desktopfile
+    INSTALLS += target libs ui icon desktopfile
 
     CONFIG += link_pkgconfig
     PKGCONFIG += sailfishapp
     INCLUDEPATH += /usr/include/sailfishapp
+
+    QMAKE_RPATHDIR += $$libs.path
 
     OTHER_FILES += $$files(rpm/*)
 }

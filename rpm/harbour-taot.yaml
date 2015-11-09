@@ -31,6 +31,7 @@ Requires:
 - sailfishsilica-qt5
 Files:
 - '%{_bindir}'
+- '%{_datadir}/%{name}/lib'
 - '%{_datadir}/%{name}/qml'
 - '%{_datadir}/applications/%{name}.desktop'
 - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
