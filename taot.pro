@@ -262,11 +262,17 @@ sailfish {
     ui.files = qml/*.js qml/sailfish/*
     ui.path = /usr/share/$${TARGET}/qml
     icon.files = $${TARGET}.png
-    icon.path = /usr/share/icons/hicolor/86x86/apps
+    icon.path = /usr/share/icons/hicolor/256x256/apps
+    icon128.files = rpm/icons/128/$${TARGET}.png
+    icon128.path = /usr/share/icons/hicolor/128x128/apps
+    icon108.files = rpm/icons/108/$${TARGET}.png
+    icon108.path = /usr/share/icons/hicolor/108x108/apps
+    icon86.files = rpm/icons/86/$${TARGET}.png
+    icon86.path = /usr/share/icons/hicolor/86x86/apps
     desktopfile.files = rpm/$${TARGET}.desktop
     desktopfile.path = /usr/share/applications
 
-    INSTALLS += target libs ui icon desktopfile
+    INSTALLS += target libs ui icon icon128 icon108 icon86 desktopfile
 
     CONFIG += link_pkgconfig
     PKGCONFIG += sailfishapp
