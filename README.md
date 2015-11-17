@@ -60,10 +60,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Build Status
 ------------
 
-Buld status of the `master` branch:
-
- - [![Travis CI Build Status][tci]][Travis CI]
- - [![BuildHive Build Status][bh]][BuildHive]
+Buld status of the `master` branch: [![Travis CI Build Status][tci]][Travis CI]
 
 
 Donate
@@ -79,9 +76,7 @@ refer to [Donate][] page for more information.
 [opera]: http://symbian.apps.opera.com/the_advanced_online_translator.html
 [bb10]: http://appworld.blackberry.com/webstore/content/21908039/
 [Travis CI]: https://travis-ci.org/leppa/taot
-[BuildHive]: https://buildhive.cloudbees.com/job/leppa/job/taot/
 [tci]: https://travis-ci.org/leppa/taot.png?branch=master
-[bh]: https://buildhive.cloudbees.com/job/leppa/job/taot/badge/icon
 [Donate]: https://github.com/leppa/taot/wiki/Donate
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
