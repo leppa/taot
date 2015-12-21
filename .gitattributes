@@ -3,4 +3,4 @@
 *.ts text eol=lf
 *.spec text eol=lf
 qtc_packaging/debian_harmattan/* text eof=lf
-rpm/lib/*.so* filter=lfs diff=lfs merge=lfs -text
+rpm/lib/*/*.so* filter=lfs diff=lfs merge=lfs -text

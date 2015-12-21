@@ -1,0 +1,115 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+ "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+
+<!--
+/**
+ * DBus service for interfacing with ssu management
+ * Copyright (C) 2013 Jolla Ltd.
+ * Contact: Bernd Wachter <bernd.wachter@jollamobile.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ **/
+-->
+
+<node name="/org/nemo/ssu">
+  <interface name="org.nemo.ssu">
+    <!-- credential management -->
+    <method name="registerDevice">
+      <arg direction="in" type="s" name="username"/>
+      <arg direction="in" type="s" name="password"/>
+    </method>
+    <method name="unregisterDevice">
+    </method>
+    <method name="isRegistered">
+      <arg direction="out" type="b" name="status"/>
+    </method>
+    <method name="domain">
+        <arg direction="out" type="s" name="domain"/>
+    </method>
+
+    <!-- deviceInfo related methods -->
+    <method name="deviceModel">
+      <arg direction="out" type="s" name="model"/>
+    </method>
+    <method name="deviceFamily">
+      <arg direction="out" type="s" name="model"/>
+    </method>
+    <method name="deviceUid">
+      <arg direction="out" type="s" name="model"/>
+    </method>
+    <method name="deviceVariant">
+      <arg direction="out" type="s" name="model"/>
+    </method>
+    <!-- return a model-specific string suitable for displaying -->
+    <!-- see documentation of Ssu::DisplayType for supported types -->
+    <method name="displayName">
+      <arg direction="out" type="s" name="label"/>
+      <arg direction="in" type="i" name="type" />
+    </method>
+
+    <!-- repository management -->
+    <method name="deviceMode">
+      <arg direction="out" type="i" name="mode"/>
+    </method>
+    <method name="setDeviceMode">
+      <arg direction="in" type="i" name="mode"/>
+    </method>
+    <method name="setDeviceMode">
+      <arg direction="in" type="i" name="mode"/>
+      <arg direction="in" type="i" name="editMode"/>
+    </method>
+    <method name="flavour">
+      <arg direction="out" type="s" name="flavour"/>
+    </method>
+    <method name="setFlavour">
+      <arg direction="in" type="s" name="flavour"/>
+    </method>
+    <method name="release">
+      <arg direction="out" type="s" name="release"/>
+      <arg direction="in" type="b" name="rnd" />
+    </method>
+    <method name="setRelease">
+      <arg direction="in" type="s" name="release"/>
+      <arg direction="in" type="b" name="rnd" />
+    </method>
+    <!-- actions are remove(0), add(1), disable(2) and enable(3) -->
+    <method name="modifyRepo">
+      <arg direction="in" type="i" name="action"/>
+      <arg direction="in" type="s" name="repo" />
+    </method>
+    <method name="addRepo">
+      <arg direction="in" type="s" name="repo" />
+      <arg direction="in" type="s" name="url" />
+    </method>
+    <method name="updateRepos">
+    </method>
+
+    <method name="error">
+      <arg direction="out" type="b" name="status"/>
+    </method>
+    <method name="lastError">
+      <arg direction="out" type="s" name="status"/>
+    </method>
+    <method name="quit">
+    </method>
+
+    <signal name="credentialsChanged">
+    </signal>
+    <signal name="done">
+    </signal>
+    <signal name="registrationStatusChanged">
+    </signal>
+  </interface>
+</node>

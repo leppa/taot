@@ -46,7 +46,8 @@ analytics {
         MOBILITY += systeminfo
     }
     sailfish {
-        QT += systeminfo
+        QT += dbus systeminfo
+        DBUS_INTERFACES += 3rdparty/ssu/org.nemo.ssu.xml
     }
 
     include(3rdparty/qtinappanalytics/qtinappanalytics.pri)

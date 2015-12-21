@@ -38,6 +38,7 @@
 
 #ifdef WITH_ANALYTICS
 #   include "services/apikeys.h"
+#   include "ssu_interface.h"
 #   include <QAmplitudeAnalytics>
 #endif
 
@@ -104,6 +105,14 @@ TranslationInterface::TranslationInterface(QObject *parent)
         dir.mkpath(".");
     m_analytics.reset(new QAmplitudeAnalytics(AMPLITUDE_API_KEY,
                                               dir.filePath("QtInAppAnalytics.ini")));
+
+    // HACK: Get proper manufacturer and model values
+    // TODO: Remove when QtSystemInfo is allowed in Harbour
+    QAmplitudeAnalytics::DeviceInfo di = m_analytics->deviceInfo();
+    org::nemo::ssu ssu("org.nemo.ssu", "/org/nemo/ssu", QDBusConnection::systemBus());
+    di.manufacturer = ssu.displayName(0 /*Ssu::DeviceManufacturer*/);
+    di.model = ssu.displayName(1 /*Ssu::DeviceModel*/);
+    m_analytics->setDeviceInfo(di);
 # endif
 
     updatePersistentProperties();
