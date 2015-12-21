@@ -106,7 +106,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QScopedPointer<Application> app(new Application(argc, argv));
 #elif defined(Q_OS_SAILFISH)
-    QGuiApplication *app = SailfishApp::application(argc, argv);
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 #elif defined(Q_OS_SYMBIAN)
     QScopedPointer<QApplication> app(new SymbianApplication(argc, argv));
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
@@ -173,7 +173,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<Repeater>("taot", 1, 0, "Repeater");
     qmlRegisterType<DonationManager>("taot", 1, 0, "DonationManager");
 #elif defined(Q_OS_SAILFISH)
-    QQuickView *viewer = SailfishApp::createView();
+    QScopedPointer<QQuickView> viewer(SailfishApp::createView());
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     QScopedPointer<QmlApplicationViewer> viewer(new QmlApplicationViewer());
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
@@ -211,7 +211,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     dir.cdUp();
     viewer->setMainQmlFile(dir.filePath(QLatin1String("qml/main.qml")));
 #elif defined(Q_OS_SAILFISH)
-    QObject::connect(viewer->engine(), SIGNAL(quit()), app, SLOT(quit()));
+    QObject::connect(viewer->engine(), SIGNAL(quit()), app.data(), SLOT(quit()));
     viewer->setSource(SailfishApp::pathTo("qml/main.qml"));
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
     viewer->setMainQmlFile(QLatin1String("qml/main.qml"));
