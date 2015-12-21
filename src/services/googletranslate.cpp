@@ -29,9 +29,13 @@
 #endif
 
 #include <QFile>
+#include <QDateTime>
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
 #   include <QUrlQuery>
 #endif
+
+inline qint32 RL(qint32 a, const char *b, int l);
+inline QString generateToken(const QString &text);
 
 QString GoogleTranslate::displayName()
 {
@@ -165,7 +169,7 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 //    query.addQueryItem("ssel", "3");
 //    query.addQueryItem("tsel", "0");
 //    query.addQueryItem("otf", "1");
-    query.addQueryItem("tk", ""); // Access token placeholder
+    query.addQueryItem("tk", generateToken(text));
 
     dataQuery.addQueryItem("q", text);
 
@@ -272,4 +276,30 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     }
 
     return true;
+}
+
+// Token generation functions were ported and slighlty optimized from JavaScript code at
+// https://translate.google.com/translate/releases/twsfe_w_20151214_RC03/r/js/desktop_module_main.js
+inline qint32 RL(qint32 a, const char *b, int l)
+{
+    for (int i = 0; i < l - 2; i += 3) {
+        quint8 s = b[i + 2] + (b[i + 2] >= 'a' ? 10 - 'a' : -'0');
+        qint32 d = b[i + 1] == '+' ? quint32(a) >> s : quint32(a) << s;
+        a = b[i] == '+' ? a + (d & 4294967295U) : a ^ d;
+    }
+    return a;
+}
+
+inline QString generateToken(const QString &text)
+{
+    int b = QDateTime::currentMSecsSinceEpoch() / 3600000;
+    QByteArray d = text.toUtf8();
+    qint32 a = b;
+    for (int i = 0; i < d.count(); ++i) {
+        a += uchar(d.at(i));
+        a = RL(a, "+-a^+6", 6);
+    }
+    a = RL(a, "+-3^+b+-f", 9);
+    a = quint32(a) % 1000000;
+    return QString("%1.%2").arg(a).arg(a ^ b);
 }
