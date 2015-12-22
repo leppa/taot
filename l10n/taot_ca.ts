@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="255"/>
+        <location filename="../src/main.cpp" line="244"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Agustí Clara (fri666)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="257"/>
+        <location filename="../src/main.cpp" line="246"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Català</translation>
@@ -172,7 +172,7 @@ També observareu que l&apos;import de la vostra donació i un missatge amb &quo
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="38"/>
+        <location filename="../src/services/googletranslate.cpp" line="42"/>
         <source>Google Translate</source>
         <translation>Google Translate</translation>
     </message>
@@ -346,47 +346,48 @@ També observareu que l&apos;import de la vostra donació i un missatge amb &quo
         <location filename="../qml/sailfish/PrivacyNoticePage.qml" line="61"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="37"/>
         <source>Privacy Notice</source>
-        <translation type="unfinished"></translation>
+        <translation>Privacitat</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="37"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="34"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="128"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancel·la</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="45"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="33"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="136"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Accepta</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="25"/>
         <source>Would you like to help improve %1 by enabling application analytics?</source>
-        <translation type="unfinished"></translation>
+        <translation>Indiqueu si esteu d&apos;acord a habilitar la tramesa de dades analítiques de l&apos;aplicació per ajudar a la millora de %1</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="29"/>
         <source>Yes, enable full analytics</source>
-        <translation type="unfinished"></translation>
+        <translation>Sí, habilita totes les analítiques</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="30"/>
         <source>Enable only error reporting</source>
-        <translation type="unfinished"></translation>
+        <translation>Habilita només la tramesa d&apos;errors</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="31"/>
         <source>No, I don&apos;t want to help</source>
-        <translation type="unfinished"></translation>
+        <translation>No, no vull contribuir</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="34"/>
         <source>&lt;p&gt;%1 contains application analytics functionality that can collect information about actions performed in the application, application errors, and some information about your device. This information is processed by a third party analytics service, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. Collected information will be used solely for the purpose of improving %1, fixing errors, and analysing application usage.&lt;/p&gt;
 &lt;p&gt;Please read &lt;a href=&quot;%2&quot;&gt;%1 Privacy Policy&lt;/a&gt; for full information about what data is sent and when. You can also consult End User Information section of &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; to see how they deal with the data that we send to them.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;%1 conté una funció de recollida d&apos;analítiques de l&apos;aplicació que pren nota sobre accions efectuades a l&apos;aplicació, errors, i altre informació sobre el dispositiu. Aquesta informació és processada per un tercer, empresa de serveis d&apos;analítica  &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. En cap cas recull informació persona. La informació recollida només s&apos;utilitza amb el propòsit de millorar %1, corregir-ne errors, i analitzar-ne l&apos;ús&lt;/p&gt;
+&lt;p&gt;Llegiu, sisplau, &lt;a href=&quot;%2&quot;&gt;%1 Privacitat&lt;/a&gt; per obtenir tota la informació sobre quines dades s&apos;envien i quan. També podeu consultar la secció End User Information de &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; per veure com gestionen les dades que se&apos;ls trameten.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -479,7 +480,7 @@ També observareu que l&apos;import de la vostra donació i un missatge amb &quo
         <location filename="../qml/sailfish/SettingsPage.qml" line="105"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuració de privacitat</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
@@ -517,7 +518,7 @@ També observareu que l&apos;import de la vostra donació i un missatge amb &quo
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="402"/>
+        <location filename="../src/translationinterface.cpp" line="411"/>
         <source>Please, enter the source text</source>
         <translation>Introduïu el text d&apos;origen</translation>
     </message>
@@ -681,12 +682,12 @@ També observareu que l&apos;import de la vostra donació i un missatge amb &quo
         <translation>%1 conté aquestes contribucions de traducció:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="52"/>
+        <location filename="../qml/about.js" line="54"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Podeu &lt;a href=&quot;%2&quot;&gt;ajudar a traduir %1 al vostre idioma&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="56"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;

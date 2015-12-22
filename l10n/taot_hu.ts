@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.0" language="hu">
 <context>
     <name>--------</name>
     <message>
         <location filename="../src/main.cpp" line="244"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
-        <translation>Jakub Kožíšek (nodevel)</translation>
+        <translation>ViBE</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="246"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
-        <translation>Čeština</translation>
+        <translation>Magyar</translation>
     </message>
 </context>
 <context>
@@ -23,21 +23,19 @@
         <location filename="../qml/harmattan/AboutPage.qml" line="59"/>
         <location filename="../qml/symbian/AboutPage.qml" line="61"/>
         <source>Version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Verze: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Változat: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message numerus="yes">
         <location filename="../qml/bb10/AboutPage.qml" line="47"/>
         <source>You donated &lt;b&gt;%n coins&lt;/b&gt;. Thank you!</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../qml/sailfish/AboutPage.qml" line="50"/>
         <source>About</source>
-        <translation>O aplikaci</translation>
+        <translation>Névjegy</translation>
     </message>
 </context>
 <context>
@@ -46,13 +44,13 @@
         <location filename="../qml/bb10/AppCover.qml" line="36"/>
         <location filename="../qml/sailfish/AppCover.qml" line="33"/>
         <source>From: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Z: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Forrás: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/bb10/AppCover.qml" line="62"/>
         <location filename="../qml/sailfish/AppCover.qml" line="34"/>
         <source>To: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Do: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Cél: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -70,7 +68,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
         <source>Donation FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation>Támogatás GYÍK</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
@@ -85,12 +83,12 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
         <source>Am I required to donate to use %1?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kell-e fizetnem a %1 használatáért?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
         <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyáltalán nem. A %1 teljes mértékben ingyenes és nyílt forráskódú. Így anyagi hozzájárulás nem szükséges a használatához. Ettől függetlenül örömmel fogadom.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
@@ -105,7 +103,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
         <source>Do I get something for making a donation?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapok valamit a támogatásomért cserébe?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
@@ -126,7 +124,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
         <source>I changed my mind and want to get my donation back!</source>
-        <translation type="unfinished"></translation>
+        <translation>Meggondoltam magam, vissza szeretném kérni az adományom!</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
@@ -146,12 +144,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
         <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation type="unfinished"></translation>
+        <translation>Egy kérdésemre nem kaptam választ. Hogyan vehetném fel a kapcsolatot a fejlesztővel?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
         <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Írhatsz nekem levelet a &lt;em&gt;Visszajelzés küldése&lt;/em&gt;  menüpont segítségével. Egy előre kitöltött sablon fog segíteni ebben.</translation>
     </message>
 </context>
 <context>
@@ -165,8 +163,6 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <source>%n coins</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -175,7 +171,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/services/googletranslate.cpp" line="42"/>
         <source>Google Translate</source>
-        <translation>Překladač Google</translation>
+        <translation>Google Fordító</translation>
     </message>
 </context>
 <context>
@@ -185,12 +181,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation>Nebylo možné zpracovat odpověď serveru kvůli chybě: &quot;%1&quot;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="48"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation>Nebylo možné zpracovat data JSON</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -200,7 +196,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../src/l10nmodel.cpp" line="101"/>
         <source>System default (%1)</source>
         <extracomment>The default language in the system (%1 will be replaced with language name)</extracomment>
-        <translation>Výchozí v systému (%1)</translation>
+        <translation>Alapértelmezett (%1)</translation>
     </message>
 </context>
 <context>
@@ -211,7 +207,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="83"/>
         <location filename="../qml/symbian/MainPage.qml" line="211"/>
         <source>From</source>
-        <translation>Z</translation>
+        <translation>Forrás</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="95"/>
@@ -219,7 +215,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="111"/>
         <location filename="../qml/symbian/MainPage.qml" line="247"/>
         <source>To</source>
-        <translation>Do</translation>
+        <translation>Cél</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="107"/>
@@ -229,7 +225,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/symbian/MainPage.qml" line="269"/>
         <location filename="../qml/symbian/MainPage.qml" line="291"/>
         <source>Enter the source text...</source>
-        <translation>Zadejte původní text...</translation>
+        <translation>Írd be a fordítani kívánt szöveget...</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="153"/>
@@ -237,7 +233,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="184"/>
         <location filename="../qml/symbian/MainPage.qml" line="343"/>
         <source>Translate</source>
-        <translation>Přeložit</translation>
+        <translation>Fordítás</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="221"/>
@@ -245,7 +241,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="282"/>
         <location filename="../qml/symbian/MainPage.qml" line="482"/>
         <source>Detected language:</source>
-        <translation>Rozpoznaný jazyk:</translation>
+        <translation>Felismert nyelv:</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="240"/>
@@ -253,19 +249,19 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="366"/>
         <location filename="../qml/symbian/MainPage.qml" line="578"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Beillesztés</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
         <location filename="../qml/sailfish/MainPage.qml" line="380"/>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Kijelölés másolása</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
         <location filename="../qml/sailfish/MainPage.qml" line="380"/>
         <source>Copy all</source>
-        <translation type="unfinished"></translation>
+        <translation>Mindent másol</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="293"/>
@@ -276,28 +272,28 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/harmattan/MainPage.qml" line="522"/>
         <location filename="../qml/symbian/MainPage.qml" line="591"/>
         <source>Copy</source>
-        <translation>Kopírovat</translation>
+        <translation>Másolás</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="269"/>
         <source>Translation was successfully copied to clipboard</source>
-        <translation>Překlad byl úspěšně zkopírován do schránky</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="271"/>
         <source>Couldn&apos;t copy translation to clipboard</source>
-        <translation>Nebylo možné zkopírovat překlad</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="276"/>
         <source>Share</source>
-        <translation>Sdílet</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="284"/>
         <source>%1 (%2) -&gt; %3 (%4)</source>
         <extracomment>&lt;source text&gt; (&lt;source/detected language&gt;) -&gt; &lt;translated text&gt; (&lt;target language&gt;)</extracomment>
-        <translation>%1 (%2) -&gt; %3 (%4)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="52"/>
@@ -305,21 +301,21 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="396"/>
         <location filename="../qml/symbian/MainPage.qml" line="51"/>
         <source>Translation Service</source>
-        <translation>Služba překladu</translation>
+        <translation>Szolgáltató kiválasztása</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="61"/>
         <location filename="../qml/sailfish/MainPage.qml" line="410"/>
         <location filename="../qml/symbian/MainPage.qml" line="68"/>
         <source>Source Language</source>
-        <translation>Původní jazyk</translation>
+        <translation>Fordítás erről</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="70"/>
         <location filename="../qml/sailfish/MainPage.qml" line="423"/>
         <location filename="../qml/symbian/MainPage.qml" line="85"/>
         <source>Target Language</source>
-        <translation>Cílový jazyk</translation>
+        <translation>Fordítás erre</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="224"/>
@@ -329,7 +325,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/sailfish/MainPage.qml" line="51"/>
         <source>Settings</source>
-        <translation>Nastavení</translation>
+        <translation>Beállítások</translation>
     </message>
 </context>
 <context>
@@ -337,7 +333,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/services/microsofttranslator.cpp" line="13"/>
         <source>Microsoft Translator</source>
-        <translation>Překladač Microsoft</translation>
+        <translation>Microsoft Translator</translation>
     </message>
 </context>
 <context>
@@ -354,14 +350,14 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="34"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="128"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Mégsem</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="45"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="33"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="136"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendben</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="25"/>
@@ -376,7 +372,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/privacy.js" line="30"/>
         <source>Enable only error reporting</source>
-        <translation type="unfinished"></translation>
+        <translation>Csak hibajelentések küldése</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="31"/>
@@ -411,7 +407,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/symbian/SettingsPage.qml" line="34"/>
         <source>%1 Settings</source>
         <extracomment>%1 will be replaced with the application name</extracomment>
-        <translation>Nastavení %1</translation>
+        <translation>%1 beállításai</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="46"/>
@@ -421,21 +417,21 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/symbian/SettingsPage.qml" line="59"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="160"/>
         <source>Interface Language</source>
-        <translation>Jazyk rozhraní</translation>
+        <translation>Alkalmazás nyelve</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="56"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="72"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="74"/>
         <source>Dark Theme</source>
-        <translation>Tmavý vzhled</translation>
+        <translation>Sötét téma</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="57"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="73"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="75"/>
         <source>Use dark color scheme</source>
-        <translation>Použít tmavé barevné schéma</translation>
+        <translation>Sötét téma használata</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="61"/>
@@ -444,7 +440,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="133"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="179"/>
         <source>Please, restart the application to apply this setting.</source>
-        <translation>Pro zavedení tohoto nastavení prosím znovu spusťte aplikaci.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="73"/>
@@ -452,7 +448,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="84"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="86"/>
         <source>Translate on Enter Press</source>
-        <translation type="unfinished"></translation>
+        <translation>Fordítás Enterrel</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="74"/>
@@ -472,7 +468,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/harmattan/SettingsPage.qml" line="94"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="98"/>
         <source>Automatically start translation after inserting text with &lt;em&gt;Paste&lt;/em&gt; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatikus fordítás vágólapról történő &lt;em&gt;Beillesztés&lt;/em&gt; esetén</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="96"/>
@@ -480,7 +476,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="105"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Adatvédelmi beállítások</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
@@ -494,20 +490,20 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="40"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="134"/>
         <source>Send Feedback</source>
-        <translation>Odeslat zpětnou vazbu</translation>
+        <translation>Visszajelzés küldése</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="137"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="144"/>
         <source>Check for Updates</source>
-        <translation>Zkontrolovat aktualizace</translation>
+        <translation>Frissítések keresése</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="143"/>
         <location filename="../qml/sailfish/SettingsPage.qml" line="119"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="151"/>
         <source>About</source>
-        <translation>O aplikaci</translation>
+        <translation>Névjegy</translation>
     </message>
     <message>
         <location filename="../qml/sailfish/SettingsPage.qml" line="95"/>
@@ -520,7 +516,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/translationinterface.cpp" line="411"/>
         <source>Please, enter the source text</source>
-        <translation>Prosím, zadejte původní text</translation>
+        <translation>Kérlek, írd be a fordítandó szöveget</translation>
     </message>
 </context>
 <context>
@@ -530,26 +526,26 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <source>Autodetect</source>
         <comment>Automatically detect language</comment>
         <extracomment>As in &quot;Automatically detect language&quot;</extracomment>
-        <translation>Rozpoznat</translation>
+        <translation>Automatikus</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="124"/>
         <source>Unknown</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
-        <translation>Neznámý</translation>
+        <translation>Ismeretlen</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="127"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
-        <translation>Neznámý (%1)</translation>
+        <translation>Ismeretlen (%1)</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="129"/>
         <source>No error</source>
-        <translation>Žádná chyba</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="131"/>
@@ -559,7 +555,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/translationservice.h" line="133"/>
         <source>Unexpected response from the server</source>
-        <translation>Neočekávaná odpověď serveru</translation>
+        <translation>Váratlan válasz érkezett a kiszolgálótól</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="135"/>
@@ -573,13 +569,13 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Kijelölés másolása</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
         <source>Copy all</source>
-        <translation type="unfinished"></translation>
+        <translation>Mindent másol</translation>
     </message>
 </context>
 <context>
@@ -588,43 +584,43 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="30"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="34"/>
         <source>Update</source>
-        <translation>Aktualizovat</translation>
+        <translation>Frissítés</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="57"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="61"/>
         <source>Current version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Současná verze: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Jelenlegi változat: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="61"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="66"/>
         <source>Checking for update...</source>
-        <translation>Kontroluji aktualizace...</translation>
+        <translation>Új változat keresése...</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
         <source>No update available.</source>
-        <translation>Žádná dostupná aktualizace.</translation>
+        <translation>Nincs elérhető frissítés.</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="83"/>
         <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Dostupná aktualizace: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Új változat jelent meg: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="89"/>
         <source>Changes:</source>
-        <translation>Změny:</translation>
+        <translation>Változások:</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="93"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="131"/>
         <source>Download</source>
-        <translation>Stáhnout</translation>
+        <translation>Letöltés</translation>
     </message>
 </context>
 <context>
@@ -632,19 +628,19 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/updater.cpp" line="187"/>
         <source>Couldn&apos;t parse release version</source>
-        <translation>Nebylo možné zpracovat verzi vydání</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="248"/>
         <location filename="../src/updater.cpp" line="255"/>
         <location filename="../src/updater.cpp" line="266"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation>Nebylo možné zpracovat odpověď serveru kvůli chybě: &quot;%1&quot;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="249"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation>Nebylo možné zpracovat data JSON</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -652,7 +648,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="38"/>
         <source>Yandex.Dictionaries</source>
-        <translation>Yandex.Slovníky</translation>
+        <translation>Yandex.Dictionaries</translation>
     </message>
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="152"/>
@@ -666,7 +662,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/services/yandextranslate.cpp" line="33"/>
         <source>Yandex.Translate</source>
-        <translation>Yandex.Přeložit</translation>
+        <translation>Yandex.Translate</translation>
     </message>
 </context>
 <context>
@@ -674,17 +670,17 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/about.js" line="30"/>
         <source>%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: &lt;a href=&quot;%2&quot;&gt;Donate&lt;/a&gt;.</source>
-        <translation>%1 je svobodný software, který vyvíjím ve svém volném čase. Pokud se vám líbí, byl bych rád za menší příspěvek: &lt;a href=&quot;%2&quot;&gt;Přispět&lt;/a&gt;.</translation>
+        <translation>A %1 egy ingyenes alkalmazás, amit a szabadidőmben fejlesztek. Ha megtetszett, örömmel fogadom adományod: &lt;a href=&quot;%2&quot;&gt;Támogatás&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="33"/>
         <source>%1 contains the following contributed translations:</source>
-        <translation>%1 obsahuje následující přispěné překlady:</translation>
+        <translation>A %1 az alábbiak fordítását tartalmazza:</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="54"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
-        <translation>Pokud jste nenalezli váš jazyk, můžete &lt;a href=&quot;%2&quot;&gt;pomoci s překladem %1 do tohoto jazyka&lt;/a&gt;.</translation>
+        <translation>Ha a te nyelved nincs a listán, segíthetsz a &lt;a href=&quot;%2&quot;&gt;%1 fordításában&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="56"/>
@@ -693,7 +689,11 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - supports dictionary with transcription for some languages, synonyms, and reverse translations.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;More services are possible in future.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;A %1 online szolgáltatók segítségével fordít.&lt;/p&gt;&lt;p&gt;Jelenleg elérhető szolgáltatók:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Fordító&lt;/b&gt; - fordítás, szövegfordítás a legtöbb nem latin nyelven is,  nyelvfelismerés, szótárazás szavanként oda-vissza.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (azaz &lt;b&gt;Bing Fordító&lt;/b&gt;) - fordítás, nyelvfelismerés.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - fordítás, nyelvfelismerés..&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - szótárazás fonetikus átírással egyes nyelveken, szinonimák.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;További szolgáltatók a jövőben lesznek elérhetőek.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -701,27 +701,27 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/main.qml" line="48"/>
         <source>About</source>
-        <translation>O aplikaci</translation>
+        <translation>Névjegy</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="56"/>
         <source>Send feedback</source>
-        <translation>Odeslat zpětnou vazbu</translation>
+        <translation>Visszajelzés küldése</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="68"/>
         <source>Write a review</source>
-        <translation>Napsat recenzi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="79"/>
         <source>Settings</source>
-        <translation>Nastavení</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="105"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezárás</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="114"/>
@@ -736,7 +736,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/main.qml" line="116"/>
         <source>Donation FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation>Támogatás GYÍK</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="134"/>

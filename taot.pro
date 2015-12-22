@@ -153,9 +153,11 @@ TRANSLATIONS += \
     l10n/taot_es.ts \
     l10n/taot_fi.ts \
     l10n/taot_fr_FR.ts \
+    l10n/taot_hu.ts \
     l10n/taot_it.ts \
     l10n/taot_nl_NL.ts \
     l10n/taot_pl.ts \
+    l10n/taot_pt.ts \
     l10n/taot_ru.ts \
     l10n/taot_sv.ts \
     l10n/taot_tr.ts \
