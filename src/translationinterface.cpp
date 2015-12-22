@@ -597,7 +597,7 @@ void TranslationInterface::fillTranslationProperties(QVariantMap &properties) co
     if (m_service->isAutoLanguage(m_sourceLanguage->language()))
         properties.insert("From", "<auto>");
     else
-        properties.insert("from", m_sourceLanguage->language().info);
+        properties.insert("From", m_sourceLanguage->language().info);
     properties.insert("To", m_targetLanguage->language().info);
     properties.insert("Length", m_srcText.length());
 }
