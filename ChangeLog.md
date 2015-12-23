@@ -2,6 +2,14 @@ TAO Translator ChangeLog
 ========================
 
 
+TAOT v1.3.1
+-----------
+
+- Google Translate: A workaround for "server replied: Forbidden" error
+  ([issue #52][]).
+- New UI localizations: Hungarian and Portugese.
+
+
 TAOT v1.3.0
 -----------
 
@@ -238,5 +246,6 @@ Initial release.
 [issue #48]: https://github.com/leppa/taot/issues/48
 [issue #49]: https://github.com/leppa/taot/issues/49
 [issue #50]: https://github.com/leppa/taot/issues/50
+[issue #52]: https://github.com/leppa/taot/issues/52
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
