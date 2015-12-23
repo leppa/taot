@@ -33,4 +33,7 @@
 // Yandex.Dictionary
 #define YANDEXDICTIONARIES_API_KEY ""
 
+// Amplitude Analytics
+#define AMPLITUDE_API_KEY ""
+
 #endif // APIKEYS_H
