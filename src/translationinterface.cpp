@@ -434,6 +434,15 @@ void TranslationInterface::translate()
     setBusy(true);
 }
 
+void TranslationInterface::trackCheckForUpdates()
+{
+#ifdef WITH_ANALYTICS
+    if (m_privacyLevel == NoPrivacy) {
+        m_analytics->trackEvent("Check for Updates", QVariantMap(), true);
+    }
+#endif
+}
+
 #ifdef Q_OS_SAILFISH
 // HACK: Sailfish doesn't seem to understand HTML encoded URLs.
 QString TranslationInterface::urlDecode(const QString &url) const

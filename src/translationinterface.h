@@ -190,6 +190,8 @@ public slots:
     void setSourceText(const QString &sourceText);
     void translate();
 
+    void trackCheckForUpdates();
+
 #ifdef Q_OS_SAILFISH
     QString urlDecode(const QString &url) const;
 #endif

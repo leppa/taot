@@ -140,6 +140,7 @@ Page {
             enabled: !updater.busy
             platformInverted: root.platformInverted
             onClicked: {
+                translator.trackCheckForUpdates();
                 updater.checkForUpdates();
             }
 
@@ -153,6 +154,7 @@ Page {
     }
 
     Component.onCompleted: {
+        translator.trackCheckForUpdates();
         updater.checkForUpdates();
     }
 }

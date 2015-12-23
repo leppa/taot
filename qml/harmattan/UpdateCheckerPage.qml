@@ -125,6 +125,7 @@ Page {
             iconSource: enabled ? "" : Qt.resolvedUrl("icons/empty.png")
             enabled: !updater.busy
             onClicked: {
+                translator.trackCheckForUpdates();
                 updater.checkForUpdates();
             }
 
@@ -137,6 +138,7 @@ Page {
     }
 
     Component.onCompleted: {
+        translator.trackCheckForUpdates();
         updater.checkForUpdates();
     }
 }
