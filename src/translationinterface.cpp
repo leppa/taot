@@ -38,7 +38,9 @@
 
 #ifdef WITH_ANALYTICS
 #   include "services/apikeys.h"
+# ifdef Q_OS_SAILFISH
 #   include "ssu_interface.h"
+# endif
 #   include <QAmplitudeAnalytics>
 #endif
 
