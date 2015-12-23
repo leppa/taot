@@ -1,10 +1,24 @@
 language: cpp
 compiler: gcc
 sudo: false
+cache: ccache
+
 addons:
   apt:
+    sources:
+      - ubuntu-sdk-team
     packages:
-    - libqt4-dev
+      - libqt4-dev
+      - qt5-default
+      - qtdeclarative5-dev
+      - qttools5-dev-tools
+
+env:
+  - QT_SELECT=qt4 QMAKE_ARGS=""
+  - QT_SELECT=qt4 QMAKE_ARGS="CONFIG+=analytics"
+  - QT_SELECT=qt5 QMAKE_ARGS=""
+  - QT_SELECT=qt5 QMAKE_ARGS="CONFIG+=analytics"
+
 script:
-  - qmake taot.pro
+  - qmake $QMAKE_ARGS taot.pro
   - make

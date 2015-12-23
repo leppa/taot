@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="255"/>
+        <location filename="../src/main.cpp" line="244"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>gwmgdemj, 太空飞瓜 (finalmix), YFdyh000</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="257"/>
+        <location filename="../src/main.cpp" line="246"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>简体中文</translation>
@@ -170,7 +170,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="38"/>
+        <location filename="../src/services/googletranslate.cpp" line="42"/>
         <source>Google Translate</source>
         <translation>谷歌翻译</translation>
     </message>
@@ -516,7 +516,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="402"/>
+        <location filename="../src/translationinterface.cpp" line="411"/>
         <source>Please, enter the source text</source>
         <translation>请输入要翻译的内容</translation>
     </message>
@@ -680,12 +680,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <translation>%1 含有下列翻译贡献：</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="52"/>
+        <location filename="../qml/about.js" line="54"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>如果缺少您的语言，您可以&lt;a href=&quot;%2&quot;&gt;帮忙翻译 %1 到您使用的语言&lt;/a&gt;。</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="56"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;

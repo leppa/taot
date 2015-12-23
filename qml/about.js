@@ -41,9 +41,11 @@ qsTr("%1 contains the following contributed translations:").arg("TAO Translator"
 "<b>Finnish</b> by Timpaxi, " +
 "<b>French</b> by Jordi, " +
 "<b>German</b> by buschmann, DeadHorseRiding (Mee_Germany_Go), and R.G. Sidler (rgsidler), " +
-"<b>Greek</b> by Wasilis Mandratzis-Walz (beonex), " +
-"<b>Italian</b> by Francesco Vaccaro (ghostofasmile) and Alessandro Pra' (Watchmaker), " +
+"<b>Greek</b> by Wasilis Mandratzis-Walz (beonex), and Dimitrios Glentadakis (dglent), " +
+"<b>Hungarian</b> by ViBE, " +
+"<b>Italian</b> by Francesco Vaccaro (ghostofasmile), and Alessandro Pra' (Watchmaker), " +
 "<b>Polish</b> by Maurycy, MP (mp107), " +
+"<b>Portuguese</b> by Delson Lima (delsonlima), " +
 "<b>Spanish</b> by Carmen Fernández B., " +
 "<b>Swedish</b> by Åke Engelbrektson, " +
 "<b>Turkish</b> by Mehmet Ç. (fnldstntn) and Mesut Aktaş." +

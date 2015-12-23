@@ -1,0 +1,86 @@
+# Add new changelog entries following the format below.
+# Add newest entries to the top of the list.
+# Separate entries from eachother with a blank line.
+
+# * date Author's Name <author's email> version-release
+# - Summary of changes
+
+* Wed Dec 23 2015 Oleksii Serdiuk <contacts@oleksii.name> 1.3.1-1
+- Google Translate: A workaround for "server replied: Forbidden" error.
+- New UI localizations: Hungarian and Portugese.
+
+* Mon Nov 9 2015 Oleksii Serdiuk <contacts@oleksii.name> 1.3.0-1
+- Google Translate: A possible fix (workaround) for "Service
+  unavailable" translation error ([issue #49][]).
+- Yandex.Dictionaries: Fix for "SSL handshake failed" error on some
+  phones.
+- Actual SSL errors are now reported instead of just "SSL handshake
+  failed".
+- In-app analytics were added. You will be asked whether to enable them
+  at first start.
+- When Paste'n'Translate is activated, "Paste" button will replace
+  existing source text with the text from clipboard; when
+  Paste'n'Translate is deactivated, "Paste" button will insert clipboard
+  text without touching existing source text.
+- Fix wrong path for saving language settings.
+- New UI localizations: Bulgarian, Catalan, Finnish, Polish, and
+  Swedish.
+
+* Fri Jun 12 2015 Oleksii Serdiuk <contacts@oleksii.name> 1.2.0-1
+- An option to start translation after pressing Enter / Return key on
+  the keyboard.
+- Paste'n'Translate: New Paste button will insert source text from the
+  clipboard and trigger a translation right away.
+- Copy button will now copy whole translation if nothing is selected.
+- As a consequence, redundant Select All button was removed.
+- Donation link was moved higher on the About page.
+- Google Translate: Support for displaying transliteration, when
+  provided.
+- Google Translate: Longer texts can be translated now.
+- Microsoft Translator: Display detected language when source language
+  is set to autodetect
+- Yandex.Dictionaries: Support for displaying transcription, when
+  provided.
+- New UI localizations: Arabic, French, and Spanish.
+
+* Fri Apr 10 2015 Oleksii Serdiuk <contacts@oleksii.name> 1.1.0-1
+- Fixed Google Translate service.
+- It is now possible to swap source and translation languages when
+  source language is set to autodetect and language was successfully
+  autodetected.
+- Support for changing interface language.
+- Clear button is now an icon.
+- All settings were moved to a new Settings page.
+- "Send Feedback" option was added. This will open an e-mail composer
+  with pre-filled subject and recipient.
+- Parts of text on the About page were made localizable.
+- Source and target translation languages were updated for all services.
+- Google Translate: Support for articles in the dictionary (provided
+  only for some languages, like German).
+- New UI localization: Czech.
+
+* Sun Apr 6 2014 Oleksii Serdiuk <contacts@oleksii.name> 1.0.1-1
+- Google Translate: updated list of available translation languages.
+- Made icon background a bit smoother.
+- New UI localization: Danish.
+- German UI localization was updated.
+- Translation result text is now read only.
+
+* Sun Mar 2 2014 Oleksii Serdiuk <contacts@oleksii.name> 1.0.0-1
+- Renamed application into TAO Translator.
+- New application icon.
+- New UI localizations: German and Italian.
+
+* Wed Jan 22 2014 Oleksii Serdiuk <contacts@oleksii.name> 0.3.2.1-1
+- Fixed settings file path to comply with Harbour rules.
+
+* Fri Jan 17 2014 Oleksii Serdiuk <contacts@oleksii.name> 0.3.2-1
+- Moved busy indicator on top of Translate button.
+- Shortened icon label to TAO Translator.
+- Updated copyright years.
+- Localization: Chinese, Dutch and Turkish translations.
+- Enabled landscape and inverted landscape orientations.
+- Added display of source and translated text to the cover.
+
+* Sat Dec 28 2013 Oleksii Serdiuk <contacts@oleksii.name> 0.3.1-1
+- Initial release for Sailfish OS

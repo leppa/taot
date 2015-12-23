@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="255"/>
+        <location filename="../src/main.cpp" line="244"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Åke Engelbrektson</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="257"/>
+        <location filename="../src/main.cpp" line="246"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Svenska</translation>
@@ -172,7 +172,7 @@ Hur som helst, om du inte tycker det är nog, så kommer din donation tillsamman
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="38"/>
+        <location filename="../src/services/googletranslate.cpp" line="42"/>
         <source>Google Translate</source>
         <translation>Google Translate</translation>
     </message>
@@ -518,7 +518,7 @@ Hur som helst, om du inte tycker det är nog, så kommer din donation tillsamman
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="402"/>
+        <location filename="../src/translationinterface.cpp" line="411"/>
         <source>Please, enter the source text</source>
         <translation>Ange källtext</translation>
     </message>
@@ -682,12 +682,12 @@ Hur som helst, om du inte tycker det är nog, så kommer din donation tillsamman
         <translation>%1 innehåller följande översättningsbidrag:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="52"/>
+        <location filename="../qml/about.js" line="54"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Om ditt språk saknas, kan du &lt;a href=&quot;%2&quot;&gt;hjälpa till och översätta %1 till ditt språk&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="56"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;

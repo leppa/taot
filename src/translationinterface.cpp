@@ -38,6 +38,9 @@
 
 #ifdef WITH_ANALYTICS
 #   include "services/apikeys.h"
+# ifdef Q_OS_SAILFISH
+#   include "ssu_interface.h"
+# endif
 #   include <QAmplitudeAnalytics>
 #endif
 
@@ -104,6 +107,14 @@ TranslationInterface::TranslationInterface(QObject *parent)
         dir.mkpath(".");
     m_analytics.reset(new QAmplitudeAnalytics(AMPLITUDE_API_KEY,
                                               dir.filePath("QtInAppAnalytics.ini")));
+
+    // HACK: Get proper manufacturer and model values
+    // TODO: Remove when QtSystemInfo is allowed in Harbour
+    QAmplitudeAnalytics::DeviceInfo di = m_analytics->deviceInfo();
+    org::nemo::ssu ssu("org.nemo.ssu", "/org/nemo/ssu", QDBusConnection::systemBus());
+    di.manufacturer = ssu.displayName(0 /*Ssu::DeviceManufacturer*/);
+    di.model = ssu.displayName(1 /*Ssu::DeviceModel*/);
+    m_analytics->setDeviceInfo(di);
 # endif
 
     updatePersistentProperties();
@@ -320,7 +331,9 @@ QVariant TranslationInterface::getSettingsValue(const QString &key,
 void TranslationInterface::setSettingsValue(const QString &key, const QVariant &value)
 {
     m_settings->setValue(key, value);
+#ifdef WITH_ANALYTICS
     updatePersistentProperties();
+#endif
 }
 
 void TranslationInterface::selectService(int index)
@@ -419,6 +432,15 @@ void TranslationInterface::translate()
     }
 
     setBusy(true);
+}
+
+void TranslationInterface::trackCheckForUpdates()
+{
+#ifdef WITH_ANALYTICS
+    if (m_privacyLevel == NoPrivacy) {
+        m_analytics->trackEvent("Check for Updates", QVariantMap(), true);
+    }
+#endif
 }
 
 #ifdef Q_OS_SAILFISH
@@ -586,7 +608,7 @@ void TranslationInterface::fillTranslationProperties(QVariantMap &properties) co
     if (m_service->isAutoLanguage(m_sourceLanguage->language()))
         properties.insert("From", "<auto>");
     else
-        properties.insert("from", m_sourceLanguage->language().info);
+        properties.insert("From", m_sourceLanguage->language().info);
     properties.insert("To", m_targetLanguage->language().info);
     properties.insert("Length", m_srcText.length());
 }

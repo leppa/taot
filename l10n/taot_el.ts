@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="255"/>
+        <location filename="../src/main.cpp" line="244"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
-        <translation>Mandratzis-Walz (beonex)</translation>
+        <translation>Mandratzis-Walz (beonex), Dimitrios Glentadakis (dglent)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="257"/>
+        <location filename="../src/main.cpp" line="246"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Ελληνικά</translation>
@@ -28,9 +28,9 @@
     <message numerus="yes">
         <location filename="../qml/bb10/AboutPage.qml" line="47"/>
         <source>You donated &lt;b&gt;%n coins&lt;/b&gt;. Thank you!</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Δωρίσατε &lt;b&gt;%n κέρματα&lt;/b&gt;. Ευχαριστούμε!</numerusform>
+            <numerusform>Δωρίσατε &lt;b&gt;%n κέρματα&lt;/b&gt;. Ευχαριστούμε!</numerusform>
         </translation>
     </message>
     <message>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
         <source>Donation FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation>Συνήθεις ερωτήσεις Δωρεών</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
@@ -162,16 +162,16 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../src/bb10/donationmanager.cpp" line="55"/>
         <location filename="../src/bb10/donationmanager.cpp" line="58"/>
         <source>%n coins</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n κέρματα</numerusform>
+            <numerusform>%n κέρματα</numerusform>
         </translation>
     </message>
 </context>
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="38"/>
+        <location filename="../src/services/googletranslate.cpp" line="42"/>
         <source>Google Translate</source>
         <translation>Google Translate</translation>
     </message>
@@ -251,24 +251,24 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="366"/>
         <location filename="../qml/symbian/MainPage.qml" line="578"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
         <location filename="../qml/sailfish/MainPage.qml" line="380"/>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή της επιλογής</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
         <location filename="../qml/sailfish/MainPage.qml" line="380"/>
         <source>Copy all</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή όλων</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="293"/>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Δωρεά</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="522"/>
@@ -322,7 +322,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="224"/>
         <source>Go</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση</translation>
     </message>
     <message>
         <location filename="../qml/sailfish/MainPage.qml" line="51"/>
@@ -345,21 +345,21 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/PrivacyNoticePage.qml" line="61"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="37"/>
         <source>Privacy Notice</source>
-        <translation type="unfinished"></translation>
+        <translation>Επισήμανση περί του ιδιωτικού απορρήτου</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="37"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="34"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="128"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="45"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="33"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="136"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποδοχή</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="25"/>
@@ -450,7 +450,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="84"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="86"/>
         <source>Translate on Enter Press</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάφραση με πάτημα στο Enter</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="74"/>
@@ -463,7 +463,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="94"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="97"/>
         <source>Paste&apos;n&apos;Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση και μετάφραση</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="86"/>
@@ -478,7 +478,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="105"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις προσωπικού απορρήτου</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
@@ -505,7 +505,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="119"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="151"/>
         <source>About</source>
-        <translation>Σχετικα με</translation>
+        <translation>Περί</translation>
     </message>
     <message>
         <location filename="../qml/sailfish/SettingsPage.qml" line="95"/>
@@ -516,7 +516,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="402"/>
+        <location filename="../src/translationinterface.cpp" line="411"/>
         <source>Please, enter the source text</source>
         <translation>Εισάγετε το κείμενο πηγής...</translation>
     </message>
@@ -571,13 +571,13 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή της επιλογής</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
         <source>Copy all</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή όλων</translation>
     </message>
 </context>
 <context>
@@ -680,12 +680,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <translation>%1 περιλαμβάνει τις ακόλουθες μεταφράσεις:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="52"/>
+        <location filename="../qml/about.js" line="54"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Αν η γλώσσα σας λείπει, μπορείτε να &lt;a href=&quot;%2&quot;&gt; να βοηθήσετε μεταφραζοντας %1 στην γλώσσα σας &lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="56"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
@@ -719,12 +719,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/main.qml" line="105"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείσιμο</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="114"/>
         <source>Donation</source>
-        <translation type="unfinished"></translation>
+        <translation>Δωρεά</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="115"/>
@@ -734,7 +734,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/main.qml" line="116"/>
         <source>Donation FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation>Συνήθεις ερωτήσεις Δωρεών</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="134"/>
