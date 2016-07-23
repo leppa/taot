@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -25,7 +25,7 @@
 // TODO: Clean up this mess!
 var aboutText =
 "<p><a href=\"https://github.com/leppa/taot\">https://github.com/leppa/taot</a></p> " +
-"<p>Copyright &copy; 2013-2015 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=TAO%20Translator\">Oleksii Serdiuk</a></p> " +
+"<p>Copyright &copy; 2013-2016 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=TAO%20Translator\">Oleksii Serdiuk</a></p> " +
 "<p>&nbsp;</p> " +
 "<p>" + qsTr("%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: <a href=\"%2\">Donate</a>.").arg("TAO Translator").arg("https://github.com/leppa/taot/wiki/Donate") + "</p> " +
 "<p>&nbsp;</p> " +
