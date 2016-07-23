@@ -2,6 +2,14 @@ TAO Translator ChangeLog
 ========================
 
 
+TAOT v1.3.2
+-----------
+
+- Google Translate: Switched API endpoint. Should fix "500 Forbidden"
+  error for now ([issue #53][]).
+- Some UI localizations were upated.
+
+
 TAOT v1.3.1
 -----------
 
@@ -247,5 +255,6 @@ Initial release.
 [issue #49]: https://github.com/leppa/taot/issues/49
 [issue #50]: https://github.com/leppa/taot/issues/50
 [issue #52]: https://github.com/leppa/taot/issues/52
+[issue #53]: https://github.com/leppa/taot/issues/53
 
 <!-- $Id: $Format:%h %ai %an$ $ -->

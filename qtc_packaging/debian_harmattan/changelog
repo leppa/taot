@@ -1,3 +1,10 @@
+taot (1.3.2) unstable; urgency=low
+  * Google Translate: Switched API endpoint. Should fix "500 Forbidden"
+    error for now.
+  * Some UI localizations were upated.
+
+ -- Oleksii Serdiuk <contacts@oleksii.name>  Sat, 23 Jul 2016 22:34:56 +0200
+
 taot (1.3.1) unstable; urgency=low
   * Google Translate: A workaround for "server replied: Forbidden" error.
   * New UI localizations: Hungarian and Portugese.
