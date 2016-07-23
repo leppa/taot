@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pt">
+<TS version="2.1" language="pt">
 <context>
     <name>--------</name>
     <message>
@@ -518,7 +518,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="411"/>
+        <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
         <translation>Por favor, digite o texto de origem</translation>
     </message>

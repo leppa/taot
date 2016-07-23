@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -25,13 +25,13 @@
 // TODO: Clean up this mess!
 var aboutText =
 "<p><a href=\"https://github.com/leppa/taot\">https://github.com/leppa/taot</a></p> " +
-"<p>Copyright &copy; 2013-2015 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=TAO%20Translator\">Oleksii Serdiuk</a></p> " +
+"<p>Copyright &copy; 2013-2016 <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#115;&#064;&#111;&#108;&#101;&#107;&#115;&#105;&#105;&#046;&#110;&#097;&#109;&#101;?subject=TAO%20Translator\">Oleksii Serdiuk</a></p> " +
 "<p>&nbsp;</p> " +
 "<p>" + qsTr("%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: <a href=\"%2\">Donate</a>.").arg("TAO Translator").arg("https://github.com/leppa/taot/wiki/Donate") + "</p> " +
 "<p>&nbsp;</p> " +
 "<p>" +
 qsTr("%1 contains the following contributed translations:").arg("TAO Translator") + " " +
-"<b>Arabic</b> by Sary AWAD (sary.1991), " +
+"<b>Arabic</b> by Sary AWAD (sary.1991) and OmarRi, " +
 "<b>Bulgarian</b> by Vassil (vakkov), " +
 "<b>Catalan</b> by Agustí Clara (fri666), " +
 "<b>Chinese</b> by gwmgdemj, 太空飞瓜 (finalmix), and YF (yfdyh000), " +
@@ -44,7 +44,7 @@ qsTr("%1 contains the following contributed translations:").arg("TAO Translator"
 "<b>Greek</b> by Wasilis Mandratzis-Walz (beonex), and Dimitrios Glentadakis (dglent), " +
 "<b>Hungarian</b> by ViBE, " +
 "<b>Italian</b> by Francesco Vaccaro (ghostofasmile), and Alessandro Pra' (Watchmaker), " +
-"<b>Polish</b> by Maurycy, MP (mp107), " +
+"<b>Polish</b> by Maurycy and mp107, " +
 "<b>Portuguese</b> by Delson Lima (delsonlima), " +
 "<b>Spanish</b> by Carmen Fernández B., " +
 "<b>Swedish</b> by Åke Engelbrektson, " +

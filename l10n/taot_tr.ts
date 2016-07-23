@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.1" language="tr">
 <context>
     <name>--------</name>
     <message>
@@ -515,7 +515,7 @@ Tabiki az olmayan bağış miktarın için Hakkında sayfasında senin için &qu
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="411"/>
+        <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
         <translation>Lütfen kaynak yazıyı girin</translation>
     </message>

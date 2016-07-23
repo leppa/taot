@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.1" language="pl">
 <context>
     <name>--------</name>
     <message>
         <location filename="../src/main.cpp" line="244"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
-        <translation>Maurycy, MP (mp107)</translation>
+        <translation>Maurycy, mp107</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="246"/>
@@ -348,47 +348,49 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
         <location filename="../qml/sailfish/PrivacyNoticePage.qml" line="61"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="37"/>
         <source>Privacy Notice</source>
-        <translation type="unfinished"></translation>
+        <translation>Polityka Prywatności</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="37"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="34"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="128"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="45"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="33"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="136"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Akceptuj</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="25"/>
         <source>Would you like to help improve %1 by enabling application analytics?</source>
-        <translation type="unfinished"></translation>
+        <translation>Czy chciałbyć pomóc w ulepszeniu %1 poprzez włączenie statystyk użytkowania?</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="29"/>
         <source>Yes, enable full analytics</source>
-        <translation type="unfinished"></translation>
+        <translation>Tak, włącz statystyki użytkowania.</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="30"/>
         <source>Enable only error reporting</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz tylko raportowanie błędów</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="31"/>
         <source>No, I don&apos;t want to help</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie, nie chcę pomóc</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="34"/>
         <source>&lt;p&gt;%1 contains application analytics functionality that can collect information about actions performed in the application, application errors, and some information about your device. This information is processed by a third party analytics service, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. Collected information will be used solely for the purpose of improving %1, fixing errors, and analysing application usage.&lt;/p&gt;
 &lt;p&gt;Please read &lt;a href=&quot;%2&quot;&gt;%1 Privacy Policy&lt;/a&gt; for full information about what data is sent and when. You can also consult End User Information section of &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; to see how they deal with the data that we send to them.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;%1 zawiera funkcję wysyłania statystyk użytkowania, zbierającą inofrmacje o akcjach wykonywanych w aplikacji, jej błędach i informacje o urządzeniu. Te informacje są przetwarzane przez zewnętrzny serwis analityczny, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. Nie są wysyłane żadne informacje umożliwiające identyfikację użytkownika. Zebrane informacje zostaną wykorzystane wyłącznie w celu ulepszenia %1, naprawy błędów i analizy użytkowania aplikacji.&lt;/p&gt;
+
+&lt;p&gt;Proszę przeczytać &lt;a href=&quot;%2&quot;&gt;%1 Politykę Prywatności&lt;/a&gt; dla pełnej informacji o tym jakie dane są wysyłane i kiedy. Można też sięgnąć do sekcji Informacji o użytkowniku &lt;a href=&quot;%4&quot;&gt;Polityki Prywatności Amplitude Analytics&lt;/a&gt;, aby dowiedzieć się jak postępuje się z danymi wysyłanymi do tej firmy.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -481,7 +483,7 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
         <location filename="../qml/sailfish/SettingsPage.qml" line="105"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia Prywatności</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
@@ -519,7 +521,7 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="411"/>
+        <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
         <translation>Wprowadź tekst źródłowy</translation>
     </message>

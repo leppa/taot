@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="hu">
+<TS version="2.1" language="hu">
 <context>
     <name>--------</name>
     <message>
@@ -114,7 +114,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
         <source>I want to increase my donation. Is it possible?</source>
-        <translation type="unfinished"></translation>
+        <translation>Szeretném megnövelni az adományom. Lehetséges?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
@@ -134,12 +134,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
         <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
-        <translation type="unfinished"></translation>
+        <translation>Nem szeretnék alkalmazáson keresztül adakozni. Van más módja?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
         <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation type="unfinished"></translation>
+        <translation>Igen, a névjegyben található &lt;em&gt;Támogatás&lt;/em&gt; gombbal lehetséges. Megérintve megnyílik egy oldal a böngésződben, ahol lehetőséged van különféle szolgáltatásokon keresztül adakozni.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
@@ -362,12 +362,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/privacy.js" line="25"/>
         <source>Would you like to help improve %1 by enabling application analytics?</source>
-        <translation type="unfinished"></translation>
+        <translation>Szeretnél hozzájárulni a %1 fejlesztéséhez felhasználói adatok begyűjtésével?</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="29"/>
         <source>Yes, enable full analytics</source>
-        <translation type="unfinished"></translation>
+        <translation>Igen, teljes mértékben</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="30"/>
@@ -377,7 +377,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/privacy.js" line="31"/>
         <source>No, I don&apos;t want to help</source>
-        <translation type="unfinished"></translation>
+        <translation>Nem szeretnék hozzájárulni</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="34"/>
@@ -440,7 +440,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="133"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="179"/>
         <source>Please, restart the application to apply this setting.</source>
-        <translation type="unfinished"></translation>
+        <translation>A változások érvénybe lépéséhez újra kell indítani az alkalmazást</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="73"/>
@@ -461,7 +461,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="94"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="97"/>
         <source>Paste&apos;n&apos;Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Azonnali fordítás</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="86"/>
@@ -508,13 +508,13 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/sailfish/SettingsPage.qml" line="95"/>
         <source>Automatically start translation after inserting text with &lt;i&gt;Paste&lt;/i&gt; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatikus fordítás vágólapról történő &lt;i&gt;Beillesztés&lt;/i&gt; esetén</translation>
     </message>
 </context>
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="411"/>
+        <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
         <translation>Kérlek, írd be a fordítandó szöveget</translation>
     </message>
@@ -691,7 +691,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
 &lt;/ul&gt;&lt;p&gt;More services are possible in future.&lt;/p&gt;</source>
         <translation>&lt;p&gt;A %1 online szolgáltatók segítségével fordít.&lt;/p&gt;&lt;p&gt;Jelenleg elérhető szolgáltatók:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Fordító&lt;/b&gt; - fordítás, szövegfordítás a legtöbb nem latin nyelven is,  nyelvfelismerés, szótárazás szavanként oda-vissza.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (azaz &lt;b&gt;Bing Fordító&lt;/b&gt;) - fordítás, nyelvfelismerés.&lt;/li&gt;
-	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - fordítás, nyelvfelismerés..&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - fordítás, nyelvfelismerés.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - szótárazás fonetikus átírással egyes nyelveken, szinonimák.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;További szolgáltatók a jövőben lesznek elérhetőek.&lt;/p&gt;</translation>
     </message>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ar">
+<TS version="2.1" language="ar">
 <context>
     <name>--------</name>
     <message>
         <location filename="../src/main.cpp" line="244"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
-        <translation>Sary AWAD (sary.1991)</translation>
+        <translation>Sary AWAD (sary.1991), OmarRi</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="246"/>
@@ -28,13 +28,13 @@
     <message numerus="yes">
         <location filename="../qml/bb10/AboutPage.qml" line="47"/>
         <source>You donated &lt;b&gt;%n coins&lt;/b&gt;. Thank you!</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>لقد تبرعت بـ&lt;b&gt;%n عملة نقدية&lt;/b&gt;. شكرا لك</numerusform>
+            <numerusform>لقد تبرعت بـ&lt;b&gt;عملة نقدية واحدة&lt;/b&gt;. شكرا لك</numerusform>
+            <numerusform>لقد تبرعت بـ&lt;b&gt;عملتين نقديتين&lt;/b&gt;. شكرا لك</numerusform>
+            <numerusform>لقد تبرعت بـ&lt;b&gt;%n عملات نقدية&lt;/b&gt;. شكرا لك</numerusform>
+            <numerusform>لقد تبرعت بـ&lt;b&gt;%n عملة نقدية&lt;/b&gt;. شكرا لك</numerusform>
+            <numerusform>لقد تبرعت بـ&lt;b&gt;%n عملة نقدية&lt;/b&gt;. شكرا لك</numerusform>
         </translation>
     </message>
     <message>
@@ -73,88 +73,89 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
         <source>Donation FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation>الأسئلة الشائعة بخصوص التبرع</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
         <source>Why do you ask for donations?</source>
-        <translation type="unfinished"></translation>
+        <translation>لماذا تريد منا التبرع؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
         <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
-        <translation type="unfinished"></translation>
+        <translation>أنا أطور %1 في وقت فراغي وأوفره مجانيا بالكامل. علاوة على ذلك، %1 مفتوح المصدر. تلقي التبرعات سيشجعني على المضي قدما بتطوير ودعم %1. سوف يظهر لي هذا أيضا أن عملي محل تقدير.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
         <source>Am I required to donate to use %1?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل أنا مرغم بأن أتبرع لكي أستخدم %1؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
         <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation type="unfinished"></translation>
+        <translation>إطلاقاً. %1 مجاني ومفتوح المصدر. أنت لست مرغما على أن تتبرع لكي تستخدمه. مع ذلك، بهذه الطريقة يمكنك إظهار دعمك.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
         <source>What are those coins?</source>
-        <translation type="unfinished"></translation>
+        <translation>ما هي هذه العمل النقدية؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
         <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
-        <translation type="unfinished"></translation>
+        <translation>أنا أستخدم خدمة الدفع الخاصة ببلاك بيري من أجل قبول التبرعات حيث أن بلاك بيري تأخذ 30% عمولة لكل عملية دفع. على سبيل المثال، إذا قمت بالتبرع بـ 4.99$ (34 عملة نقدية)، سوف أحصل أنا على 3.49$. لهذا كل عملة نقدية توافق تقريبا 0.10$ مما سأحصل عليه.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
         <source>Do I get something for making a donation?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل أنا أجني شيئا لتبرعي؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
         <source>You already have %1. Completely for free :-)
 However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
-        <translation type="unfinished"></translation>
+        <translation>لديك أصلا %1. مجاني بالكامل :-)
+لكن إن كان هذا غير كاف، سوف تعرض في أعلى صفحة حول القيمة التي تبرعت بها ملحقة برسالة &quot;شكرا لك!&quot;.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
         <source>I want to increase my donation. Is it possible?</source>
-        <translation type="unfinished"></translation>
+        <translation>أريد أن أزيد من قيمة تبرعي. هل هذ ممكن؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
         <source>Just make a new one. You can make as many donations as you want. They will accumulate and total amount will be displayed on the About page.</source>
-        <translation type="unfinished"></translation>
+        <translation>قم بعملية تبرع جديدة فقط. يمكنك أن تقوم بالعديد من عمليات التبرع كما ترغب. سيتم جمعهم والقيمة الإجمالية سوف تعرض على صفحة حول</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
         <source>I changed my mind and want to get my donation back!</source>
-        <translation type="unfinished"></translation>
+        <translation>غيرت رأيي وأريد إستعادة ما تبرعت به!</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
         <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
-        <translation type="unfinished"></translation>
+        <translation>آسف جدا لسماع هذا. أنا لا أدير أيا من عمليات الدفع. لهذا عليك الاتصال بـ &lt;a href=&quot;%1&quot;&gt;الدعم العالمي لبلاك بيري&lt;/a&gt; لكي تقدم طلبا باستعادة مالك.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
         <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
-        <translation type="unfinished"></translation>
+        <translation>لا أريد أن أدفع داخل البرنامج. هل هناك طريقة أخرى للتبرع؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
         <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation type="unfinished"></translation>
+        <translation>نعم، يوجد رابط &lt;em&gt;التبرع&lt;/em&gt; في صفحة حول. اضغط عليه وسوف يتم تحويلك إلى صفحة ويب حيث تستطيع التبرع بواسطة باي بال، فلاتر، أو ويب ماني</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
         <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation type="unfinished"></translation>
+        <translation>سؤالي غير مجاوب عليه. كيف يمكنني التواصل؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
         <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation type="unfinished"></translation>
+        <translation>اكتب إلي رسالة بالبريد الإلكتروني. فقط اسحب من الأعلى واضغط على &lt;em&gt;أرسل لنا ملاحظاتك&lt;/em&gt; من القائمة. سوف يظهر بريد إلكتروني بالعنوان الخاص معبأ تلقائيا</translation>
     </message>
 </context>
 <context>
@@ -166,13 +167,13 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../src/bb10/donationmanager.cpp" line="55"/>
         <location filename="../src/bb10/donationmanager.cpp" line="58"/>
         <source>%n coins</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n عملة نقدية</numerusform>
+            <numerusform>عملة نقدية واحدة</numerusform>
+            <numerusform>عملتين نقديتين</numerusform>
+            <numerusform>%n عملات نقدية</numerusform>
+            <numerusform>%n عملة نقدية</numerusform>
+            <numerusform>%n عملة نقدية</numerusform>
         </translation>
     </message>
 </context>
@@ -259,24 +260,24 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="366"/>
         <location filename="../qml/symbian/MainPage.qml" line="578"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>لصق</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
         <location filename="../qml/sailfish/MainPage.qml" line="380"/>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>نسخ المحدد</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
         <location filename="../qml/sailfish/MainPage.qml" line="380"/>
         <source>Copy all</source>
-        <translation type="unfinished"></translation>
+        <translation>نسخ الجميع</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="293"/>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>تبرع</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="522"/>
@@ -330,7 +331,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="224"/>
         <source>Go</source>
-        <translation type="unfinished"></translation>
+        <translation>اذهب</translation>
     </message>
     <message>
         <location filename="../qml/sailfish/MainPage.qml" line="51"/>
@@ -353,47 +354,48 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/PrivacyNoticePage.qml" line="61"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="37"/>
         <source>Privacy Notice</source>
-        <translation type="unfinished"></translation>
+        <translation>إشعار الخصوصية</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="37"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="34"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="128"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>إلغاء</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="45"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="33"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="136"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>قبول</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="25"/>
         <source>Would you like to help improve %1 by enabling application analytics?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل ترغب بالمساعدة في تطوير %1 عن طريق تفعيل تحليلات البرنامج؟</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="29"/>
         <source>Yes, enable full analytics</source>
-        <translation type="unfinished"></translation>
+        <translation>تعم، فعل التحليلات الكاملة</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="30"/>
         <source>Enable only error reporting</source>
-        <translation type="unfinished"></translation>
+        <translation>فعل فقط إبلاغ الخطأ</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="31"/>
         <source>No, I don&apos;t want to help</source>
-        <translation type="unfinished"></translation>
+        <translation>لا، لا أريد المساعدة</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="34"/>
         <source>&lt;p&gt;%1 contains application analytics functionality that can collect information about actions performed in the application, application errors, and some information about your device. This information is processed by a third party analytics service, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. Collected information will be used solely for the purpose of improving %1, fixing errors, and analysing application usage.&lt;/p&gt;
 &lt;p&gt;Please read &lt;a href=&quot;%2&quot;&gt;%1 Privacy Policy&lt;/a&gt; for full information about what data is sent and when. You can also consult End User Information section of &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; to see how they deal with the data that we send to them.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;يحتوي %1 على خاصية تحليلات البرنامج التي تستطيع تجميع معلومات عن الإجراءات التي تمت داخل البرنامج، أخطاء البرنامج، و بعض المعلومات عن جهازك. هذه المعلومات يتم معالجتها بواسطة خدمة تحليلات طرف ثالث، &lt;a href=&quot;%3&quot;&gt;تحليلات السعة&lt;/a&gt;. لا يتم إرسال أية معلومات تعريفية شخصية. المعلومات التي تم جمعها سوف تستخدم فحسب بهدف تطوير %1، إصلاح الأخطاء، وتحليل استخدام البرنامج.&lt;/p&gt;
+&lt;p&gt;الرجاء القراءة &lt;a href=&quot;%2&quot;&gt; سياسة الخصوصية لـ%1&lt;/a&gt; لأجل معلومات كاملة حول البيانات التي يتم إرسالها ومتى. بإمكانك أيضا مشاورة قسم معلومات المستخدم النهائي لـ&lt;a href=&quot;%4&quot;&gt;سياسة الخصوصية لتحليلات السعة&lt;/a&gt; لترى كيف يتعاملون مع البيانات التي نرسلها إليهم.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -458,12 +460,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="84"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="86"/>
         <source>Translate on Enter Press</source>
-        <translation type="unfinished"></translation>
+        <translation>ترجم على إنتر برِس</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="74"/>
         <source>Hold &lt;em&gt;Shift&lt;/em&gt; while pressing &lt;em&gt;Enter&lt;/em&gt; to start a new line</source>
-        <translation type="unfinished"></translation>
+        <translation>أمسك &lt;em&gt;Shift&lt;/em&gt; عند الضغط على &lt;em&gt;Enter&lt;/em&gt; لكي تبدأ سطرا جديدا</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="85"/>
@@ -471,14 +473,14 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="94"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="97"/>
         <source>Paste&apos;n&apos;Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>لصق وترجمة</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="86"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="94"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="98"/>
         <source>Automatically start translation after inserting text with &lt;em&gt;Paste&lt;/em&gt; button</source>
-        <translation type="unfinished"></translation>
+        <translation>ابدأ الترجمة تلقائيا بعد إدخال النص بزر &lt;em&gt;لصق&lt;/em&gt;</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="96"/>
@@ -486,14 +488,14 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/SettingsPage.qml" line="105"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>إعدادات الخصوصية</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
         <location filename="../qml/sailfish/SettingsPage.qml" line="85"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="87"/>
         <source>Only one line of text is supported in this mode</source>
-        <translation type="unfinished"></translation>
+        <translation>فقط سطر واحد مدعوم في هذا الوضع </translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="128"/>
@@ -518,13 +520,13 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/sailfish/SettingsPage.qml" line="95"/>
         <source>Automatically start translation after inserting text with &lt;i&gt;Paste&lt;/i&gt; button</source>
-        <translation type="unfinished"></translation>
+        <translation>ابدأ الترجمة تلقائيا بعد إدخال النص بزر &lt;i&gt;لصق&lt;/i&gt;</translation>
     </message>
 </context>
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="411"/>
+        <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
         <translation>يرجى إدخال النص المصدر</translation>
     </message>
@@ -536,7 +538,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <source>Autodetect</source>
         <comment>Automatically detect language</comment>
         <extracomment>As in &quot;Automatically detect language&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>تحديد تلقائي</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="124"/>
@@ -550,7 +552,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>غير معروف (%1)</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="129"/>
@@ -560,17 +562,17 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/translationservice.h" line="131"/>
         <source>%1 service returned an error: &quot;%2&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>الخدمة %1 أظهرت خطأً: &quot;%2&quot;</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="133"/>
         <source>Unexpected response from the server</source>
-        <translation type="unfinished"></translation>
+        <translation>استجابة غير متوقعة من الخادم</translation>
     </message>
     <message>
         <location filename="../src/translationservice.h" line="135"/>
         <source>No translation available as %1 service returned an empty result</source>
-        <translation type="unfinished"></translation>
+        <translation>لا توجد ترجمة متاحة حيث أن الخدمة %1 أظهرت نتائج فارغة</translation>
     </message>
 </context>
 <context>
@@ -579,13 +581,13 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>نسخ المحدد</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/TranslationTextAreaPage.qml" line="47"/>
         <location filename="../qml/symbian/TranslationTextAreaPage.qml" line="51"/>
         <source>Copy all</source>
-        <translation type="unfinished"></translation>
+        <translation>نسخ الجميع</translation>
     </message>
 </context>
 <context>
@@ -699,7 +701,11 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - supports dictionary with transcription for some languages, synonyms, and reverse translations.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;More services are possible in future.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&amp;rlm;يستخدم %1 خدمات ترجمة عبر الانترنت.&lt;/p&gt;&lt;p&gt;الخدمات المدعومة حالياً هي:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;ترجمة غوغل&lt;/b&gt; - تدعم الترجمة، الترجمة لمعظم النصوص الغير لاتينية، كشف اللغة تلقائياً، المعاجم والترجمة العكسية للكلمات المفردة.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;مترجم مايكروسوفت&lt;/b&gt; (المعروف بـ &lt;b&gt;مترجم بينغ&lt;/b&gt;) - تدعم الترجمة فقط,&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;ترجمة ياندكس&lt;/b&gt; - تدعم الترجمة وكشف اللغة تلقائياً.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;قواميس ياندكس&lt;/b&gt; - تدعم المعاجم مع المرادفات والترجمة العكسية.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;قد تضاف خدمات أخرى في المستقبل.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -727,37 +733,37 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../qml/bb10/main.qml" line="105"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>إغلاق</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="114"/>
         <source>Donation</source>
-        <translation type="unfinished"></translation>
+        <translation>التبرع</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="115"/>
         <source>How much would you like to donate?</source>
-        <translation type="unfinished"></translation>
+        <translation>كم المقدار الذي تريد أن تتبرع يه؟</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="116"/>
         <source>Donation FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation>الأسئلة الشائعة بخصوص التبرع</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="134"/>
         <source>Payment Succeeded</source>
-        <translation type="unfinished"></translation>
+        <translation>تم الدفع بنجاح</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="135"/>
         <source>Thanks a lot for your donation!</source>
-        <translation type="unfinished"></translation>
+        <translation>شكراً جزيلاً لتبرعك!</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="139"/>
         <source>Payment Error</source>
-        <translation type="unfinished"></translation>
+        <translation>خطأ في الدفع</translation>
     </message>
 </context>
 </TS>

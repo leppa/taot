@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -622,6 +622,7 @@ void TranslationInterface::updatePersistentProperties()
         lc = QLocale(lang);
     if (lc.language() == QLocale::C)
         lc = QLocale(QLocale::English, QLocale::UnitedStates);
+    props.insert("OS Name", m_analytics->deviceInfo().os.name);
     props.insert("UI Language", lc.name());
     props.insert("Inverted Theme", getSettingsValue("InvertedTheme"));
     props.insert("Translate on Enter", getSettingsValue("TranslateOnEnter"));

@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2015  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -34,8 +34,10 @@
 #   include <QUrlQuery>
 #endif
 
+/*
 inline qint32 RL(qint32 a, const char *b, int l);
 inline QString generateToken(const QString &text);
+*/
 
 QString GoogleTranslate::displayName()
 {
@@ -143,13 +145,13 @@ bool GoogleTranslate::canSwapLanguages(const Language &first, const Language &se
 bool GoogleTranslate::translate(const Language &from, const Language &to, const QString &text)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QUrl query("https://translate.google.com/translate_a/single");
+    QUrl query("https://translate.googleapis.com/translate_a/single");
     QUrl dataQuery;
 #else
-    QUrl url("https://translate.google.com/translate_a/single");
+    QUrl url("https://translate.googleapis.com/translate_a/single");
     QUrlQuery query, dataQuery;
 #endif
-    query.addQueryItem("client", "t");
+    query.addQueryItem("client", "gtx");
     query.addQueryItem("hl", "en");
     query.addQueryItem("sl", from.info.toString());
     query.addQueryItem("tl", to.info.toString());
@@ -169,7 +171,7 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
 //    query.addQueryItem("ssel", "3");
 //    query.addQueryItem("tsel", "0");
 //    query.addQueryItem("otf", "1");
-    query.addQueryItem("tk", generateToken(text));
+//    query.addQueryItem("tk", generateToken(text));
 
     dataQuery.addQueryItem("q", text);
 
@@ -278,6 +280,7 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     return true;
 }
 
+/*
 // Token generation functions were ported and slighlty optimized from JavaScript code at
 // https://translate.google.com/translate/releases/twsfe_w_20151214_RC03/r/js/desktop_module_main.js
 inline qint32 RL(qint32 a, const char *b, int l)
@@ -303,3 +306,4 @@ inline QString generateToken(const QString &text)
     a = quint32(a) % 1000000;
     return QString("%1.%2").arg(a).arg(a ^ b);
 }
+*/

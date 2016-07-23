@@ -1,23 +1,22 @@
 language: cpp
 compiler: gcc
-sudo: false
+sudo: true
 cache: ccache
-
-addons:
-  apt:
-    sources:
-      - ubuntu-sdk-team
-    packages:
-      - libqt4-dev
-      - qt5-default
-      - qtdeclarative5-dev
-      - qttools5-dev-tools
 
 env:
   - QT_SELECT=qt4 QMAKE_ARGS=""
   - QT_SELECT=qt4 QMAKE_ARGS="CONFIG+=analytics"
   - QT_SELECT=qt5 QMAKE_ARGS=""
   - QT_SELECT=qt5 QMAKE_ARGS="CONFIG+=analytics"
+
+before_install:
+  - if [ "$QT_SELECT" = "qt4" ]; then sudo add-apt-repository ppa:beineri/opt-qt487 -y; fi
+  - if [ "$QT_SELECT" = "qt5" ]; then sudo add-apt-repository ppa:beineri/opt-qt561 -y; fi
+
+install:
+  - sudo apt-get update -qq
+  - if [ "$QT_SELECT" = "qt4" ]; then sudo apt-get install -qq opt-qt4-qmake opt-qt4-dev-tools; source /opt/qt-4.8/bin/qt-4.8-env.sh; fi
+  - if [ "$QT_SELECT" = "qt5" ]; then sudo apt-get install -qq qt56base qt56declarative qt56tools; source /opt/qt56/bin/qt56-env.sh; fi
 
 script:
   - qmake $QMAKE_ARGS taot.pro

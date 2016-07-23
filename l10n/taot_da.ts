@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="da">
+<TS version="2.1" language="da">
 <context>
     <name>--------</name>
     <message>
@@ -517,7 +517,7 @@ Men hvis det ikke er nok, vil summen af din donation sammen med en &quot;Tak!&qu
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="411"/>
+        <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
         <translation>Indtast venligst kildeteksten</translation>
     </message>
