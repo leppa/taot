@@ -31,7 +31,7 @@ var aboutText =
 "<p>&nbsp;</p> " +
 "<p>" +
 qsTr("%1 contains the following contributed translations:").arg("TAO Translator") + " " +
-"<b>Arabic</b> by Sary AWAD (sary.1991), " +
+"<b>Arabic</b> by Sary AWAD (sary.1991) and OmarRi, " +
 "<b>Bulgarian</b> by Vassil (vakkov), " +
 "<b>Catalan</b> by Agustí Clara (fri666), " +
 "<b>Chinese</b> by gwmgdemj, 太空飞瓜 (finalmix), and YF (yfdyh000), " +
@@ -44,7 +44,7 @@ qsTr("%1 contains the following contributed translations:").arg("TAO Translator"
 "<b>Greek</b> by Wasilis Mandratzis-Walz (beonex), and Dimitrios Glentadakis (dglent), " +
 "<b>Hungarian</b> by ViBE, " +
 "<b>Italian</b> by Francesco Vaccaro (ghostofasmile), and Alessandro Pra' (Watchmaker), " +
-"<b>Polish</b> by Maurycy, MP (mp107), " +
+"<b>Polish</b> by Maurycy and mp107, " +
 "<b>Portuguese</b> by Delson Lima (delsonlima), " +
 "<b>Spanish</b> by Carmen Fernández B., " +
 "<b>Swedish</b> by Åke Engelbrektson, " +

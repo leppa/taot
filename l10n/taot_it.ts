@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it">
+<TS version="2.1" language="it">
 <context>
     <name>--------</name>
     <message>
@@ -517,7 +517,7 @@ Nel caso non fosse abbastanza, nella pagina Informazioni su verrà mostrato l&ap
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="411"/>
+        <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
         <translation>Inserisci il testo di partenza</translation>
     </message>
