@@ -26,6 +26,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QSslError>
+#include <QFile>
 #include <QDebug>
 
 Language::Language()
@@ -139,6 +140,25 @@ bool TranslationService::checkReplyForErrors(QNetworkReply *reply)
     }
 
     return true;
+}
+
+QList<QSslCertificate> TranslationService::loadSslCertificates(const QStringList &paths) const
+{
+    QList<QSslCertificate> certs;
+
+    foreach (const QString &path, paths) {
+        QFile f(path);
+        f.open(QFile::ReadOnly);
+        certs << QSslCertificate(f.readAll());
+        f.close();
+    }
+
+    return certs;
+}
+
+QList<QSslCertificate> TranslationService::loadSslCertificates(const QString &path) const
+{
+    return loadSslCertificates(QStringList(path));
 }
 
 void TranslationService::onNetworkReply(QNetworkReply *reply)

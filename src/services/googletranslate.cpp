@@ -48,6 +48,11 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
     : JsonTranslationService(parent)
     , m_dict(dict)
 {
+    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
+    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
+    cacerts << loadSslCertificates(QLatin1String("://cacertificates/geotrust.ca.pem"));
+    m_sslConfiguration.setCaCertificates(cacerts);
+
     // TODO: Download actual list from
     // http://translate.googleapis.com/translate_a/l?client=q&hl=en
     QFile f(QLatin1String("://langs/google.json"));
@@ -187,6 +192,8 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
                       "application/x-www-form-urlencoded;charset=UTF-8");
     request.setRawHeader("User-Agent", "Mozilla/5.0");
     request.setRawHeader("Referer", "https://translate.google.com/");
+    request.setSslConfiguration(m_sslConfiguration);
+
     m_reply = m_nam.post(request, data);
 
     return true;

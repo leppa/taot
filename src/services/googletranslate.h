@@ -25,6 +25,8 @@
 
 #include "jsontranslationservice.h"
 
+#include <QSslConfiguration>
+
 class DictionaryModel;
 class GoogleTranslate: public JsonTranslationService
 {
@@ -56,6 +58,7 @@ private:
     LanguageList m_targetLanguages;
     LanguagePair m_defaultLanguagePair;
     QHash<QString, QString> m_langCodeToName;
+    QSslConfiguration m_sslConfiguration;
 };
 
 #endif // GOOGLETRANSLATE_H

@@ -28,6 +28,7 @@
 #include <QVariant>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QSslCertificate>
 
 struct Language
 {
@@ -83,6 +84,8 @@ public:
 
 protected:
     virtual bool checkReplyForErrors(QNetworkReply *reply);
+    QList<QSslCertificate> loadSslCertificates(const QStringList &paths) const;
+    QList<QSslCertificate> loadSslCertificates(const QString &path) const;
 
 private slots:
     void onNetworkReply(QNetworkReply *reply);
