@@ -54,7 +54,7 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
     m_sslConfiguration.setCaCertificates(cacerts);
 
     // TODO: Download actual list from
-    // http://translate.googleapis.com/translate_a/l?client=q&hl=en
+    // https://translate.googleapis.com/translate_a/l?client=gtx&hl=en
     QFile f(QLatin1String("://langs/google.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
         QVariant data = parseJson(f.readAll());

@@ -28,8 +28,8 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     m_langCodeToName.insert("", commonString(AutodetectLanguageCommonString));
 
     // TODO: Download actual list from
-    // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguagesForTranslate
-    // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguageNames
+    // https://api.microsofttranslator.com/V2/Ajax.svc/GetLanguagesForTranslate
+    // https://api.microsofttranslator.com/V2/Ajax.svc/GetLanguageNames
     QFile f(QLatin1String("://langs/ms.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
         const QVariant data = parseJson(f.readAll());
