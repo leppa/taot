@@ -92,7 +92,7 @@ private slots:
     void onSslErrors(QNetworkReply *reply,const QList<QSslError> &errors);
 
 signals:
-    void translationFinished();
+    void translationFinished(bool success);
 
 protected:
     QNetworkAccessManager m_nam;

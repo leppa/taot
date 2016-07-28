@@ -500,7 +500,7 @@ void TranslationInterface::createService(uint id)
                                                    GoogleTranslate::displayName(), this);
         m_settings->setValue("SelectedService", GoogleTranslateService);
     }
-    connect(m_service, SIGNAL(translationFinished()), SLOT(onTranslationFinished()));
+    connect(m_service, SIGNAL(translationFinished(bool)), SLOT(onTranslationFinished(bool)));
     emit selectedServiceChanged();
 
     const LanguagePair defaults = m_service->defaultLanguagePair();
@@ -636,11 +636,11 @@ void TranslationInterface::trackSessionStart()
 }
 #endif
 
-void TranslationInterface::onTranslationFinished()
+void TranslationInterface::onTranslationFinished(bool success)
 {
     setBusy(false);
 
-    if (!m_service->errorString().isEmpty()) {
+    if (!success) {
         emit error(m_service->errorString());
         return;
     }

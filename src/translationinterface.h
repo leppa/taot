@@ -244,7 +244,7 @@ private:
 #endif
 
 private slots:
-    void onTranslationFinished();
+    void onTranslationFinished(bool success);
     void onError(const QString &errorString);
     void retranslate();
 

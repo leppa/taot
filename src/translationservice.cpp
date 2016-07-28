@@ -172,14 +172,14 @@ void TranslationService::onNetworkReply(QNetworkReply *reply)
     m_reply = NULL;
 
     if (!checkReplyForErrors(reply)) {
-        emit translationFinished();
+        emit translationFinished(false);
         return;
     }
 
-    parseReply(reply->readAll());
+    const bool result = parseReply(reply->readAll());
     reply->deleteLater();
 
-    emit translationFinished();
+    emit translationFinished(result);
 }
 
 void TranslationService::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors)
