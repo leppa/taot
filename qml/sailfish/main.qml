@@ -37,8 +37,10 @@ ApplicationWindow {
         id: translator
 
         onError: {
-            console.debug(errorString);
             banner.show(errorString);
+        }
+        onInfo: {
+            banner.show(infoString);
         }
     }
 

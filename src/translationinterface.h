@@ -161,6 +161,7 @@ public:
 
 signals:
     void error(const QString &errorString) const;
+    void info(const QString &infoString) const;
     void selectedServiceChanged();
     void busyChanged();
     void sourceLanguageChanged();

@@ -159,13 +159,19 @@ NavigationPane {
 
     function onError(errorString)
     {
-        console.debug(errorString);
         toast.body = errorString;
+        toast.show();
+    }
+
+    function onInfo(infoString)
+    {
+        toast.body = infoString;
         toast.show();
     }
 
     onCreationCompleted: {
         translator.error.connect(onError);
+        translator.info.connect(onInfo);
 
         if (analytics_enabled && translator.privacyLevel == Translator.UndefinedPrivacy) {
             var page = privacyNoticePageDefinition.createObject();

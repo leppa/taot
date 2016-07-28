@@ -640,9 +640,14 @@ void TranslationInterface::onTranslationFinished(bool success)
 {
     setBusy(false);
 
-    if (!success) {
-        emit error(m_service->errorString());
-        return;
+    if (!m_service->errorString().isEmpty()) {
+        if (success) {
+            qDebug() << m_service->errorString();
+            emit info(m_service->errorString());
+        } else {
+            qWarning() << m_service->errorString();
+            emit error(m_service->errorString());
+        }
     }
 
     setTranslatedText(m_service->translation());

@@ -606,8 +606,11 @@ Page {
         id: translator
 
         onError: {
-            console.debug(errorString);
             banner.text = errorString;
+            banner.open();
+        }
+        onInfo: {
+            banner.text = infoString;
             banner.open();
         }
     }
