@@ -208,7 +208,7 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     QString json = QString::fromUtf8(reply);
     if (json.isEmpty()) {
         m_error = commonString(EmptyResultCommonString).arg(displayName());
-        return false;
+        return true;
     }
 
     int i = 1;
@@ -239,7 +239,7 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     const QVariantList dl = data.toList();
     if (dl.isEmpty()) {
         m_error = commonString(EmptyResultCommonString).arg(displayName());
-        return false;
+        return true;
     }
 
     const QString detected = dl.value(2).toString();

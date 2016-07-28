@@ -162,7 +162,7 @@ bool MicrosoftTranslator::parseReply(const QByteArray &reply)
             const QVariantList translations = dataMap.value("Translations").toList();
             if (translations.count() < 1) {
                 m_error = commonString(EmptyResultCommonString).arg(displayName());
-                return false;
+                return true;
             }
 
             if (isAutoLanguage(m_translationPair.first)) {

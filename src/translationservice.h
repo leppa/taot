@@ -135,8 +135,7 @@ inline QString commonString(CommonString id)
     case UnexpectedResponseCommonString:
         return TranslationService::tr("Unexpected response from the server");
     case EmptyResultCommonString:
-        return TranslationService::tr("No translation available as %1 service"
-                                      " returned an empty result");
+        return TranslationService::tr("Service %1 was unable to translate the text");
     default:
         return QString();
     }

@@ -410,7 +410,7 @@ void TranslationInterface::setSourceText(const QString &sourceText)
 void TranslationInterface::translate()
 {
     if (m_srcText.isEmpty()) {
-        emit error(tr("Please, enter the source text"));
+        emit info(tr("Please, enter the source text"));
         return;
     }
 
