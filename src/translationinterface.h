@@ -161,6 +161,7 @@ public:
 
 signals:
     void error(const QString &errorString) const;
+    void info(const QString &infoString) const;
     void selectedServiceChanged();
     void busyChanged();
     void sourceLanguageChanged();
@@ -244,7 +245,7 @@ private:
 #endif
 
 private slots:
-    void onTranslationFinished();
+    void onTranslationFinished(bool success);
     void onError(const QString &errorString);
     void retranslate();
 

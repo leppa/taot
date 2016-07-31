@@ -181,30 +181,11 @@ Page {
         }
     }
 
-    Component {
-        id: aboutPageComponent
-        AboutPage {
-            platformInverted: root.platformInverted
-        }
-    }
-
-    Component {
-        id: updateCheckerPageComponent
-        UpdateCheckerPage {
-            platformInverted: root.platformInverted
-        }
-    }
-
     tools: ToolBarLayout {
         ToolButton {
             iconSource: "toolbar-back"
             platformInverted: root.platformInverted
             onClicked: pageStack.pop();
-        }
-        ToolButton {
-            iconSource: "toolbar-menu"
-            platformInverted: root.platformInverted
-            onClicked: menu.open();
         }
     }
 }

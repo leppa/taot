@@ -410,7 +410,7 @@ void TranslationInterface::setSourceText(const QString &sourceText)
 void TranslationInterface::translate()
 {
     if (m_srcText.isEmpty()) {
-        emit error(tr("Please, enter the source text"));
+        emit info(tr("Please, enter the source text"));
         return;
     }
 
@@ -500,7 +500,7 @@ void TranslationInterface::createService(uint id)
                                                    GoogleTranslate::displayName(), this);
         m_settings->setValue("SelectedService", GoogleTranslateService);
     }
-    connect(m_service, SIGNAL(translationFinished()), SLOT(onTranslationFinished()));
+    connect(m_service, SIGNAL(translationFinished(bool)), SLOT(onTranslationFinished(bool)));
     emit selectedServiceChanged();
 
     const LanguagePair defaults = m_service->defaultLanguagePair();
@@ -636,13 +636,18 @@ void TranslationInterface::trackSessionStart()
 }
 #endif
 
-void TranslationInterface::onTranslationFinished()
+void TranslationInterface::onTranslationFinished(bool success)
 {
     setBusy(false);
 
     if (!m_service->errorString().isEmpty()) {
-        emit error(m_service->errorString());
-        return;
+        if (success) {
+            qDebug() << m_service->errorString();
+            emit info(m_service->errorString());
+        } else {
+            qWarning() << m_service->errorString();
+            emit error(m_service->errorString());
+        }
     }
 
     setTranslatedText(m_service->translation());

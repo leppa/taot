@@ -1,6 +1,15 @@
 TAO Translator ChangeLog
 ========================
 
+TAOT v1.3.3
+-----------
+
+- Source and target translation languages were updated for all services.
+- Add root CA certificates for Google Translate and Microsoft Translator
+  services to avoid SSL handshake errors due to untrusted root
+  certificate on Symbian and, potentially, Nokia N9 platforms.
+- A slight rearrangement of menus on Sailfish OS, Nokia N9, and Symbian.
+
 
 TAOT v1.3.2
 -----------

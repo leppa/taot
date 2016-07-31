@@ -142,7 +142,7 @@ bool YandexDictionaries::parseReply(const QByteArray &reply)
 
     if (poses.isEmpty()) {
         m_error = commonString(EmptyResultCommonString).arg(displayName());
-        return false;
+        return true;
     }
 
     m_transcription = StringPair();

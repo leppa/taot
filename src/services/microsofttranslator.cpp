@@ -16,6 +16,11 @@ QString MicrosoftTranslator::displayName()
 MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     : JsonTranslationService(parent)
 {
+    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
+    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
+    cacerts << loadSslCertificates(QLatin1String("://cacertificates/baltimore.ca.pem"));
+    m_sslConfiguration.setCaCertificates(cacerts);
+
     m_tokenTimeout.setSingleShot(true);
     connect(&m_tokenTimeout, SIGNAL(timeout()), SLOT(onTokenTimeout()));
 
@@ -23,8 +28,8 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     m_langCodeToName.insert("", commonString(AutodetectLanguageCommonString));
 
     // TODO: Download actual list from
-    // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguagesForTranslate
-    // http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguageNames
+    // https://api.microsofttranslator.com/V2/Ajax.svc/GetLanguagesForTranslate
+    // https://api.microsofttranslator.com/V2/Ajax.svc/GetLanguageNames
     QFile f(QLatin1String("://langs/ms.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
         const QVariant data = parseJson(f.readAll());
@@ -120,9 +125,9 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
     }
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QUrl query("http://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
+    QUrl query("https://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
 #else
-    QUrl url("http://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
+    QUrl url("https://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
     QUrlQuery query;
 #endif
     query.addQueryItem("text", text);
@@ -137,6 +142,7 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
     QNetworkRequest request(url);
 #endif
     request.setRawHeader("Authorization", m_token);
+    request.setSslConfiguration(m_sslConfiguration);
 
     m_reply = m_nam.get(request);
 
@@ -156,7 +162,7 @@ bool MicrosoftTranslator::parseReply(const QByteArray &reply)
             const QVariantList translations = dataMap.value("Translations").toList();
             if (translations.count() < 1) {
                 m_error = commonString(EmptyResultCommonString).arg(displayName());
-                return false;
+                return true;
             }
 
             if (isAutoLanguage(m_translationPair.first)) {

@@ -567,6 +567,46 @@ Page {
         }
     }
 
+    Menu {
+        id: menu
+        platformInverted: appWindow.platformInverted
+
+        MenuLayout {
+            MenuItem {
+                text: qsTr("Settings")
+                platformInverted: appWindow.platformInverted
+                onClicked: {
+                    pageStack.push(settingsPage);
+                }
+            }
+            MenuItem {
+                text: qsTr("Send Feedback")
+                platformInverted: appWindow.platformInverted
+                onClicked: {
+                    Qt.openUrlExternally("mailto:contacts"
+                                         + "@"
+                                         + "oleksii.name?subject=TAO%20Translator%20v"
+                                         + encodeURIComponent(translator.version)
+                                         + "%20Feedback%20(Symbian)");
+                }
+            }
+            MenuItem {
+                text: qsTr("Check for Updates")
+                platformInverted: appWindow.platformInverted
+                onClicked: {
+                    pageStack.push(updateCheckerPageComponent);
+                }
+            }
+            MenuItem {
+                text: qsTr("About")
+                platformInverted: appWindow.platformInverted
+                onClicked: {
+                    pageStack.push(aboutPageComponent);
+                }
+            }
+        }
+    }
+
     tools: ToolBarLayout {
         ToolButton {
             iconSource: Qt.resolvedUrl(platformInverted ? "icons/close_inverted.svg"
@@ -596,9 +636,11 @@ Page {
             }
         }
         ToolButton {
-            iconSource: "toolbar-settings"
+            iconSource: "toolbar-menu"
             platformInverted: appWindow.platformInverted
-            onClicked: pageStack.push(settingsPage);
+            onClicked: {
+                menu.open();
+            }
         }
     }
 
@@ -606,8 +648,11 @@ Page {
         id: translator
 
         onError: {
-            console.debug(errorString);
             banner.text = errorString;
+            banner.open();
+        }
+        onInfo: {
+            banner.text = infoString;
             banner.open();
         }
     }
@@ -640,6 +685,20 @@ Page {
     Component {
         id: privacyNoticePage
         PrivacyNoticePage {
+            platformInverted: appWindow.platformInverted
+        }
+    }
+
+    Component {
+        id: updateCheckerPageComponent
+        UpdateCheckerPage {
+            platformInverted: appWindow.platformInverted
+        }
+    }
+
+    Component {
+        id: aboutPageComponent
+        AboutPage {
             platformInverted: appWindow.platformInverted
         }
     }

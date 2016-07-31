@@ -4,6 +4,7 @@
 #include "jsontranslationservice.h"
 
 #include <QTimer>
+#include <QSslConfiguration>
 
 class MicrosoftTranslator: public JsonTranslationService
 {
@@ -44,6 +45,7 @@ private:
     QHash<QString, QString> m_langCodeToName;
     LanguagePair m_translationPair;
     QString m_sourceText;
+    QSslConfiguration m_sslConfiguration;
 };
 
 #endif // MICROSOFTTRANSLATOR_H

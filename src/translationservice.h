@@ -28,6 +28,7 @@
 #include <QVariant>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QSslCertificate>
 
 struct Language
 {
@@ -83,13 +84,15 @@ public:
 
 protected:
     virtual bool checkReplyForErrors(QNetworkReply *reply);
+    QList<QSslCertificate> loadSslCertificates(const QStringList &paths) const;
+    QList<QSslCertificate> loadSslCertificates(const QString &path) const;
 
 private slots:
     void onNetworkReply(QNetworkReply *reply);
     void onSslErrors(QNetworkReply *reply,const QList<QSslError> &errors);
 
 signals:
-    void translationFinished();
+    void translationFinished(bool success);
 
 protected:
     QNetworkAccessManager m_nam;
@@ -132,8 +135,7 @@ inline QString commonString(CommonString id)
     case UnexpectedResponseCommonString:
         return TranslationService::tr("Unexpected response from the server");
     case EmptyResultCommonString:
-        return TranslationService::tr("No translation available as %1 service"
-                                      " returned an empty result");
+        return TranslationService::tr("Service %1 was unable to translate the text");
     default:
         return QString();
     }

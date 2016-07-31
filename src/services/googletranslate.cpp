@@ -48,8 +48,13 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
     : JsonTranslationService(parent)
     , m_dict(dict)
 {
+    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
+    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
+    cacerts << loadSslCertificates(QLatin1String("://cacertificates/geotrust.ca.pem"));
+    m_sslConfiguration.setCaCertificates(cacerts);
+
     // TODO: Download actual list from
-    // http://translate.googleapis.com/translate_a/l?client=q&hl=en
+    // https://translate.googleapis.com/translate_a/l?client=gtx&hl=en
     QFile f(QLatin1String("://langs/google.json"));
     if (f.open(QFile::Text | QFile::ReadOnly)) {
         QVariant data = parseJson(f.readAll());
@@ -187,6 +192,8 @@ bool GoogleTranslate::translate(const Language &from, const Language &to, const 
                       "application/x-www-form-urlencoded;charset=UTF-8");
     request.setRawHeader("User-Agent", "Mozilla/5.0");
     request.setRawHeader("Referer", "https://translate.google.com/");
+    request.setSslConfiguration(m_sslConfiguration);
+
     m_reply = m_nam.post(request, data);
 
     return true;
@@ -201,7 +208,7 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     QString json = QString::fromUtf8(reply);
     if (json.isEmpty()) {
         m_error = commonString(EmptyResultCommonString).arg(displayName());
-        return false;
+        return true;
     }
 
     int i = 1;
@@ -232,7 +239,7 @@ bool GoogleTranslate::parseReply(const QByteArray &reply)
     const QVariantList dl = data.toList();
     if (dl.isEmpty()) {
         m_error = commonString(EmptyResultCommonString).arg(displayName());
-        return false;
+        return true;
     }
 
     const QString detected = dl.value(2).toString();

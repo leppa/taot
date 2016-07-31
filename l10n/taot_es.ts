@@ -172,7 +172,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="42"/>
+        <location filename="../src/services/googletranslate.cpp" line="44"/>
         <source>Google Translate</source>
         <translation>Traductor de Google</translation>
     </message>
@@ -207,7 +207,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="73"/>
         <location filename="../qml/harmattan/MainPage.qml" line="182"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="83"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="101"/>
         <location filename="../qml/symbian/MainPage.qml" line="211"/>
         <source>From</source>
         <translation>De</translation>
@@ -215,7 +215,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="95"/>
         <location filename="../qml/harmattan/MainPage.qml" line="207"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="111"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="129"/>
         <location filename="../qml/symbian/MainPage.qml" line="247"/>
         <source>To</source>
         <translation>A</translation>
@@ -224,7 +224,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
         <location filename="../qml/bb10/MainPage.qml" line="107"/>
         <location filename="../qml/harmattan/MainPage.qml" line="233"/>
         <location filename="../qml/harmattan/MainPage.qml" line="254"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="129"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="147"/>
         <location filename="../qml/symbian/MainPage.qml" line="269"/>
         <location filename="../qml/symbian/MainPage.qml" line="291"/>
         <source>Enter the source text...</source>
@@ -233,7 +233,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="153"/>
         <location filename="../qml/harmattan/MainPage.qml" line="294"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="184"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="202"/>
         <location filename="../qml/symbian/MainPage.qml" line="343"/>
         <source>Translate</source>
         <translation>Traducir</translation>
@@ -241,28 +241,28 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="221"/>
         <location filename="../qml/harmattan/MainPage.qml" line="423"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="282"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="300"/>
         <location filename="../qml/symbian/MainPage.qml" line="482"/>
         <source>Detected language:</source>
         <translation>Idioma detectado:</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="240"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="510"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="366"/>
-        <location filename="../qml/symbian/MainPage.qml" line="578"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="545"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="384"/>
+        <location filename="../qml/symbian/MainPage.qml" line="618"/>
         <source>Paste</source>
         <translation>Pegar</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="380"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy selection</source>
         <translation>Copiar selecciÃ³n</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="380"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy all</source>
         <translation>Copiar todo</translation>
     </message>
@@ -272,8 +272,8 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
         <translation>Donar</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="522"/>
-        <location filename="../qml/symbian/MainPage.qml" line="591"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="557"/>
+        <location filename="../qml/symbian/MainPage.qml" line="631"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
@@ -300,22 +300,22 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="52"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="396"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="76"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="414"/>
         <location filename="../qml/symbian/MainPage.qml" line="51"/>
         <source>Translation Service</source>
         <translation>Servicio de traducciÃ³n</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="61"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="410"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="428"/>
         <location filename="../qml/symbian/MainPage.qml" line="68"/>
         <source>Source Language</source>
         <translation>Idioma de origen</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="70"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="423"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="441"/>
         <location filename="../qml/symbian/MainPage.qml" line="85"/>
         <source>Target Language</source>
         <translation>Idioma de destino</translation>
@@ -326,9 +326,31 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
         <translation>Ir</translation>
     </message>
     <message>
-        <location filename="../qml/sailfish/MainPage.qml" line="51"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="512"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="69"/>
+        <location filename="../qml/symbian/MainPage.qml" line="576"/>
         <source>Settings</source>
         <translation>Ajustes</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="518"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="58"/>
+        <location filename="../qml/symbian/MainPage.qml" line="583"/>
+        <source>Send Feedback</source>
+        <translation>Enviar Comentario</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="528"/>
+        <location filename="../qml/symbian/MainPage.qml" line="594"/>
+        <source>Check for Updates</source>
+        <translation>Comprobar actualizaciones</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="534"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="51"/>
+        <location filename="../qml/symbian/MainPage.qml" line="601"/>
+        <source>About</source>
+        <translation>Acerca de</translation>
     </message>
 </context>
 <context>
@@ -407,7 +429,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="31"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="33"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="60"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="48"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="34"/>
         <source>%1 Settings</source>
         <extracomment>%1 will be replaced with the application name</extracomment>
@@ -416,8 +438,8 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="46"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="58"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="151"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="66"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="125"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="54"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="59"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="160"/>
         <source>Interface Language</source>
@@ -440,8 +462,8 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="61"/>
         <location filename="../qml/bb10/SettingsPage.qml" line="118"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="162"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="133"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="136"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="112"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="179"/>
         <source>Please, restart the application to apply this setting.</source>
         <translation>Por favor, reinicia la aplicaciÃ³n para aplicar este ajuste.</translation>
@@ -449,7 +471,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="73"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="83"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="84"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="72"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="86"/>
         <source>Translate on Enter Press</source>
         <translation>Traducir al pulsar Enter</translation>
@@ -462,7 +484,7 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="85"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="93"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="94"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="82"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="97"/>
         <source>Paste&apos;n&apos;Translate</source>
         <translation>Pegar y traducir</translation>
@@ -477,40 +499,35 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="96"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="104"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="105"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="93"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
         <translation>Ajustes de privacidad</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="85"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="73"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="87"/>
         <source>Only one line of text is supported in this mode</source>
         <translation>Este modo sÃ³lo soporta  una sÃ³la lÃ­nea de texto</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="128"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="40"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="134"/>
         <source>Send Feedback</source>
         <translation>Enviar Comentario</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="137"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="144"/>
         <source>Check for Updates</source>
         <translation>Comprobar actualizaciones</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="143"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="119"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="151"/>
         <source>About</source>
         <translation>Acerca de</translation>
     </message>
     <message>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="95"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="83"/>
         <source>Automatically start translation after inserting text with &lt;i&gt;Paste&lt;/i&gt; button</source>
         <translation>Iniciar la traducciÃ³n automÃ¡ticamente despuÃ©s de insertar el texto con el botÃ³n &lt;i&gt;Pegar&lt;/i&gt;</translation>
     </message>
@@ -526,45 +543,45 @@ Sin embargo, si no es suficiente, el importe de tu donativo junto con un &quot;Â
 <context>
     <name>TranslationService</name>
     <message>
-        <location filename="../src/translationservice.h" line="121"/>
+        <location filename="../src/translationservice.h" line="124"/>
         <source>Autodetect</source>
         <comment>Automatically detect language</comment>
         <extracomment>As in &quot;Automatically detect language&quot;</extracomment>
         <translation>DetecciÃ³n automÃ¡tica</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="124"/>
+        <location filename="../src/translationservice.h" line="127"/>
         <source>Unknown</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Desconocido</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="127"/>
+        <location filename="../src/translationservice.h" line="130"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Desconocido (%1)</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="129"/>
+        <location filename="../src/translationservice.h" line="132"/>
         <source>No error</source>
         <translation>No hay error</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="131"/>
+        <location filename="../src/translationservice.h" line="134"/>
         <source>%1 service returned an error: &quot;%2&quot;</source>
         <translation>El servicio %1 ha devuelto un error: &quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="133"/>
+        <location filename="../src/translationservice.h" line="136"/>
         <source>Unexpected response from the server</source>
         <translation>Respuesta inesperada del servidor</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="135"/>
-        <source>No translation available as %1 service returned an empty result</source>
-        <translation>No hay traducciÃ³n disponible en el servicio %1 y no devolviÃ³ ningÃºn resultado</translation>
+        <location filename="../src/translationservice.h" line="138"/>
+        <source>Service %1 was unable to translate the text</source>
+        <translation>El servicio %1 no ha podido traducir el texto</translation>
     </message>
 </context>
 <context>

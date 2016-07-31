@@ -504,6 +504,41 @@ Page {
         }
     }
 
+    Menu {
+        id: menu
+
+        MenuLayout {
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: {
+                    pageStack.push(settingsPageComponent);
+                }
+            }
+            MenuItem {
+                text: qsTr("Send Feedback")
+                onClicked: {
+                    Qt.openUrlExternally("mailto:contacts"
+                                         + "@"
+                                         +"oleksii.name?subject=TAO%20Translator%20v"
+                                         + encodeURIComponent(translator.version)
+                                         + "%20Feedback%20(Nokia%20N9)");
+                }
+            }
+            MenuItem {
+                text: qsTr("Check for Updates")
+                onClicked: {
+                    pageStack.push(updateCheckerPageComponent);
+                }
+            }
+            MenuItem {
+                text: qsTr("About")
+                onClicked: {
+                    pageStack.push(aboutPageComponent);
+                }
+            }
+        }
+    }
+
     tools: ToolBarLayout {
         ToolButtonRow {
             ToolButton {
@@ -527,8 +562,10 @@ Page {
             }
         }
         ToolIcon {
-            iconId: "toolbar-settings"
-            onClicked: pageStack.push(settingsPageComponent);
+            iconId: "toolbar-view-menu"
+            onClicked: {
+                menu.open();
+            }
         }
     }
 
@@ -536,8 +573,11 @@ Page {
         id: translator
 
         onError: {
-            console.debug(errorString);
             banner.text = errorString;
+            banner.show();
+        }
+        onInfo: {
+            banner.text = infoString;
             banner.show();
         }
     }
@@ -559,6 +599,16 @@ Page {
     Component {
         id: privacyNoticePageComponent
         PrivacyNoticePage {}
+    }
+
+    Component {
+        id: updateCheckerPageComponent
+        UpdateCheckerPage {}
+    }
+
+    Component {
+        id: aboutPageComponent
+        AboutPage {}
     }
 
     Timer {
