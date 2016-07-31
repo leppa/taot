@@ -89,7 +89,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
         <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation>Totaal niet. %1 is gratis en open bron-software. U bent niet verplicht om donaties te doen om het te mogen gebruiken. Op deze manier kunt u echter wel laten zien dat u de app waardeert.</translation>
+        <translation>Totaal niet. %1 is gratis en open bron-software. U bent niet verplicht om donaties te doen om het te mogen gebruiken. Op deze manier kunt u echter wél laten zien dat u de app waardeert.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
         <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
-        <translation>Ik gebruik BlackBerry Payment Service om donaties te accepteren en BlackBerry vangt 30% octrooi over elke verrichte betaling. Als u dus bijv. €4,99 (34 munten) doneert zal ik ongeveer €3.49 ontvangen. Elke munt staat dus voor ongeveer €0,10 die ik zal ontvangen.</translation>
+        <translation>Ik gebruik BlackBerry Payment Service om donaties te accepteren en BlackBerry ontvangt 30% octrooi over elke verrichte betaling. Als u dus bijv. €4,99 (34 munten) doneert zal ik ongeveer €3.49 ontvangen. Over elke gedoneerde munt ontvang ik dus ongeveer €0,10.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
@@ -141,17 +141,17 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
         <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation>Ja, er is een &lt;em&gt;Doneren&lt;/em&gt;-knop op de Over-pagina. Na het erop drukken zal u  naar een webpagina worden geleid waar u kunt doneren via PayPal, Flattr of WebMoney.</translation>
+        <translation>Ja, er is een &lt;em&gt;Doneren&lt;/em&gt;-knop op de Over-pagina. Als u hierop drukt, wordt u naar een webpagina geleid waar u kunt doneren via PayPal, Flattr of WebMoney.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
         <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation>Mijn vraag in onbeantwoord gebleven. Hoe kan ik in contact komen met u?</translation>
+        <translation>Mijn vraag in onbeantwoord gebleven. Hoe kan ik contact opnemen met u?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
         <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation>Schrijf een e-mail naar me. Veeg van de bovenkant naar beneden en druk op &lt;em&gt;Feedback versturen&lt;/em&gt; in het menu. Er zal nu een e-mailopstelling plaatsvinden met mijn e-mailadres automatisch ingevuld als ontvanger.</translation>
+        <translation>Verstuur een e-mail naar me. Dit kunt u doen door omlaag te vegen vanaf de bovenkant van de app en te drukken op &lt;em&gt;Feedback versturen&lt;/em&gt; in het menu. Dit opent de Bericht opstellen-pagina waar mijn e-mailadres al staat ingevuld.</translation>
     </message>
 </context>
 <context>
@@ -172,9 +172,9 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
 <context>
     <name>GoogleTranslate</name>
     <message>
-        <location filename="../src/services/googletranslate.cpp" line="42"/>
+        <location filename="../src/services/googletranslate.cpp" line="44"/>
         <source>Google Translate</source>
-        <translation>Google Vertalen</translation>
+        <translation>Google Translate</translation>
     </message>
 </context>
 <context>
@@ -184,12 +184,12 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation>Kan de reactie van de server niet ontleden vanwege een fout: &quot;%1&quot;</translation>
+        <translation>Er is een fout opgetreden tijdens het verwerken van het serverantwoord: %1</translation>
     </message>
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="48"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation>Kan JSON-gegevens niet bevestigen</translation>
+        <translation>Er is een fout opgetreden tijdens het verwerken van de JSON-gegevens</translation>
     </message>
 </context>
 <context>
@@ -207,7 +207,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="73"/>
         <location filename="../qml/harmattan/MainPage.qml" line="182"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="83"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="101"/>
         <location filename="../qml/symbian/MainPage.qml" line="211"/>
         <source>From</source>
         <translation>Van</translation>
@@ -215,7 +215,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="95"/>
         <location filename="../qml/harmattan/MainPage.qml" line="207"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="111"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="129"/>
         <location filename="../qml/symbian/MainPage.qml" line="247"/>
         <source>To</source>
         <translation>Naar</translation>
@@ -224,16 +224,16 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../qml/bb10/MainPage.qml" line="107"/>
         <location filename="../qml/harmattan/MainPage.qml" line="233"/>
         <location filename="../qml/harmattan/MainPage.qml" line="254"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="129"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="147"/>
         <location filename="../qml/symbian/MainPage.qml" line="269"/>
         <location filename="../qml/symbian/MainPage.qml" line="291"/>
         <source>Enter the source text...</source>
-        <translation>Vul de brontekst in...</translation>
+        <translation>Typ of plak hier de tekst die u wilt vertalen...</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="153"/>
         <location filename="../qml/harmattan/MainPage.qml" line="294"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="184"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="202"/>
         <location filename="../qml/symbian/MainPage.qml" line="343"/>
         <source>Translate</source>
         <translation>Vertalen</translation>
@@ -241,28 +241,28 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="221"/>
         <location filename="../qml/harmattan/MainPage.qml" line="423"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="282"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="300"/>
         <location filename="../qml/symbian/MainPage.qml" line="482"/>
         <source>Detected language:</source>
-        <translation>Gedetecteerde taal:</translation>
+        <translation>Herkende taal:</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="240"/>
-        <location filename="../qml/harmattan/MainPage.qml" line="510"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="366"/>
-        <location filename="../qml/symbian/MainPage.qml" line="578"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="545"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="384"/>
+        <location filename="../qml/symbian/MainPage.qml" line="618"/>
         <source>Paste</source>
         <translation>Plakken</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="380"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy selection</source>
         <translation>Selectie kopiëren</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="259"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="380"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy all</source>
         <translation>Alles kopiëren</translation>
     </message>
@@ -272,20 +272,20 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <translation>Doneren</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/MainPage.qml" line="522"/>
-        <location filename="../qml/symbian/MainPage.qml" line="591"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="557"/>
+        <location filename="../qml/symbian/MainPage.qml" line="631"/>
         <source>Copy</source>
         <translation>Kopiëren</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="269"/>
         <source>Translation was successfully copied to clipboard</source>
-        <translation>Vertaling is succesvol naar het klembord gekopieerd</translation>
+        <translation>De vertaling is gekopieerd naar het klembord</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="271"/>
         <source>Couldn&apos;t copy translation to clipboard</source>
-        <translation>De vertaling kan niet naar het klembord worden gekopieerd</translation>
+        <translation>Er is een fout opgetreden tijdens het kopiëren van de vertaling naar het klembord</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="276"/>
@@ -300,22 +300,22 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="52"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="58"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="396"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="76"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="414"/>
         <location filename="../qml/symbian/MainPage.qml" line="51"/>
         <source>Translation Service</source>
         <translation>Vertaaldienst</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="61"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="410"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="428"/>
         <location filename="../qml/symbian/MainPage.qml" line="68"/>
         <source>Source Language</source>
         <translation>Brontaal</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="70"/>
-        <location filename="../qml/sailfish/MainPage.qml" line="423"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="441"/>
         <location filename="../qml/symbian/MainPage.qml" line="85"/>
         <source>Target Language</source>
         <translation>Doeltaal</translation>
@@ -323,12 +323,34 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="224"/>
         <source>Go</source>
-        <translation>Gaan</translation>
+        <translation>Ga</translation>
     </message>
     <message>
-        <location filename="../qml/sailfish/MainPage.qml" line="51"/>
+        <location filename="../qml/harmattan/MainPage.qml" line="512"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="69"/>
+        <location filename="../qml/symbian/MainPage.qml" line="576"/>
         <source>Settings</source>
         <translation>Instellingen</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="518"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="58"/>
+        <location filename="../qml/symbian/MainPage.qml" line="583"/>
+        <source>Send Feedback</source>
+        <translation>Feedback versturen</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="528"/>
+        <location filename="../qml/symbian/MainPage.qml" line="594"/>
+        <source>Check for Updates</source>
+        <translation>Controleren op updates</translation>
+    </message>
+    <message>
+        <location filename="../qml/harmattan/MainPage.qml" line="534"/>
+        <location filename="../qml/sailfish/MainPage.qml" line="51"/>
+        <location filename="../qml/symbian/MainPage.qml" line="601"/>
+        <source>About</source>
+        <translation>Over</translation>
     </message>
 </context>
 <context>
@@ -336,7 +358,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../src/services/microsofttranslator.cpp" line="13"/>
         <source>Microsoft Translator</source>
-        <translation>Microsoft Vertaler</translation>
+        <translation>Microsoft Translator</translation>
     </message>
 </context>
 <context>
@@ -346,7 +368,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../qml/sailfish/PrivacyNoticePage.qml" line="61"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="37"/>
         <source>Privacy Notice</source>
-        <translation>Privacyverklaring</translation>
+        <translation>Privacyovereenkomst</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="37"/>
@@ -365,17 +387,17 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/privacy.js" line="25"/>
         <source>Would you like to help improve %1 by enabling application analytics?</source>
-        <translation>Wilt u %1 helpen verbeteren door applicatiestatistieken in te schakelen?</translation>
+        <translation>Wilt u helpen met het verbeteren van %1 door het inschakelen van applicatie-analyse?</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="29"/>
         <source>Yes, enable full analytics</source>
-        <translation>Ja, schakel statistieken in</translation>
+        <translation>Ja, schakel algehele analyse in</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="30"/>
         <source>Enable only error reporting</source>
-        <translation>Alleen foutrapportage inschakelen</translation>
+        <translation>Schakel alleen foutrapportage in</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="31"/>
@@ -386,7 +408,8 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../qml/privacy.js" line="34"/>
         <source>&lt;p&gt;%1 contains application analytics functionality that can collect information about actions performed in the application, application errors, and some information about your device. This information is processed by a third party analytics service, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. Collected information will be used solely for the purpose of improving %1, fixing errors, and analysing application usage.&lt;/p&gt;
 &lt;p&gt;Please read &lt;a href=&quot;%2&quot;&gt;%1 Privacy Policy&lt;/a&gt; for full information about what data is sent and when. You can also consult End User Information section of &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; to see how they deal with the data that we send to them.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;%1 bevat applicatie-analyse wat kan leiden tot het verzamelen van informatie over het gebruik ervan, verzamelen van foutmeldingen en informatie over uw apparaat. Deze informatie wordt verwerkt door een analysedienst van een derde partij: &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. Er wordt geen persoonlijke informatie verstuurd. De verzamelde informatie wordt alleen gebruikt met als doel het verbeteren van %1, het oplossen van fouten en het analyseren van het gebruik ervan.&lt;/p&gt;
+&lt;p&gt;Lees de &lt;a href=&quot;%2&quot;&gt;Privacyovereenkomst van %1&lt;/a&gt; om meer te lezen over welke gegevens wel en niet worden verzonden en wanneer dit gebeurt. U kunt ook de Eindgebruikersinformatie-sectie raadplegen in de &lt;a href=&quot;%4&quot;&gt;Privacyovereenkomst van Amplitude Analytics&lt;/a&gt; om te weten te komen welke gegevens we met ze delen.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -406,7 +429,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="31"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="33"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="60"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="48"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="34"/>
         <source>%1 Settings</source>
         <extracomment>%1 will be replaced with the application name</extracomment>
@@ -415,12 +438,12 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="46"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="58"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="151"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="66"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="125"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="54"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="59"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="160"/>
         <source>Interface Language</source>
-        <translation>Taal van de applicatie</translation>
+        <translation>Taal van de app</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="56"/>
@@ -434,21 +457,21 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../qml/harmattan/SettingsPage.qml" line="73"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="75"/>
         <source>Use dark color scheme</source>
-        <translation>Een donker kleurenschema gebruiken</translation>
+        <translation>Gebruik een donker kleurenschema in de app</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="61"/>
         <location filename="../qml/bb10/SettingsPage.qml" line="118"/>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="162"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="133"/>
+        <location filename="../qml/harmattan/SettingsPage.qml" line="136"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="112"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="179"/>
         <source>Please, restart the application to apply this setting.</source>
-        <translation>Herstart de applicatie om deze instelling toe te passen.</translation>
+        <translation>Herstart de app om deze instelling toe te passen.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="73"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="83"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="84"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="72"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="86"/>
         <source>Translate on Enter Press</source>
         <translation>Vertalen na het drukken op de Enter-toets</translation>
@@ -456,12 +479,12 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="74"/>
         <source>Hold &lt;em&gt;Shift&lt;/em&gt; while pressing &lt;em&gt;Enter&lt;/em&gt; to start a new line</source>
-        <translation>Houdt &lt;em&gt;Shift&lt;/em&gt; ingedrukt terwijl u op &lt;em&gt;Enter&lt;/em&gt; drukt om een nieuwe regel te beginnen</translation>
+        <translation>Houdt &lt;em&gt;Shift&lt;/em&gt; ingedrukt tijdens het drukken op &lt;em&gt;Enter&lt;/em&gt; om een nieuwe regel te beginnen</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="85"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="93"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="94"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="82"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="97"/>
         <source>Paste&apos;n&apos;Translate</source>
         <translation>Plak-en-Vertaal</translation>
@@ -471,47 +494,42 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../qml/harmattan/SettingsPage.qml" line="94"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="98"/>
         <source>Automatically start translation after inserting text with &lt;em&gt;Paste&lt;/em&gt; button</source>
-        <translation>Begin direct met vertalen na het invoeren van tekst middels de &lt;em&gt;Plakken&lt;/em&gt;-knop</translation>
+        <translation>Begin direct met vertalen na het plakken van tekst via de &lt;em&gt;Plakken&lt;/em&gt;-knop</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="96"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="104"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="105"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="93"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
         <translation>Privacy-instellingen</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="85"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="73"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="87"/>
         <source>Only one line of text is supported in this mode</source>
-        <translation>In deze modus is er alleen ondersteuning voor het vertalen van enkelregelige tekst</translation>
+        <translation>In deze modus kunt u per keer slechts één regel tekst vertalen</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="128"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="40"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="134"/>
         <source>Send Feedback</source>
         <translation>Feedback versturen</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="137"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="144"/>
         <source>Check for Updates</source>
         <translation>Controleren op updates</translation>
     </message>
     <message>
-        <location filename="../qml/harmattan/SettingsPage.qml" line="143"/>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="119"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="151"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../qml/sailfish/SettingsPage.qml" line="95"/>
+        <location filename="../qml/sailfish/SettingsPage.qml" line="83"/>
         <source>Automatically start translation after inserting text with &lt;i&gt;Paste&lt;/i&gt; button</source>
-        <translation>Begin direct met vertalen na het invoeren van tekst middels de &lt;i&gt;Plakken&lt;/i&gt;-knop</translation>
+        <translation>Begin direct met vertalen na het plakken van tekst via de &lt;i&gt;Plakken&lt;/i&gt;-knop</translation>
     </message>
 </context>
 <context>
@@ -519,51 +537,51 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../src/translationinterface.cpp" line="413"/>
         <source>Please, enter the source text</source>
-        <translation>Vul alstublieft de brontekst in</translation>
+        <translation>Typ of plak de tekst die u wilt vertalen...</translation>
     </message>
 </context>
 <context>
     <name>TranslationService</name>
     <message>
-        <location filename="../src/translationservice.h" line="121"/>
+        <location filename="../src/translationservice.h" line="124"/>
         <source>Autodetect</source>
         <comment>Automatically detect language</comment>
         <extracomment>As in &quot;Automatically detect language&quot;</extracomment>
-        <translation>Automatisch detecteren</translation>
+        <translation>Automatisch herkennen</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="124"/>
+        <location filename="../src/translationservice.h" line="127"/>
         <source>Unknown</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="127"/>
+        <location filename="../src/translationservice.h" line="130"/>
         <source>Unknown (%1)</source>
         <comment>Unknown language</comment>
         <extracomment>Unknown language</extracomment>
         <translation>Onbekend (%1)</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="129"/>
+        <location filename="../src/translationservice.h" line="132"/>
         <source>No error</source>
-        <translation>Geen fout</translation>
+        <translation>Geen foutmelding</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="131"/>
+        <location filename="../src/translationservice.h" line="134"/>
         <source>%1 service returned an error: &quot;%2&quot;</source>
-        <translation>%1-dienst gaf een foutmelding: &quot;%2&quot;</translation>
+        <translation>Er is een fout opgetreden in %1: &quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="133"/>
+        <location filename="../src/translationservice.h" line="136"/>
         <source>Unexpected response from the server</source>
         <translation>Onverwacht antwoord van de server</translation>
     </message>
     <message>
-        <location filename="../src/translationservice.h" line="135"/>
-        <source>No translation available as %1 service returned an empty result</source>
-        <translation>Er is geen vertaling beschikbaar omdat de dienst %1 een leeg resultaat heeft gegeven</translation>
+        <location filename="../src/translationservice.h" line="138"/>
+        <source>Service %1 was unable to translate the text</source>
+        <translation>De tekst kan niet worden vertaald door %1</translation>
     </message>
 </context>
 <context>
@@ -605,13 +623,13 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
         <source>No update available.</source>
-        <translation>Geen update beschikbaar.</translation>
+        <translation>Er is geen update beschikbaar.</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="83"/>
         <source>Update available: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Update beschikbaar: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Er is een update beschikbaar: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
@@ -638,12 +656,12 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
         <location filename="../src/updater.cpp" line="255"/>
         <location filename="../src/updater.cpp" line="266"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
-        <translation>Kan de reactie van de server niet ontleden vanwege een fout: &quot;%1&quot;</translation>
+        <translation>Er is een fout opgetreden tijdens het verwerken van het serverantwoord: %1</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="249"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation>Kan JSON-gegevens niet bevestigen</translation>
+        <translation>Er is een fout opgetreden tijdens het verwerken van de JSON-gegevens</translation>
     </message>
 </context>
 <context>
@@ -651,7 +669,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="38"/>
         <source>Yandex.Dictionaries</source>
-        <translation>Yandex.Woordenboeken</translation>
+        <translation>Yandex.Dictionaries</translation>
     </message>
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="152"/>
@@ -665,7 +683,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../src/services/yandextranslate.cpp" line="33"/>
         <source>Yandex.Translate</source>
-        <translation>Yandex.Vertalen</translation>
+        <translation>Yandex.Translate</translation>
     </message>
 </context>
 <context>
@@ -673,7 +691,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/about.js" line="30"/>
         <source>%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: &lt;a href=&quot;%2&quot;&gt;Donate&lt;/a&gt;.</source>
-        <translation>%1 is gratis software welke ik ontwikkel in mijn vrije tijd. Als u mijn werk waardeert, zou ik een donatie op prijs op stellen: &lt;a href=&quot;%2&quot;&gt;Doneren&lt;/a&gt;.</translation>
+        <translation>%1 is gratis software; ik ontwikkel deze in mijn vrije tijd. Als u mijn werk waardeert, zou ik het op prijs stellen als u een donatie doet: &lt;a href=&quot;%2&quot;&gt;Doneren&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="33"/>
@@ -683,7 +701,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/about.js" line="54"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
-        <translation>Als uw taal ontbreekt, kunt u &lt;a href=&quot;%2&quot;&gt;helpen met het vertalen van %1 naar uw taal&lt;/a&gt;.</translation>
+        <translation>Als uw taal ontbreekt, kunt u &lt;a href=&quot;%2&quot;&gt;helpen met vertalen van %1 naar uw taal&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="56"/>
@@ -692,11 +710,11 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - supports dictionary with transcription for some languages, synonyms, and reverse translations.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;More services are possible in future.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;%1 gebruikt online vertaaldiensten om de vertalingen aan te bieden.&lt;/p&gt;&lt;p&gt;De momenteel ondersteunde diensten zijn:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Vertalen&lt;/b&gt; - ondersteunt vertaling, transcripties voor niet-Latijnse scripts, taaldetectie en een woordenboek met omgekeerde opzoekmogelijkheid voor losse woorden.&lt;/li&gt;
-	&lt;li&gt;&lt;b&gt;Microsoft Vertaler&lt;/b&gt; (ook wel bekend als &lt;b&gt;Bing Vertaler&lt;/b&gt;) - ondersteunt vertaling en taaldetectie.&lt;/li&gt;
-	&lt;li&gt;&lt;b&gt;Yandex.Vertalen&lt;/b&gt; - ondersteunt vertaling en taaldetectie.&lt;/li&gt;
-	&lt;li&gt;&lt;b&gt;Yandex.Woordenboek&lt;/b&gt; - ondersteunt transcripties voor sommige talen, synoniemen en omgekeerde vertalingen.&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;In de toekomst zullen er meer diensten worden toegevoegd.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;%1 gebruikt online vertaaldiensten om de vertalingen te verrichten.&lt;/p&gt;&lt;p&gt;Momenteel worden de volgende diensten ondersteund:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - heeft ondersteuning voor vertaling, transcripties van niet-Latijns schrift, taalherkenning en een woordenboek met omgekeerde opzoekmogelijkheid van losse woorden.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (ook wel bekend als &lt;b&gt;Bingvertaler&lt;/b&gt;) - heeft ondersteuning voor vertaling en taalherkenning.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - heeft ondersteuning voor vertaling en taalherkenning.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - heeft ondersteuning voor transcripties van sommige talen, synoniemen en omgekeerde vertalingen.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;In de toekomst zullen meer diensten worden ondersteund.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -714,7 +732,7 @@ En alsof dat al niet genoeg is, worden de Bedankt-boodschap en de hoogte van uw 
     <message>
         <location filename="../qml/bb10/main.qml" line="68"/>
         <source>Write a review</source>
-        <translation>Een review schrijven</translation>
+        <translation>Schrijf een beoordeling</translation>
     </message>
     <message>
         <location filename="../qml/bb10/main.qml" line="79"/>
