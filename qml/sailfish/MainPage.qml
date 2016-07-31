@@ -48,6 +48,24 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                text: qsTr("About")
+                onClicked: {
+                    pageStack.push(aboutPageComponent);
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Send Feedback")
+                onClicked: {
+                    Qt.openUrlExternally("mailto:contacts"
+                                         + "@"
+                                         + "oleksii.name?subject=TAO%20Translator%20v"
+                                         + encodeURIComponent(translator.version)
+                                         + "%20Feedback%20(Sailfish%20OS)");
+                }
+            }
+
+            MenuItem {
                 text: qsTr("Settings")
                 onClicked: {
                     pageStack.push(settingsPage);
@@ -439,6 +457,12 @@ Page {
         id: privacyNoticePage
 
         PrivacyNoticePage {}
+    }
+
+    Component {
+        id: aboutPageComponent
+
+        AboutPage {}
     }
 
     Timer {

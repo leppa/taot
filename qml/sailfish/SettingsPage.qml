@@ -35,18 +35,6 @@ Page {
         contentHeight: column.height + Theme.paddingMedium
         anchors.fill: parent
 
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("Send Feedback")
-                onClicked: {
-                    Qt.openUrlExternally("mailto:contacts" + "@"
-                                         + "oleksii.name?subject=TAO%20Translator%20v"
-                                         + encodeURIComponent(translator.version)
-                                         + "%20Feedback%20(Sailfish%20OS)");
-                }
-            }
-        }
-
         Column {
             id: column
 
@@ -114,15 +102,6 @@ Page {
             }
         }
 
-        PushUpMenu {
-            MenuItem {
-                text: qsTr("About")
-                onClicked: {
-                    pageStack.push(aboutPageComponent);
-                }
-            }
-        }
-
         VerticalScrollDecorator {}
     }
 
@@ -132,11 +111,5 @@ Page {
         onCurrentLanguageChanged: {
             banner.show(qsTr("Please, restart the application to apply this setting."));
         }
-    }
-
-    Component {
-        id: aboutPageComponent
-
-        AboutPage {}
     }
 }
