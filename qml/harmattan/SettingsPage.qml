@@ -120,32 +120,6 @@ Page {
         flickableItem: scrollArea
     }
 
-    Menu {
-        id: menu
-
-        MenuLayout {
-            MenuItem {
-                text: qsTr("Send Feedback")
-                onClicked: {
-                    Qt.openUrlExternally("mailto:contacts" + "@"
-                                         +"oleksii.name?subject=TAO%20Translator%20v"
-                                         + encodeURIComponent(translator.version)
-                                         + "%20Feedback%20(Nokia%20N9)");
-                }
-            }
-            MenuItem {
-                text: qsTr("Check for Updates")
-                onClicked: {
-                    pageStack.push(updateCheckerPageComponent);
-                }
-            }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(aboutPageComponent);
-            }
-        }
-    }
-
     SelectionDialog {
         id: languages
         titleText: qsTr("Interface Language")
@@ -164,24 +138,10 @@ Page {
         }
     }
 
-    Component {
-        id: aboutPageComponent
-        AboutPage {}
-    }
-
-    Component {
-        id: updateCheckerPageComponent
-        UpdateCheckerPage {}
-    }
-
     tools: ToolBarLayout {
         ToolIcon {
             iconId: "toolbar-back"
             onClicked: pageStack.pop();
-        }
-        ToolIcon {
-            iconId: "toolbar-view-menu"
-            onClicked: menu.open();
         }
     }
 }
