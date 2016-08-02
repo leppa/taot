@@ -147,10 +147,7 @@ QList<QSslCertificate> TranslationService::loadSslCertificates(const QStringList
     QList<QSslCertificate> certs;
 
     foreach (const QString &path, paths) {
-        QFile f(path);
-        f.open(QFile::ReadOnly);
-        certs << QSslCertificate(f.readAll());
-        f.close();
+        certs << QSslCertificate::fromPath(path);
     }
 
     return certs;

@@ -49,8 +49,10 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
     , m_dict(dict)
 {
     m_sslConfiguration = QSslConfiguration::defaultConfiguration();
-    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
-    cacerts << loadSslCertificates(QLatin1String("://cacertificates/geotrust.ca.pem"));
+    QList<QSslCertificate> cacerts(m_sslConfiguration.caCertificates());
+    cacerts << loadSslCertificates(QStringList()
+                                   << QLatin1String("://cacertificates/geotrust.ca.pem")
+                                   << QLatin1String("://cacertificates/equifax.ca.pem"));
     m_sslConfiguration.setCaCertificates(cacerts);
 
     // TODO: Download actual list from

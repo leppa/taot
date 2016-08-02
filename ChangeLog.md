@@ -1,6 +1,14 @@
 TAO Translator ChangeLog
 ========================
 
+TAOT v1.3.3.2
+-------------
+
+- BlackBerry 10: Fix for SSL handshake error due to untrusted root
+  certificate  ([issue #55][]).
+- BlackBerry 10: Bring back compatibility with OS versions below 10.3.
+
+
 TAOT v1.3.3
 -----------
 
@@ -265,5 +273,6 @@ Initial release.
 [issue #50]: https://github.com/leppa/taot/issues/50
 [issue #52]: https://github.com/leppa/taot/issues/52
 [issue #53]: https://github.com/leppa/taot/issues/53
+[issue #55]: https://github.com/leppa/taot/issues/55
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
