@@ -4,6 +4,7 @@
         <file>certum.ca.pem</file>
         <file>certum.network.ca.pem</file>
         <file>geotrust.ca.pem</file>
+        <file>equifax.ca.pem</file>
     </qresource>
     <qresource prefix="/">
         <file>langs/google.json</file>

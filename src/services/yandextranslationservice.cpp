@@ -29,7 +29,7 @@ YandexTranslationService::YandexTranslationService(QObject *parent)
     : JsonTranslationService(parent)
 {
     m_sslConfiguration = QSslConfiguration::defaultConfiguration();
-    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
+    QList<QSslCertificate> cacerts(m_sslConfiguration.caCertificates());
     cacerts << loadSslCertificates(QStringList()
                                    << QLatin1String("://cacertificates/certum.ca.pem")
                                    << QLatin1String("://cacertificates/certum.network.ca.pem"));

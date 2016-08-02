@@ -17,7 +17,7 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
     : JsonTranslationService(parent)
 {
     m_sslConfiguration = QSslConfiguration::defaultConfiguration();
-    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
+    QList<QSslCertificate> cacerts(m_sslConfiguration.caCertificates());
     cacerts << loadSslCertificates(QLatin1String("://cacertificates/baltimore.ca.pem"));
     m_sslConfiguration.setCaCertificates(cacerts);
 
