@@ -118,11 +118,13 @@ TranslationInterface::TranslationInterface(QObject *parent)
 # endif
 
     updatePersistentProperties();
+    m_lastKeepAlive = m_settings->value("Analytics/LastKeepAlive", QDate(1970, 1, 1)).toDate();
 
     m_privacyLevel = PrivacyLevel(m_settings->value("PrivacyLevel", UndefinedPrivacy).toInt());
     if (m_privacyLevel != NoPrivacy)
         m_analytics->setPrivacyEnabled(true);
 
+    bool resetKeepAlive = false;
     if (m_settings->contains("AppInfo/CurrentVersion")) {
         const QString version = m_settings->value("AppInfo/CurrentVersion").toString();
         if (version != QCoreApplication::applicationVersion()) {
@@ -130,6 +132,7 @@ TranslationInterface::TranslationInterface(QObject *parent)
             props.insert("Old Version", version);
             props.insert("New Version", QCoreApplication::applicationVersion());
             m_analytics->trackEvent("Upgrade", props);
+            resetKeepAlive = true;
 
             m_settings->setValue("AppInfo/CurrentVersion", QCoreApplication::applicationVersion());
         }
@@ -137,8 +140,15 @@ TranslationInterface::TranslationInterface(QObject *parent)
         QVariantMap props;
         props.insert("Version", QCoreApplication::applicationVersion());
         m_analytics->trackEvent("Installation", props);
+        resetKeepAlive = true;
 
         m_settings->setValue("AppInfo/CurrentVersion", QCoreApplication::applicationVersion());
+    }
+
+    if (resetKeepAlive) {
+        const QDate today(QDate::currentDate());
+        m_settings->setValue("Analytics/LastKeepAlive", today);
+        m_lastKeepAlive = today;
     }
 
     if (m_privacyLevel == NoPrivacy) {
@@ -421,6 +431,8 @@ void TranslationInterface::translate()
         QVariantMap props;
         fillTranslationProperties(props);
         m_analytics->trackEvent("Translation", props);
+    } else {
+        trackKeepAlive();
     }
 #endif
 
@@ -633,6 +645,19 @@ void TranslationInterface::updatePersistentProperties()
 void TranslationInterface::trackSessionStart()
 {
     m_analytics->trackEvent("Session Start", QVariantMap(), true);
+}
+
+void TranslationInterface::trackKeepAlive()
+{
+    const QDate today(QDate::currentDate());
+    if (m_lastKeepAlive.daysTo(today) != 0) {
+        // Send keep-alive once a day so that Amplitude Analytics treats us as an active user
+        if (m_privacyLevel != NoPrivacy)
+            m_analytics->trackEvent("Keep Alive");
+
+        m_settings->setValue("Analytics/LastKeepAlive", today);
+        m_lastKeepAlive = today;
+    }
 }
 #endif
 
