@@ -37,6 +37,12 @@ private:
     bool checkReplyForErrors(QNetworkReply *reply);
     void requestToken();
 
+    enum State {
+        TokenRequestState,
+        TranslationState
+    };
+
+    State m_state;
     QByteArray m_token;
     QTimer m_tokenTimeout;
     LanguageList m_sourceLanguages;
