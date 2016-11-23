@@ -58,6 +58,21 @@ QVariant JsonTranslationService::parseJson(const QByteArray &json)
 
     return data.toVariant();
 #else
+    if (json.endsWith('"')) {
+        // A plain quoted string - return it with quotes removed
+        QString str = QString::fromUtf8(json);
+
+        // Remove quotes
+        str.remove(0, 1);
+        str.chop(1);
+
+        // Replace CRLF
+        str.replace("\\u000a", "\x0A");
+        str.replace("\\u000d", "\x0D");
+
+        return str;
+    }
+
     QJsonParseError err;
     QJsonDocument doc = QJsonDocument::fromJson(json, &err);
 
