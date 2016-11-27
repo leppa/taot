@@ -72,6 +72,14 @@ using namespace bb::cascades;
 #   include <sailfishapp.h>
 #endif
 
+#ifdef Q_OS_BLACKBERRY
+void stdoutMessageOutput(QtMsgType, const char *msg)
+{
+    fprintf(stdout, "%s\n", QString::fromUtf8(msg).toLocal8Bit().constData());
+    fflush(stdout);
+}
+#endif
+
 #define QUOTE_X(x) #x
 #define QUOTE(x) QUOTE_X(x)
 #define VERSION_STR QUOTE(VERSION)
@@ -99,6 +107,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("oleksii.name");
 
 #ifdef Q_OS_BLACKBERRY
+    qInstallMsgHandler(stdoutMessageOutput);
+
     QSettings *sets = new QSettings(QCoreApplication::organizationName(), "taot");
     if (sets->contains("InvertedTheme"))
         qputenv("CASCADES_THEME", sets->value("InvertedTheme").toBool() ? "dark" : "bright");
