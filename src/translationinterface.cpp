@@ -26,6 +26,10 @@
 #include "translationservicesmodel.h"
 #include "languagelistmodel.h"
 #ifdef Q_OS_BLACKBERRY
+#   include <bb/cascades/Application>
+#   include <bb/cascades/ThemeSupport>
+#   include <bb/cascades/Theme>
+#   include <bb/cascades/ColorTheme>
 #   include <bb/system/InvokeManager>
 #   include "bb10/dictionarymodel.h"
 #else
@@ -636,9 +640,20 @@ void TranslationInterface::updatePersistentProperties()
         lc = QLocale(QLocale::English, QLocale::UnitedStates);
     props.insert("OS Name", m_analytics->deviceInfo().os.name);
     props.insert("UI Language", lc.name());
-    props.insert("Inverted Theme", getSettingsValue("InvertedTheme"));
-    props.insert("Translate on Enter", getSettingsValue("TranslateOnEnter"));
-    props.insert("Paste'n'Translate", getSettingsValue("TranslateOnPaste"));
+
+    // On BlackBerry 10, the default theme (dark/light) depends on the phone model.
+    // On other systems, the default theme is the same for all models.
+    const bool invertedTheme
+#ifdef Q_OS_BLACKBERRY
+            = bb::cascades::Application::instance()->themeSupport()->theme()->colorTheme()->style()
+              == bb::cascades::VisualStyle::Dark;
+#else
+            = false;
+#endif
+
+    props.insert("Inverted Theme", getSettingsValue("InvertedTheme", invertedTheme).toBool());
+    props.insert("Translate on Enter", getSettingsValue("TranslateOnEnter", false).toBool());
+    props.insert("Paste'n'Translate", getSettingsValue("TranslateOnPaste", true).toBool());
     m_analytics->setPersistentUserProperties(props);
 }
 
