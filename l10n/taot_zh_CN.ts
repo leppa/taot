@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>gwmgdemj, 太空飞瓜 (finalmix), YFdyh000</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>简体中文</translation>
@@ -180,7 +180,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>无法解析服务器的响应，因为错误：“%1”</translation>
     </message>
@@ -533,7 +533,7 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>请输入要翻译的内容</translation>
     </message>

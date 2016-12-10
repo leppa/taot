@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Delson Lima (delsonlima)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Português</translation>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
         <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
-        <translation>Estou desenvolvendo %1 no meu tempo livre e o disponibilizo completamente grátis. Além disso, %1 é Open Source. Receber doações me incentivará a continuar o desenvolvimento e suporte ao %1. Isso ainda mostrará que meu trabalho é apreciado.</translation>
+        <translation>Eu desenvolvo o %1 no meu tempo livre e o disponibilizo completamente grátis. Além disso, %1 é Open Source. Receber doações me incentivará a continuar o desenvolvimento e suporte ao %1. E também mostrará que meu trabalho é apreciado.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
@@ -104,14 +104,14 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
         <source>Do I get something for making a donation?</source>
-        <translation>Ganho alguma coisa por fazer uma doação?</translation>
+        <translation>Ganho algo por fazer uma doação?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
         <source>You already have %1. Completely for free :-)
 However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
         <translation>Você já tem o %1. Completamente grátis :-)
-No entanto, se isso não for suficiente, o valor da sua doação acompanhado da mensagem &amp;quot;Obrigado!&amp;quot; será exibido no topo da About page.</translation>
+No entanto, se isso não for suficiente, o valor da sua doação acompanhado da mensagem &quot;Obrigado!&quot;, será exibido no topo da About page.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
@@ -131,7 +131,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
         <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
-        <translation>Sinto muito ouvir isso. Não gerencio nenhum pagamento, então você terá de contactar &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; para pedir reembolso.</translation>
+        <translation>Sinto muito por ouvir isso. Não gerencio nenhum pagamento, então você terá de contactar a &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; para pedir reembolso.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
@@ -141,7 +141,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
         <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation>Sim, existe o link &lt;em&gt;Donate&lt;/em&gt; na About page. Toque neste e você será levado a uma página web onde pode doar com PayPal, Flattr, ou WebMoney.</translation>
+        <translation>Sim, existe o link &lt;em&gt;Doar&lt;/em&gt; na About page. Toque neste e você será levado a uma página web onde pode doar com PayPal, Flattr, ou WebMoney.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
@@ -151,7 +151,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
         <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation>Escreva-me um e-mail. Simplesmente deslize do topo e toque em &lt;em&gt;Enviar feedback&lt;/em&gt; no menu. Um e-mail abrirá meu endereço preenchido.</translation>
+        <translation>Escreva-me um e-mail. Simplesmente deslize do topo e toque em &lt;em&gt;Enviar feedback&lt;/em&gt; no menu. Será aberto um e-mail com meu endereço preenchido.</translation>
     </message>
 </context>
 <context>
@@ -182,14 +182,14 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>Não foi possível obter resposta do servidor por causa de um erro: &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="48"/>
         <source>Can&apos;t evaluate JSON data</source>
-        <translation>Não foi possível avaliar dados do JSON</translation>
+        <translation>Não foi possível avaliar os dados do JSON</translation>
     </message>
 </context>
 <context>
@@ -244,7 +244,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/sailfish/MainPage.qml" line="300"/>
         <location filename="../qml/symbian/MainPage.qml" line="482"/>
         <source>Detected language:</source>
-        <translation>Detectar idioma</translation>
+        <translation>Detectar idioma:</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="240"/>
@@ -280,7 +280,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="269"/>
         <source>Translation was successfully copied to clipboard</source>
-        <translation>A tradução foi copiada para a área de transferência com sucesso</translation>
+        <translation>A tradução foi copiada para a área de transferência</translation>
     </message>
     <message>
         <location filename="../qml/bb10/MainPage.qml" line="271"/>
@@ -304,21 +304,21 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/sailfish/MainPage.qml" line="414"/>
         <location filename="../qml/symbian/MainPage.qml" line="51"/>
         <source>Translation Service</source>
-        <translation>Serviço de tradução</translation>
+        <translation>Serviço de Tradução</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="61"/>
         <location filename="../qml/sailfish/MainPage.qml" line="428"/>
         <location filename="../qml/symbian/MainPage.qml" line="68"/>
         <source>Source Language</source>
-        <translation>Idioma de origem</translation>
+        <translation>Idioma de Origem</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="70"/>
         <location filename="../qml/sailfish/MainPage.qml" line="441"/>
         <location filename="../qml/symbian/MainPage.qml" line="85"/>
         <source>Target Language</source>
-        <translation>Idioma de destino</translation>
+        <translation>Idioma de Destino</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="224"/>
@@ -392,7 +392,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/privacy.js" line="29"/>
         <source>Yes, enable full analytics</source>
-        <translation>Sim, permitir analytics completo</translation>
+        <translation>Sim, permitir analytics completamente</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="30"/>
@@ -408,8 +408,8 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/privacy.js" line="34"/>
         <source>&lt;p&gt;%1 contains application analytics functionality that can collect information about actions performed in the application, application errors, and some information about your device. This information is processed by a third party analytics service, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. Collected information will be used solely for the purpose of improving %1, fixing errors, and analysing application usage.&lt;/p&gt;
 &lt;p&gt;Please read &lt;a href=&quot;%2&quot;&gt;%1 Privacy Policy&lt;/a&gt; for full information about what data is sent and when. You can also consult End User Information section of &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; to see how they deal with the data that we send to them.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;%1 contém funcionalidade application analytics que pode coletar informações sobre ações executadas no aplicativo, erros no aplicativo, e alguma informação sobre o seu dispositivo. Essa informação é processada por um serviço analytics de terceiro, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. As informações coletadas serão usadas unicamente com a finalidade de aperfeiçoar o %1, corrigindo erros, e analisando o uso do aplicativo.&lt;/p&gt;
-&lt;p&gt;Por favor, leia &lt;a href=&quot;%2&quot;&gt;Política de Privacidade do %1&lt;/a&gt; para informação completa sobre qual dado é enviado e quando. Você pode ainda consultar a seção End User Information do &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; para ver como tratam os dados que enviamos para eles.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;%1 contém funcionalidade application analytics que pode coletar informações sobre ações executadas no aplicativo, erros no aplicativo, e algumas informações sobre o seu dispositivo. Essas informações são processadas por um serviço de análise terceirizado, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. Nenhuma informação pessoal identificável é enviada. As informações coletadas serão usadas unicamente com a finalidade de aperfeiçoar o %1, corrigindo erros, e analisando o uso do aplicativo.&lt;/p&gt;
+&lt;p&gt;Por favor, leia a &lt;a href=&quot;%2&quot;&gt;Política de Privacidade do %1&lt;/a&gt; para informação completa sobre quais dados são enviados, e quando. Você pode ainda consultar a seção Informação de Usuário Final do &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; para ver como tratam os dados que enviamos para eles.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -466,7 +466,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/sailfish/SettingsPage.qml" line="112"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="179"/>
         <source>Please, restart the application to apply this setting.</source>
-        <translation>Por favor, reinicie o aplicatvo para aplicar essas configurações</translation>
+        <translation>Por favor, reinicie o aplicatvo para aplicar essas configurações.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="73"/>
@@ -487,14 +487,14 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/sailfish/SettingsPage.qml" line="82"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="97"/>
         <source>Paste&apos;n&apos;Translate</source>
-        <translation>Paste&apos;n&apos;Translate (Copia e Traduzir)</translation>
+        <translation>Copiar e Traduzir</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="86"/>
         <location filename="../qml/harmattan/SettingsPage.qml" line="94"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="98"/>
         <source>Automatically start translation after inserting text with &lt;em&gt;Paste&lt;/em&gt; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar tradução automaticamente ao inserir texto com o botão &lt;em&gt;Colar&lt;/em&gt;</translation>
     </message>
     <message>
         <location filename="../qml/bb10/SettingsPage.qml" line="96"/>
@@ -509,7 +509,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/sailfish/SettingsPage.qml" line="73"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="87"/>
         <source>Only one line of text is supported in this mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Apenas uma linha de texto é suportada neste modo</translation>
     </message>
     <message>
         <location filename="../qml/symbian/SettingsPage.qml" line="134"/>
@@ -529,13 +529,13 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/sailfish/SettingsPage.qml" line="83"/>
         <source>Automatically start translation after inserting text with &lt;i&gt;Paste&lt;/i&gt; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar tradução automaticamente ao inserir texto com o botão &lt;i&gt;Colar&lt;i&gt;</translation>
     </message>
 </context>
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>Por favor, digite o texto de origem</translation>
     </message>
@@ -581,7 +581,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../src/translationservice.h" line="138"/>
         <source>Service %1 was unable to translate the text</source>
-        <translation type="unfinished"></translation>
+        <translation>O serviço %1 não pôde traduzir o texto</translation>
     </message>
 </context>
 <context>
@@ -623,7 +623,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="71"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="77"/>
         <source>No update available.</source>
-        <translation>Nenhuma atualização disponível</translation>
+        <translation>Nenhuma atualização disponível.</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="76"/>
@@ -635,7 +635,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="81"/>
         <location filename="../qml/symbian/UpdateCheckerPage.qml" line="89"/>
         <source>Changes:</source>
-        <translation>Mudanças</translation>
+        <translation>Modificações:</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/UpdateCheckerPage.qml" line="93"/>
@@ -649,7 +649,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../src/updater.cpp" line="187"/>
         <source>Couldn&apos;t parse release version</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível obter a versão lançada</translation>
     </message>
     <message>
         <location filename="../src/updater.cpp" line="248"/>
@@ -669,7 +669,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="38"/>
         <source>Yandex.Dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>Yandex.Dictionaries</translation>
     </message>
     <message>
         <location filename="../src/services/yandexdictionaries.cpp" line="152"/>
@@ -683,7 +683,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../src/services/yandextranslate.cpp" line="33"/>
         <source>Yandex.Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Yandex.Translate</translation>
     </message>
 </context>
 <context>
@@ -691,7 +691,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/about.js" line="30"/>
         <source>%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: &lt;a href=&quot;%2&quot;&gt;Donate&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 é um software livre que desenvolvo no meu tempo livre. se você gostar, Eu ficaria grato por doação: &lt;a href=&quot;%2&quot;&gt;Doar&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="33"/>
@@ -701,7 +701,7 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
     <message>
         <location filename="../qml/about.js" line="54"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Se seu idioma está faltando, você pode &lt;a href=&quot;%2&quot;&gt;ajudar traduzindo o %1 para o seu idioma&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="56"/>
@@ -710,7 +710,11 @@ No entanto, se isso não for suficiente, o valor da sua doação acompanhado da 
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - supports dictionary with transcription for some languages, synonyms, and reverse translations.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;More services are possible in future.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;%1 usa serviços de tradução online para prover traduções.&lt;/p&gt;&lt;p&gt; Serviços suportados atualmente:&lt;/p&gt;&lt;ul&gt; &lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - suporta tradução, transliteração para os textos não-latim mais populares, detecção de idioma, e dicionário com tradução reversa para palavras isoladas.&lt;/li&gt; &lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - suporta tradução e detecção de idioma.&lt;/li&gt; &lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - suporta tradução e detecção de idioma.&lt;/li&gt; &lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - suporta dicionário com transcrição para alguns idiomas, sinônimos, e traduções reversas.&lt;/li&gt; &lt;/ul&gt;&lt;p&gt;Mais serviços são possíveis no futuro.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;%1 usa serviços de tradução online para prover traduções.&lt;/p&gt;&lt;p&gt;Serviços suportados atualmente:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Tradutor&lt;/b&gt; - suporta tradução, transliteração para os textos não-latim mais populares, detecção de idioma, e dicionário com tradução reversa para palavras isoladas.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Microsoft Tradutor&lt;/b&gt; (ou &lt;b&gt;Bing Tradutor&lt;/b&gt;) - suporta tradução e detecção de idioma.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - suporta tradução e detecção de idioma.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Yandex.Dictionaries&lt;/b&gt; - suporta dicionário com transcrição para alguns idiomas, sinônimos, e traduções reversas.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Mais serviços são possíveis futuramente.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

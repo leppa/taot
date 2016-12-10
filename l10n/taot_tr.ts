@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Mehmet Ç. (fnldstntn) - düzenleyen: Mesut Aktaş</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Türk</translation>
@@ -180,7 +180,7 @@ Tabiki az olmayan bağış miktarın için Hakkında sayfasında senin için &qu
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>Bir hata nedeniyle sunucudan yanıt alınamadı: &quot;%1&quot;</translation>
     </message>
@@ -532,7 +532,7 @@ Tabiki az olmayan bağış miktarın için Hakkında sayfasında senin için &qu
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>Lütfen kaynak yazıyı girin</translation>
     </message>

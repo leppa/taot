@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Agustí Clara (fri666)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Català</translation>
@@ -182,7 +182,7 @@ També observareu que l&apos;import de la vostra donació i un missatge amb &quo
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>No s&apos;ha pogut analitzar la resposta del servidor per culpa d&apos;un error: &quot;%1&quot;</translation>
     </message>
@@ -535,7 +535,7 @@ També observareu que l&apos;import de la vostra donació i un missatge amb &quo
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>Introduïu el text d&apos;origen</translation>
     </message>
