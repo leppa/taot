@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Peter Jespersen (flywheeldk)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Dansk</translation>
@@ -182,7 +182,7 @@ Men hvis det ikke er nok, vil summen af din donation sammen med en &quot;Tak!&qu
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>Kunne ikke fortolke svar fra server på grund af en fejl: &quot;%1&quot;</translation>
     </message>
@@ -408,7 +408,8 @@ Men hvis det ikke er nok, vil summen af din donation sammen med en &quot;Tak!&qu
         <location filename="../qml/privacy.js" line="34"/>
         <source>&lt;p&gt;%1 contains application analytics functionality that can collect information about actions performed in the application, application errors, and some information about your device. This information is processed by a third party analytics service, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. Collected information will be used solely for the purpose of improving %1, fixing errors, and analysing application usage.&lt;/p&gt;
 &lt;p&gt;Please read &lt;a href=&quot;%2&quot;&gt;%1 Privacy Policy&lt;/a&gt; for full information about what data is sent and when. You can also consult End User Information section of &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; to see how they deal with the data that we send to them.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;%1 indeholder programanalytisk funktionalitet, der kan opsamle information om handlinger udført i programmet, programfejl, og nogen information om din enhed. Denne information håndteres af en tredjeparts analysetjeneste, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. Ingen personhenførbar information bliver sendt. Den indsamlede information vil kun blive brugt til at forbedre %1, rette fejl, og analysere brugen af programmet.&lt;/p&gt;
+&lt;p&gt;Læs venligst &lt;a href=&quot;%2&quot;&gt;%1 Privatlivspolitik&lt;/a&gt; for fuld information om hvilken data der sendes hvor og hvornår. Se også afsnittet Slutbrugerinformation i &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privatlivspolitik&lt;/a&gt; for at se hvordan tjenesten håndterer den data der indsendes.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -534,7 +535,7 @@ Men hvis det ikke er nok, vil summen af din donation sammen med en &quot;Tak!&qu
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>Indtast venligst kildeteksten</translation>
     </message>
@@ -580,7 +581,7 @@ Men hvis det ikke er nok, vil summen af din donation sammen med en &quot;Tak!&qu
     <message>
         <location filename="../src/translationservice.h" line="138"/>
         <source>Service %1 was unable to translate the text</source>
-        <translation type="unfinished"></translation>
+        <translation>Tjeneste %1 kunne ikke oversætte teksten</translation>
     </message>
 </context>
 <context>

@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Buschmann, DeadHorseRiding (Mee_Germany_Go), R.G. Sidler (rgsidler)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Deutsch</translation>
@@ -182,7 +182,7 @@ Falls Ihnen das nicht reicht, wird der Betrag Ihrer Spende zusammen mit einer &q
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>Konnte die Server-Antwort aufgrund eines Fehlers nicht verarbeiten: &quot;%1&quot;</translation>
     </message>
@@ -535,7 +535,7 @@ Falls Ihnen das nicht reicht, wird der Betrag Ihrer Spende zusammen mit einer &q
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>Bitte den Ursprungstext eingeben</translation>
     </message>

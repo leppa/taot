@@ -1,6 +1,14 @@
 TAO Translator ChangeLog
 ========================
 
+TAOT v1.3.4
+-----------
+
+- Microsoft Translator: Microsoft plans to shutdown DataMarket API on
+  20.04.2017. TAO Translator now uses Azure Cognitive Services API
+  ([issue #56][]).
+- Some UI localizations were updated.
+
 TAOT v1.3.3.2
 -------------
 
@@ -274,5 +282,6 @@ Initial release.
 [issue #52]: https://github.com/leppa/taot/issues/52
 [issue #53]: https://github.com/leppa/taot/issues/53
 [issue #55]: https://github.com/leppa/taot/issues/55
+[issue #56]: https://github.com/leppa/taot/issues/56
 
 <!-- $Id: $Format:%h %ai %an$ $ -->

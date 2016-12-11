@@ -5,6 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Dec 11 2016 Oleksii Serdiuk <contacts@oleksii.name> 1.3.4
+- Microsoft Translator: Microsoft plans to shutdown DataMarket API on
+  20.04.2017. TAO Translator now uses Azure Cognitive Services API.
+- Some UI localizations were updated.
+
 * Sun Jul 31 2016 Oleksii Serdiuk <contacts@oleksii.name> 1.3.3-1
 - Source and target translation languages were updated for all services.
 - A slight rearrangement of menus.

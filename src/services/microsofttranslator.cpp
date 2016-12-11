@@ -35,11 +35,11 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
         const QVariant data = parseJson(f.readAll());
         f.close();
         if (data.isValid()) {
-            QVariantMapIterator sl(data.toMap());
+            QVariantMapIterator sl(data.toMap().value("text").toMap());
             while (sl.hasNext()) {
                 sl.next();
                 const QString code = sl.key();
-                const QString name = sl.value().toString();
+                const QString name = sl.value().toMap().value("name").toString();
                 Language lang(code, name);
                 m_targetLanguages << lang;
                 m_langCodeToName.insert(code, name);
@@ -125,9 +125,9 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
     }
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QUrl query("https://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
+    QUrl query("https://api.microsofttranslator.com/v2/ajax.svc/GetTranslations");
 #else
-    QUrl url("https://api.microsofttranslator.com/V2/Ajax.svc/GetTranslations");
+    QUrl url("https://api.microsofttranslator.com/v2/ajax.svc/GetTranslations");
     QUrlQuery query;
 #endif
     query.addQueryItem("text", text);
@@ -142,8 +142,10 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
     QNetworkRequest request(url);
 #endif
     request.setRawHeader("Authorization", m_token);
+    request.setRawHeader("Accept", "application/json");
     request.setSslConfiguration(m_sslConfiguration);
 
+    m_state = TranslationState;
     m_reply = m_nam.get(request);
 
     return true;
@@ -151,55 +153,59 @@ bool MicrosoftTranslator::translate(const Language &from, const Language &to, co
 
 bool MicrosoftTranslator::parseReply(const QByteArray &reply)
 {
-    const QVariant data = parseJson(reply);
-    if (!data.isValid())
-        return false;
+    switch (m_state) {
+    case TranslationState: {
+        const QVariant data = parseJson(reply);
+        if (!data.isValid())
+            return false;
 
-    if (data.type() == QVariant::Map) {
-        const QVariantMap dataMap = data.toMap();
+        if (data.type() == QVariant::Map) {
+            const QVariantMap dataMap = data.toMap();
 
-        if (dataMap.value("Translations").type() == QVariant::List) {
-            const QVariantList translations = dataMap.value("Translations").toList();
-            if (translations.count() < 1) {
-                m_error = commonString(EmptyResultCommonString).arg(displayName());
+            if (dataMap.value("Translations").type() == QVariant::List) {
+                const QVariantList translations = dataMap.value("Translations").toList();
+                if (translations.count() < 1) {
+                    m_error = commonString(EmptyResultCommonString).arg(displayName());
+                    return true;
+                }
+
+                if (isAutoLanguage(m_translationPair.first)) {
+                    const QString detected = dataMap.value("From").toString();
+                    m_detectedLanguage = Language(detected, getLanguageName(detected));
+                }
+
+                m_translation = translations.at(0).toMap().value("TranslatedText").toString();
+
                 return true;
             }
 
-            if (isAutoLanguage(m_translationPair.first)) {
-                const QString detected = dataMap.value("From").toString();
-                m_detectedLanguage = Language(detected, getLanguageName(detected));
+            if (data.toMap().value("error_description").type() == QVariant::String) {
+                m_error = commonString(ErrorReturnedCommonString).arg(displayName(),
+                                                                      data.toMap()
+                                                                      .value("error_description")
+                                                                      .toString());
+            } else {
+                m_error = commonString(UnexpectedResponseCommonString);
             }
 
-            m_translation = translations.at(0).toMap().value("TranslatedText").toString();
-
-            return true;
+            return false;
+        } else if (data.type() == QVariant::String) {
+            m_error = commonString(ErrorReturnedCommonString).arg(displayName(), data.toString());
+            return false;
         }
-
-        if (dataMap.value("access_token").type() == QVariant::String) {
-            m_token = "Bearer " + dataMap.value("access_token").toByteArray();
-            // Clear token 30 secs before the timeout. Just to be sure :-)
-            m_tokenTimeout.setInterval(1000 * (dataMap.value("expires_in").toInt() - 30));
-            m_tokenTimeout.start();
-            return translate(m_translationPair.first, m_translationPair.second, m_sourceText);
-        }
-
-        if (data.toMap().value("error_description").type() == QVariant::String) {
-            m_error = commonString(ErrorReturnedCommonString).arg(displayName(),
-                                                                  data.toMap()
-                                                                  .value("error_description")
-                                                                  .toString());
-        } else {
-            m_error = commonString(UnexpectedResponseCommonString);
-        }
-
-        return false;
-    } else if (data.type() == QVariant::String) {
-        m_error = commonString(ErrorReturnedCommonString).arg(displayName(), data.toString());
-        return false;
     }
 
-    m_error = commonString(UnexpectedResponseCommonString);
-    return false;
+    case TokenRequestState:
+        m_token = "Bearer " + reply;
+        // Token is valid for 600 seconds. Clear it 30 seconds before the timeout.
+        m_tokenTimeout.setInterval(570000);
+        m_tokenTimeout.start();
+        return translate(m_translationPair.first, m_translationPair.second, m_sourceText);
+
+    default:
+        m_error = commonString(UnexpectedResponseCommonString);
+        return false;
+    }
 }
 
 void MicrosoftTranslator::onTokenTimeout()
@@ -218,22 +224,11 @@ bool MicrosoftTranslator::checkReplyForErrors(QNetworkReply *reply)
 
 void MicrosoftTranslator::requestToken()
 {
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    QUrl query;
-#else
-    QUrlQuery query;
-#endif
-    query.addQueryItem("grant_type", "client_credentials");
-    query.addQueryItem("client_id", BINGTRANSLATOR_CLIENT_ID);
-    query.addQueryItem("client_secret", BINGTRANSLATOR_API_KEY);
-    query.addQueryItem("scope", "http://api.microsofttranslator.com");
-
-    QNetworkRequest request(QUrl("https://datamarket.accesscontrol.windows.net/v2/OAuth2-13"));
+    QNetworkRequest request(QUrl("https://api.cognitive.microsoft.com/sts/v1.0/issueToken"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+    request.setRawHeader("Accept", "application/jwt");
+    request.setRawHeader("Ocp-Apim-Subscription-Key", MSTRANSLATOR_TEXT_API_KEY);
 
-#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
-    m_reply = m_nam.post(request, query.encodedQuery());
-#else
-    m_reply = m_nam.post(request, query.query(QUrl::FullyEncoded).toUtf8());
-#endif
+    m_state = TokenRequestState;
+    m_reply = m_nam.post(request, QByteArray());
 }

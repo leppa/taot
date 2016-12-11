@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
-        <translation>Francesco Vaccaro (ghostofasmile), Alessandro Pra&apos; (Watchmaker)</translation>
+        <translation>Francesco Vaccaro (fravaccaro), Alessandro Pra&apos; (Watchmaker)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Italiano</translation>
@@ -182,7 +182,7 @@ Nel caso non fosse abbastanza, nella pagina Informazioni su verrà mostrato l&ap
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>Impossibile analizzare la risposta dal server a causa di un errore: &quot;%1&quot;</translation>
     </message>
@@ -350,7 +350,7 @@ Nel caso non fosse abbastanza, nella pagina Informazioni su verrà mostrato l&ap
         <location filename="../qml/sailfish/MainPage.qml" line="51"/>
         <location filename="../qml/symbian/MainPage.qml" line="601"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
 </context>
 <context>
@@ -368,47 +368,49 @@ Nel caso non fosse abbastanza, nella pagina Informazioni su verrà mostrato l&ap
         <location filename="../qml/sailfish/PrivacyNoticePage.qml" line="61"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="37"/>
         <source>Privacy Notice</source>
-        <translation type="unfinished"></translation>
+        <translation>Informativa sulla privacy</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="37"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="34"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="128"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <location filename="../qml/bb10/PrivacyNoticePage.qml" line="45"/>
         <location filename="../qml/harmattan/PrivacyNoticePage.qml" line="33"/>
         <location filename="../qml/symbian/PrivacyNoticePage.qml" line="136"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Accetta</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="25"/>
         <source>Would you like to help improve %1 by enabling application analytics?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vuoi aiutare a migliorare %1 abilitando le statistiche dell&apos;app?</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="29"/>
         <source>Yes, enable full analytics</source>
-        <translation type="unfinished"></translation>
+        <translation>Sì, abilita le statistiche complete</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="30"/>
         <source>Enable only error reporting</source>
-        <translation type="unfinished"></translation>
+        <translation>Abilita solo la segnalazione degli errori</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="31"/>
         <source>No, I don&apos;t want to help</source>
-        <translation type="unfinished"></translation>
+        <translation>No, non voglio</translation>
     </message>
     <message>
         <location filename="../qml/privacy.js" line="34"/>
         <source>&lt;p&gt;%1 contains application analytics functionality that can collect information about actions performed in the application, application errors, and some information about your device. This information is processed by a third party analytics service, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. No personally identifiable information is sent. Collected information will be used solely for the purpose of improving %1, fixing errors, and analysing application usage.&lt;/p&gt;
 &lt;p&gt;Please read &lt;a href=&quot;%2&quot;&gt;%1 Privacy Policy&lt;/a&gt; for full information about what data is sent and when. You can also consult End User Information section of &lt;a href=&quot;%4&quot;&gt;Amplitude Analytics Privacy Policy&lt;/a&gt; to see how they deal with the data that we send to them.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;%1 include funzionalità di analisi che raccoglie statistiche sull&apos;utilizzo dell&apos;app, segnalazioni di errori e alcune informazioni sul tuo dispositivo. Queste informazioni sono processate da un servizio di terze parti, &lt;a href=&quot;%3&quot;&gt;Amplitude Analytics&lt;/a&gt;. Nessuna informazione personale è inviata. Le informazioni raccolte verranno impiegate solamente allo scopo di migliorare %1, correggere errori e analizzare l&apos;utilizzo dell&apos;app.&lt;/p&gt;
+
+&lt;p&gt;Leggi l&apos;&lt;a href=&quot;%2&quot;&gt;Informativa sulla privacy di %1&lt;/a&gt; per maggiori informazioni sul tipo e sulla frequenza dei dati inviati. Puoi anche consultare l&apos;informativa per l&apos;utente finale dell&apos;&lt;a href=&quot;%4&quot;&gt;Informativa sulla privacy di Amplitude Analytics&lt;/a&gt; per ulteriori dettagli sul trattamento dei dati da parte del servizio.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -501,7 +503,7 @@ Nel caso non fosse abbastanza, nella pagina Informazioni su verrà mostrato l&ap
         <location filename="../qml/sailfish/SettingsPage.qml" line="93"/>
         <location filename="../qml/symbian/SettingsPage.qml" line="109"/>
         <source>Privacy Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazioni della privacy</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/SettingsPage.qml" line="84"/>
@@ -534,7 +536,7 @@ Nel caso non fosse abbastanza, nella pagina Informazioni su verrà mostrato l&ap
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>Inserisci il testo di partenza</translation>
     </message>
@@ -580,7 +582,7 @@ Nel caso non fosse abbastanza, nella pagina Informazioni su verrà mostrato l&ap
     <message>
         <location filename="../src/translationservice.h" line="138"/>
         <source>Service %1 was unable to translate the text</source>
-        <translation type="unfinished"></translation>
+        <translation>Il servizio %1 non è riuscito a tradurre il testo</translation>
     </message>
 </context>
 <context>

@@ -34,6 +34,9 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QSettings>
+#ifdef WITH_ANALYTICS
+#   include <QDate>
+#endif
 
 #ifdef Q_OS_BLACKBERRY
 #   include <bb/system/InvokeRequest>
@@ -224,6 +227,7 @@ private:
 #ifdef WITH_ANALYTICS
     PrivacyLevel m_privacyLevel;
     QScopedPointer<QAmplitudeAnalytics> m_analytics;
+    QDate m_lastKeepAlive;
 #endif
 
     void createService(uint id);
@@ -238,6 +242,7 @@ private:
     void fillTranslationProperties(QVariantMap &map) const;
     void updatePersistentProperties();
     void trackSessionStart();
+    void trackKeepAlive();
 #endif
 
 #ifdef Q_OS_BLACKBERRY

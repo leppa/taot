@@ -1,55 +1,240 @@
 {
-    "af": "Afrikaans",
-    "ar": "Arabic",
-    "bs-Latin": "Bosnian (Latin)",
-    "bg": "Bulgarian",
-    "ca": "Catalan",
-    "zh-CHS": "Chinese Simplified",
-    "zh-CHT": "Chinese Traditional",
-    "hr": "Croatian",
-    "cs": "Czech",
-    "da": "Danish",
-    "nl": "Dutch",
-    "en": "English",
-    "et": "Estonian",
-    "fi": "Finnish",
-    "fr": "French",
-    "de": "German",
-    "el": "Greek",
-    "ht": "Haitian Creole",
-    "he": "Hebrew",
-    "hi": "Hindi",
-    "mww": "Hmong Daw",
-    "hu": "Hungarian",
-    "id": "Indonesian",
-    "it": "Italian",
-    "ja": "Japanese",
-    "sw": "Kiswahili",
-    "tlh": "Klingon",
-    "tlh-Qaak": "Klingon (pIqaD)",
-    "ko": "Korean",
-    "lv": "Latvian",
-    "lt": "Lithuanian",
-    "ms": "Malay",
-    "mt": "Maltese",
-    "no": "Norwegian",
-    "fa": "Persian",
-    "pl": "Polish",
-    "pt": "Portuguese",
-    "otq": "Querétaro Otomi",
-    "ro": "Romanian",
-    "ru": "Russian",
-    "sr-Cyrl": "Serbian (Cyrillic)",
-    "sr-Latn": "Serbian (Latin)",
-    "sk": "Slovak",
-    "sl": "Slovenian",
-    "es": "Spanish",
-    "sv": "Swedish",
-    "th": "Thai",
-    "tr": "Turkish",
-    "uk": "Ukrainian",
-    "ur": "Urdu",
-    "vi": "Vietnamese",
-    "cy": "Welsh",
-    "yua": "Yucatec Maya"
+  "text": {
+    "af": {
+      "name": "Afrikaans",
+      "dir": "ltr"
+    },
+    "ar": {
+      "name": "Arabic",
+      "dir": "rtl"
+    },
+    "bg": {
+      "name": "Bulgarian",
+      "dir": "ltr"
+    },
+    "bs": {
+      "name": "Bosnian",
+      "dir": "ltr"
+    },
+    "ca": {
+      "name": "Catalan",
+      "dir": "ltr"
+    },
+    "cs": {
+      "name": "Czech",
+      "dir": "ltr"
+    },
+    "cy": {
+      "name": "Welsh",
+      "dir": "ltr"
+    },
+    "da": {
+      "name": "Danish",
+      "dir": "ltr"
+    },
+    "de": {
+      "name": "German",
+      "dir": "ltr"
+    },
+    "el": {
+      "name": "Greek",
+      "dir": "ltr"
+    },
+    "en": {
+      "name": "English",
+      "dir": "ltr"
+    },
+    "es": {
+      "name": "Spanish",
+      "dir": "ltr"
+    },
+    "et": {
+      "name": "Estonian",
+      "dir": "ltr"
+    },
+    "fa": {
+      "name": "Persian",
+      "dir": "rtl"
+    },
+    "fi": {
+      "name": "Finnish",
+      "dir": "ltr"
+    },
+    "fil": {
+      "name": "Filipino",
+      "dir": "ltr"
+    },
+    "fj": {
+      "name": "Fijian",
+      "dir": "ltr"
+    },
+    "fr": {
+      "name": "French",
+      "dir": "ltr"
+    },
+    "he": {
+      "name": "Hebrew",
+      "dir": "rtl"
+    },
+    "hi": {
+      "name": "Hindi",
+      "dir": "ltr"
+    },
+    "hr": {
+      "name": "Croatian",
+      "dir": "ltr"
+    },
+    "ht": {
+      "name": "Haitian Creole",
+      "dir": "ltr"
+    },
+    "hu": {
+      "name": "Hungarian",
+      "dir": "ltr"
+    },
+    "id": {
+      "name": "Indonesian",
+      "dir": "ltr"
+    },
+    "it": {
+      "name": "Italian",
+      "dir": "ltr"
+    },
+    "ja": {
+      "name": "Japanese",
+      "dir": "ltr"
+    },
+    "ko": {
+      "name": "Korean",
+      "dir": "ltr"
+    },
+    "lt": {
+      "name": "Lithuanian",
+      "dir": "ltr"
+    },
+    "lv": {
+      "name": "Latvian",
+      "dir": "ltr"
+    },
+    "mg": {
+      "name": "Malagasy",
+      "dir": "ltr"
+    },
+    "ms": {
+      "name": "Malay",
+      "dir": "ltr"
+    },
+    "mt": {
+      "name": "Maltese",
+      "dir": "ltr"
+    },
+    "mww": {
+      "name": "Hmong Daw",
+      "dir": "ltr"
+    },
+    "nb": {
+      "name": "Norwegian",
+      "dir": "ltr"
+    },
+    "nl": {
+      "name": "Dutch",
+      "dir": "ltr"
+    },
+    "otq": {
+      "name": "Querétaro Otomi",
+      "dir": "ltr"
+    },
+    "pl": {
+      "name": "Polish",
+      "dir": "ltr"
+    },
+    "pt": {
+      "name": "Portuguese",
+      "dir": "ltr"
+    },
+    "ro": {
+      "name": "Romanian",
+      "dir": "ltr"
+    },
+    "ru": {
+      "name": "Russian",
+      "dir": "ltr"
+    },
+    "sk": {
+      "name": "Slovak",
+      "dir": "ltr"
+    },
+    "sl": {
+      "name": "Slovenian",
+      "dir": "ltr"
+    },
+    "sm": {
+      "name": "Samoan",
+      "dir": "ltr"
+    },
+    "sr-Cyrl": {
+      "name": "Serbian (Cyrillic)",
+      "dir": "ltr"
+    },
+    "sr-Latn": {
+      "name": "Serbian (Latin)",
+      "dir": "ltr"
+    },
+    "sv": {
+      "name": "Swedish",
+      "dir": "ltr"
+    },
+    "sw": {
+      "name": "Kiswahili",
+      "dir": "ltr"
+    },
+    "th": {
+      "name": "Thai",
+      "dir": "ltr"
+    },
+    "tlh": {
+      "name": "Klingon",
+      "dir": "ltr"
+    },
+    "to": {
+      "name": "Tongan",
+      "dir": "ltr"
+    },
+    "tr": {
+      "name": "Turkish",
+      "dir": "ltr"
+    },
+    "ty": {
+      "name": "Tahitian",
+      "dir": "ltr"
+    },
+    "uk": {
+      "name": "Ukrainian",
+      "dir": "ltr"
+    },
+    "ur": {
+      "name": "Urdu",
+      "dir": "rtl"
+    },
+    "vi": {
+      "name": "Vietnamese",
+      "dir": "ltr"
+    },
+    "yua": {
+      "name": "Yucatec Maya",
+      "dir": "ltr"
+    },
+    "yue": {
+      "name": "Cantonese (Traditional)",
+      "dir": "ltr"
+    },
+    "zh-Hans": {
+      "name": "Chinese Simplified",
+      "dir": "ltr"
+    },
+    "zh-Hant": {
+      "name": "Chinese Traditional",
+      "dir": "ltr"
+    }
+  }
 }

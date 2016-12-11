@@ -25,11 +25,12 @@
 
 // Specify your API keys and application IDs in this file
 
-// Bing Translator
-#define BINGTRANSLATOR_CLIENT_ID ""
-#define BINGTRANSLATOR_API_KEY ""
+// Microsoft Translator
+#define MSTRANSLATOR_TEXT_API_KEY ""
+
 // Yandex.Translate
 #define YANDEXTRANSLATE_API_KEY ""
+
 // Yandex.Dictionary
 #define YANDEXDICTIONARIES_API_KEY ""
 

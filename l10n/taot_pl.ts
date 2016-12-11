@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="244"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Maurycy, mp107</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="246"/>
+        <location filename="../src/main.cpp" line="256"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Polski</translation>
@@ -184,7 +184,7 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
     <message>
         <location filename="../src/services/jsontranslationservice.cpp" line="47"/>
         <location filename="../src/services/jsontranslationservice.cpp" line="54"/>
-        <location filename="../src/services/jsontranslationservice.cpp" line="65"/>
+        <location filename="../src/services/jsontranslationservice.cpp" line="80"/>
         <source>Couldn&apos;t parse response from the server because of an error: &quot;%1&quot;</source>
         <translation>Błąd w odczycie wiadomości z serwera z powodu błędu: &quot;%1&quot;</translation>
     </message>
@@ -538,7 +538,7 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
 <context>
     <name>TranslationInterface</name>
     <message>
-        <location filename="../src/translationinterface.cpp" line="413"/>
+        <location filename="../src/translationinterface.cpp" line="427"/>
         <source>Please, enter the source text</source>
         <translation>Wprowadź tekst źródłowy</translation>
     </message>
@@ -584,7 +584,7 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
     <message>
         <location filename="../src/translationservice.h" line="138"/>
         <source>Service %1 was unable to translate the text</source>
-        <translation type="unfinished"></translation>
+        <translation>Serwis %1 nie był w stanie przetłumaczyć tekstu</translation>
     </message>
 </context>
 <context>
@@ -694,7 +694,7 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
     <message>
         <location filename="../qml/about.js" line="30"/>
         <source>%1 is free software that I develop in my spare time. If you like it, I would appreciate a donation: &lt;a href=&quot;%2&quot;&gt;Donate&lt;/a&gt;.</source>
-        <translation>Aplikacja % jest oprogramowaniem wolnym, które rozwijam w swoim wolnym czasie. Jeżeli aplikacja Ci się podoba, możesz &lt;a href=&quot;%2&quot;&gt;przekazać darowiznę&lt;/a&gt;, za którą będę bardzo wdzięczny.</translation>
+        <translation>Aplikacja %1 jest oprogramowaniem wolnym, które rozwijam w swoim wolnym czasie. Jeżeli aplikacja Ci się podoba, możesz &lt;a href=&quot;%2&quot;&gt;przekazać darowiznę&lt;/a&gt;, za którą będę bardzo wdzięczny.</translation>
     </message>
     <message>
         <location filename="../qml/about.js" line="33"/>
