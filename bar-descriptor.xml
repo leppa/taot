@@ -2,8 +2,7 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>name.oleksii.bb10.taot</id>
     <name>TAO Translator</name>
-    <versionNumber>1.3.3</versionNumber>
-    <buildId>2</buildId>
+    <versionNumber>1.3.4</versionNumber>
     <description>TAO Translator uses online translation services to provide translations.</description>
     <icon>
         <image>icon.png</image>
