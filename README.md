@@ -1,7 +1,7 @@
 TAO Translator
 ==============
 
-Copyright (C) 2013-2017 *[Oleksii Serdiuk](https://oleksii.name/)*.
+Copyright (C) 2013-2018 *[Oleksii Serdiuk](https://oleksii.name/)*.
 
 **TAO Translator** uses online translation services to provide
 translations.

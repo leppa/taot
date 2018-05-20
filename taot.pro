@@ -1,7 +1,7 @@
 ######################################################################
 #
 #  TAO Translator
-#  Copyright (C) 2013-2017  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+#  Copyright (C) 2013-2018  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 #
 #  $Id: $Format:%h %ai %an$ $
 #
@@ -34,7 +34,7 @@ blackberry:CONFIG += cascades
 QMAKE_TARGET_COMPANY = Oleksii Serdiuk
 QMAKE_TARGET_PRODUCT = TAO Translator
 QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
-QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2017 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2018 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 
 lessThan(QT_MAJOR_VERSION, 5):!blackberry {
     include(qmlapplicationviewer/qmlapplicationviewer.pri)
