@@ -37,9 +37,10 @@ qsTr("%1 contains the following contributed translations:").arg("TAO Translator"
 "<b>Chinese</b> by gwmgdemj, 太空飞瓜 (finalmix), and YF (yfdyh000), " +
 "<b>Czech</b> by Jakub Kožíšek (nodevel), " +
 "<b>Danish</b> by Peter Jespersen (flywheeldk), " +
-"<b>Dutch</b> by teunwinters and Heimen Stoffels (Vistaus), " +
+"<b>Dutch (Belgium)</b> by Nathan Follens, " +
+"<b>Dutch (Netherlands)</b> by teunwinters and Heimen Stoffels (Vistaus), " +
 "<b>Finnish</b> by Timpaxi, " +
-"<b>French</b> by Jordi, " +
+"<b>French</b> by Jordi and lutinotmalin, " +
 "<b>German</b> by buschmann, DeadHorseRiding (Mee_Germany_Go), and R.G. Sidler (rgsidler), " +
 "<b>Greek</b> by Wasilis Mandratzis-Walz (beonex), and Dimitrios Glentadakis (dglent), " +
 "<b>Hungarian</b> by ViBE, " +

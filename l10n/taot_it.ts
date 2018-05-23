@@ -74,7 +74,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
         <source>Why do you ask for donations?</source>
-        <translation>Perché chiedi di donare?</translation>
+        <translation>Perché chiedi donazioni?</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
         <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation>Assolutamente no. %1 è completamente gratuito. Non devi donare nulla per utilizzarlo, anche se in questo modo dimostreresti il tuo supporto.</translation>
+        <translation>Assolutamente no. %1 è software libero e gratuito. Non devi donare nulla per utilizzarlo. Tuttavia, in questo modo dimostreresti il tuo supporto.</translation>
     </message>
     <message>
         <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
