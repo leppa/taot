@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="254"/>
+        <location filename="../src/main.cpp" line="252"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Mehmet Ç. (fnldstntn) - düzenleyen: Mesut Aktaş</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="256"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Türk</translation>
@@ -61,110 +61,6 @@
         <source>, </source>
         <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
-    </message>
-</context>
-<context>
-    <name>DonationFaqPage</name>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
-        <source>Donation FAQ</source>
-        <translation>Bağış Hakkında SSS</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
-        <source>Why do you ask for donations?</source>
-        <translation>Niçin bağış yapıyorum ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
-        <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
-        <translation>%1 zamanımı alan ve tamamen ücretsiz bir uygulama yapıyorum, açık kaynaktır. Desteklemek ve devam etmem için bağışlarınız bana yardımcı olacaktır.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
-        <source>Am I required to donate to use %1?</source>
-        <translation>%1 kullanmak için bağış gerekiyor mu ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
-        <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation>Tabiki hayır, %1 bedava ve Açık Kaynaktır. Herhangi bir bağış ile kullanma gerekliliği yoktur. Fakat bu bana olan desteğini gösterecektir.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
-        <source>What are those coins?</source>
-        <translation>Coins de nedir ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
-        <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
-        <translation>BlackBerry ödeme sistemini kullanıyorum ve BlackBerry tarafından %30 komisyon alınmakta. Mesela, bağışın 4.99$(34 coins) ise bana 3.49$ gelmekte. Her coin başına 0.10$ gelmekte.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
-        <source>Do I get something for making a donation?</source>
-        <translation>Bağış için ne alabilirim ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
-        <source>You already have %1. Completely for free :-)
-However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
-        <translation>%1 zaten sahipsin. Tamamen ücretsiz :-)
-Tabiki az olmayan bağış miktarın için Hakkında sayfasında senin için &quot;Teşekkürler!&quot; mesajı gösterilecektir.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
-        <source>I want to increase my donation. Is it possible?</source>
-        <translation>Bağış miktarını arttırmak istiyorum, bu mümkün mü ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
-        <source>Just make a new one. You can make as many donations as you want. They will accumulate and total amount will be displayed on the About page.</source>
-        <translation>Yeni bir tane daha bağış yapmak gerekiyor. Bu şekilde toplam birim Hakkında sayfasında gösterilecektir.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
-        <source>I changed my mind and want to get my donation back!</source>
-        <translation>Fikrimi değiştirdim ve bağışımı geri almak istiyorum, çözümü nedir ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
-        <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
-        <translation>Özür dilerim ama ödeme sistemini yönetmiyorum. İrtibata geçmen gereken bu linkte &lt;a href=&quot;%1&quot;&gt;BlackBerry İletişimi&lt;/a&gt; .</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
-        <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
-        <translation>Uygulama içi ödeme yapmak istemiyorum, başka yolu var mı ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
-        <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation>Evet var, &lt;em&gt;Bağış&lt;/em&gt; linki Hakkında sayfasında. Tıkla ve web sayfasında PayPal, Flattr veya WebMoney seç.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
-        <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation>Soruma cevap değildi. İrtibat için ne yapmam gerekir ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
-        <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation>Bir mail yazmalısın. &lt;em&gt;Geri Bildirim&lt;/em&gt; menüsünden. E-posta adresimi önceden doldurulmuş açılacaktır.</translation>
-    </message>
-</context>
-<context>
-    <name>DonationManager</name>
-    <message numerus="yes">
-        <location filename="../src/bb10/donationmanager.cpp" line="46"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="49"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="52"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="55"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="58"/>
-        <source>%n coins</source>
-        <translation>
-            <numerusform>%n coin</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -263,11 +159,6 @@ Tabiki az olmayan bağış miktarın için Hakkında sayfasında senin için &qu
         <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy all</source>
         <translation>Tüm. kopyala</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/MainPage.qml" line="293"/>
-        <source>Donate</source>
-        <translation>Bağış</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="557"/>
@@ -697,12 +588,12 @@ Tabiki az olmayan bağış miktarın için Hakkında sayfasında senin için &qu
         <translation>%1 için katkıda bulunanlar:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="55"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Eğer sende dil eklemek istersen &lt;a href=&quot;%2&quot;&gt;%1 Çeviri Sayfası&lt;/a&gt; .</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="56"/>
+        <location filename="../qml/about.js" line="57"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
@@ -738,39 +629,9 @@ Tabiki az olmayan bağış miktarın için Hakkında sayfasında senin için &qu
         <translation>Ayarlar</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="105"/>
+        <location filename="../qml/bb10/main.qml" line="101"/>
         <source>Close</source>
         <translation>Kapat</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="114"/>
-        <source>Donation</source>
-        <translation>Bağış</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="115"/>
-        <source>How much would you like to donate?</source>
-        <translation>Ne kadarlık bir bağış olacak ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="116"/>
-        <source>Donation FAQ</source>
-        <translation>Bağış Hakkında SSS</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="134"/>
-        <source>Payment Succeeded</source>
-        <translation>Ödeme başarılı</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="135"/>
-        <source>Thanks a lot for your donation!</source>
-        <translation>Bağış için teşekkürler!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="139"/>
-        <source>Payment Error</source>
-        <translation>Ödeme hatası</translation>
     </message>
 </context>
 </TS>

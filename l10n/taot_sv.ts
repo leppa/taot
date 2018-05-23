@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="254"/>
+        <location filename="../src/main.cpp" line="252"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Åke Engelbrektson</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="256"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Svenska</translation>
@@ -62,111 +62,6 @@
         <source>, </source>
         <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
-    </message>
-</context>
-<context>
-    <name>DonationFaqPage</name>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
-        <source>Donation FAQ</source>
-        <translation>Donation FAQ</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
-        <source>Why do you ask for donations?</source>
-        <translation>Varför ber du om donationer?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
-        <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
-        <translation>Jag utvecklar %1 på min lediga tid och tillhandahåller det kostnadsfritt. Dessutom är %1 öppen källkod. Att få donationer, uppmuntrar mig att fortsätta utveckla och stödja %1. Det visar också att mitt arbete uppskattas.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
-        <source>Am I required to donate to use %1?</source>
-        <translation>Måste jag donera för att använda %1?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
-        <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation>Absolut inte. %1 är kostnadsfri och öppen källkod. Du måste inte donera för att använda det, men det är ett sätt att visa ditt stöd.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
-        <source>What are those coins?</source>
-        <translation>Vad är dessa &apos;coins&apos;?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
-        <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
-        <translation>Jag använder BlackBerry Payment Service för att ta emot donationer och BlackBerry tar 30% i avgift för varje betalning. Exempelvis, om du donerar 4.99$ (34 coins), får jag ungefär 3.49$. Så varje &apos;coin&apos; motsvarar ungefär 0.10$ till mig.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
-        <source>Do I get something for making a donation?</source>
-        <translation>Får jag något för att jag donerar?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
-        <source>You already have %1. Completely for free :-)
-However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
-        <translation>Du har redan fått %1. Helt gratis. :-)
-Hur som helst, om du inte tycker det är nog, så kommer din donation tillsammans med ett tackmeddelande att visas i början på Om-sidan.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
-        <source>I want to increase my donation. Is it possible?</source>
-        <translation>Jag vill utöka min donation. Är det möjligt?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
-        <source>Just make a new one. You can make as many donations as you want. They will accumulate and total amount will be displayed on the About page.</source>
-        <translation>Donera bara igen. Du kan göra hur många donationer du vill. De räknas samman och den totala summan visas på Om-sidan.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
-        <source>I changed my mind and want to get my donation back!</source>
-        <translation>Jag ångrade mig och vill ha tillbaka min donation!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
-        <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
-        <translation>Tråkigt att höra! Jag hanterar inga betalningar, så du måste kontakta &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; för att begära en återbetalning.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
-        <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
-        <translation>Jag vill inte betala i appen. Finns det något annat sätt att donera?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
-        <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation>Ja det finns en &lt;em&gt;Donera&lt;/em&gt;-länk på Om-sidan.Tryck på den så kommer du till en webbsida, där du kan donera via PayPal, Flattr, eller WebMoney.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
-        <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation>Min fråga är inte besvarad. Hur kan jag kontakta dig?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
-        <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation>Skriv ett e-brev. Dra neråt från toppen och välj &lt;em&gt;Sänd återkoppling&lt;/em&gt; från menyn. E-postprogrammet kommer att öppnas, med min adress ifylld.</translation>
-    </message>
-</context>
-<context>
-    <name>DonationManager</name>
-    <message numerus="yes">
-        <location filename="../src/bb10/donationmanager.cpp" line="46"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="49"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="52"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="55"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="58"/>
-        <source>%n coins</source>
-        <translation>
-            <numerusform>%n coin</numerusform>
-            <numerusform>%n coins</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -265,11 +160,6 @@ Hur som helst, om du inte tycker det är nog, så kommer din donation tillsamman
         <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy all</source>
         <translation>Kopiera allt</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/MainPage.qml" line="293"/>
-        <source>Donate</source>
-        <translation>Donera</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="557"/>
@@ -699,12 +589,12 @@ Hur som helst, om du inte tycker det är nog, så kommer din donation tillsamman
         <translation>%1 innehåller följande översättningsbidrag:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="55"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Om ditt språk saknas, kan du &lt;a href=&quot;%2&quot;&gt;hjälpa till och översätta %1 till ditt språk&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="56"/>
+        <location filename="../qml/about.js" line="57"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
@@ -740,39 +630,9 @@ Hur som helst, om du inte tycker det är nog, så kommer din donation tillsamman
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="105"/>
+        <location filename="../qml/bb10/main.qml" line="101"/>
         <source>Close</source>
         <translation>Stäng</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="114"/>
-        <source>Donation</source>
-        <translation>Donation</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="115"/>
-        <source>How much would you like to donate?</source>
-        <translation>Hur mycket vill du donera?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="116"/>
-        <source>Donation FAQ</source>
-        <translation>Donations-FAQ</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="134"/>
-        <source>Payment Succeeded</source>
-        <translation>Betalningen genomförd</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="135"/>
-        <source>Thanks a lot for your donation!</source>
-        <translation>Stort tack för din donation!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="139"/>
-        <source>Payment Error</source>
-        <translation>Betalningsfel</translation>
     </message>
 </context>
 </TS>

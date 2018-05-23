@@ -36,7 +36,6 @@
 #   include "bb10/languagechangelistener.h"
 #   include "bb10/clipboard.h"
 #   include "bb10/repeater.h"
-#   include "bb10/donationmanager.h"
 #else
 #   include "dictionarymodel.h"
 #   include "reversetranslationsmodel.h"
@@ -181,7 +180,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #ifdef Q_OS_BLACKBERRY
     qmlRegisterType<bb::system::SystemToast>("bb.system", 1, 0, "SystemToast");
     qmlRegisterType<Repeater>("taot", 1, 0, "Repeater");
-    qmlRegisterType<DonationManager>("taot", 1, 0, "DonationManager");
 #elif defined(Q_OS_SAILFISH)
     QScopedPointer<QQuickView> viewer(SailfishApp::createView());
 #elif QT_VERSION < QT_VERSION_CHECK(5,0,0)
