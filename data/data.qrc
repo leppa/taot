@@ -3,6 +3,7 @@
         <file>baltimore.ca.pem</file>
         <file>certum.ca.pem</file>
         <file>certum.network.ca.pem</file>
+        <file>dst.x3.ca.pem</file>
         <file>globalsign.r2.ca.pem</file>
         <file>googletrust.r2.ca.pem</file>
     </qresource>

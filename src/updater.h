@@ -25,6 +25,7 @@
 
 #include <QObject>
 #include <QVariantList>
+#include <QSslConfiguration>
 
 class Release: public QObject
 {
@@ -108,6 +109,7 @@ private:
 
     QNetworkAccessManager *m_nam;
     QNetworkReply *m_reply;
+    QSslConfiguration m_sslConfiguration;
 
     void setBusy(bool busy);
     void setUpdateAvailable(bool available);
