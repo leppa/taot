@@ -1,6 +1,21 @@
 TAO Translator ChangeLog
 ========================
 
+TAOT v1.3.5
+-----------
+
+- Google Translate: Fixed SSL error on some platforms, caused by
+  untrusted root certificate ([issue #59][]).
+- Source and target translation languages were updated for all services
+  ([issue #60][]).
+- BlackBerry 10: Donation functionality was removed as payments are no
+  longer supported in the BlackBerry App World ([issue #62][]).
+- Nokia N9, Symbian: Workaround SSL handshake error when checking for
+  updates.
+- New UI localization: Dutch (Belgium).
+- Some UI localizations were updated.
+
+
 TAOT v1.3.4
 -----------
 
@@ -8,6 +23,7 @@ TAOT v1.3.4
   20.04.2017. TAO Translator now uses Azure Cognitive Services API
   ([issue #56][]).
 - Some UI localizations were updated.
+
 
 TAOT v1.3.3.2
 -------------
@@ -283,5 +299,8 @@ Initial release.
 [issue #53]: https://github.com/leppa/taot/issues/53
 [issue #55]: https://github.com/leppa/taot/issues/55
 [issue #56]: https://github.com/leppa/taot/issues/56
+[issue #59]: https://github.com/leppa/taot/issues/59
+[issue #60]: https://github.com/leppa/taot/issues/60
+[issue #62]: https://github.com/leppa/taot/issues/62
 
 <!-- $Id: $Format:%h %ai %an$ $ -->
