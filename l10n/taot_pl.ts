@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="254"/>
+        <location filename="../src/main.cpp" line="252"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Maurycy, mp107</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="256"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Polski</translation>
@@ -63,112 +63,6 @@
         <source>, </source>
         <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
-    </message>
-</context>
-<context>
-    <name>DonationFaqPage</name>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
-        <source>Donation FAQ</source>
-        <translation>Wsparcie darowizną - pytania i odpowiedzi</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
-        <source>Why do you ask for donations?</source>
-        <translation>Dlaczego prosisz o darowiznę?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
-        <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
-        <translation>Rozwijam i wspieram aplikację %1 w czasie wolnym całkowicie za darmo. Dodatkowo, %1 jest oprogramowaniem wolnym z otwartym kodem źródłowym (Open Source). Twoja darowizna zachęci mnie do dalszego rozwoju i wspierania aplikacji %1. Pokaże mi też, że moja praca jest doceniana.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
-        <source>Am I required to donate to use %1?</source>
-        <translation>Czy aby używać aplikacji %1 muszę przekazać darowiznę?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
-        <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation>Absolutnie nie. Aplikacja %1 jest darmowa wraz z otwartym kodem źródłowym (Open Source). Aby jej używać nie musisz przekazywać żadnych darowizn, jednak robiąc to, możesz okazać swoje wsparcie.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
-        <source>What are those coins?</source>
-        <translation>Czym są te &quot;monety&quot;?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
-        <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
-        <translation>Do otrzymywania darowizn używam BlackBerry Payment Service. BlackBerry pobiera 30% prowizji z każdej darowizny. Przykładowo, jeżeli podarujesz 4,99$ (34 monety) ja otrzymam około 3,49$. Jedna moneta odpowiada około 0,10$ które otrzymam.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
-        <source>Do I get something for making a donation?</source>
-        <translation>Co dla mnie oznacza darowizna?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
-        <source>You already have %1. Completely for free :-)
-However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
-        <translation>Już teraz możesz używać aplikacji %1 całkowicie za darmo :-)
-Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowaniami pojawią się na górze strony &quot;O programie&quot;.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
-        <source>I want to increase my donation. Is it possible?</source>
-        <translation>Chcę zwiększyć kwotę swojej darowizny. Czy jest to możliwe?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
-        <source>Just make a new one. You can make as many donations as you want. They will accumulate and total amount will be displayed on the About page.</source>
-        <translation>Wystarczy dokonać nowej darowizny. Możesz przekazać tyle darowizn, ile chcesz. Całkowita kwota darowizny będzie wyświetlana w &quot;O programie&quot;.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
-        <source>I changed my mind and want to get my donation back!</source>
-        <translation>Zmieniłem zdanie i chcę wycofać swoją darowiznę!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
-        <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
-        <translation>Przykro mi to słyszeć. Nie zarządzam systemem płatności, więc skontaktuj się ze &lt;a href=&quot;%1&quot;&gt;wsparciem BlackBerry World&lt;/a&gt;, aby poprosić o zwrot.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
-        <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
-        <translation>Nie chcę płacić poprzez aplikację. Czy są inne sposoby przekazania darowizny?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
-        <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation>Tak - dodatkowo dostępny jest link &lt;em&gt;Przekaż darowiznę&lt;/em&gt; w oknie &quot;O programie&quot;. Kliknij go a zostanie otwarta strona, z pomocą której możesz przekazać darowiznę poprzez PayPal, Flattr lub WebMoney.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
-        <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation>Mojego pytania nie ma na liście. Jak mogę się skontaktować?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
-        <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation>Napisz do mnie wiadomość e-mail. Wystarczy wybrać z menu opcję &lt;em&gt;Wyślij wiadomość&lt;/em&gt;, aby otworzyć kompozytor wiadomości e-mail z wypełnionym adresem odbiorcy.</translation>
-    </message>
-</context>
-<context>
-    <name>DonationManager</name>
-    <message numerus="yes">
-        <location filename="../src/bb10/donationmanager.cpp" line="46"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="49"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="52"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="55"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="58"/>
-        <source>%n coins</source>
-        <translation>
-            <numerusform>%n moneta</numerusform>
-            <numerusform>%n monety</numerusform>
-            <numerusform>%n monet</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -267,11 +161,6 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
         <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy all</source>
         <translation>Kopiuj wszystko</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/MainPage.qml" line="293"/>
-        <source>Donate</source>
-        <translation>Darowizna</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="557"/>
@@ -702,12 +591,12 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
         <translation>Aplikacja %1 została przetłumaczona na następujące języki:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="55"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Jeżeli brak jest Twojego języka na liście, możesz &lt;a href=&quot;%2&quot;&gt;pomóc w tłumaczeniu %1 na swój język&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="56"/>
+        <location filename="../qml/about.js" line="57"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
@@ -743,39 +632,9 @@ Jeżeli to nie jest wystarczające, to kwota twojej darowizny wraz z podziękowa
         <translation>Ustawienia</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="105"/>
+        <location filename="../qml/bb10/main.qml" line="101"/>
         <source>Close</source>
         <translation>Zamknij</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="114"/>
-        <source>Donation</source>
-        <translation>Darowizna</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="115"/>
-        <source>How much would you like to donate?</source>
-        <translation>Ile chciałbyś przekazać darowizny?</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="116"/>
-        <source>Donation FAQ</source>
-        <translation>Wsparcie darowizną - pytania i odpowiedzi</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="134"/>
-        <source>Payment Succeeded</source>
-        <translation>Płatność zakończona pomyślnie</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="135"/>
-        <source>Thanks a lot for your donation!</source>
-        <translation>Dziękuję za Twoją darowiznę!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="139"/>
-        <source>Payment Error</source>
-        <translation>Błąd płatności</translation>
     </message>
 </context>
 </TS>

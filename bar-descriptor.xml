@@ -2,14 +2,14 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>name.oleksii.bb10.taot</id>
     <name>TAO Translator</name>
-    <versionNumber>1.3.4</versionNumber>
+    <versionNumber>1.3.5</versionNumber>
     <description>TAO Translator uses online translation services to provide translations.</description>
     <icon>
         <image>icon.png</image>
     </icon>
     <author>Oleksii Serdiuk</author>
     <authorId>gYAAgFEzqeGb8kgSIn13NIOmc_c</authorId>
-    <copyright>(C) 2013-2016 Oleksii Serdiuk</copyright>
+    <copyright>(C) 2013-2018 Oleksii Serdiuk</copyright>
     <initialWindow>
         <aspectRatio>portrait</aspectRatio>
         <autoOrients>true</autoOrients>

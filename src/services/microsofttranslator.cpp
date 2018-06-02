@@ -35,14 +35,13 @@ MicrosoftTranslator::MicrosoftTranslator(QObject *parent)
         const QVariant data = parseJson(f.readAll());
         f.close();
         if (data.isValid()) {
-            QVariantMapIterator sl(data.toMap().value("text").toMap());
-            while (sl.hasNext()) {
-                sl.next();
-                const QString code = sl.key();
-                const QString name = sl.value().toMap().value("name").toString();
-                Language lang(code, name);
-                m_targetLanguages << lang;
-                m_langCodeToName.insert(code, name);
+            const QVariantList langs(data.toMap().value("langs").toList());
+            const QVariantList langNames(data.toMap().value("langNames").toList());
+            for (int i = 0; i < langs.length(); ++i) {
+                const QVariant code = langs.at(i).toString();
+                const QString name = langNames.at(i).toString();
+                m_targetLanguages << Language(code, name);
+                m_langCodeToName.insert(code.toString(), name);
             }
         }
     }

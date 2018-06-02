@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2018  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -33,6 +33,7 @@
 #   include <QJsonDocument>
 #endif
 #include <QDebug>
+#include <qplatformdefs.h>
 
 Release::Release(QObject *parent)
     : QObject(parent)
@@ -75,6 +76,11 @@ Updater::Updater(QObject *parent)
 {
     m_nam = new QNetworkAccessManager(this);
     connect(m_nam, SIGNAL(finished(QNetworkReply*)), SLOT(onNetworkReply(QNetworkReply*)));
+
+    m_sslConfiguration = QSslConfiguration::defaultConfiguration();
+    QList<QSslCertificate> cacerts = m_sslConfiguration.caCertificates();
+    cacerts.append(QSslCertificate::fromPath(QLatin1String(":/cacertificates/dst.x3.ca.pem")));
+    m_sslConfiguration.setCaCertificates(cacerts);
 }
 
 bool Updater::busy() const
@@ -133,8 +139,19 @@ void Updater::checkForUpdates()
     if (m_reply && m_reply->isRunning())
         m_reply->abort();
 
+#if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN)
+    // Symbian and Harmattan only support TLSv1.0,
+    // but GitHub has disabled it. The workaround is to
+    // proxy requests through our own server.
+    // Port 8443 is used because Symbian doesn't support
+    // SNI and there's another website on default port.
+    QUrl url("https://taot.projects.oleksii.name:8443/updater/releases.json");
+#else
     QUrl url("https://api.github.com/repos/leppa/taot/releases");
-    m_reply = m_nam->get(QNetworkRequest(url));
+#endif
+    QNetworkRequest request(url);
+    request.setSslConfiguration(m_sslConfiguration);
+    m_reply = m_nam->get(request);
 }
 
 void Updater::onNetworkReply(QNetworkReply *reply)

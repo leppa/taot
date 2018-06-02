@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="254"/>
+        <location filename="../src/main.cpp" line="252"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Sary AWAD (sary.1991), OmarRi</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="256"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>العربية</translation>
@@ -66,115 +66,6 @@
         <source>, </source>
         <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
-    </message>
-</context>
-<context>
-    <name>DonationFaqPage</name>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
-        <source>Donation FAQ</source>
-        <translation>الأسئلة الشائعة بخصوص التبرع</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
-        <source>Why do you ask for donations?</source>
-        <translation>لماذا تريد منا التبرع؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
-        <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
-        <translation>أنا أطور %1 في وقت فراغي وأوفره مجانيا بالكامل. علاوة على ذلك، %1 مفتوح المصدر. تلقي التبرعات سيشجعني على المضي قدما بتطوير ودعم %1. سوف يظهر لي هذا أيضا أن عملي محل تقدير.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
-        <source>Am I required to donate to use %1?</source>
-        <translation>هل أنا مرغم بأن أتبرع لكي أستخدم %1؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
-        <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation>إطلاقاً. %1 مجاني ومفتوح المصدر. أنت لست مرغما على أن تتبرع لكي تستخدمه. مع ذلك، بهذه الطريقة يمكنك إظهار دعمك.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
-        <source>What are those coins?</source>
-        <translation>ما هي هذه العمل النقدية؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
-        <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
-        <translation>أنا أستخدم خدمة الدفع الخاصة ببلاك بيري من أجل قبول التبرعات حيث أن بلاك بيري تأخذ 30% عمولة لكل عملية دفع. على سبيل المثال، إذا قمت بالتبرع بـ 4.99$ (34 عملة نقدية)، سوف أحصل أنا على 3.49$. لهذا كل عملة نقدية توافق تقريبا 0.10$ مما سأحصل عليه.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
-        <source>Do I get something for making a donation?</source>
-        <translation>هل أنا أجني شيئا لتبرعي؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
-        <source>You already have %1. Completely for free :-)
-However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
-        <translation>لديك أصلا %1. مجاني بالكامل :-)
-لكن إن كان هذا غير كاف، سوف تعرض في أعلى صفحة حول القيمة التي تبرعت بها ملحقة برسالة &quot;شكرا لك!&quot;.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
-        <source>I want to increase my donation. Is it possible?</source>
-        <translation>أريد أن أزيد من قيمة تبرعي. هل هذ ممكن؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
-        <source>Just make a new one. You can make as many donations as you want. They will accumulate and total amount will be displayed on the About page.</source>
-        <translation>قم بعملية تبرع جديدة فقط. يمكنك أن تقوم بالعديد من عمليات التبرع كما ترغب. سيتم جمعهم والقيمة الإجمالية سوف تعرض على صفحة حول</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
-        <source>I changed my mind and want to get my donation back!</source>
-        <translation>غيرت رأيي وأريد إستعادة ما تبرعت به!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
-        <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
-        <translation>آسف جدا لسماع هذا. أنا لا أدير أيا من عمليات الدفع. لهذا عليك الاتصال بـ &lt;a href=&quot;%1&quot;&gt;الدعم العالمي لبلاك بيري&lt;/a&gt; لكي تقدم طلبا باستعادة مالك.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
-        <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
-        <translation>لا أريد أن أدفع داخل البرنامج. هل هناك طريقة أخرى للتبرع؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
-        <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation>نعم، يوجد رابط &lt;em&gt;التبرع&lt;/em&gt; في صفحة حول. اضغط عليه وسوف يتم تحويلك إلى صفحة ويب حيث تستطيع التبرع بواسطة باي بال، فلاتر، أو ويب ماني</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
-        <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation>سؤالي غير مجاوب عليه. كيف يمكنني التواصل؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
-        <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation>اكتب إلي رسالة بالبريد الإلكتروني. فقط اسحب من الأعلى واضغط على &lt;em&gt;أرسل لنا ملاحظاتك&lt;/em&gt; من القائمة. سوف يظهر بريد إلكتروني بالعنوان الخاص معبأ تلقائيا</translation>
-    </message>
-</context>
-<context>
-    <name>DonationManager</name>
-    <message numerus="yes">
-        <location filename="../src/bb10/donationmanager.cpp" line="46"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="49"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="52"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="55"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="58"/>
-        <source>%n coins</source>
-        <translation>
-            <numerusform>%n عملة نقدية</numerusform>
-            <numerusform>عملة نقدية واحدة</numerusform>
-            <numerusform>عملتين نقديتين</numerusform>
-            <numerusform>%n عملات نقدية</numerusform>
-            <numerusform>%n عملة نقدية</numerusform>
-            <numerusform>%n عملة نقدية</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -273,11 +164,6 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy all</source>
         <translation>نسخ الجميع</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/MainPage.qml" line="293"/>
-        <source>Donate</source>
-        <translation>تبرع</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="557"/>
@@ -707,12 +593,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <translation>‏%1 يحتوي على الترجمات المساهَمة التالية:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="55"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>إذا كانت لغتك غير موجودة، يمكنك &lt;a href=&quot;%2&quot;&gt;المساعدة في ترجمة %1 إلى لغتك&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="56"/>
+        <location filename="../qml/about.js" line="57"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
@@ -748,39 +634,9 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <translation>الإعدادات</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="105"/>
+        <location filename="../qml/bb10/main.qml" line="101"/>
         <source>Close</source>
         <translation>إغلاق</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="114"/>
-        <source>Donation</source>
-        <translation>التبرع</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="115"/>
-        <source>How much would you like to donate?</source>
-        <translation>كم المقدار الذي تريد أن تتبرع يه؟</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="116"/>
-        <source>Donation FAQ</source>
-        <translation>الأسئلة الشائعة بخصوص التبرع</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="134"/>
-        <source>Payment Succeeded</source>
-        <translation>تم الدفع بنجاح</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="135"/>
-        <source>Thanks a lot for your donation!</source>
-        <translation>شكراً جزيلاً لتبرعك!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="139"/>
-        <source>Payment Error</source>
-        <translation>خطأ في الدفع</translation>
     </message>
 </context>
 </TS>

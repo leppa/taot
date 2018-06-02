@@ -1,7 +1,7 @@
 ######################################################################
 #
 #  TAO Translator
-#  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+#  Copyright (C) 2013-2018  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 #
 #  $Id: $Format:%h %ai %an$ $
 #
@@ -34,7 +34,7 @@ blackberry:CONFIG += cascades
 QMAKE_TARGET_COMPANY = Oleksii Serdiuk
 QMAKE_TARGET_PRODUCT = TAO Translator
 QMAKE_TARGET_DESCRIPTION = Online translator with some advanced features
-QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2016 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+QMAKE_TARGET_COPYRIGHT = Copyright © 2013-2018 Oleksii Serdiuk <contacts[at]oleksii[dot]name>
 
 lessThan(QT_MAJOR_VERSION, 5):!blackberry {
     include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -96,16 +96,14 @@ blackberry {
         src/bb10/reversetranslationsmodel.h \
         src/bb10/languagechangelistener.h \
         src/bb10/clipboard.h \
-        src/bb10/repeater.h \
-        src/bb10/donationmanager.h
+        src/bb10/repeater.h
 
     SOURCES += \
         src/bb10/dictionarymodel.cpp \
         src/bb10/reversetranslationsmodel.cpp \
         src/bb10/languagechangelistener.cpp \
         src/bb10/clipboard.cpp \
-        src/bb10/repeater.cpp \
-        src/bb10/donationmanager.cpp
+        src/bb10/repeater.cpp
 
     LIBS += -lbbplatform -lbbsystem
 } else {
@@ -155,6 +153,7 @@ TRANSLATIONS += \
     l10n/taot_fr_FR.ts \
     l10n/taot_hu.ts \
     l10n/taot_it.ts \
+    l10n/taot_nl_BE.ts \
     l10n/taot_nl_NL.ts \
     l10n/taot_pl.ts \
     l10n/taot_pt.ts \

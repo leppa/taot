@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2018  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -288,15 +288,7 @@ Page {
                                                  .arg(translator.translatedText)
                                                  .arg(translator.targetLanguage.displayName);
             }
-        },
-        ActionItem {
-            title: qsTr("Donate") + Retranslate.onLanguageChanged
-            imageSource: "asset:///icons/donate.png"
-            onTriggered: {
-                donationDialog.exec();
-            }
         }
-
     ]
 
     attachedObjects: [
@@ -337,12 +329,6 @@ Page {
         targetLanguagesDropDown.selectedIndex = translator.targetLanguage.index;
 
         translator.sourceTextChanged.connect(sourceTextChanged);
-
-        var tiers = donationManager.tiers;
-
-        tiers.forEach(function(tier) {
-            donationDialog.appendItem(tier);
-        });
     }
 
     function updateSourceLanguages()

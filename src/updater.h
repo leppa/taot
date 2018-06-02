@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2018  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -25,6 +25,7 @@
 
 #include <QObject>
 #include <QVariantList>
+#include <QSslConfiguration>
 
 class Release: public QObject
 {
@@ -108,6 +109,7 @@ private:
 
     QNetworkAccessManager *m_nam;
     QNetworkReply *m_reply;
+    QSslConfiguration m_sslConfiguration;
 
     void setBusy(bool busy);
     void setUpdateAvailable(bool available);

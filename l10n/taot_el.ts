@@ -4,13 +4,13 @@
 <context>
     <name>--------</name>
     <message>
-        <location filename="../src/main.cpp" line="254"/>
+        <location filename="../src/main.cpp" line="252"/>
         <source>AUTHORS</source>
         <extracomment>A list of translation authors</extracomment>
         <translation>Mandratzis-Walz (beonex), Dimitrios Glentadakis (dglent)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="256"/>
+        <location filename="../src/main.cpp" line="254"/>
         <source>LANGUAGE_NAME</source>
         <extracomment>Native language name (e.g., Deutsch for German)</extracomment>
         <translation>Ελληνικά</translation>
@@ -62,111 +62,6 @@
         <source>, </source>
         <extracomment>Separator for joining string lists (don&apos;t forget space after comma)</extracomment>
         <translation>, </translation>
-    </message>
-</context>
-<context>
-    <name>DonationFaqPage</name>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="28"/>
-        <source>Donation FAQ</source>
-        <translation>Συνήθεις ερωτήσεις δωρεών</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="40"/>
-        <source>Why do you ask for donations?</source>
-        <translation>Γιατί ρωτάτε για δωρεά;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="41"/>
-        <source>I&apos;m developing %1 in my spare time and provide it completely for free. Moreover, %1 is Open Source. Receiving donations will encourage me to continue developing and supporting %1. It will also show that my work is appreciated.</source>
-        <translation>Αναπτύσσω το %1 στον ελεύθερο χρόνο μου και το παρέχω εντελώς δωρεάν. Επίσης το %1 είναι ανοιχτού κώδικα. Η λήψη μιας δωρεάς θα με ενθάρρυνε στη συνέχιση της ανάπτυξης και της υποστήριξης του %1. Επίσης θα ήταν μια ένδειξη εκτίμησης της εργασίας μου.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="47"/>
-        <source>Am I required to donate to use %1?</source>
-        <translation>Υποχρεούμαι να κάνω δωρεά ούτως ώστε να χρησιμοποιήσω το %1;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="48"/>
-        <source>Absolutely not. %1 is free and Open Source. You&apos;re not required to make any donations to use it. However, this way you can show your support.</source>
-        <translation>Απολύτως όχι. Το %1 είναι ελεύθερο λογισμικό ανοιχτού κώδικα. Δεν απαιτείται καμιά δωρεά για την χρήση του. Ωστόσο με αυτόν τον τρόπο μπορείτε να δείξετε την υποστήριξή σας.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="53"/>
-        <source>What are those coins?</source>
-        <translation>Τι είναι αυτά τα κέρματα;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="54"/>
-        <source>I&apos;m using BlackBerry Payment Service to accept donations and BlackBerry takes 30% commission from each payment. For example, if you donate 4.99$ (34 coins), I will get about 3.49$. So each coin roughly corresponds to 0.10$ that I will get.</source>
-        <translation>Χρησιμοποιώ την υπηρεσία πληρωμών του BlackBerry για την λήψη των δωρεών και η BlackBerry λαμβάνει ένα ποσοστό των 30% από κάθε πληρωμή. Για παράδειγμα, αν δωρίσετε 4.99$ (4.46€) (34 κέρματα), θα λάβω περίπου 3.49$ (3.12€). Ως εκ τούτου κάθε κέρμα αντιστοιχεί σε 0.10$ (0.08€) που λαμβάνω.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="60"/>
-        <source>Do I get something for making a donation?</source>
-        <translation>Θα λάβω κάτι αν κάνω μια δωρεά;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="61"/>
-        <source>You already have %1. Completely for free :-)
-However, if it&apos;s not enough, the amount of your donation along with &quot;Thank you!&quot; message will be displayed at the top of the About page.</source>
-        <translation>Έχετε ήδη το %1. Εντελώς δωρεάν :-)
-Ωστόσο, αν δεν είναι αρκετό, το ποσό της δωρεάς παράλληλα με τις ευχαριστίες θα εμφανίζονται στην κορυφή της σελίδας Περί της εφαρμογής.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="67"/>
-        <source>I want to increase my donation. Is it possible?</source>
-        <translation>Θέλω να αυξήσω την δωρεά μου, είναι εφικτό;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="68"/>
-        <source>Just make a new one. You can make as many donations as you want. They will accumulate and total amount will be displayed on the About page.</source>
-        <translation>Απλά πραγματοποιήστε μια νέα. Μπορείτε να κάνετε όσες δωρεές επιθυμείτε. Το ποσό θα συσσωρευτεί και θα εμφανίζεται στην σελίδα Περί της εφαρμογής.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="72"/>
-        <source>I changed my mind and want to get my donation back!</source>
-        <translation>Μετάνιωσα και θέλω να αναιρέσω την δωρεά μου!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="73"/>
-        <source>Very sorry to hear that. I&apos;m not managing any payments, so you&apos;ll have to contact &lt;a href=&quot;%1&quot;&gt;BlackBerry World support&lt;/a&gt; to request a refund.</source>
-        <translation>Λυπάμαι πολύ που το ακούω. Δεν διαχειρίζομαι τις πληρωμές και ως εκ τούτου θα πρέπει να επικοινωνήσετε με την &lt;a href=&quot;%1&quot;&gt;Παγκόσμια υποστήριξη BlackBerry&lt;/a&gt; για να απαιτήσετε την επιστροφή των χρημάτων σας.</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="78"/>
-        <source>I don&apos;t want to pay in-app. Are there any other ways to donate?</source>
-        <translation>Δεν επιθυμώ την χρήση μιας εφαρμογής πληρωμών. Υπάρχει άλλος τρόπος πληρωμής της δωρεάς;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="79"/>
-        <source>Yes, there is &lt;em&gt;Donate&lt;/em&gt; link on the About page. Tap it and you will be taken to a web page where you can donate with PayPal, Flattr, or WebMoney.</source>
-        <translation>Ναι, υπάρχει ένας δεσμός &lt;em&gt;Δωρεά&lt;/em&gt; στην σελίδα Περί της εφαρμογής. Ακολουθήστε τον και θα μεταβείτε σε μια ιστοσελίδα όπου μπορείτε να δωρίσετε μέσω του PayPal, του Flattr, ή του WebMoney. </translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="84"/>
-        <source>My question isn&apos;t answered. How can I get in touch?</source>
-        <translation>Η ερώτησή μου δεν απαντήθηκε. Πώς μπορώ να έρθω σε επικοινωνία;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/DonationFaqPage.qml" line="85"/>
-        <source>Write me an e-mail. Just swipe from the top and tap &lt;em&gt;Send feedback&lt;/em&gt; in the menu. An e-mail will open with my address pre-filled.</source>
-        <translation>Στείλτε μου μια ηλεκτρονική αλληλογραφία. Απλά σαρώστε από την κορυφή και χτυπήστε στο &lt;em&gt;Αποστολή ανάδρασης&lt;/em&gt; από το μενού. Θα ανοίξει η σύνταξη της αλληλογραφίας με την διεύθυνσή μου προσυμπληρωμένη.</translation>
-    </message>
-</context>
-<context>
-    <name>DonationManager</name>
-    <message numerus="yes">
-        <location filename="../src/bb10/donationmanager.cpp" line="46"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="49"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="52"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="55"/>
-        <location filename="../src/bb10/donationmanager.cpp" line="58"/>
-        <source>%n coins</source>
-        <translation>
-            <numerusform>%n κέρματα</numerusform>
-            <numerusform>%n κέρματα</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -265,11 +160,6 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <location filename="../qml/sailfish/MainPage.qml" line="398"/>
         <source>Copy all</source>
         <translation>Αντιγραφή όλων</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/MainPage.qml" line="293"/>
-        <source>Donate</source>
-        <translation>Δωρεά</translation>
     </message>
     <message>
         <location filename="../qml/harmattan/MainPage.qml" line="557"/>
@@ -699,12 +589,12 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <translation>%1 περιλαμβάνει τις ακόλουθες μεταφράσεις:</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="54"/>
+        <location filename="../qml/about.js" line="55"/>
         <source>If your language is missing, you can &lt;a href=&quot;%2&quot;&gt;help translating %1 into your language&lt;/a&gt;.</source>
         <translation>Αν η γλώσσα σας λείπει, μπορείτε να &lt;a href=&quot;%2&quot;&gt; να βοηθήσετε μεταφραζοντας %1 στην γλώσσα σας &lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../qml/about.js" line="56"/>
+        <location filename="../qml/about.js" line="57"/>
         <source>&lt;p&gt;%1 uses online translation services to provide translations.&lt;/p&gt;&lt;p&gt;Currently supported services:&lt;/p&gt;&lt;ul&gt;	&lt;li&gt;&lt;b&gt;Google Translate&lt;/b&gt; - supports translation, transliteration for most non-latin scripts, language detection, and dictionary with reverse translations for single words.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Microsoft Translator&lt;/b&gt; (a.k.a. &lt;b&gt;Bing Translator&lt;/b&gt;) - supports translation and language detection.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Yandex.Translate&lt;/b&gt; - supports translation and language detection.&lt;/li&gt;
@@ -740,39 +630,9 @@ However, if it&apos;s not enough, the amount of your donation along with &quot;T
         <translation>Ρυθμίσεις</translation>
     </message>
     <message>
-        <location filename="../qml/bb10/main.qml" line="105"/>
+        <location filename="../qml/bb10/main.qml" line="101"/>
         <source>Close</source>
         <translation>Κλείσιμο</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="114"/>
-        <source>Donation</source>
-        <translation>Δωρεά</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="115"/>
-        <source>How much would you like to donate?</source>
-        <translation>Τι ποσό επιθυμείτε να δωρίσετε;</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="116"/>
-        <source>Donation FAQ</source>
-        <translation>Συνήθεις ερωτήσεις Δωρεών</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="134"/>
-        <source>Payment Succeeded</source>
-        <translation>Η πληρωμή ήταν επιτυχής</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="135"/>
-        <source>Thanks a lot for your donation!</source>
-        <translation>Ευχαριστώ πολύ για την δωρεά!</translation>
-    </message>
-    <message>
-        <location filename="../qml/bb10/main.qml" line="139"/>
-        <source>Payment Error</source>
-        <translation>Σφάλμα πληρωμής</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,6 @@
 /*
  *  TAO Translator
- *  Copyright (C) 2013-2016  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
+ *  Copyright (C) 2013-2018  Oleksii Serdiuk <contacts[at]oleksii[dot]name>
  *
  *  $Id: $Format:%h %ai %an$ $
  *
@@ -51,8 +51,8 @@ GoogleTranslate::GoogleTranslate(DictionaryModel *dict, QObject *parent)
     m_sslConfiguration = QSslConfiguration::defaultConfiguration();
     QList<QSslCertificate> cacerts(m_sslConfiguration.caCertificates());
     cacerts << loadSslCertificates(QStringList()
-                                   << QLatin1String("://cacertificates/geotrust.ca.pem")
-                                   << QLatin1String("://cacertificates/equifax.ca.pem"));
+                                   << QLatin1String("://cacertificates/globalsign.r2.ca.pem")
+                                   << QLatin1String("://cacertificates/googletrust.r2.ca.pem"));
     m_sslConfiguration.setCaCertificates(cacerts);
 
     // TODO: Download actual list from

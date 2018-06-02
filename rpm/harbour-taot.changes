@@ -5,6 +5,13 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sat Jun 2 2018 Oleksii Serdiuk <contacts@oleksii.name> 1.3.5
+- Google Translate: Fixed SSL error on some platforms, caused by
+  untrusted root certificate.
+- Source and target translation languages were updated for all services.
+- New UI localization: Dutch (Belgium).
+- Some UI localizations were updated.
+
 * Sun Dec 11 2016 Oleksii Serdiuk <contacts@oleksii.name> 1.3.4
 - Microsoft Translator: Microsoft plans to shutdown DataMarket API on
   20.04.2017. TAO Translator now uses Azure Cognitive Services API.
